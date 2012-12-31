@@ -23,7 +23,7 @@ h1, h2 {
     font-weight: normal;
 }
 
-h1 { 
+h1 {
     font-size: 4.0em;
 }
 
@@ -41,7 +41,7 @@ h2 {
     margin-bottom: 0.7em !important;
 }
 
-p {
+p, li {
     font-size: 14px;
     line-height: 21px;
 }

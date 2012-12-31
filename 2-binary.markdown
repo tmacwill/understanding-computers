@@ -3,12 +3,7 @@ layout: default
 title: Binary, ASCII, and Everything in Bit-ween
 ---
 
-<style>
-td {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="css/2-binary.css" />
 
 <div class="page-header">
     <h1>Chapter 2 <small>Binary, ASCII, and Everything in Bit-ween</small></h1>
@@ -16,7 +11,7 @@ td {
 
 You've probably heard that computers are all about zeroes and ones. But... what does that mean? And... why? After all, two and three are pretty great numbers, too! (But don't get me started on seven.)
 
-Let's say I ask you a question like "Do you like cats?" There are two possible answers to this question: yes and no. We can represent your answer to this question using one "bit," which is the most basic unit of information in computing. A bit can only have two possible values, which we can think of as "on" or "off," "true" or "false," or "0" or "1". We can also use a bit to represent whether a light is on or off or the result of a coin flip.
+Let's say I ask you a question like "Do you like cats?" There are two possible answers to this question: yes and no. We can represent your answer to this question using one "bit," which is the most basic unit of information in computing. A bit can only have two possible values, which we can think of as "on" or "off," "true" or "false," or "0" or "1". We can also use a bit to represent, for example, whether a light is on or off or the result of a coin flip.
 
 Answering the question "How much do you like cats?" is a bit different. This question has more than one answer, so we'll need more than just one bit to represent your love of all things feline. However, before we talk any more about how computers represent numbers, let's quickly review how we as humans are probably used to representing numbers. According to my laptop's keyboard, we have ten digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. That means that we can represent ten different numbers using only one digit. Of course, we're going to start running into issues when we want to represent the number that is one more than 9. Luckily, we've already solved this problem: one more than 9 is 10. To create the number 10, we created a new space for a second digit, which you may remember as the "tens place" from grade school (that is, if you weren't too busy playing with yo-yos like I was). Similarly, we have a hundreds place, thousands place, and so on for larger numbers.
 
@@ -332,7 +327,7 @@ The first 32 characters in the table are reserved for "control sequences," which
 
 As we start using these character encodings to create long messages, we're going to create larger and larger sequences of bits. It makes sense, then, to create units of information larger than a single bit. A sequence of 8 bits is commonly referred to as a byte. As an aside, a sequence of 4 bits is called a nibble, ha, ha, ha. Since a byte is still a pretty small piece of information, describing data in terms of kilobytes (where 1 kilobyte is about 1000 bytes), megabytes (where 1 megabyte is about 1000 kilobytes), and gigabytes (where, you guessed it, 1 gigabyte is about 1000 megabytes) has become commonplace. More on that later!
 
-That's it for binary and ASCII! In the next chapter, we'll start to see how your computer goes about actually saving this data in long-term storage.
+That's it for binary and ASCII! In the next chapters, we'll start to see how your computer uses and stores data.
 
 <div class="page-header">
     <h1>Practice Problems</h1>

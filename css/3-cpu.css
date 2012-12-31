@@ -1,0 +1,47 @@
+.pipeline td {
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.pipeline td:nth-child(1), .pipeline td:nth-child(2) {
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 0;
+    color: black;
+}
+
+.pipeline td:nth-child(1) {
+    border-right: 0;
+    font-size: 20px;
+}
+
+.pipeline tr:nth-child(5) td {
+    border: 0;
+    color: black;
+}
+
+.pipeline tr:nth-child(6) td {
+    border-right: 0;
+    font-size: 20px;
+}
+
+.fetch {
+    background: #E82A0C;
+}
+
+.decode {
+    background: #0FB1F6;
+}
+
+.execute {
+    background: #019D24;
+}
+
+.writeback {
+    background: #D42074;
+}
+

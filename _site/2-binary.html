@@ -2,28 +2,28 @@
 <html>
     <head>
         <title>Binary, ASCII, and Everything in Bit-ween | Understanding Computers and the Internet</title>
-        <link rel="stylesheet" href="/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
-        <link rel="stylesheet" href="/css/handsongit.css" />
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="css/e1.css" />
     </head>
     <body>
         <div class="container">
-            <style>
-td {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-</style><div class='page-header'>
+            <p><link rel="stylesheet" type="text/css" href="css/2-binary.css" /></p>
+
+<div class="page-header">
     <h1>Chapter 2 <small>Binary, ASCII, and Everything in Bit-ween</small></h1>
 </div>
-<p>You&#8217;ve probably heard that computers are all about zeroes and ones. But&#8230; what does that mean? And&#8230; why? After all, two and three are pretty great numbers, too! (But don&#8217;t get me started on seven.)</p>
 
-<p>Let&#8217;s say I ask you a question like &#8220;Do you like cats?&#8221; There are two possible answers to this question: yes and no. We can represent your answer to this question using one &#8220;bit,&#8221; which is the most basic unit of information in computing. A bit can only have two possible values, which we can think of as &#8220;on&#8221; or &#8220;off,&#8221; &#8220;true&#8221; or &#8220;false,&#8221; or &#8220;0&#8221; or &#8220;1&#8221;. We can also use a bit to represent whether a light is on or off or the result of a coin flip.</p>
 
-<p>Answering the question &#8220;How much do you like cats?&#8221; is a bit different. This question has more than one answer, so we&#8217;ll need more than just one bit to represent your love of all things feline. However, before we talk any more about how computers represent numbers, let&#8217;s quickly review how we as humans are probably used to representing numbers. According to my laptop&#8217;s keyboard, we have ten digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. That means that we can represent ten different numbers using only one digit. Of course, we&#8217;re going to start running into issues when we want to represent the number that is one more than 9. Luckily, we&#8217;ve already solved this problem: one more than 9 is 10. To create the number 10, we created a new space for a second digit, which you may remember as the &#8220;tens place&#8221; from grade school (that is, if you weren&#8217;t too busy playing with yo-yos like I was). Similarly, we have a hundreds place, thousands place, and so on for larger numbers.</p>
+<p>You've probably heard that computers are all about zeroes and ones. But... what does that mean? And... why? After all, two and three are pretty great numbers, too! (But don't get me started on seven.)</p>
 
-<p>The fact that we use ones, tens, hundreds, and thousands is no accident. We have 10 different digits to choose from, and 10<sup>0</sup> = 1, 10<sup>1</sup> = 10, 10<sup>2</sup> = 100, and so on. (Remember, when we say something like 10<sup>3</sup>, that&#8217;s just short for 10 &#215; 10 &#215; 10, or 1000.) So, these places can be represented with a table like this:</p>
-<table style='text-align: center'>
+<p>Let's say I ask you a question like "Do you like cats?" There are two possible answers to this question: yes and no. We can represent your answer to this question using one "bit," which is the most basic unit of information in computing. A bit can only have two possible values, which we can think of as "on" or "off," "true" or "false," or "0" or "1". We can also use a bit to represent, for example, whether a light is on or off or the result of a coin flip.</p>
+
+<p>Answering the question "How much do you like cats?" is a bit different. This question has more than one answer, so we'll need more than just one bit to represent your love of all things feline. However, before we talk any more about how computers represent numbers, let's quickly review how we as humans are probably used to representing numbers. According to my laptop's keyboard, we have ten digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. That means that we can represent ten different numbers using only one digit. Of course, we're going to start running into issues when we want to represent the number that is one more than 9. Luckily, we've already solved this problem: one more than 9 is 10. To create the number 10, we created a new space for a second digit, which you may remember as the "tens place" from grade school (that is, if you weren't too busy playing with yo-yos like I was). Similarly, we have a hundreds place, thousands place, and so on for larger numbers.</p>
+
+<p>The fact that we use ones, tens, hundreds, and thousands is no accident. We have 10 different digits to choose from, and 10<sup>0</sup> = 1, 10<sup>1</sup> = 10, 10<sup>2</sup> = 100, and so on. (Remember, when we say something like 10<sup>3</sup>, that's just short for 10 &times; 10 &times; 10, or 1000.) So, these places can be represented with a table like this:</p>
+
+<table style="text-align: center">
     <tr>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
@@ -38,9 +38,18 @@ td {
         <td>10<sup>1</sup></td>
         <td>10<sup>0</sup></td>
     </tr>
-</table><br />
-<p>Let&#8217;s fill in these blanks with some digits:</p>
-<br /><table style='text-align: center'>
+</table>
+
+
+<br />
+
+
+<p>Let's fill in these blanks with some digits:</p>
+
+<br />
+
+
+<table style="text-align: center">
     <tr>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>2</strong>&nbsp;&nbsp;</u></td>
@@ -55,13 +64,28 @@ td {
         <td>10<sup>1</sup></td>
         <td>10<sup>0</sup></td>
     </tr>
-</table><br />
-<p>Now, to figure out what number is represented by those digits, we multiply the digit in the ones place by 1, the digit in the tens place by 10 (and so on), and then add them together. That means that the above number is:</p>
-<br />
-<p>(1 &#215; 10<sup>4</sup>) + (2 &#215; 10<sup>3</sup>) + (3 &#215; 10<sup>2</sup>) + (4 &#215; 10<sup>1</sup>) + (5 &#215; 10<sup>0</sup>) = 12345 <br /> <br /></p>
+</table>
 
-<p>Make sense? Alright, back to those zeros and ones. Remembering <em>ten</em> different digits can be hard work. Heck, I can barely remember birthdays. Let&#8217;s make one tiny change to the above table. Rather than having places for 10<sup>0</sup>, 10<sup>1</sup>, 10<sup>2</sup>, and so on, let&#8217;s instead create places for 2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup>, and so on:</p>
-<table style='text-align: center'>
+
+<br />
+
+
+<p>Now, to figure out what number is represented by those digits, we multiply the digit in the ones place by 1, the digit in the tens place by 10 (and so on), and then add them together. That means that the above number is:</p>
+
+<br />
+
+
+<p>(1 &times; 10<sup>4</sup>) + (2 &times; 10<sup>3</sup>) + (3 &times; 10<sup>2</sup>) + (4 &times; 10<sup>1</sup>) + (5 &times; 10<sup>0</sup>) = 12345</p>
+
+<br />
+
+
+<br />
+
+
+<p>Make sense? Alright, back to those zeros and ones. Remembering <em>ten</em> different digits can be hard work. Heck, I can barely remember birthdays. Let's make one tiny change to the above table. Rather than having places for 10<sup>0</sup>, 10<sup>1</sup>, 10<sup>2</sup>, and so on, let's instead create places for 2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup>, and so on:</p>
+
+<table style="text-align: center">
     <tr>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
@@ -76,9 +100,15 @@ td {
         <td>2<sup>1</sup></td>
         <td>2<sup>0</sup></td>
     </tr>
-</table><br />
-<p>This representation is called binary. In this world, we&#8217;ll represent numbers using a ones place, a twos place, a fours place, an eights place, a sixteens place, and so on. Now, rather than using ten digits to represent numbers, we&#8217;ll only use two: 0 and 1. That means that we can represent each digit in a binary number with one bit. Any number then, can be represented as a collection of bits! Let&#8217;s see how we can use bits and binary to represent numbers by translating the binary number 10110 into decimal. First, we&#8217;ll fill in our new table, this time using only zeroes and ones:</p>
-<table style='text-align: center'>
+</table>
+
+
+<br />
+
+
+<p>This representation is called binary. In this world, we'll represent numbers using a ones place, a twos place, a fours place, an eights place, a sixteens place, and so on. Now, rather than using ten digits to represent numbers, we'll only use two: 0 and 1. That means that we can represent each digit in a binary number with one bit. Any number then, can be represented as a collection of bits! Let's see how we can use bits and binary to represent numbers by translating the binary number 10110 into decimal. First, we'll fill in our new table, this time using only zeroes and ones:</p>
+
+<table style="text-align: center">
     <tr>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
@@ -93,15 +123,33 @@ td {
         <td>2<sup>1</sup></td>
         <td>2<sup>0</sup></td>
     </tr>
-</table><br />
-<p>To figure out what number these bits represent, let&#8217;s do the same thing we did before, but rather than using powers of 10, we&#8217;ll use powers of 2:</p>
+</table>
+
+
 <br />
-<p>(1 &#215; 2<sup>4</sup>) + (0 &#215; 2<sup>3</sup>) + (1 &#215; 2<sup>2</sup>) + (1 &#215; 2<sup>1</sup>) + (0 &#215; 2<sup>0</sup>) = 22 <br /> <br /></p>
 
-<p>And that&#8217;s it! The binary number 10110 is the same as the decimal number 22.</p>
 
-<p>For reference, here&#8217;s a handy dandy chart listing the first few powers of 2, which will be helpful when working with binary numbers.</p>
-<br /><table>
+<p>To figure out what number these bits represent, let's do the same thing we did before, but rather than using powers of 10, we'll use powers of 2:</p>
+
+<br />
+
+
+<p>(1 &times; 2<sup>4</sup>) + (0 &times; 2<sup>3</sup>) + (1 &times; 2<sup>2</sup>) + (1 &times; 2<sup>1</sup>) + (0 &times; 2<sup>0</sup>) = 22</p>
+
+<br />
+
+
+<br />
+
+
+<p>And that's it! The binary number 10110 is the same as the decimal number 22.</p>
+
+<p>For reference, here's a handy dandy chart listing the first few powers of 2, which will be helpful when working with binary numbers.</p>
+
+<br />
+
+
+<table>
     <tr>
         <td>2<sup>0</sup></td>
         <td> = </td>
@@ -157,9 +205,15 @@ td {
         <td> = </td>
         <td>1024</td>
     </tr>
-</table><br />
-<p>Let&#8217;s try another one. What&#8217;s decimal representation of the binary number 01101? First, let&#8217;s fill in the table:</p>
-<table style='text-align: center'>
+</table>
+
+
+<br />
+
+
+<p>Let's try another one. What's decimal representation of the binary number 01101? First, let's fill in the table:</p>
+
+<table style="text-align: center">
     <tr>
         <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
@@ -174,15 +228,30 @@ td {
         <td>2<sup>1</sup></td>
         <td>2<sup>0</sup></td>
     </tr>
-</table><br />
-<p>Now, let&#8217;s add everything up:</p>
+</table>
+
+
 <br />
-<p>(0 &#215; 2<sup>4</sup>) + (1 &#215; 2<sup>3</sup>) + (1 &#215; 2<sup>2</sup>) + (0 &#215; 2<sup>1</sup>) + (1 &#215; 2<sup>0</sup>) = 13 <br /> <br /></p>
+
+
+<p>Now, let's add everything up:</p>
+
+<br />
+
+
+<p>(0 &times; 2<sup>4</sup>) + (1 &times; 2<sup>3</sup>) + (1 &times; 2<sup>2</sup>) + (0 &times; 2<sup>1</sup>) + (1 &times; 2<sup>0</sup>) = 13</p>
+
+<br />
+
+
+<br />
+
 
 <p>So, 01101 is the lucky number 13!</p>
 
-<p>What if we want to go the other way? Let&#8217;s say we have the decimal number 12, and we want figure out its binary representation. Using the same table, we can work backwards by filling in each space. The process of convering a decimal number to binary is just like making change at a cash register. So that you don&#8217;t annoy your customers, you want to do this using as few coins as possible.</p>
-<table style='text-align: center'>
+<p>What if we want to go the other way? Let's say we have the decimal number 12, and we want figure out its binary representation. Using the same table, we can work backwards by filling in each space. The process of convering a decimal number to binary is just like making change at a cash register. So that you don't annoy your customers, you want to do this using as few coins as possible.</p>
+
+<table style="text-align: center">
     <tr>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
@@ -197,9 +266,15 @@ td {
         <td>2<sup>1</sup></td>
         <td>2<sup>0</sup></td>
     </tr>
-</table><br />
-<p>Let&#8217;s start all the way at the left. 2<sup>4</sup> = 16, which is bigger than 14. That means there can&#8217;t possibly be a 1 there, so we can put a 0 in the first space. If we were making change at a cash register, putting a 1 in the first space case would be like giving someone who was owed 23 cents a quarter.</p>
-<table style='text-align: center'>
+</table>
+
+
+<br />
+
+
+<p>Let's start all the way at the left. 2<sup>4</sup> = 16, which is bigger than 14. That means there can't possibly be a 1 there, so we can put a 0 in the first space. If we were making change at a cash register, putting a 1 in the first space case would be like giving someone who was owed 23 cents a quarter.</p>
+
+<table style="text-align: center">
     <tr>
         <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
@@ -214,9 +289,15 @@ td {
         <td>2<sup>1</sup></td>
         <td>2<sup>0</sup></td>
     </tr>
-</table><br />
-<p>Now we&#8217;ll move to the next space. 2<sup>3</sup> = 8, which is smaller than 14, so we want to put a 1 in the second space. Remember, we want to make change using as few coins as possible, so if at any point we can put a 1 in a space without creating too large a number, we should. Now our table looks like this:</p>
-<table style='text-align: center'>
+</table>
+
+
+<br />
+
+
+<p>Now we'll move to the next space. 2<sup>3</sup> = 8, which is smaller than 14, so we want to put a 1 in the second space. Remember, we want to make change using as few coins as possible, so if at any point we can put a 1 in a space without creating too large a number, we should. Now our table looks like this:</p>
+
+<table style="text-align: center">
     <tr>
         <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
@@ -231,9 +312,15 @@ td {
         <td>2<sup>1</sup></td>
         <td>2<sup>0</sup></td>
     </tr>
-</table><br />
-<p>Okay, now we&#8217;ve &#8220;made change&#8221; for 8 out of 14, so we have 6 to go. The next space is a 4, which is less than 6. So, we again want to put a 1 in that space to get:</p>
-<table style='text-align: center'>
+</table>
+
+
+<br />
+
+
+<p>Okay, now we've "made change" for 8 out of 14, so we have 6 to go. The next space is a 4, which is less than 6. So, we again want to put a 1 in that space to get:</p>
+
+<table style="text-align: center">
     <tr>
         <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
@@ -248,9 +335,15 @@ td {
         <td>2<sup>1</sup></td>
         <td>2<sup>0</sup></td>
     </tr>
-</table><br />
+</table>
+
+
+<br />
+
+
 <p>Alrighty, 2 to go. That means the next space, the 2s place, must be a 1, since that would give us the grand total of 14 that we were looking for! We can mark the last remaining space with a 0. Our final table looks like this:</p>
-<table style='text-align: center'>
+
+<table style="text-align: center">
     <tr>
         <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
@@ -265,72 +358,73 @@ td {
         <td>2<sup>1</sup></td>
         <td>2<sup>0</sup></td>
     </tr>
-</table><br />
+</table>
+
+
+<br />
+
+
 <p>Phew! The binary representation of 14 is 01110.</p>
 
-<p>I dunno about you, but I&#8217;m getting tired of numbers. In fact, we probably use letters (and maybe other symbols) more than we use numbers while using a computer on a daily basis. But, computers are still all about zeroes and ones, so how can we represent non-numeric values?</p>
+<p>I dunno about you, but I'm getting tired of numbers. In fact, we probably use letters (and maybe other symbols) more than we use numbers while using a computer on a daily basis. But, computers are still all about zeroes and ones, so how can we represent non-numeric values?</p>
 
-<p>To solve this problem, we can create a &#8220;character encoding,&#8221; which maps something to letters or symbols. For example, ships utilize a character encoding in which each letter is represented by a different flag. When a ship needs to broadcast a message consisting of English letters, the crew can instead fly a sequence of flags. Others can then understand this message because there exists a standardized, agreed-upon translation from flag to English letter. In case you&#8217;re as curious as I was, here&#8217;s the International Maritime Signal Flag character encoding:</p>
+<p>To solve this problem, we can create a "character encoding," which maps something to letters or symbols. For example, ships utilize a character encoding in which each letter is represented by a different flag. When a ship needs to broadcast a message consisting of English letters, the crew can instead fly a sequence of flags. Others can then understand this message because there exists a standardized, agreed-upon translation from flag to English letter. In case you're as curious as I was, here's the International Maritime Signal Flag character encoding:</p>
 
-<p><img src='img/2-maritime.gif' alt='International Maritime Signal Flags' /></p>
+<p><img src="img/2-maritime.gif" alt="International Maritime Signal Flags" /></p>
 
 <p>You may also have heard of Morse Code, which is another character encoding. Here, each letter is represented by a series of sounds. Again, this standardized mapping allows us to transmit English messages without actually using any English letters.</p>
 
-<p><img src='img/2-morse.jpg' alt='Morse Code' /></p>
+<p><img src="img/2-morse.jpg" alt="Morse Code" /></p>
 
-<p>Since flags and sounds are a bit impractical for your computer, a character encoding called US-ASCII is more common. ASCII defines numerical representations for 128 different &#8220;characters,&#8221; where a character can be a letter, number, symbol, or Mickey Mouse. For example, the character &#8220;A&#8221; is represented by the number 65 in ASCII, and the character &#8220;a&#8221; is represented by the number 97. So, whenever we need to represent the character &#8220;A&#8221; using ASCII, we can simply use the number 65 instead, just like a ship would fly a blue and white flag. Since we&#8217;ve already seen that binary can be used to represent numbers using only zeroes and ones, we can use ASCII to represent letters using zeroes and ones as well. Here&#8217;s the complete ASCII table:</p>
+<p>Since flags and sounds are a bit impractical for your computer, a character encoding called US-ASCII is more common. ASCII defines numerical representations for 128 different "characters," where a character can be a letter, number, symbol, or Mickey Mouse. For example, the character "A" is represented by the number 65 in ASCII, and the character "a" is represented by the number 97. So, whenever we need to represent the character "A" using ASCII, we can simply use the number 65 instead, just like a ship would fly a blue and white flag. Since we've already seen that binary can be used to represent numbers using only zeroes and ones, we can use ASCII to represent letters using zeroes and ones as well. Here's the complete ASCII table:</p>
 
 <p>ASCII Table Diagram</p>
 
-<p>The first 32 characters in the table are reserved for &#8220;control sequences,&#8221; which back in the day could be used to control physical devices like printers. Not only are those not so relevant any more, but what if we go to jolly old England and inquire as to the price of a spot of tea? The standard ASCII table doesn&#8217;t have the character &#163;, but luckily, ASCII isn&#8217;t the only character encoding around. While we also have an extended version of ASCII that is double in size, an encoding called UTF-8, which contains definitions for 1,112,064 different characters, is commonly used today. In fact, there&#8217;s a good chance that any website you&#8217;re browsing is using UTF-8 (and there&#8217;s a 100% chance this one is). Among the millions of UTF-8 characters are the &#8220;snowman&#8221; (&#9731;), &#8220;heavy black heart&#8221; (&#10084;), and even the &#8220;neither less than nor greater than&#8221; (&#8824;), not to be confused with the more common &#8220;equal to&#8221; (=). Still, at the end of the day, that snowman is really just represented as a series of bits that can be translated into a winter wonderland using an agreed-upon standard.</p>
+<p>The first 32 characters in the table are reserved for "control sequences," which back in the day could be used to control physical devices like printers. Not only are those not so relevant any more, but what if we go to jolly old England and inquire as to the price of a spot of tea? The standard ASCII table doesn't have the character &pound;, but luckily, ASCII isn't the only character encoding around. While we also have an extended version of ASCII that is double in size, an encoding called UTF-8, which contains definitions for 1,112,064 different characters, is commonly used today. In fact, there's a good chance that any website you're browsing is using UTF-8 (and there's a 100% chance this one is). Among the millions of UTF-8 characters are the "snowman" (&#9731;), "heavy black heart" (&#10084;), and even the "neither less than nor greater than" (&#8824;), not to be confused with the more common "equal to" (=). Still, at the end of the day, that snowman is really just represented as a series of bits that can be translated into a winter wonderland using an agreed-upon standard.</p>
 
-<p>As we start using these character encodings to create long messages, we&#8217;re going to create larger and larger sequences of bits. It makes sense, then, to create units of information larger than a single bit. A sequence of 8 bits is commonly referred to as a byte. As an aside, a sequence of 4 bits is called a nibble, ha, ha, ha. Since a byte is still a pretty small piece of information, describing data in terms of kilobytes (where 1 kilobyte is about 1000 bytes), megabytes (where 1 megabyte is about 1000 kilobytes), and gigabytes (where, you guessed it, 1 gigabyte is about 1000 megabytes) has become commonplace. More on that later!</p>
+<p>As we start using these character encodings to create long messages, we're going to create larger and larger sequences of bits. It makes sense, then, to create units of information larger than a single bit. A sequence of 8 bits is commonly referred to as a byte. As an aside, a sequence of 4 bits is called a nibble, ha, ha, ha. Since a byte is still a pretty small piece of information, describing data in terms of kilobytes (where 1 kilobyte is about 1000 bytes), megabytes (where 1 megabyte is about 1000 kilobytes), and gigabytes (where, you guessed it, 1 gigabyte is about 1000 megabytes) has become commonplace. More on that later!</p>
 
-<p>That&#8217;s it for binary and ASCII! In the next chapter, we&#8217;ll start to see how your computer goes about actually saving this data in long-term storage.</p>
-<div class='page-header'>
+<p>That's it for binary and ASCII! In the next chapters, we'll start to see how your computer uses and stores data.</p>
+
+<div class="page-header">
     <h1>Practice Problems</h1>
 </div>
+
+
 <ol>
-<li>
-<p>Convert the following numbers from decimal to binary, showing each step.</p>
+<li><p>Convert the following numbers from decimal to binary, showing each step.</p>
 
-<p>a. 50</p>
+<p> a. 50</p>
 
-<p>b. 164</p>
+<p> b. 164</p>
 
-<p>c. 12345</p>
-</li>
+<p> c. 12345</p></li>
+<li><p>Convert the following numbers from binary to decimal, showing each step.</p>
 
-<li>
-<p>Convert the following numbers from binary to decimal, showing each step.</p>
+<p> a. 0101010</p>
 
-<p>a. 0101010</p>
+<p> b. 010101111</p>
 
-<p>b. 010101111</p>
-
-<p>c. 01111011010010</p>
-</li>
-
-<li>
-<p>What do all binary numbers ending in 1 have in common?</p>
-</li>
-
-<li>
-<p>We&#8217;ve seen that decimal uses ten different digits and binary uses two different digits. The octal system instead uses seven different digits, but works in exactly the same way. What is the decimal value of the octal number 0644? How about 0755?</p>
-</li>
-
-<li>
-<p>What&#8217;s the binary representation of the ASCII character &#8220;T&#8221;?</p>
-</li>
-
-<li>
-<p>How many bits are used to represent a standard US-ASCII character?</p>
-</li>
-
-<li>
-<p>Why isn&#8217;t 1 the ASCII code for the character &#8220;1&#8221;?</p>
-</li>
+<p> c. 01111011010010</p></li>
+<li><p>What do all binary numbers ending in 1 have in common?</p></li>
+<li><p>We've seen that decimal uses ten different digits and binary uses two different digits. The octal system instead uses seven different digits, but works in exactly the same way. What is the decimal value of the octal number 0644? How about 0755?</p></li>
+<li><p>What's the binary representation of the ASCII character "T"?</p></li>
+<li><p>How many bits are used to represent a standard US-ASCII character?</p></li>
+<li><p>Why isn't 1 the ASCII code for the character "1"?</p></li>
 </ol>
+
+
         </div>
+
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36776830-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
     </body>
 </html>
