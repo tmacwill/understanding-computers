@@ -3,3 +3,19 @@
     font-size: 14px;
     padding: 5px;
 }
+
+#ram {
+    text-align: center;
+}
+
+#ram tr:nth-child(1) td {
+    border: 1px solid black;
+    height: 60px;
+    width: 60px;
+}
+
+#ram tr:nth-child(2) td {
+    font-weight: bold;
+    height: 30px;
+    font-size: 16px;
+}

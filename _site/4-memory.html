@@ -60,14 +60,68 @@
 
 <p>Just when you thought we were done with the <a href="3-cpu.html">CPU</a>, we're heading right back there. Turns out that a few different types of memory are actually found directly on the CPU. The smallest and fastest memory on the CPU is found in <strong>registers</strong>. Registers hold extremely small amounts of data: on the order of several bytes. Earlier, when we said that a CPU could add two numbers together, we took for granted where those numbers would be coming from and where the answer would go. This is where registers come in! While the CPU is in the process of adding two numbers together, both numbers are stored in registers, and once the CPU has computed the answer, the result is also stored in a register. Registers are also used to keep track of things like the instruction that is currently being decoded or executed as well as what instruction should be put into the pipeline next. Since registers are so small, there's not much more that could even fit in a CPU register. But, in order for the CPU to quickly perform its addition, accessing register data must be extremely fast, so we have a bit of a trade-off between the size of the memory and the speed of the memory. In fact, we'll see this trade-off become a trend throughout this section! The number of registers on a CPU can vary, with some CPUs having just 16 registers and others having as many as 256 registers.</p>
 
+<p>Okay, but a few registers that can't hold much more than a 32-bit number don't seem sufficient for playing a several megabyte song or watching a several gigabyte movie. In order to efficiently handle tasks like these, we'll need some short-term memory with a larger capacity. That's where <strong>RAM</strong>, or Random-Access Memory, comes in. A laptop on today's market will likely have between four and eight gigabytes of RAM, so we're talking <em>much</em> more space than something like a CPU register. In fact, when you see any language that refers to the amount of "memory" in a computer, there's a very good chance it's referring to RAM, since RAM is the main source of short-term memory in your computer. Here's what a modern stick of RAM (in this case, with the ability to hold 512 MB) looks like.</p>
+
+<p><img src="img/4-dram.jpg" alt="RAM" /></p>
+
+<p>Your laptop probably contains at least a couple of sticks of RAM. The CPU has the ability to <em>read</em> values from RAM (i.e., access already-stored data) and <em>write</em> values to RAM (i.e., store new data). We can think about RAM as a really long street with lots of houses. Each house has an <strong>address</strong>, which is simply a unique whole number starting from zero, that is used to identify it. Each one of these houses can store exactly one byte (remember, 8 bits!) of data. So, the total number of houses available to your computer depends on the total size of the available RAM. With 2 GB of RAM, for example, your computer will have about two billion houses, and with 4 GB of RAM, your computer will have about four billion houses. When the CPU needs to read or write information from RAM, it will do so using a memory address. For example, let's say the following represents a portion of RAM.</p>
+
+<table id="ram">
+    <tr>
+        <td>00110110</td>
+        <td>00000000</td>
+        <td>00000000</td>
+        <td>00000101</td>
+        <td>00111001</td>
+        <td>10101011</td>
+    </tr>
+    <tr>
+        <td>100</td>
+        <td>101</td>
+        <td>102</td>
+        <td>103</td>
+        <td>104</td>
+        <td>105</td>
+    </tr>
+</table>
+
+
+<br />
+
+
+<p>Because each block can only hold one byte, data that is larger than will have to be split up into single-byte blocks. Let's say that a 32-bit (aka 4-byte) number has been broken up into chunks and stored at the addresses 101-104. In order to read that number, the CPU will first ask for the data stored at the address 101, where the number starts (i.e., where the leftmost bits are found). Now, it will read the next three boxes, since the CPU knows its looking for a 4-byte number. Putting these four blocks of memory together, we can see that the number stored at the address 101 in RAM is 00000000000000000000010100111001, or 1337.</p>
+
+<p>The "Random-Access" part of RAM refers to the fact that accessing any address in RAM takes the same amount of time. It's no faster, for example, to access the information stored at the address 0 than it is to access the information stored at the address 1048576. So, there's no need for the CPU to store related pieces of data next to each other in RAM, since that won't make things any faster. As we'll see shortly, this isn't the case with all types of memory!</p>
+
+<p>However, accessing data stored in RAM is significantly slower than accessing data stored in a CPU register. In order to increase efficiency, the CPU also utilizes a layer of storage called the <strong>processor cache</strong>.</p>
+
+<pre><code>why do we even need ram?
+</code></pre>
+
+<p>HARD DRIVE</p>
+
+<pre><code>what is a filesystem
+magnetism, how hdds work
+</code></pre>
+
+<p>VIRTUAL MEMORY</p>
+
+<p>SSD</p>
+
+<p>CD/DVD</p>
+
 <div class="page-header page-break">
     <h1>Practice Problems</h1>
 </div>
 
 
 <ol>
-<li><p>I just purchased a shiny new 32 GB iPod Touch. About how many songs can I put on it?</p></li>
+<li><p>I just purchased a shiny new 32 GB iPod Touch. About how many songs can I put on it? If I want to use about half that space for eBooks, how many books can my virtual library hold?</p></li>
 <li><p>My good friend is a budding photographer wondering what size memory card he should buy. How many photos will fit on the 8GB card he's looking at?</p></li>
+<li><p>My father has a huge music collection, so he's probably going to want to buy a computer with a lot of RAM, right?</p></li>
+<li><p>If registers and the processor cache are faster than RAM, why don't we just use those all the time instead of RAM?</p></li>
+<li><p>Why would you ever want to purchase an HDD over an SSD?</p></li>
+<li><p>Compare and contrast CDs and HDDs.</p></li>
 </ol>
 
 
