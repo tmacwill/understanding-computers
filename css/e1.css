@@ -47,10 +47,10 @@ p, li {
 }
 
 .page-header {
-    page-break-before: always;
     padding-bottom: 12px;
 }
 
-.page-header:first-child {
-    page-break-before: avoid !important;
+.page-break {
+    page-break-before: always;
+    margin-top: 40px;
 }
