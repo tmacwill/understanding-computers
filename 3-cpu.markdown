@@ -21,7 +21,7 @@ Another one of the first stored-instruction computers was developed a bit closer
 
 ![Harvard Mark I](img/3-harvard.jpg)
 
-Of course, a CPU doesn't understand English sentences like "open Google Chrome" (yet, anyway). In reality, the instructions that can be understood by a CPU are much more primitive. What we would consider a simple task (like reading an email) actually requires a huge number of CPU instructions to complete because each individual instruction is so simple and low-level. So, the CPU will typically be given a sequence of these small instructions that when run in some predetermined order create some larger functionality like reading that email. For example, reading an email requires your computer to download the email, display its contents, remember that the message has been read, etc. Then, the task of displaying an email can be broken down even further, as it requires figuring out what font to use, what color the text should be drawn in, and actually filling in the pixels on your display. Even then, these instructions are still at a much, much higher level than the instructions understood by a CPU; in many cases, a CPU instruction is a task that can't be broken down much further.
+Of course, a CPU doesn't understand English sentences like "open Google Chrome" (yet, anyway). In reality, the instructions that can be understood by a CPU are much more primitive. What we would consider a simple task (like reading an email) actually requires a huge number of CPU instructions to complete because each individual instruction is so simple and low-level. So, the CPU will typically be given a sequence of these small instructions that when run in some predetermined order create some larger functionality like reading that email. For example, reading an email requires your computer to download the email, display its contents, remember that the message has been read, etc. Then, the task of displaying an email can be broken down even further, as it requires figuring out what font to use, what color the text should be drawn in, and actually displaying something on your screen. Even then, these instructions are still at a much, much higher level than the instructions understood by a CPU; in many cases, a CPU instruction is a task that can't be broken down much further.
 
 Instead, more realistic CPU instructions could include "add two numbers together," "flip the fourth bit in this 4-byte number," or "determine if these two numbers are equal." Doesn't get much simpler than that! But, Angry Birds is in fact really just a very long sequence of instructions like those! More on that later, though.
 
@@ -253,7 +253,7 @@ Thanks, Steve! And this concludes our discussion of processors. Next, we'll see 
 
 1. Why are superscalar architectures more efficient?
 
-1. You know that neighbor who always one-ups you? Apparently he just bought a processor that has twice as many cores as yours. Does that make it twiceas fast?
+1. You know that neighbor who always one-ups you? Apparently he just bought a processor that has twice as many cores as yours. Does that make it twice as fast?
 
 1. Unsatisfied, your neighbor turns in his processor for a new CPU whose clock speed doubles that of your CPU. Now is it twice as fast?
 
