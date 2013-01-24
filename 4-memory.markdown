@@ -15,43 +15,47 @@ First, though, let's review some terms that describe the size of data. The small
 
 In summary:
 
-<table id="storage">
-    <tr>
-        <th>Name</th>
-        <th>Abbreviation</th>
-        <th>Size in bytes</th>
-        <th>Storage example</th>
-    </tr>
-    <tr>
-        <td>Byte</td>
-        <td>B</td>
-        <td>8 bits</td>
-        <td>Characters of text</td>
-    </tr>
-    <tr>
-        <td>Kilobyte</td>
-        <td>KB</td>
-        <td>10<sup>3</sup> bytes</td>
-        <td>Word document, small image</td>
-    </tr>
-    <tr>
-        <td>Megabyte</td>
-        <td>MB</td>
-        <td>10<sup>6</sup> bytes</td>
-        <td>MP3 song, large image</td>
-    </tr>
-    <tr>
-        <td>Gigabyte</td>
-        <td>GB</td>
-        <td>10<sup>9</sup> bytes</td>
-        <td>Movie, ~350 photos, ~250 songs</td>
-    </tr>
-    <tr>
-        <td>Terabyte</td>
-        <td>TB</td>
-        <td>10<sup>12</sup> bytes</td>
-        <td>~350,000 photos, ~250,000 songs</td>
-    </tr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Abbreviation</th>
+            <th>Size in bytes</th>
+            <th>Storage example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Byte</td>
+            <td>B</td>
+            <td>8 bits</td>
+            <td>Characters of text</td>
+        </tr>
+        <tr>
+            <td>Kilobyte</td>
+            <td>KB</td>
+            <td>10<sup>3</sup> bytes</td>
+            <td>Word document, small image</td>
+        </tr>
+        <tr>
+            <td>Megabyte</td>
+            <td>MB</td>
+            <td>10<sup>6</sup> bytes</td>
+            <td>MP3 song, large image</td>
+        </tr>
+        <tr>
+            <td>Gigabyte</td>
+            <td>GB</td>
+            <td>10<sup>9</sup> bytes</td>
+            <td>Movie, ~350 photos, ~250 songs</td>
+        </tr>
+        <tr>
+            <td>Terabyte</td>
+            <td>TB</td>
+            <td>10<sup>12</sup> bytes</td>
+            <td>~350,000 photos, ~250,000 songs</td>
+        </tr>
+    </tbody>
 </table>
 <br />
 
@@ -61,7 +65,7 @@ Okay, but a few registers that can't hold much more than a 32-bit number don't s
 
 ![RAM](img/4-dram.jpg)
 
-Your laptop probably contains at least a couple of sticks of RAM. The CPU has the ability to _read_ values from RAM (i.e., access already-stored data) and _write_ values to RAM (i.e., store new data). We can think about RAM as a really long street with lots of houses. Each house has an **address**, which is simply a unique whole number starting from zero, that is used to identify it. Each one of these houses can store exactly one byte (remember, 8 bits!) of data. So, the total number of houses available to your computer depends on the total size of the available RAM. With 2 GB of RAM, for example, your computer will have about two billion houses, and with 4 GB of RAM, your computer will have about four billion houses. When the CPU needs to read or write information from RAM, it will do so using a memory address. For example, let's say the following represents a portion of RAM.
+Your laptop probably contains at least a couple of sticks of RAM. The CPU has the ability to _read_ values from RAM (i.e., access already-stored data) and _write_ values to RAM (i.e., store new data). We can think about RAM as a really long street with lots of houses. Each house has an **address**, which is simply a unique whole number starting from zero, that is used to identify it. Each one of these houses can store exactly one byte (remember, 8 bits!) of data. So, the total number of houses available to your computer depends on the total size of the available RAM. With 2 GB of RAM, for example, your computer will have about two billion houses, and with 4 GB of RAM, your computer will have about four billion houses. That's one heck of a block party if you ask me. When the CPU needs to read or write information from RAM, it will do so using a memory address. For example, let's say the following represents a portion of RAM.
 
 <table id="ram">
     <tr>
@@ -88,7 +92,7 @@ Because each block can only hold one byte, data that is larger than will have to
 
 We call this way of representing numbers in RAM, in which the bytes are read from left to right, **big-endian**. Here, the most significant byte is stored at a lower address than the least significant byte. It's actually not uncommon for computers to store bytes in the opposite order, with more significant bytes stored at _higher_ addresses in memory. This is called **little-endian**. In the above example, if we were instead using a little-endian representation and read the same memory addresses (101-104) again, we would instead get the number 00111001000001010000000000000000, or 956,628,992. Notice how we didn't change the order of the bits in each memory slot. Instead, we only changed the order in which the 8-bit (or 1-byte) blocks of data were read: first, we read the sequence of bits from address 104, then the bits from address 103, and so on. Whether data is stored using a big-endian or little-endian representation is up to the CPU!
 
-The "Random-Access" part of RAM refers to the fact that accessing any address in RAM takes the same amount of time. It's no faster, for example, to access the information stored at the address 0 than it is to access the information stored at the address 1048576. As we'll see shortly, this isn't the case with all types of memory!
+The "Random-Access" part of RAM refers to the fact that accessing any address in RAM takes the same amount of time. It's no faster, for example, to access the information stored at the address 0 than it is to access the information stored at the address 1048576. As we'll see shortly, this isn't the case with all types of memory.
 
 However, accessing data stored in RAM is significantly slower than accessing data stored in a CPU register. In fact, the CPU can typically complete a cycle much faster than it can read a value from RAM, so the CPU could waste cycles while waiting for a value to be read from RAM. In order to increase efficiency and waste less time, the CPU also utilizes a layer of storage called the **processor cache**. Not only is the cache physically located closer to the CPU, but data stored on the cache can be accessed more quickly than data stored in RAM. In many cases, the CPU will need to use some value from RAM more than once, just like you might listen to a song on repeat. In my case, such a song would likely be something by [Alexandra Stan](http://www.youtube.com/watch?v=lAhHNCfA7NI). Rather than going all the way to RAM multiple times to grab a frequently-accessed value, the CPU might instead place it on the cache, where it can be fetched much more quickly in the future.
 
@@ -121,7 +125,7 @@ A few factors influence the performance of a hard disk. One, as you may have gue
 
 ![PATA and SATA cables](img/4-pata-sata.jpg)
 
-However, hard disk drives are starting to become decreasingly common in consumer computers. Instead, many new machines utilize **SSD**s, or solid-state drives. While we saw that HDDs relied on the coordination of several parts moving at blazing speeds, SSDs instead have no moving parts. Unfortunately that means the storage and retrieval of data on SSDs won't be particularly mesmerizing to watch, but it does mean that SSDs are, in general, more durable and less likely to break due to mechanical failures. Similarly, SSDs tend to consume less power than HDDs, which could mean better battery life for laptops using SSDs. Solid-state drives are also much faster than hard disk drives, partly because latency causes like seek time are no longer an issue. Check out the video below for a performance comparison&mdash;the left laptop has an SSD and the right laptop has an HDD, but the two computers have identical hardware otherwise (CPU, RAM, etc.).
+However, hard disk drives are starting to become decreasingly common in consumer computers. Instead, many new machines utilize **SSD**s, or solid-state drives, as their primary form of storage. While we saw that HDDs relied on the coordination of several parts moving at blazing speeds, SSDs instead have no moving parts. Unfortunately that means the storage and retrieval of data on SSDs won't be particularly mesmerizing to watch, but it does mean that SSDs are, in general, more durable and less likely to break due to mechanical failures. Similarly, SSDs tend to consume less power than HDDs, which could mean better battery life for laptops using SSDs. Solid-state drives are also much faster than hard disk drives, partly because latency causes like seek time are no longer an issue. Check out the video below for a performance comparison&mdash;the left laptop has an SSD and the right laptop has an HDD, but the two computers have identical hardware otherwise (CPU, RAM, etc.).
 
 <br />
 <iframe width="640" height="360" src="http://www.youtube.com/embed/j84eEjP-RL4" frameborder="0"></iframe>
@@ -130,7 +134,7 @@ However, hard disk drives are starting to become decreasingly common in consumer
 
 However, SSDs are generally more expensive than HDDs, so with the same amount of money, you can buy a larger-capacity HDD than you can an SSD. So, those gains in performance, power, and durability come at a cost. Looks like there really is no such thing as a free lunch. But hey, even if your hard drive can hold a terabyte of data, do you really _use_ all of that space? Questions like these are important to ask when purchasing a new computer, as we'll do in the next section!
 
-As you might expect, an SSD works very differently than an HDD. Most SSDs store data using **NAND flash memory**, which is also used by USB flash drives (aka "thumb drives") and camera memory cards. Flash memory stores data using a large grid of cells, each composed of two **transistors**, or small electrical components that can allow or block the flow of current. We're still using binary to represent data, and in this case, a 1 is represented by the flow of current, and a 0 is represented by the blockage of current. Current flows freely on a blank portion of an SSD drive, which represents a series of 1s. When a write operation is performed, some of those 1s will be flipped to 0s by sending a precise voltage to the **control gate**, one of the two transistors in a cell. This transfers electrons to **floating gate**, the other transister in each cell, which gives cells a positive charge and blocks the flow of current. Reading data, then, is as simple as sending current through a series of cells and determining where flow was blocked, which represents a series of 0s and 1s. This method of storing data does have its drawbacks, though. Each cell can be changed a fixed number of times before it no longer functions, so some effort must be put into ensuring writes distributed across the drive rather than concentrated in a particular section.
+As you might expect, an SSD works very differently than an HDD. Most SSDs store data using **NAND flash memory**, which is also used by USB flash drives (aka "thumb drives") and camera memory cards. Flash memory stores data using a large grid of cells, each composed of two **transistors**, or small electrical components that can allow or block the flow of current. We're still using binary to represent data, and in this case, a 1 is represented by the flow of current, and a 0 is represented by the blockage of current. Current flows freely on a blank portion of an SSD drive, which represents a series of 1s. When a write operation is performed, some of those 1s will be flipped to 0s by sending a precise voltage to the **control gate**, one of the two transistors in a cell. This voltage will transfer electrons to the **floating gate**, the other transister in each cell, which gives cells a positive charge and blocks the flow of current. Reading data, then, is as simple as sending current through a series of cells and determining where flow was blocked, which represents a series of 0s and 1s. This method of storing data does have its drawbacks, though. Each cell can be changed a fixed number of times before it no longer functions, so some effort must be put into ensuring writes distributed across the drive rather than concentrated in a particular section.
 
 Alrighty, we've now seen several different types of memory and storage. Let's now recap how these various types of storage relate to each other. The registers on the CPU are the smallest and fastest, followed by the processor caches like the L1 cache and L2 cache. RAM is both the largest-capacity and slowest-to-access form of short-term memory. HDDs, which consist of platters read using fast-moving heads, and SSDs, which have no moving parts at all, are used for long-term storage, and thus have much higher capacity, but are also much slower to access. Here's a visual representation of a computer's memory hierarchy.
 
@@ -138,42 +142,46 @@ Alrighty, we've now seen several different types of memory and storage. Let's no
 
 Finally, let's compare how long it takes for your computer to read and write data from the different storage mechanisms we've seen.
 
-<table id="access">
-    <tr>
-        <th>Storage type</th>
-        <th>Access time</th>
-        <th>Relative access time</th>
-    </tr>
-    <tr>
-        <td>L1 cache</td>
-        <td>0.5 ns</td>
-        <td>1 second</td>
-    </tr>
-    <tr>
-        <td>L2 cache</td>
-        <td>7 ns</td>
-        <td>4 seconds</td>
-    </tr>
-    <tr>
-        <td>1MB from RAM</td>
-        <td>0.25 ms</td>
-        <td>5 days</td>
-    </tr>
-    <tr>
-        <td>1MB from SSD</td>
-        <td>1 ms</td>
-        <td>23 days</td>
-    </tr>
-    <tr>
-        <td>HDD seek</td>
-        <td>10 ms</td>
-        <td>231 days</td>
-    </tr>
-    <tr>
-        <td>1MB from HDD</td>
-        <td>20 ms</td>
-        <td>1.25 years</td>
-    </tr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Storage type</th>
+            <th>Access time</th>
+            <th>Relative access time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>L1 cache</td>
+            <td>0.5 ns</td>
+            <td>1 second</td>
+        </tr>
+        <tr>
+            <td>L2 cache</td>
+            <td>7 ns</td>
+            <td>4 seconds</td>
+        </tr>
+        <tr>
+            <td>1MB from RAM</td>
+            <td>0.25 ms</td>
+            <td>5 days</td>
+        </tr>
+        <tr>
+            <td>1MB from SSD</td>
+            <td>1 ms</td>
+            <td>23 days</td>
+        </tr>
+        <tr>
+            <td>HDD seek</td>
+            <td>10 ms</td>
+            <td>231 days</td>
+        </tr>
+        <tr>
+            <td>1MB from HDD</td>
+            <td>20 ms</td>
+            <td>1.25 years</td>
+        </tr>
+    </tbody>
 </table>
 <br />
 

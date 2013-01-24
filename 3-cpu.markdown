@@ -241,7 +241,14 @@ However, other factors also influence the overall performance of a CPU, so simpl
 <br />
 <br />
 
-Thanks, Steve! And this concludes our discussion of processors. Next, we'll see how your computer stores the results of all those computations!
+Thanks, Steve! 2001 was definitely one of the more technical Apple Keynotes... ever. In honor of Apple's founder and CEO, here's one more thing: a detailed look into the process of fabricating a CPU, which might be a bit crazier than you expect!
+
+<br />
+<iframe width="640" height="360" src="http://www.youtube.com/embed/UvluuAIiA50" frameborder="0"></iframe>
+<br />
+<br />
+
+And this concludes our discussion of processors. Next, we'll see how your computer stores the results of all those computations!
 
 <div class="page-header page-break">
     <h1>Practice Problems</h1>

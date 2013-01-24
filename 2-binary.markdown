@@ -86,7 +86,7 @@ Make sense? Alright, back to those zeros and ones. Remembering _ten_ different d
 </table>
 <br />
 
-This representation is called **binary** (as opposed to decimal). In this world, we'll represent numbers using a ones place, a twos place, a fours place, an eights place, a sixteens place, and so on. Now, rather than using ten digits to represent numbers, we'll only use two: 0 and 1. That means that we can represent each digit in a binary number with one bit. Any number then, can be represented as a collection of bits! 
+This representation is called **binary** (as opposed to decimal). In this world, we'll represent numbers using a ones place, a twos place, a fours place, an eights place, a sixteens place, and so on. Now, rather than using ten digits to represent numbers, we'll only use two: 0 and 1. That means that we can represent each digit in a binary number with one bit. Any number then, can be represented as a collection of bits!
 
 Let's see how we can use bits and binary to represent numbers by translating the binary number 10110 into decimal. First, we'll fill in our new table, this time using only zeroes and ones:
 
