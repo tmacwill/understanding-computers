@@ -60,11 +60,8 @@ Let's fill in these blanks with some digits:
 
 Now, to figure out what number is represented by those digits, we multiply the digit in the ones place by 1, the digit in the tens place by 10 (and so on), and then add them together. That means that the above number is:
 
-<br />
 (1 &times; 10<sup>4</sup>) + (2 &times; 10<sup>3</sup>) + (3 &times; 10<sup>2</sup>) + (4 &times; 10<sup>1</sup>) + (5 &times; 10<sup>0</sup>) =
 10000 + 2000 + 300 + 40 + 5 = 12345
-<br />
-<br />
 
 Make sense? Alright, back to those zeros and ones. Remembering _ten_ different digits can be hard work. Heck, I can barely remember birthdays. Let's make one tiny change to the above table. Rather than having places for 10<sup>0</sup>, 10<sup>1</sup>, 10<sup>2</sup>, and so on, let's instead create places for 2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup>, and so on:
 
@@ -88,7 +85,19 @@ Make sense? Alright, back to those zeros and ones. Remembering _ten_ different d
 
 This representation is called **binary** (as opposed to decimal). In this world, we'll represent numbers using a ones place, a twos place, a fours place, an eights place, a sixteens place, and so on. Now, rather than using ten digits to represent numbers, we'll only use two: 0 and 1. That means that we can represent each digit in a binary number with one bit. Any number then, can be represented as a collection of bits!
 
-Now, let's try converting a slightly larger binary number into decimal. Our goal now is to figure out what number is represented by 10110. First, we'll fill in our new table, this time using only zeroes and ones:
+Let's try counting in binary, starting with 0. The number zero in binary is still 0, phew. Same with the number one, which is just 1 in binary. The number two, on the other hand, is a whole new ball game. Our only choices for digits are 0 and 1, so we can't represent the number two with the digit 2. Using the decimal system, we ran into the same problem when we wanted to represent the number ten, because 9 was the last digit we had avilable. So, we'll do exactly what we did last time: we'll introduce a new slot for a digit. Now, we can represent the number two as "10" in binary. We now have a 1 in the twos place and a 0 in the ones place, which means the number we're representing is:
+
+(1 &times; 2) + (0 &times; 1) = 2 + 0 = 2
+
+Great, let's try a three now. Since we could represent a two using the binary number 10, it doesn't feel like we need to introduce a new slot for a digit yet. Instead, let's try flipping that 0 into a 1, which will give us:
+
+(1 &times; 2) + (1 &times; 1) = 2 + 1 = 3
+
+Sweet! If we now want to represent the number four now, it looks like we're going to need another slot for a digit. Because this new place is going to be the fours place, we know that we can represent the number four as "100". Let's do one more for good measure. To represent five in binary, we'll want to add one to our represntation of 4, which we can do by flipping the last bit. This gives us:
+
+(1 &times; 4) + (0 &times; 2) + (1 &times; 1) = 5
+
+Alright, counting was fun, but let's now try converting a slightly larger binary number into decimal. Our goal now is to figure out what number is represented by 10110. To do so, let's start with a table that tells us what each of the places in a binary number is.
 
 <table style="text-align: center">
     <tr>
@@ -110,13 +119,10 @@ Now, let's try converting a slightly larger binary number into decimal. Our goal
 
 To figure out what number these bits represent, let's do the same thing we did before, but rather than using powers of 10, we'll use powers of 2:
 
-<br />
 (1 &times; 2<sup>4</sup>) + (0 &times; 2<sup>3</sup>) + (1 &times; 2<sup>2</sup>) + (1 &times; 2<sup>1</sup>) + (0 &times; 2<sup>0</sup>) =
 16 + 0 + 4 + 2 + 0 = 22
-<br />
-<br />
 
-And that's it! The binary number 10110 is the same as the decimal number 22.
+And that's it! The binary number 10110 is the same as the decimal number 22. Sometimes, you might see binary number start with one or more zeroes. You can actually add as many zeroes as you want to the beginning of a binary number without changing it's value, since that's the equivalent of adding zero to the number, which won't change much. Instead, this is sometimes done to indicate that the number is indeed a binary number. A convention like 0b101 makes it more clear that we're referring to the binary number 5, not the decimal number 101.
 
 For reference, here's a handy dandy chart listing the first few powers of 2, which will be helpful when working with binary numbers.
 
@@ -202,11 +208,8 @@ Let's try another one. What's decimal representation of the binary number 01101?
 
 Now, let's add everything up:
 
-<br />
 (0 &times; 2<sup>4</sup>) + (1 &times; 2<sup>3</sup>) + (1 &times; 2<sup>2</sup>) + (0 &times; 2<sup>1</sup>) + (1 &times; 2<sup>0</sup>) =
 0 + 8 + 4 + 0 + 1 = 13
-<br />
-<br />
 
 So, 01101 is the lucky number 13!
 
@@ -461,9 +464,27 @@ And now, we can finish this off without a hitch:
 </table>
 <br />
 
-Great! We got exactly the answer we were expecting to get: 1001, or 9.
+Great! We got exactly the answer we were expecting to get: 1001, or 9. Adding sure was fun, so let's try doing something else. Let's say we take that sequence of bits, 01001, and shift every bit one place to the left. Now, we'll get a sequence that looks like 10010. Turns out this is the binary representation of 18, which just so happens to be 9 &times; 2. Coincidence? Let's do the same thing with another random sequence of bits.... 0101001 looks good to me. In decimal, this is the value 41. Let's shift every bit to the left again, which gives us 1010010. This is in fact the number 82, which is again twice our original value.
 
-SHIFTING BITS
+It turns out that shifting bits to the left is equivalent to doubling the number! If we shift bits to the left _n_ times, then we'll double our number _n_ times. Put another way, shifting bits left _n_ times is the same as multiplying the number by 2<sup>_n_</sup>. What about shifting bits in the other direction, to the right? As you might have guessed, this the same as cutting the number in half _n_ times, or dividing by 2<sup>_n_</sup>.
+
+So, why is this useful? As you probably learned in grade school, multiplying two large numbers together is a difficult and time-consuming thing to do. It's similarly relatively time-consuming for your computer to do the same. However, it's pretty easy for computers (and us!) to shift the bits of a binary number to the left or to the right. So, this can make the process of multiplying large numbers much more efficient!
+
+All of the numbers we've looked at so far have been greater than zero. We can, though, use binary to represent negative numbers as well. One approach would be to use the first bit in a binary number to designate whether the number is positive, which is called the **sign-and-magnitude** method. In this representation, 0001 would be a positive 1, while 1001 would be a -1. This works, but there are a few problems with this approach. First, it seems kinda wasteful to dedicate an entire bit just to representing whether or not the number is positive or negative. Second, this representation has multiple ways of expressing zero! For example, both 0000 and 1000 are interpreted as zero, even though -0 doesn't make any sense. That's gonna get pretty confusing! Finally, this representation doesn't allow for addition, which seems like it might be... a good thing to support. For example, 1001 + 0001 = 1010, which is like saying 1 - 1 = -2. Oops.
+
+Let's try a different way of representing negative numbers called **two's complement**. This will feel a bit weird at first, but you'll have to trust me on this one. Suppose we want to represent the number -5 using two's complement. We'll start with positive 5, which is simply 0101 in binary. First, we'll flip all of these bits: every 0 will become a 1, and every 1 will become a 0. This gives us 1010. Now, we'll add 1 to this number, which gives us 1011. This is the two's complement representation of 5. To convert back to a decimal, we'll use the exact same process as before, but now, the leftmost place (and only the leftmost place) will be a negative number rather than a positive number. In our example, rather than having an 8s place as we did before, we'll now have a -8s place, followed by the 4s place, 2s place, and 1s place that we're already used to. So, using two's complement, the decimal value of 1011 is:
+
+(1 &times; -8) + (0 &times; 4) + (1 &times; 2) + (1 &times; 1) = -5.
+
+Woah! That worked out well. With this representation, which admittedly feels a lot less intuitive, we're able to solve the problems we ran into with sign and magnitude: we're not really wasting a bit anymore, we have only one representation of zero, and addition works again. Let's just make sure quickly: 5 + -5 should be zero, and 1011 + 0101 = 0000 (dropping the last one that we carried). Sweet deal! Don't worry if two's complement is still a bit confusing, as we'll really only be dealing with positive numbers throughout.
+
+Alright, hopefully jokes like this one now make a bit more sense!
+
+![10 types](img/2-types.jpg)
+
+See, didn't that make it all worth it? Aaaaaand for those of you groaning because you've heard that joke a million times already:
+
+![10 types burn](img/2-types-burn.gif)
 
 I dunno about you, but I'm getting tired of numbers. In fact, we probably use letters (and maybe other symbols) more than we use numbers while using a computer on a daily basis. But, computers are still all about zeroes and ones, so how can we represent non-numeric values?
 
