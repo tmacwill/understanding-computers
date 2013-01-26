@@ -88,7 +88,7 @@ Make sense? Alright, back to those zeros and ones. Remembering _ten_ different d
 
 This representation is called **binary** (as opposed to decimal). In this world, we'll represent numbers using a ones place, a twos place, a fours place, an eights place, a sixteens place, and so on. Now, rather than using ten digits to represent numbers, we'll only use two: 0 and 1. That means that we can represent each digit in a binary number with one bit. Any number then, can be represented as a collection of bits!
 
-Let's see how we can use bits and binary to represent numbers by translating the binary number 10110 into decimal. First, we'll fill in our new table, this time using only zeroes and ones:
+Now, let's try converting a slightly larger binary number into decimal. Our goal now is to figure out what number is represented by 10110. First, we'll fill in our new table, this time using only zeroes and ones:
 
 <table style="text-align: center">
     <tr>
@@ -312,6 +312,159 @@ Alrighty, 2 to go. That means the next space, the 2s place, must be a 1, since t
 
 Phew! The binary representation of 14 is 01110.
 
+Now that we can go back and forth between binary and decimal, let's try doing a bit of math. First, let's try adding together two binary numbers: 0011 and 0110. The naive way to go about this might be to convert 0011 to the decimal value 3, 0110 to the decimal value 6, add 6 and 3 to get 9, and finally convert 9 back to the binary value 1001. However, that felt like a lot of unnecessary steps (and kinda like cheating). Instead, we can add together binary values using the same process we've used since grade school for adding together decimal values.
+
+<table>
+    <tr>
+        <td></td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr style="border-bottom: 1px solid black">
+        <td>+</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+</table>
+<br />
+
+We'll start at the rightmost column. We know that 1 + 0 must be 1, so we can fill in a 1 in our answer.
+
+<table>
+    <tr>
+        <td></td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr style="border-bottom: 1px solid black">
+        <td>+</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>1</td>
+    </tr>
+</table>
+<br />
+
+Okay, now we have 1 + 1. We know that's equal to the decimal value 2, which is 10 in binary. Just like we do in the normal addition process, we'll want to fill in a 0 here and then carry the 1. Now, we have something that looks like this:
+
+<table>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>1</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr style="border-bottom: 1px solid black">
+        <td>+</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>0</td>
+        <td>1</td>
+    </tr>
+</table>
+<br />
+
+Alrighty, taking into account the 1 we just carried, we have:
+
+<table>
+    <tr>
+        <td></td>
+        <td>1</td>
+        <td>1</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr style="border-bottom: 1px solid black">
+        <td>+</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+    </tr>
+</table>
+<br />
+
+And now, we can finish this off without a hitch:
+
+<table>
+    <tr>
+        <td></td>
+        <td>1</td>
+        <td>1</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr style="border-bottom: 1px solid black">
+        <td>+</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+    </tr>
+</table>
+<br />
+
+Great! We got exactly the answer we were expecting to get: 1001, or 9.
+
+SHIFTING BITS
+
 I dunno about you, but I'm getting tired of numbers. In fact, we probably use letters (and maybe other symbols) more than we use numbers while using a computer on a daily basis. But, computers are still all about zeroes and ones, so how can we represent non-numeric values?
 
 To solve this problem, we can create a "character encoding," which maps something to letters or symbols. For example, ships utilize a character encoding in which each letter is represented by a different flag. When a ship needs to broadcast a message consisting of English letters, the crew can instead fly a sequence of flags. Others can then understand this message because there exists a standardized, agreed-upon translation from flag to English letter. In case you're as curious as I was, here's the International Maritime Signal Flag character encoding:
@@ -322,7 +475,7 @@ You may also have heard of Morse Code, which is another character encoding. Here
 
 <img src="img/2-morse.jpg" style="width: 600px" alt="Morse Code" />
 
-Since flags and sounds are a bit impractical for your computer, a character encoding called **US-ASCII** is more common. ASCII defines numerical representations for 128 different "characters," where a character can be a letter, number, symbol, or Mickey Mouse. For example, the character "A" is represented by the number 65 in ASCII, and the character "a" is represented by the number 97. So, whenever we need to represent the character "A" using ASCII, we can simply use the number 65 instead, just like a ship would fly a blue and white flag. Since we've already seen that binary can be used to represent numbers using only zeroes and ones, we can use ASCII to represent letters using zeroes and ones as well. Here's the complete ASCII table:
+Since flags and sounds are a bit impractical for your computer, a character encoding called **US-ASCII** is more common. ASCII defines numerical representations for 128 different "characters," where a character can be a letter, number, symbol, or Mickey Mouse. For example, the character "A" is represented by the number 65 in ASCII, and the character "a" is represented by the number 97. So, whenever we need to represent the character "A" using ASCII, we can simply use the number 65 instead, just like a ship would fly a blue and white flag. From your computer's perspective, then, the sequence of characters "CS E-1" could be represented by the sequence of decimal numbers "67 83 32 69 45 49", which ultimately will be stored as the sequence of binary numbers "FILL THS IN". Since we've already seen that binary can be used to represent numbers using only zeroes and ones, we can use ASCII to represent letters using zeroes and ones as well. Here's the complete ASCII table:
 
 
 
@@ -330,11 +483,11 @@ ASCII Table Diagram
 
 
 
-The first 32 characters in the table are reserved for "control sequences," which back in the day could be used to control physical devices like printers. Not only are those not so relevant any more, but what if we go to jolly old England and inquire as to the price of a spot of tea? The standard ASCII table doesn't have the character &pound;, but luckily, ASCII isn't the only character encoding around. While we also have an extended version of ASCII that is double in size, an encoding called **UTF-8**, which contains definitions for 1,112,064 different characters, is commonly used today. In fact, there's a good chance that any website you're browsing is using UTF-8 (and there's a 100% chance this one is). Among the millions of UTF-8 characters are the "snowman" (&#9731;), "heavy black heart" (&#10084;), and even the "neither less than nor greater than" (&#8824;), not to be confused with the more common "equal to" (=). Still, at the end of the day, that snowman is really just represented as a series of bits that can be translated into a winter wonderland using an agreed-upon standard.
+The first 32 characters in the table are reserved for **control sequences**, which back in the day could be used to control physical devices like printers. Not only are those not so relevant any more, but what if we go to jolly old England and inquire as to the price of a spot of tea? The standard ASCII table doesn't have the character &pound;, but luckily, ASCII isn't the only character encoding around. While we also have an extended version of ASCII that is double in size, an encoding called **UTF-8** (a form of **unicode**) which contains definitions for 1,112,064 different characters, is commonly used today. In fact, there's a good chance that any website you're browsing is using UTF-8 (and there's a 100% chance this one is). Among the millions of UTF-8 characters are the "snowman" (&#9731;), "heavy black heart" (&#10084;), and even the "neither less than nor greater than" (&#8824;), not to be confused with the more common "equal to" (=). Still, at the end of the day, that snowman is really just represented as a series of bits that can be translated into a winter wonderland using an agreed-upon standard.
 
-As we start using these character encodings to create long messages, we're going to create larger and larger sequences of bits. It makes sense, then, to create units of information larger than a single bit. A sequence of 8 bits is commonly referred to as a **byte**. As an aside, the official technical term for a sequence of 4 bits is a **nibble**, ha, ha, ha. Since a byte is still a pretty small piece of information, describing data in terms of **kilobytes** (where 1 kilobyte is about 1000 bytes), **megabytes** (where 1 megabyte is about 1000 kilobytes), and **gigabytes** (where, you guessed it, 1 gigabyte is about 1000 megabytes) has become commonplace. More on that later!
+As we start using these character encodings to create long messages, we're going to create larger and larger sequences of bits. It makes sense, then, to create units of information larger than a single bit. A sequence of 8 bits is commonly referred to as a **byte**. As an aside, the official technical term for a sequence of 4 bits is a **nibble**, ha, ha, ha. Since a byte is still a pretty small piece of information, describing data in terms of **kilobytes** (where 1 kilobyte is about 1000 bytes), **megabytes** (where 1 megabyte is about 1000 kilobytes), and **gigabytes** (where, you guessed it, 1 gigabyte is about 1000 megabytes) has become commonplace. More on that later, though!
 
-That's it for binary and ASCII! In the next chapters, we'll start to see how your computer uses and stores data.
+That's it for binary and ASCII! In the next few sections, we'll start to see how your computer uses and stores data.
 
 <div class="page-header page-break">
     <h1>Practice Problems</h1>
@@ -357,6 +510,8 @@ That's it for binary and ASCII! In the next chapters, we'll start to see how you
     c. 01111011010010
 
 1. What do all binary numbers ending in 1 have in common?
+
+1. What's the largest number we can represent with 16 bits? How about 32 bits?
 
 1. We've seen that decimal uses ten different digits and binary uses two different digits. The octal system instead uses seven different digits, but works in exactly the same way. What is the decimal value of the octal number 0644? How about 0755?
 
