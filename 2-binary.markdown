@@ -15,7 +15,9 @@ Let's say I ask you a question like "Do you like cats?" There are two possible a
 
 Answering the question "How much do you like cats?" is a _bit_ different (pun fully intended). This question has more than one answer; you could say you kinda like cats, you really love cats, you couldn't live without cats, and so on. You could also think about answering this question on a scale from one to five, a scale from one to ten, etc. Either way, we'll need more than just one bit to represent your love of all things feline, since a 0 or a 1 doesn't cover all of the possible answers to this question.
 
-However, before we talk any more about how computers represent numbers, let's quickly review how we as humans are probably used to representing numbers. According to my laptop's keyboard, we have ten digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. (We call this the **decimal** system.) That means that we can represent ten different numbers using only one digit. Of course, we're going to start running into issues when we want to represent the number that is one more than 9. Luckily, we've already solved this problem: one more than 9 is 10. To create the number 10, we created a new space for a second digit, which you may remember as the "tens place" from grade school (that is, if you weren't too busy playing with yo-yos like I was). Similarly, we have a hundreds place, thousands place, and so on for larger numbers.
+However, before we talk any more about how computers represent numbers, let's quickly review how we as humans are probably used to representing numbers. According to my laptop's keyboard, we have ten digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. (We call this the **decimal** system.) That means that we can represent ten different numbers using only one digit. Of course, we're going to start running into issues when we want to represent the number that is one more than 9. Luckily, we've already solved this problem: one more than 9 is 10. To create the number 10, we created a new space for a second digit, which you may remember as the "tens place" from grade school (that is, if you weren't too busy playing with yo-yos like I was). Similarly, we have a hundreds place, thousands place, and so on for larger numbers. When you were first learning to count, you may have used blocks like the below to represent this. A single cube represents the ones place, a column represents the tens place, a rectangle represents the hundreds place, and so on.
+
+![Place value blocks](img/1-blocks.jpg)
 
 The fact that we use ones, tens, hundreds, and thousands is no accident. We have 10 different digits to choose from, and 10<sup>0</sup> = 1, 10<sup>1</sup> = 10, 10<sup>2</sup> = 100, and so on. (Remember, when we say something like 10<sup>3</sup>, that's just short for 10 &times; 10 &times; 10, or 1000.) So, these places can be represented with a table like this:
 
@@ -93,7 +95,11 @@ Great, let's try a three now. Since we could represent a two using the binary nu
 
 (1 &times; 2) + (1 &times; 1) = 2 + 1 = 3
 
-Sweet! If we now want to represent the number four now, it looks like we're going to need another slot for a digit. Because this new place is going to be the fours place, we know that we can represent the number four as "100". Let's do one more for good measure. To represent five in binary, we'll want to add one to our represntation of 4, which we can do by flipping the last bit. This gives us:
+Sweet! If we now want to represent the number four now, it looks like we're going to need another slot for a digit. Because this new place is going to be the fours place, we know that we can represent the number four as "100," since that's what we did the last time we needed to add a new digit. Just to be safe, let's make sure:
+
+(1 &times; 4) + (0 &times; 2) + (1 &times; 0) = 4
+
+Let's do one more for good measure. To represent five in binary, we'll want to add one to our represntation of 4, which we can do by flipping the last bit. This gives us:
 
 (1 &times; 4) + (0 &times; 2) + (1 &times; 1) = 5
 
