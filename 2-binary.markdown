@@ -99,7 +99,7 @@ Sweet! If we now want to represent the number four now, it looks like we're goin
 
 (1 &times; 4) + (0 &times; 2) + (1 &times; 0) = 4
 
-Let's do one more for good measure. To represent five in binary, we'll want to add one to our represntation of 4, which we can do by flipping the last bit. This gives us:
+Let's do one more for good measure. To represent five in binary, we'll want to add one to our representation of 4, which we can do by flipping the last bit. This gives us:
 
 (1 &times; 4) + (0 &times; 2) + (1 &times; 1) = 5
 
@@ -219,7 +219,7 @@ Now, let's add everything up:
 
 So, 01101 is the lucky number 13!
 
-What if we want to go the other way? Let's say we have the decimal number 12, and we want figure out its binary representation. Using the same table, we can work backwards by filling in each space. The process of convering a decimal number to binary is just like making change at a cash register. So that you don't annoy your customers, you always want to make change using as few coins as possible.
+What if we want to go the other way? Let's say we have the decimal number 14, and we want figure out its binary representation. Using the same table, we can work backwards by filling in each space. The process of converting a decimal number to binary is just like making change at a cash register. So that you don't annoy your customers, you always want to make change using as few coins as possible.
 
 <table style="text-align: center">
     <tr>
@@ -502,13 +502,9 @@ You may also have heard of Morse Code, which is another character encoding. Here
 
 <img src="img/2-morse.jpg" style="width: 600px" alt="Morse Code" />
 
-Since flags and sounds are a bit impractical for your computer, a character encoding called **US-ASCII** is more common. ASCII defines numerical representations for 128 different "characters," where a character can be a letter, number, symbol, or Mickey Mouse. For example, the character "A" is represented by the number 65 in ASCII, and the character "a" is represented by the number 97. So, whenever we need to represent the character "A" using ASCII, we can simply use the number 65 instead, just like a ship would fly a blue and white flag. From your computer's perspective, then, the sequence of characters "CS E-1" could be represented by the sequence of decimal numbers "67 83 32 69 45 49", which ultimately will be stored as the sequence of binary numbers "FILL THS IN". Since we've already seen that binary can be used to represent numbers using only zeroes and ones, we can use ASCII to represent letters using zeroes and ones as well. Here's the complete ASCII table:
+Since flags and sounds are a bit impractical for your computer, a character encoding called **US-ASCII** is more common. ASCII defines numerical representations for 128 different "characters," where a character can be a letter, number, symbol, or Mickey Mouse. For example, the character "A" is represented by the number 65 in ASCII, and the character "a" is represented by the number 97. So, whenever we need to represent the character "A" using ASCII, we can simply use the number 65 instead, just like a ship would fly a blue and white flag. From your computer's perspective, then, the sequence of characters "CS E-1" could be represented by the sequence of decimal numbers "67 83 32 69 45 49", which ultimately will be stored as the sequence of binary numbers "01000011 01010011 00100000 01000101 00101101 00110001". Since we've already seen that binary can be used to represent numbers using only zeroes and ones, we can use ASCII to represent letters using zeroes and ones as well. Here's the complete ASCII table:
 
-
-
-ASCII Table Diagram
-
-
+![ASCII Table](img/1-ascii.gif)
 
 The first 32 characters in the table are reserved for **control sequences**, which back in the day could be used to control physical devices like printers. Not only are those not so relevant any more, but what if we go to jolly old England and inquire as to the price of a spot of tea? The standard ASCII table doesn't have the character &pound;, but luckily, ASCII isn't the only character encoding around. While we also have an extended version of ASCII that is double in size, an encoding called **UTF-8** (a form of **unicode**) which contains definitions for 1,112,064 different characters, is commonly used today. In fact, there's a good chance that any website you're browsing is using UTF-8 (and there's a 100% chance this one is). Among the millions of UTF-8 characters are the "snowman" (&#9731;), "heavy black heart" (&#10084;), and even the "neither less than nor greater than" (&#8824;), not to be confused with the more common "equal to" (=). Still, at the end of the day, that snowman is really just represented as a series of bits that can be translated into a winter wonderland using an agreed-upon standard.
 
