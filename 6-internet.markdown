@@ -33,7 +33,7 @@ Because all IP addresses are simply four numbers between 0&ndash;255, that must 
 
 As an aside, this isn't the first (or last) time technology has outgrown existing infrastructure. Rumor has it that in 1981 Bill Gates was quoted as saying "640K of memory ought to be enough for anybody" to address concerns with memory limitations of an IBM computer. In the Internet's earliest days, thoughts of supporting over 4 billion interconnected devices probably weren't at the front of engineers' minds!
 
-So if we're running out of IP addresses, what can we do? After all, without an IP address, a device cannot be contacted by other devices connected to the Internet. One solution is to simply increase the size of IP addresses, which would increase the total number of available addresses. The 32-bit IP address is known as **IPv4**, which was released in the early 1980s. Now, a standard known as **IPv6** is starting to gain momentum. While an IPv4 address looks something like 60.254.153.16, an IPv6 address is instead a series of hexadecimal digits like 2001:0db8:85a3:0042:1000:8a2e:0370:7334. Hexadecimal, like binary, simply represents numbers using a different base; while binary uses base 2, hexadecimal uses base 16. Since we only have 10 different digits to work with, hexadecimal uses "a" to represent the number 11, "b" to represent 12, and so on until "f" represents 15. Each hexadecimal digit is 4 bits, so IPv6 addresses are 128 bits in length, which creates a total of 2<sup>128</sup> (or 3.4 &times; 10<sup>38</sup>) different addresses. To be precise, IPv6 allows 340,282,366,920,938,463,463,374,607,431,768,211,456 different IP addresses. Assuming the world's population is about 7 billion people, that means we can have have 4.8 &times; 10<sup>28</sup> different IPv6 addresses _per person_. That's a whole lot of iPhones! Of course, the people behind IPv4 probably said something similar 30+ years ago...
+So if we're running out of IP addresses, what can we do? After all, without an IP address, a device cannot be contacted by other devices connected to the Internet. One solution is to simply increase the size of IP addresses, which would increase the total number of available addresses. The 32-bit IP address is known as **IPv4**, which was released in the early 1980s. Now, a standard known as **IPv6** is starting to gain momentum. While an IPv4 address looks something like 60.254.153.16, an IPv6 address is instead a series of hexadecimal digits like 2001:0db8:85a3:0042:1000:8a2e:0370:7334. Hexadecimal, like binary, simply represents numbers using a different base; while binary uses base 2, hexadecimal uses base 16. Since we only have 10 different digits to work with, hexadecimal uses "a" to represent the number 11, "b" to represent 12, and so on until "f" represents 15. Each hexadecimal digit is 4 bits, so IPv6 addresses are 128 bits in length, which creates a total of 2<sup>128</sup> (or 3.4 &times; 10<sup>38</sup>) different addresses. To be precise, IPv6 allows 340,282,366,920,938,463,463,374,607,431,768,211,456 different IP addresses. For an always up-to-date count of how many IPv6 addresses are left in the world, check out [this website](http://samsclass.info/ipv6/exhaustion.htm). Assuming the world's population is about 7 billion people, that means we can have have 4.8 &times; 10<sup>28</sup> different IPv6 addresses _per person_. That's a whole lot of iPhones! Of course, the people behind IPv4 probably said something similar 30+ years ago...
 
 The adoption of IPv6 has been slow but steady. June 6, 2012 was dubbed World IPv6 Launch, and major Internet companies were encouraged to finally enable IPv6 support once and for all. The event was even advertised with the tagline "this time, it's for real." About a quarter of the world's top 500 sites have IPv6 enabled, and about [1% of Google users connect using IPv6](http://www.google.com/ipv6/statistics.html#tab=ipv6-adoption). However, Google does note that the number of IPv6 users has increased by a factor of 2 since last year, which is promising for IPv6 adoption.
 
@@ -78,21 +78,6 @@ Let's make this process a bit more concrete with an example. I'm running a wirel
 
 Okay, looks like my laptop has a private IP of 10.0.0.1. Remember, anything in the form `10.x.y.z` is a private IP address that isn't world-accessible. Once my request reaches the router, its source address will change to that of the router, 74.125.26.228 in this case, and the source port, 1000, will be added to the request. Reddit will eventually receive my request and send back a picture of a cat to the IP address included in the request, which is still 74.125.26.228 with a source port of 1000. Because Reddit sent my impending feline friend to my router's IP address, it will eventually end up at my router. Then, my router can look at the source port attached to the response to look up the private IP the request originated from. Finally, the Reddit data will reach my laptop, and I can enjoy a hearty chuckle. This process certainly sounds pretty involved, but recall how few milliseconds it took to reach Reddit in the United Kingdom!
 
-So far, we've taken it for granted that my computer connected to the Internet will have an IP address, so let's now take a look at how that number actually gets assigned. As you move among different networks and even as you connect to the same network, your computer's IP address will change. This is a bit different than the computers that power websites like cnn.com, which typically have some mechanism for maintaining the same IP address or set of IP addresses. More on that later, though!
-
-**DHCP**, or dynamic host configuration protocol, is commonly used to obtain an IP address on a network. First, a computer that wishes to connect to the network, referred to here as the DHCP client, broadcasts a request to the network with a message that says "Here I am. I'd like to join." Then, a device called the DHCP server (which will eventually be responsible for assigning an IP address to the client) will respond to the client's request, informing the client what its IP is. Now, the client knows exactly where it should send future messages during the process of obtaining an IP address, so it won't needlessly send messages to machines that aren't involved in the process. Next, the client will send another message to the DHCP server, this time formally requesting an IP address on the network. Upon receiving this request, the DHCP server will respond and offer the client an IP address on the network. In the meantime, the server will hold that IP address inside, so no other devices can have it until the client responds. Finally, the client will send one last message to the DHCP server, acknowledging that it has received the IP address and has begun using at. At this point, the client is connected and ready to go!
-
-This process assumes, though, that the DHCP server somehow knows which IP addresses it can assign. For example, a DHCP server in North America needs to ensure that it doesn't assign an IP address that is already in use by a device in Europe. To mitigate this issue, different ranges of IP addresses are allocated to different physical regions of the globe. Here's a map created by the author of [XKCD](http://xkcd.com/), one of my favorite webcomics.
-
-![Map of the Internet](img/6-map.png)
-
-Let's take a closer look. Towards the top of the map, we can see that some organizations have been allocated huge IP ranges. Apple, for example, has all IP addresses in the form `17.x.y.z`, and MIT has all IP addresses in the form `18.x.y.z`. The number of IP addresses in those ranges in comparable to the number of IP addresses allocated to entire countries, like Japan's `126.x.y.z`. From our earlier traceroute output, we can see that my trusty machine in New Jersey has an IP in one of the many ranges allocated to North America. Finally, if you take a look at the right of the map at the `192.x.y.z` range, you'll see a small dot that says "private." Sure enough, that's referring to the `192.168.y.z` range that we saw earlier was reserved for private IP addresses!
-
-<br />
-<iframe width="480" height="360" src="http://www.youtube.com/embed/Ve7_4ot-Dzs" frameborder="0"></iframe>
-<br />
-<br />
-
 In order to find out the IP address of a website, we can use a special program called `host`. If we open up a command prompt on a Mac or Linux machine, we can run the following:
 
     host cnn.com
@@ -102,6 +87,31 @@ This should tell us what the IP addresses that point to cnn.com are. You'll noti
     host google.com
 
 One of the last IP addresses output by the `host` program is an IPv6 address. So, it looks like Google is ready for IPv6, while CNN doesn't appear to be quite yet.
+
+So far, we've taken for granted that a computer connected to the Internet will have an IP address. Let's now take a look at how that number actually gets assigned. As you move among different networks and even as you connect to the same network, your computer's IP address will change. This is a bit different than the computers that power websites like cnn.com, which typically have some mechanism for maintaining the same IP address or set of IP addresses. More on that later, though!
+
+**DHCP**, or dynamic host configuration protocol, is commonly used to obtain an IP address on a network. First, a computer that wishes to connect to the network, referred to here as the DHCP client, broadcasts a request to the network with a message that says "Here I am. I'd like to join." Then, a device called the DHCP server (which will eventually be responsible for assigning an IP address to the client) will respond to the client's request, informing the client what its IP is. Now, the client knows exactly where it should send future messages during the process of obtaining an IP address, so it won't needlessly send messages to machines that aren't involved in the process. Next, the client will send another message to the DHCP server, this time formally requesting an IP address on the network. Upon receiving this request, the DHCP server will respond and offer the client an IP address on the network. In the meantime, the server will hold that IP address inside, so no other devices can have it until the client responds. Finally, the client will send one last message to the DHCP server, acknowledging that it has received the IP address and has begun using at. At this point, the client is connected and ready to go!
+
+This process assumes, though, that the DHCP server somehow knows which IP addresses it can assign. For example, a DHCP server in North America needs to ensure that it doesn't assign an IP address that is already in use by a device in Europe. To mitigate this issue, different ranges of IP addresses are allocated to different physical regions of the globe. Here's a map created by the author of [XKCD](http://xkcd.com/), one of my favorite webcomics.
+
+![Map of the Internet](img/6-map.png)
+
+Let's take a closer look. Towards the top of the map, we can see that some organizations have been allocated huge IP ranges. Apple, for example, has all IP addresses in the form `17.x.y.z`, and MIT has all IP addresses in the form `18.x.y.z`. The number of IP addresses in those ranges in comparable to the number of IP addresses allocated to entire countries, like Japan's `126.x.y.z`. From our earlier traceroute output, we can see that my trusty machine in New Jersey has an IP in one of the many ranges allocated to North America. Finally, if you take a look at the right of the map at the `192.x.y.z` range, you'll see a small dot that says "private." Sure enough, that's referring to the `192.168.y.z` range that we saw earlier was reserved for private IP addresses!
+
+HOW THEY USED TO BE SET UP, CLASS SYSTEM, INTERNET HISTORY
+
+CONNECTING TO THE INTERNET AND THE ROLE OF THE ISP
+
+WIRELESS NETWORKS
+
+VPN
+
+INTERNET SPEED
+
+<br />
+<iframe width="480" height="360" src="http://www.youtube.com/embed/Ve7_4ot-Dzs" frameborder="0"></iframe>
+<br />
+<br />
 
 <div class="page-header page-break">
     <h1>Practice Problems</h1>
