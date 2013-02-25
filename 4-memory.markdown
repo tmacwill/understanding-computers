@@ -114,7 +114,7 @@ Luckily, the space required to store a positive or negative magnetic charge, or 
 
 ![Hard Disk](img/4-plane-hdd.jpg)
 
-Now, we just need some way of giving each bit on the hard drive some kind of address, just like we did with RAM. However, because the number of bits that can be stored on a hard drive is so huge, giving each bit a single unique number might not be the most practical system in the world. Instead, each platter in the hard disk is divided into many concentric rings called **tracks**, along which slots for bits are stored. Each track is further subdivided into **sectors**, each of which holds a small, fixed amount of data, typically several hundreds of bytes. A group of adjacent sectors is known as a **cluster**. So, a single file will actually occupy multiple sectors on your hard disk, and your computer is responsible for remembering where files are stored and how much space they consume. Your computer can do so using a special file on the hard disk called the **file allocation table**, which is essentially a mapping of paths to files to platters, tracks, and sectors. That way, a request to a file using its path (as we do when we open a Word document, for example), can be translated to a phyiscal location on the hard disk. So, when we want to open a file, we can look up its physical location on the hard disk (e.g., its platter, track, and sectors) using the file allocation table, and then the hard disk can move components like the read-write head appropriately.
+Now, we just need some way of giving each bit on the hard drive some kind of address, just like we did with RAM. However, because the number of bits that can be stored on a hard drive is so huge, giving each bit a single unique number might not be the most practical system in the world. Instead, each platter in the hard disk is divided into many concentric rings called **tracks**, along which slots for bits are stored. Each track is further subdivided into **sectors**, each of which holds a small, fixed amount of data, typically several hundreds of bytes. A group of adjacent sectors is known as a **cluster**. So, a single file will actually occupy multiple sectors on your hard disk, and your computer is responsible for remembering where files are stored and how much space they consume. Your computer can do so using a special file on the hard disk called the **file allocation table**, which is essentially a mapping of paths to files to platters, tracks, and sectors. That way, a request to a file using its path (as we do when we open a Word document, for example), can be translated to a physical location on the hard disk. So, when we want to open a file, we can look up its physical location on the hard disk (e.g., its platter, track, and sectors) using the file allocation table, and then the hard disk can move components like the read-write head appropriately.
 
 How exactly your files are accessed and stored depends on how it is **formatted**, which determines which **filesystem** it uses. Many Windows PCs have hard drives that utilize the proprierary **NTFS** filesystem, while USB thumb drives may be formatted using **FAT**, an older filesystem. While operating systems may support multiple filesystems, you may sometimes encounter a device that your computer can't read from or write to. For example, some versions of OS X can read files from an NTFS drive, but can't write any new data.
 
@@ -164,7 +164,7 @@ Finally, let's compare how long it takes for your computer to read and write dat
         <tr>
             <td>L1 cache</td>
             <td>0.5 ns</td>
-            <td>Blink of an eye</td>
+            <td>Blink of an eye (300 milliseconds)</td>
         </tr>
         <tr>
             <td>L2 cache</td>
@@ -174,22 +174,17 @@ Finally, let's compare how long it takes for your computer to read and write dat
         <tr>
             <td>1MB from RAM</td>
             <td>0.25 ms</td>
-            <td>5 days</td>
+            <td>2 days</td>
         </tr>
         <tr>
             <td>1MB from SSD</td>
             <td>1 ms</td>
-            <td>23 days</td>
-        </tr>
-        <tr>
-            <td>HDD seek</td>
-            <td>10 ms</td>
-            <td>231 days</td>
+            <td>1 week</td>
         </tr>
         <tr>
             <td>1MB from HDD</td>
             <td>20 ms</td>
-            <td>1.25 years</td>
+            <td>4.5 months</td>
         </tr>
     </tbody>
 </table>

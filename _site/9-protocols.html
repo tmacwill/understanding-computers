@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Protocol me, maybe | Understanding Computers and the Internet</title>
+        <title>Protocol Me, Maybe | Understanding Computers and the Internet</title>
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
         <link rel="stylesheet" href="css/e1.css" />
@@ -11,11 +11,11 @@
             <p><link rel="stylesheet" type="text/css" href="css/8-protocols.css" /></p>
 
 <div class="page-header">
-    <h1>Chapter 8 <small>Protocol me, maybe</small></h1>
+    <h1>Chapter 9 <small>Protocol Me, Maybe</small></h1>
 </div>
 
 
-<p>The Internet is an extremely heterogenous environment. Not only do a huge variety of devices need to be able to communicate with each other over the Internet, but there's also a good chance that those devices are powered by different operating systems and software. In order for different devices to talk to each other, they need to agree upon some standardized way of communicating. That way, even if networked computers are running different hardware and software, they'll be able to communicate because they're all following a formal, established <strong>protocol</strong>.</p>
+<p>The Internet is an extremely heterogenous environment. Not only do a huge variety of devices need to be able to communicate with each other over the Internet, but there's also a good chance that those devices are powered by different operating systems and software. In order for different devices to talk to each other, they need to agree upon some standardized way of communicating. That way, even if networked computers are running different hardware and software, they'll be able to communicate because they're all following the same rules and method of communicating that were established by a formal, explicit <strong>protocol</strong>.</p>
 
 <p>We obey plenty of protocols in our everyday lives. For example, when you meet someone new, you might say hello and extend your hand. Your new friend might then then say hello back to you, grab your hand, and shake it. After a few solid shakes, both of you will release the other's hand, and perhaps you'll begin to talk about the weather. After all, Cambridge <em>is</em> really nice this time of year. Even if you've never met this new person at all, you both obeyed the same standards of behavior. Because society has established the handshake protocol, both you and your friend knew exactly what to do without any additional instruction. This is essentially the goal for networked computers: even if two computers have never communicated before, there needs to be some way of exchanging information in a way that is agnostic to the software running on both devices.</p>
 
@@ -188,17 +188,17 @@ username=tommy&amp;password=supersecret
 
 <p>Modern web browsers usually allow you to view the HTTP requests and responses that result from loading a web page. In Google Chrome, clicking the menu at the top-right and selecting Tools > Developer Tools should bring up something like the below:</p>
 
-<p><img src="img/8-network.png" alt="Network Tab" /></p>
+<p><img src="img/9-network.png" alt="Network Tab" /></p>
 
 <p>Looks like simply going to Google's home page generated a lot of network traffic! Some of this should look familiar to you, though. In the leftmost column, we have the name of the resource that was requested. Our first request downloaded the HTML for Google's homepage, which tells the browser what should be displayed. In the next column, we can see that an HTTP GET request was used to get Google's homepage, which makes sense because we're simply requesting data rather than sending any new data. Next, we can see the status code and corresponding text, and since the homepage was downloaded without any issues, we got back a 200 OK status code. The next column is the content type of the response, which we've already said is HTML. Finally, we can see how large the response was in kilobytes, as well as how long it took the browser to download the content. However, based on the above, it looks like our browser used more than just one HTTP request to load google.com. After downloading the HTML for http://www.google.com/, the web browser realized that it didn't have all of the data necessary to fully display the page. For example, it looks like the HTML the browser downloaded contains links to some images, like the Google logo we've all come to know and love. However, those images weren't transferred with the HTML that came with in the HTTP response body, since remember, the response <code>Content-Type</code> said it was only text. So, the web browser actually has to go ahead and make new HTTP requests for each image the web page is trying to display. If we look towards the bottom of the above picture, we can see that the Google logo was transferred via a separate HTTP response, this time with a content type of <code>image/png</code>, or a picture. As we'll see later, a web page's HTML can also tell the browser to download other text-based files that change a web site's appearance or functionality.</p>
 
 <p>Though the process of communicating over HTTP looks like it simply involves two parties, a client and a server, large sites like CNN and Google probably have a huge number of powerful servers behind their websites in order to deal with high demand. As you've probably noticed, running a large number of programs at the same time on your home computer tends to slow it down, perhaps to the point where you'd rather watch paint dry than wait for your email to send. If thousands of people are hitting a website at the same time, then we don't want all of those requests going to the same computer, since a single machine can't handle them all. In the event a website's servers become overwhelmed with the number of requests coming in, then the loading times for people browsing the site will start to increase. Even large websites suffer from this problem! Twitter, for example, has an amazing infrastructure capable of handling millions of Bieber fans tweeting at once, but during events like the Presidential Inauguration, their servers reach their capacity due to the gigantic number of requests coming in at once. Here are a few recently-released photos from Google's data centers, showing their incredible infrastructure:</p>
 
-<p><img src="img/8-google1.jpg" alt="Google 1" /></p>
+<p><img src="img/9-google1.jpg" alt="Google 1" /></p>
 
-<p><img src="img/8-google2.jpg" alt="Google 2" /></p>
+<p><img src="img/9-google2.jpg" alt="Google 2" /></p>
 
-<p><img src="img/8-google3.jpg" alt="Google 3" /></p>
+<p><img src="img/9-google3.jpg" alt="Google 3" /></p>
 
 <p>Each of the lit-up rows in those columns is a server powering one of Google's many websites! Crazy, right?</p>
 
