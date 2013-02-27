@@ -15,7 +15,7 @@ The **Domain Name System**, or DNS for short, allows us to give more convenient 
 
 In the early days of the Internet, the big phonebook of IP addresses was simply a text file called `HOSTS.TXT`. Developers would routinely copy some authoritative copy of this text file to their own machines, so they could then take advantage of all domains on the Internet. Remnants of this system still remain even on modern operating systems. On my Mac (or Linux), I can open up a file called `/etc/hosts` that lists aliases for IP addresses local to my machine. On Windows, this file is located in `C:\Windows\System32\Drivers\etc\hosts`, but it's contents are the same. On each line, we have an IP address followed by a space and then a domain name. Let's try adding a new entry. 157.166.226.25 is an IP address for cnn.com, so add the following line to the bottom of your hosts file (you may be prompted for your administrator password, since this is a system file):
 
-    66.228.37.113 bing.com
+    74.125.226.199 bing.com
 
 Now, open up a web browser and head to bing.com. Toto, we're not in Redmond anymore. When we added that line to our local hosts file, we effectively created a new entry in the DNS phonebook that says "bing.com corresponds to the IP address 66.228.37.113." If you type that IP into your web browser, you'll see that it's simply one of Google's (many) IP addresses. So, when your web browser saw "bing.com," it was told that that domain resolved to one of Google's IPs, which led you to Google's homepage.
 
