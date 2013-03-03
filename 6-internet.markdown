@@ -84,7 +84,7 @@ We've seen some examples of IP addresses so far, but how did we come up with tho
 
     host cnn.com
 
-This should tell us what the IP addresses that point to cnn.com are. You'll notice that all of these addresses are IPv4 addresses, since each is 4 numbers separated by dots. Sure enough, if you type [http://157.166.226.26](157.166.226.26) into your web browser's address bar and press Enter, you'll see today's news before long! If we instead type:
+This should tell us what the IP addresses that point to cnn.com are. You'll notice that all of these addresses are IPv4 addresses, since each is 4 numbers separated by dots. Sure enough, if you type [157.166.226.26](http://157.166.226.26) into your web browser's address bar and press Enter, you'll see today's news before long! If we instead type:
 
     host google.com
 
