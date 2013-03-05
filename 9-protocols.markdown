@@ -200,3 +200,30 @@ Naturally, companies like Google want to mimize both latency and bandwidth. Whil
 Here, we have a bunch of icons combined into a single image, since it would be pretty wasteful for your browser to have to go and download each one of these small things one-by-one. These may seem like super minor changes, but keep in mind that they really add up! Even if Google saves just 100 bytes by compressing their home page, because that page receives upwards of a billion hits per day, Google ends up with hundreds of gigabytes of savings! So, for huge sites like Google and Facebook, every little bit (pun intended) matters, since any wasted data can end up costing a _lot_ of money.
 
 Let's shift gears a bit. Now that we've taken a look at how web browsers send and receive information, let's look at something else you probably use every day: email!
+
+<div class="page-header page-break">
+    <h1>Practice Problems</h1>
+</div>
+
+1. The "P" in DHCP and HTTP stands for "protocol." What do we mean when we say something is a protocol?
+
+1. What's a web browser?
+
+1. Write an HTTP request (using the GET method) that gets the content of the web page at [http://www.catgifpage.com/](http://www.catgifpage.com/).
+
+1. Write an HTTP request (using the POST method) that sends the key "email" with the value "unicodelovehotel@gmail.com" to the web page at [http://raspberrycats.wordpress.com/](http://raspberrycats.wordpress.com/).
+
+1. I made a request to a web page, but my browser received the below HTTP response. What's the meaning of this response?
+
+        HTTP/1.1 500 Internal Server Error
+        Server: Apache
+        Date: Mon, March 4 2013 00:00:00 GMT
+
+1. I tried a different URL, and this time, I got the below HTTP response. What will my web browser most likely do?
+
+        HTTP/1.1 301 Moved Permanently
+        Server: Apache
+        Date: Mon, March 4 2013 00:01:00 GMT
+        Location: http://cse1.net
+
+1. What are some ways that large companies improve the performance of web pages?

@@ -288,3 +288,21 @@ Similarly, the instructions for setting up an email client to work with Gmail ca
 Before we finish up, a quick note on security. We saw that the process of sending an email really just involves logging into a server and sending a series of textual commands. In the examples we saw, we used email addresses that we actually owned in order to send mail. However, there's nothing stopping us from typing any old email address we want when we use the `mail from` command or the `From` header. While Gmail's SMTP server has some security measures in place to prevent us from doing that, there's nothing stopping me from running my own SMTP server and sending emails as anyone in the world. So, an attacker might be able to convince unsuspecting email users into sending along their Facebook password, for example, by sending an official-looking email from `zuck@fb.com`. Of course, even if I send mail as `barack@whitehouse.gov`, I have no way of actually receiving mail to that address unless I can log into the POP3 or IMAP server that receives emails. Still, this kind of attack, called **phishing**, can lead to some pretty convincing spam!
 
 That's enough email for now! I think it's time for me to take a break and go tend to my growing inbox. Next, we're gonna go a bit deeper and take a look at how the Internet works at an even lower level!
+
+<div class="page-header page-break">
+    <h1>Practice Problems</h1>
+</div>
+
+1. Using my primary email address, `unicodelovehotel@gmail.com`, I sent a message to `someone@example.com`. In a succinct but technically detailed paragraph, describe how my email ultimately reaches `someone@example.com`'s inbox.
+
+1. What's the difference between a stack and a queue? What's a situation where a stack would be more appropriate than a queue? How about a situation (other than the line at the Rock 'n' Roller Coaster or other amusement park rides) where a queue would be more appropriate than a stack?
+
+1. Both HTTP and email have headers associated with them. What are some headers commonly found in an email that don't apply to HTTP?
+
+1. Unlike HTTP headers, email headers can be repeated several times with different values. Why is the `Received` header usually found more than once in an email once it's been delivered?
+
+1. What are the various steps involved in sending an email via SMTP?
+
+1. What are some differences between POP3 and IMAP? What are some features IMAP provides that POP3 doesn't?
+
+1. What's a phishing attack? Since I don't have access to Bill Gates's inbox, I could never send email from `billg@microsoft.com`, right?
