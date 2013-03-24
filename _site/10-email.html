@@ -8,18 +8,27 @@
     </head>
     <body>
         <div class="container">
-            <p><link rel="stylesheet" type="text/css" href="css/10-email.css" /></p>
-
-<div class="page-header">
+            <div class="row-fluid">
+                <div id="sidebar" class="span2">
+                    <ul id="toc"><li><a href="1-powerup.html">Power Up</a></li><li><a href="2-binary.html">Binary, ASCII, and Everything in Bit-ween</a></li><li><a href="3-cpu.html">C-3PU, Human-Processing Relations</a></li><li><a href="4-memory.html">Thanks for the Memory</a></li><li><a href="6-internet.html">Project Interweb: Make it Network</a></li><li><a href="7-domains.html">Eminent Domain Names</a></li><li><a href="9-protocols.html">Protocol Me, Maybe</a></li><li><a href="10-email.html">Snail Mail</a></li><li><a href="11-tcpip.html">Manual Transmission</a></li><li><a href="12-graphics.html">Picture This</a></li></ul>
+                </div>
+                <div id="main" class="span10">
+                    <div class="page-header">
     <h1>Chapter 10 <small>Snail Mail</small></h1>
 </div>
 
 
 <p>We're probably all familiar with email. Whether we're logged into Gmail.com or Verizon.net in a web browser or using Microsoft Outlook or Apple Mail on the desktop, the cat videos we send to our friends and co-workers are all delivered using the same email <strong>protocols</strong>. We're still using the same basic idea behind protocols like DHCP and HTTP: even if we have different devices on our network running different software, they call all communicate if everyone follows the same set or rules. While making a request to a web page used only one protocol, since HTTP defines rules for both requests and responses, we'll look at three different protocols that may or may not be used in the process of sending an email. First, we'll take a look at how your email containing a link to a cat video is sent to your co-worker, and then we'll see what happens when you log into your inbox and read email messages.</p>
 
+<h2>Sending Emails with SMTP</h2>
+
 <p>Just like we needed a web server to respond to clients' HTTP requests, we'll also need a server whose purpose in life is to send and receive emails. This server is called an <strong>SMTP</strong> server, which stands for Simple Mail Transfer Protocol. So, when you send an email to another email address, two SMTP servers, one for the sender and one for the receiver, will communicate in order to deliver the message from point A to point B. As this name suggests, the sending and receiving of emails actually isn't very complicated a process! First, you'll sit down at an email client (also called a mail user agent, or MUA), whether that be an app on your phone or a web interface, and compose a message, as well as choose a subject, recipients, CC'd (or carbon copied) recipients, and BCC'd (or blind carbon copied) recipients. For the sake of this example, let's just say you're using Gmail, but the same process applies when sending an email from your iPhone or Outlook. Once you hit send, your message will be sent to an SMTP server owned and managed by Gmail (also called an MDA, or mail delivery agent). Since services like Gmail are pretty popular, there's a good chance that you're not the only one to be sending an email at any given point in time. So, your message will probably join a queue of other email messages on an SMTP server. To be fair to its customers, Gmail will handle the messages in the order they come in.</p>
 
+<h2>Data Structures: Queues and Stacks</h2>
+
 <p>By the way, the concept of a <strong>queue</strong> is a pretty common one in computer science. A queue is any collection of things where items will be processed in the order they came in. For example, the line for the <a href="http://en.wikipedia.org/wiki/Rock_'n'_Roller_Coaster_Starring_Aerosmith">Rock 'n' Roller Coaster</a> at Walt Disney World is a queue (and based on my experience, a pretty long one at that). The people who got in line at 10am will get to rock and roll before the people who got in line at 11am, so we have a queue of people. (I know what you're thinking, experienced Disney World travelers who use the <a href="https://disneyworld.disney.go.com/guest-services/fast-pass/">FastPass</a> system to jump ahead of the line, but wait your turn this time.) On the other hand, consider a <strong>stack</strong> of plates. Unless you want the stack to fall over, you'll want to take a plate from the top of the pile rather than the bottom of the pile. That means that the first plate you added to the stack will always be at the bottom of the pile, while the last plate you added to the stack will be at the top of the pile. So, you'll end up taking plates off in the reverse of the order you added them to the stack, which is essentially the opposite of a queue! While we might say a queue is <strong>first in, first out</strong>, a stack is <strong>last in, first out</strong>.</p>
+
+<h2>DNS, Again</h2>
 
 <p>Okay, let's stop talking about plates before I get too hungry. Your email is in a queue on a Gmail SMTP server, and it has finally reached the front of the line, which means it's time for your message to be sent. Now, the SMTP server needs to figure out where to send the email. As you've probably noticed, email addresses are always in the form <code>name@website.com</code>, where the @ character separates a unique username and the domain (which could have a subdomain as well) of a server. Using the email address's domain, the sending SMTP server can figure out the receiving SMTP server to deliver the message to. We know that we'll need an IP address in order to send any kind of message across the Internet, but all we have is a human-readable domain name... Hmm... Whatever could we do? If only we had a process for translating domain names into IP addresses!</p>
 
@@ -27,30 +36,32 @@
 
 <p><img src="img/10-smtp.png" alt="SMTP Diagram" /></p>
 
+<h2>Email Headers</h2>
+
 <p>Let's now take a look at exactly what the contents of one of these requests looks like. Just like HTTP requests, emails also have headers that we typically don't see when we open up a message. In the Gmail UI, you can click "Show original" to show the full contents of the email messsage that was sent. Here's a sample of what an email actually looks like:</p>
 
-<pre><code>Delivered-To: macwilliamt@gmail.com
+<pre><code>Delivered-To: unicodelovehotel@gmail.com
 Received: by 10.223.64.143 with SMTP id e15csp17700fai;
         Sat, 2 Mar 2013 09:46:00 -0800 (PST)
 X-Received: by 10.49.12.143 with SMTP id y15mr25034564qeb.27.1362246358685;
         Sat, 02 Mar 2013 09:45:58 -0800 (PST)
-Return-Path: &lt;tmacwilliam@live.com&gt;
+Return-Path: &lt;unicodelovehotel@live.com&gt;
 Received: from col0-omc1-s9.col0.hotmail.com (col0-omc1-s9.col0.hotmail.com. [65.55.34.19])
         by mx.google.com with ESMTP id hc10si11831922qab.44.2013.03.02.09.45.57;
         Sat, 02 Mar 2013 09:45:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of tmacwilliam@live.com designates 65.55.34.19 as permitted sender) client-ip=65.55.34.19;
+Received-SPF: pass (google.com: domain of unicodelovehotel@live.com designates 65.55.34.19 as permitted sender) client-ip=65.55.34.19;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of tmacwilliam@live.com designates 65.55.34.19 as permitted sender) smtp.mail=tmacwilliam@live.com
+       spf=pass (google.com: domain of unicodelovehote@live.com designates 65.55.34.19 as permitted sender) smtp.mail=unicodelovehotel@live.com
 Received: from COL002-W67 ([65.55.34.7]) by col0-omc1-s9.col0.hotmail.com with Microsoft SMTPSVC(6.0.3790.4675);
      Sat, 2 Mar 2013 09:45:41 -0800
 X-EIP: [P1MGsuJd3RDrA2h/Chca1T2JhXgCEJS1]
-X-Originating-Email: [tmacwilliam@live.com]
+X-Originating-Email: [unicodelovehotel@live.com]
 Message-ID: &lt;COL002-W672344BAD5002880FBD489C3F80@phx.gbl&gt;
-Return-Path: tmacwilliam@live.com
+Return-Path: unicodelovehote@live.com
 Content-Type: multipart/alternative;
     boundary="_a3224380-c68b-4f38-84d4-fd4a8233b8b2_"
-From: Tommy MacWilliam &lt;tmacwilliam@live.com&gt;
-To: "macwilliamt@gmail.com" &lt;macwilliamt@gmail.com&gt;
+From: Unicode Love Hotel &lt;unicodelovehotel@live.com&gt;
+To: "unicodelovehotel@gmail.com" &lt;unicodelovehotel@gmail.com&gt;
 Subject: I love cats
 Date: Sat, 2 Mar 2013 12:45:41 -0500
 Importance: Normal
@@ -92,6 +103,8 @@ w much I love cats! They're the best.&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;=
 
 <p>After the headers, we have the body of the request, where our message can be found. Looking closely, it looks like the text of our email has actually been sent twice? What gives? If we look back at that <code>Content-Type</code> header at the top of the email, it looks like we have a value of "multipart," which seems to suggest our content will consist of multiple parts. From the same header value, we can see that we have a boundary of "_a3224380-c68b-4f38-84d4-fd4a8233b8b2_" that separates the two parts of the email message. The first part of the email is our message using only plain text (e.g., ASCII), while the second part of our message is using HTML to create some formatting (like fonts and colors). Modern web apps like Gmail.com and Outlook.com will use the HTML version of a message (so you can send emails with some additional formatting), while other email clients may prefer only the text-only version.</p>
 
+<h2>Interacting with SMTP</h2>
+
 <p>In order to send a message using an SMTP server, the email client will issue a series of commands. The server will reply to each of these commands with a response code (just like those HTTP response codes) that lets the client know whether or not the command was successful. We can use a program called <code>openssl</code> to establish a connection to an SMTP server and then manually send it the commands necessary to send an email via SMTP! If on a Mac, this should already be installed for you, and if on Windows, you can download it <a href="www.openssl.org/related/binaries.html">here</a>. Now, if we open up a Terminal, we can run:</p>
 
 <pre><code>openssl s_client -ssl3 -connect smtp.gmail.com:587 -starttls smtp -crlf
@@ -125,7 +138,7 @@ w much I love cats! They're the best.&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;=
 334 VXNlcm5hbWU6
 </code></pre>
 
-<p>Uh... what? That 334 is a response code, though different than the response codes we saw with HTTP, and the string of characters VXNlcm5hbWU6 is actually the word "User" encoded using <a href="http://en.wikipedia.org/wiki/Base64">Base64</a>, which is simply <em>another</em> character encoding that translates characters to ASCII characters. Don't worry too much about how or why it's used, but there are many utilities online that will convert words to Base64 for you, like <a href="http://www.base64encode.org/">base64encode.org</a>. Since the server sent a response using Base64, we'll need to reply using Base64 as well. Open up that web page and type in your Gmail username. For this demo, we'll use <code>username@gmail.com</code>, which is <code>dXNlcm5hbWVAZ21haWwuY29t</code> in Base64. So, I'll just paste that string and hit enter. Now, I'll see:</p>
+<p>Uh... what? That 334 is a response code, though different than the response codes we saw with HTTP, and the string of characters VXNlcm5hbWU6 is actually the word "User" encoded using <a href="http://en.wikipedia.org/wiki/Base64">Base64</a>, which is simply <em>another</em> character encoding that translates characters to ASCII characters. Don't worry too much about how or why it's used, but there are many utilities online that will convert words to Base64 for you, like <a href="http://www.base64encode.org/">base64encode.org</a>. Since the server sent a response using Base64, we'll need to reply using Base64 as well. Open up that web page and type in your Gmail username. For this demo, we'll use <code>unicodelovehotel@gmail.com</code>, which is <code>dXNlcm5hbWVAZ21haWwuY29t</code> in Base64. So, I'll just paste that string and hit enter. Now, I'll see:</p>
 
 <pre><code>dXNlcm5hbWVAZ21haWwuY29t
 334 UGFzc3dvcmQ6
@@ -139,13 +152,13 @@ w much I love cats! They're the best.&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;=
 
 <p>Woohoo! English again! Now, We've successfully authenticated with Gmail's SMTP server, and we're ready to send a message. We'll first use the <code>MAIL FROM</code> command to specify the email address we're sending from:</p>
 
-<pre><code>mail from:&lt;username@gmail.com&gt;
+<pre><code>mail from:&lt;unicodelovehotel@gmail.com&gt;
 250 2.1.0 OK o5sm28186399qao.12 - gsmtp
 </code></pre>
 
 <p>Looks good, now we'll use the <code>RCPT TO</code> command to specify the email address we're sending to:</p>
 
-<pre><code>rcpt to:&lt;username@example.com&gt;
+<pre><code>rcpt to:&lt;unicodelovehotel@live.com&gt;
 250 2.1.5 OK o5sm28186399qao.12 - gsmtp
 </code></pre>
 
@@ -157,8 +170,8 @@ w much I love cats! They're the best.&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;=
 
 <p>Don't mind if I do, Gmail. Just like before, we'll specify a few email headers, followed by our email's body:</p>
 
-<pre><code>From: &lt;username@gmail.com&gt;
-To: &lt;username@example.com&gt;
+<pre><code>From: &lt;unicodelovehotel@gmail.com&gt;
+To: &lt;unicodelovehotel@live.com&gt;
 Subject: I love cats
 Figured I would send you another reminder that I like cats.
 .
@@ -179,19 +192,21 @@ dXNlcm5hbWVAZ21haWwuY29t
 334 UGFzc3dvcmQ6
 cGFzc3dvcmQ=
 235 2.7.0 Accepted
-mail from:&lt;username@gmail.com&gt;
+mail from:&lt;unicodelovehotel@gmail.com&gt;
 250 2.1.0 OK o5sm28186399qao.12 - gsmtp
-rcpt to:&lt;username@example.com&gt;
+rcpt to:&lt;unicodelovehotel@live.com&gt;
 250 2.1.5 OK o5sm28186399qao.12 - gsmtp
 data
 354  Go ahead o5sm28186399qao.12 - gsmtp
-From: &lt;username@gmail.com&gt;
-To: &lt;username@example.com&gt;
+From: &lt;unicodelovehotel@gmail.com&gt;
+To: &lt;unicodelovehote@live.com&gt;
 Subject: I love cats
 Figured I would send you another reminder that I like cats.
 .
 250 2.0.0 OK o5sm28186399qao.12 - gsmtp
 </code></pre>
+
+<h2>Reading Emails with POP3</h2>
 
 <p>Great, now we know how SMTP handles the sending of emails! Viewing and download emails, though, is a whole different process. At this point in the story, we've sent an email from SMTP server A to SMTP server B, and we'd now like to move that message from an SMTP server to somewhere we can read it. Today, there are actually two different protocols for doing so. First, we'll take a look at <strong>POP3</strong>, the third version of the Post Office Protocol (clever, right?). POP3 defines a process through which a client can communicate with a POP3 server in order to list email messages and retrieve them so they can be read. Though we'll be using different commands this time, this process will be just like the process of sending an email via SMTP, since we'll be sending and receiving messages from a server.</p>
 
@@ -218,7 +233,7 @@ Figured I would send you another reminder that I like cats.
 
 <p>Great, we're connected! Like last time, we'll need to log in. However, since POP3 and SMTP are different protocols, we'll use a different command this time. Assuming we're using the same username and password, we'll log in like this:</p>
 
-<pre><code>user username@gmail.com
+<pre><code>user unicodelovehotel@gmail.com
 +OK send PASS
 pass password
 +OK Welcome.
@@ -245,6 +260,8 @@ pass password
 
 <p>So much for my cat email. So, if your email client is using POP3 to read emails from a server, this is exactly what it's doing underneath the hood.</p>
 
+<h2>Reading Emails with IMAP</h2>
+
 <p>We said earlier that there are two major protocols for reading email from a server, so let's now take a look at <strong>IMAP</strong>, the Internet Message Access Protocol, which is a bit newer and fancier than POP3. As we saw, POP3 is a bit one-way. We're simply asking the server for information like the messages in our inbox or the contents of a single message, but we're never actually changing anything on the server. So, if we use POP to read an email on an iPhone and then later log in to Gmail.com, the server will report that we haven't read that message yet. Pretty annoying, right? IMAP, on the other hand, defines commands that allow us to interact with the server in both directions so that we can avoid exactly this problem. Other advantages of IMAP include more advanced commands for searching through emails on the server as well as allowing clients to stay connected to the server for longer periods of time. So, when setting up email on your home computer or iPhone, there's a good chance that you want to use IMAP instead of POP. In fact, many email clients now pre-configure popular email services like Gmail, using IMAP as the default way for interacting with the server.</p>
 
 <p>So, let's check out how IMAP works by creating a connection to a Gmail IMAP server:</p>
@@ -270,9 +287,9 @@ pass password
 
 <p>And we're connected! New protocol, new set of commands. Each IMAP command needs to be prefixed with a different tag; by convention, we'll just use the letter "A" followed by a different number each time. To login, we can send a single command <code>login</code>, followed by a username and password.</p>
 
-<pre><code>a1 login username@gmail.com password
+<pre><code>a1 login unicodelovehote@gmail.com password
 * CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE
-a1 OK username@gmail.com Tommy MacWilliam authenticated (Success)
+a1 OK unicodelovehotel@gmail.com Unicode Love Hotel authenticated (Success)
 </code></pre>
 
 <p>Good to go! Let's again figure out how many messages are in our inbox with the <code>select</code> command:</p>
@@ -311,11 +328,15 @@ a3 OK [READ-WRITE] [Gmail]/Sent Mail selected. (Success)
 
 <p>Phew, that's enough IMAP for me. As you can see, IMAP gives us a bit more flexibility than POP in terms of querying our inbox for information. Still, both protocols are perfectly valid ways of retrieving email from a server.</p>
 
+<h2>Email Clients</h2>
+
 <p>If you've ever set up your email on a desktop client like Outlook or your mobile phone, you probably found some instructions online from your email provider and followed them step-by-step without thinking too much about them. However, now that we know all about SMTP, POP, and IMAP, hopefully this process makes a bit more sense. If you open up a mail client on your desktop or mobile device and go into your account settings, you'll probably see a section devoted to incoming mail and one for outgoing mail. Under incoming mail, there's a good chance you'll see some mention of the address of a POP3 or IMAP server, since that's how your mail client can download the emails that were sent to you. Remember, this process is very similar to a web browser retrieving data from a web server; instead of retrieving web page data, IMAP and POP will be used to transfer the contents of emails. Associated with the POP3 or IMAP server listed in your email app is probably a port, username, and password, which will be used to log into the server, as we saw before. Similarly, under the settings for outgoing mail, you should see some mention of an SMTP server that your app will connect to and issue a series of commands just like the ones we sent earlier. For example, the settings page for my iPod's outgoing mail looks something like this:</p>
 
 <p><img src="img/10-ipod-email.png" alt="iPod Email" /></p>
 
 <p>Similarly, the instructions for setting up an email client to work with Gmail can be found <a href="http://support.google.com/mail/bin/static.py?hl=en&amp;page=ts.cs&amp;ts=1668960&amp;from=75726&amp;rd=1">here</a>. Do those IMAP and SMTP settings make sense?</p>
+
+<h2>Phishing</h2>
 
 <p>Before we finish up, a quick note on security. We saw that the process of sending an email really just involves logging into a server and sending a series of textual commands. In the examples we saw, we used email addresses that we actually owned in order to send mail. However, there's nothing stopping us from typing any old email address we want when we use the <code>mail from</code> command or the <code>From</code> header. While Gmail's SMTP server has some security measures in place to prevent us from doing that, there's nothing stopping me from running my own SMTP server and sending emails as anyone in the world. So, an attacker might be able to convince unsuspecting email users into sending along their Facebook password, for example, by sending an official-looking email from <code>zuck@fb.com</code>. Of course, even if I send mail as <code>barack@whitehouse.gov</code>, I have no way of actually receiving mail to that address unless I can log into the POP3 or IMAP server that receives emails. Still, this kind of attack, called <strong>phishing</strong>, can lead to some pretty convincing spam!</p>
 
@@ -337,6 +358,8 @@ a3 OK [READ-WRITE] [Gmail]/Sent Mail selected. (Success)
 </ol>
 
 
+                </div>
+            </div>
         </div>
 
         <script type="text/javascript">

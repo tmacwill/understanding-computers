@@ -8,14 +8,19 @@
     </head>
     <body>
         <div class="container">
-            <p><link rel="stylesheet" type="text/css" href="css/6-internet.css" /></p>
-
-<div class="page-header">
+            <div class="row-fluid">
+                <div id="sidebar" class="span2">
+                    <ul id="toc"><li><a href="1-powerup.html">Power Up</a></li><li><a href="2-binary.html">Binary, ASCII, and Everything in Bit-ween</a></li><li><a href="3-cpu.html">C-3PU, Human-Processing Relations</a></li><li><a href="4-memory.html">Thanks for the Memory</a></li><li><a href="6-internet.html">Project Interweb: Make it Network</a></li><li><a href="7-domains.html">Eminent Domain Names</a></li><li><a href="9-protocols.html">Protocol Me, Maybe</a></li><li><a href="10-email.html">Snail Mail</a></li><li><a href="11-tcpip.html">Manual Transmission</a></li><li><a href="12-graphics.html">Picture This</a></li></ul>
+                </div>
+                <div id="main" class="span10">
+                    <div class="page-header">
     <h1>Chapter 6 <small>Project Interweb: Make it Network</small></h1>
 </div>
 
 
 <p>Now that we've seen how the hardware innards of your computer work, let's shift gears a bit and discuss everyone's favorite way to procrastinate: the Internet. So... what <em>is</em> the Internet? It's been described as <a href="http://www.gametrailers.com/videos/8nj7ho/internet-is-a-series-of-tubes">a series of tubes</a>, but the Internet is really a huge network of connected computers. Using the Internet, your machine can contact another machine, like the one powering cnn.com, in order to share information. Computers that power websites have a special name: <strong>servers</strong>. A server's job is to respond to requests from a <strong>client</strong>; the web servers behind CNN.com, for example, respond to requests for news from clients who navigate to the site's various articles! However, there's a pretty good chance that your computer doesn't have a wire running to the computer CNN.com runs on. Or, if it does... then I'm really not sure what to say. Instead, your request to CNN.com will likely be routed through several other machines in order to reach its destination.</p>
+
+<h2>A Route Through the Internet</h2>
 
 <p>Let's take a look at how my request to CNN.com actually reaches its destination. To do that, we can open up a terminal and use a program called <code>traceroute</code>, which makes a request to some destination on the Internet and displays each machine it visits on the way there. Here's what happened when I ran it from a computer living in Newark, New Jersey (where Snooki is my dedicated system administrator). Before you ask, yes, I do indeed name my computers after characters from <a href="http://en.wikipedia.org/wiki/Star_Fox_(series)">Star Fox</a>.</p>
 
@@ -24,6 +29,8 @@
 <p>Since my computer isn't directly connected to a computer powering CNN.com, my request will need to head through a few intermediate destinations on its way, much like a long flight might have a few layovers instead of a single, direct connection. Each one of rows in the above picture represents a device that my request went through on its "flight" to CNN.com. The first of these rows is my computer, where the request originated from. Every row after that represents a device called a <strong>router</strong>, whose purpose in life is to route a request for information to the correct destination. While each of these routers may not know how to contact CNN.com, each does seem to have <em>some</em> idea of how to get there. More specifically, each router has its own <strong>routing table</strong>, which maps ranges of destination addresses to other routers it's connected to. So, when my request for CNN.com reaches a router, that router will use its routing table to determine where my request should be sent to next, so it can reach its destination as quickly as possible. While most of the routers above don't know exactly how to get to CNN.com, they do know of another router that is a bit closer to my request's final destination. Eventually then, my request will be sent to a router that <em>does</em> know how to get to CNN.com, thus completing its flight.</p>
 
 <p>In the first column, we can see how many "hops" it took our request to reach each router. Next, we can see something that looks like an identifier for each device. From this output, it looks like our request started in Newark and then passed through Washington and Atlanta before reaching its final destination. The stars on row 14 simply indicate that that particular machine is choosing not to disclose any information about itself, for one reason or another. In the next column, we see each device's <strong>IP address</strong>, or a unique and identifying series of numbers, that can be used to contact the router. Finally, we can see how long it took from our request to get from the Jersey Shore to that machine. Based on this output, it took less than 20 milliseconds for my request to travel all the way to Atlanta, Georgia!</p>
+
+<h2>Networks</h2>
 
 <p>You may also have heard the term "router" while setting up your home Internet. In general, a router is used to create a <strong>network</strong>, which is simply a collection of connected computers. Several computers can be physically wired to a router, which can then serve as a communication hub by allowing each of the computers to talk to one another. For example, if Computer A and Computer B both have cables running to the same router, then Computer A can send a message by Computer B by sending it to the router, which can then forward the message along to Computer B. It just so happens that many modern routers also allow devices to connect to the network wirelessly, which does exactly the same thing, but doesn't require a physical cable running from each computer to a central router. In your home, your router is likely attached to a DSL or cable modem, which establishes a connection via a coaxial cable and data jack. An <strong>Internet Service Provider</strong>, or ISP, is then responsible for connecting you to the Internet. Large ISPs in the United States include Comcast and Verizon, whose service (or the service of one of their subsidiary companies) you may use in your own home! So, in order to connect to the Internet, your computer connects to some kind of router, which is connected to an ISP, which is ultimately connected to a huge network of other routers that can be used to ensure your request reaches its destination.</p>
 
@@ -35,15 +42,21 @@
 
 <p>This one looks a bit different. Unlike the previous output, it doesn't look like we can immediately figure out where my request went. However, let's take a closer look at that second column again. Turns out that routers are commonly identified using nearby airport abbreviations. A quick Google search shows that "mmu" is New Jersey's Morristown Municipal Airport, "ewr" is the Newark Liberty International Airport, and "nyc" is New York City. Now, take a look at the times between hops 7 and 8; looks like our time jumped from 1 millisecond to 68 milliseconds! What happened there, are all those Yankees fans slowing down the Internet in New York? While that <em>could</em> be the case, it looks like the next router is located in the United Kingdom, the London Heathrow Airport to be precise! Unsurprisingly, it takes a while for my request to make like Columbus and traverse the Atlantic Ocean.</p>
 
+<h2>IP Addresses</h2>
+
 <p>Let's take a closer look at that third column, the four numbers separated by dots. A device's IP address, much like your street address, describes a location to which other devices connected to the Internet can send messages. Each number in an IP address, called an <strong>octet</strong>, ranges from 0 to 255. So, how many bits is that? (Hint: why is it called an octet?) We know that with one bit we can represent all numbers &le; 1, with two bits numbers &le; 3, with three bits numbers &le; 7, and so on. Eventually, we'll find out that we can represent all numbers &le; 255 with exactly 8 bits. So, each octet in an IP address is 8 bits long, which means we have a total of 32 bits to work with. Hopefully that number rings a bell, as 32 bits is equal to one byte!</p>
 
 <p>Because all IP addresses are simply four numbers between 0&ndash;255, that must mean that we only have a fixed number of them. To figure out how many, let's think about an IP address as a sequence of 32 bits. We know that each of those bits can be either a 0 or a 1, which gives us only two possibilities. Since there are 32 of them, that means that the total number of unique sequences of 0s and 1s is 2<sup>32</sup>, or 4,294,967,296. At first glance, four billion addresses seems like plenty. (If not, then your intuition is better than mine!) However, the current world population is currently pushing seven billion people. On top of that, I have three different Internet-connected devices into my pocket, which isn't uncommon in today's world. Finally, companies like Google have millions of different servers, each needing some kind of IP address. Suddenly, those four billion addresses don't seem like that many.</p>
 
 <p>As an aside, this isn't the first (or last) time technology has outgrown existing infrastructure. Rumor has it that in 1981 Bill Gates was quoted as saying "640K of memory ought to be enough for anybody" to address concerns with memory limitations of an IBM computer. In the Internet's earliest days, thoughts of supporting over 4 billion interconnected devices probably weren't at the front of engineers' minds!</p>
 
+<h2>IPv6</h2>
+
 <p>So if we're running out of IP addresses, what can we do? After all, without an IP address, a device cannot be contacted by other devices connected to the Internet. One solution is to simply increase the size of IP addresses, which would increase the total number of available addresses. The 32-bit IP address is known as <strong>IPv4</strong>, which was released in the early 1980s. Now, a standard known as <strong>IPv6</strong> is starting to gain momentum. While an IPv4 address looks something like 60.254.153.16, an IPv6 address is instead a series of hexadecimal digits like 2001:0db8:85a3:0042:1000:8a2e:0370:7334. Hexadecimal, like binary, simply represents numbers using a different base; while binary uses base 2, hexadecimal uses base 16. Since we only have 10 different digits to work with, hexadecimal uses "a" to represent the number 10, "b" to represent 11, and so on until "f" represents 15. Each hexadecimal digit is 4 bits, so IPv6 addresses are 128 bits in length, which creates a total of 2<sup>128</sup> (or 3.4 &times; 10<sup>38</sup>) different addresses. To be precise, IPv6 allows 340,282,366,920,938,463,463,374,607,431,768,211,456 different IP addresses. For an always up-to-date count of how many IPv6 addresses are left in the world, check out <a href="http://samsclass.info/ipv6/exhaustion.htm">this website</a>. Assuming the world's population is about 7 billion people, that means we can have have 4.8 &times; 10<sup>28</sup> different IPv6 addresses <em>per person</em>. That's a whole lot of iPhones! Of course, the people behind IPv4 probably said something similar 30+ years ago...</p>
 
 <p>The adoption of IPv6 has been slow but steady. June 6, 2012 was dubbed World IPv6 Launch, and major Internet companies were encouraged to finally enable IPv6 support once and for all. The event was even advertised with the tagline "this time, it's for real." About a quarter of the world's top 500 sites have IPv6 enabled, and about <a href="http://www.google.com/ipv6/statistics.html#tab=ipv6-adoption">1% of Google users connect using IPv6</a>. However, Google does note that the number of IPv6 users has increased by a factor of 2 since last year, which is promising for IPv6 adoption.</p>
+
+<h2>NAT</h2>
 
 <p>Making addresses bigger isn't the only way we can conserve the IP address space. In fact, you probably don't need the laptop sitting on your kitchen table to be accessible by any other computer on the Internet (and or security reasons, you might not want this either, but more on that later). Because you don't need other machines on the Internet contacting your computer, there's no need to give it a unique, publicly-accessible IP address. Your computer will indeed need some kind of IP address in order to connect to the Internet, but that's where a technology called <strong>NAT</strong>, or Network Address Translation comes in. Using NAT, the router connecting your home computer to the Internet can assign it a <strong>private</strong> IP address, or one that cannot be used by any ole' device on the Internet to reach your computer. Typically, private IP addresses take the form <code>10.x.y.z</code>, <code>172.16.y.z</code>, and <code>192.168.y.z</code>, where x, y, and z are also numbers between 0 and 255, which may look familiar if you've ever set up a home wireless network. Now, only your router has a single public IP address, while all of the devices on your home network have private IP addresses that don't take away from the pool of 2<sup>32</sup> IPv4 addresses!</p>
 
@@ -87,6 +100,8 @@
 
 <p>Okay, looks like my laptop has a private IP of 10.0.0.1. Remember, anything in the form <code>10.x.y.z</code> is a private IP address that isn't world-accessible, so a computer that's not on my network can't simply send information to my laptop. Once my request reaches the router, its source address will change to that of the router, 74.125.26.228 in this case, and the source port, 1000, will be added to the request. Reddit will eventually receive my request and send back a picture of a cat to the IP address included in the request, which is still 74.125.26.228 with a source port of 1000. Because Reddit sent my impending feline friend to my router's IP address, it will eventually end up at the router in my home. Then, my router can look at the source port attached to the response to look up the private IP the request originated from. Finally, because my laptop is on the same network as my router, the Reddit data will reach my laptop, and I can enjoy a hearty chuckle. This process certainly sounds pretty involved, but recall how few milliseconds it took to reach Reddit in the United Kingdom!</p>
 
+<h2>Determining IP Addresses</h2>
+
 <p>We've seen some examples of IP addresses so far, but how did we come up with those numbers? I <em>could</em> just tell you that I'm a really good guesser so you'd be really impressed with me, but I'll be a magician who reveals his tricks just this once. In order to find out the IP address of a website, we can use a special program called <code>host</code>. If we open up a command prompt on a Mac or Linux machine, we can run the following:</p>
 
 <pre><code>host cnn.com
@@ -98,6 +113,8 @@
 </code></pre>
 
 <p>We'll see some different output. One of the last IP addresses output by the <code>host</code> program is an IPv6 address. So, it looks like Google is ready for IPv6, while CNN doesn't appear to be embracing the latest and greatest quite yet!</p>
+
+<h2>Movie Break</h2>
 
 <p>Phew, it's time for a break. Check out this cinematic masterpiece for a summary of how requests travel through the information superhighway!</p>
 
@@ -113,9 +130,13 @@
 <br />
 
 
+<h2>DHCP</h2>
+
 <p>So far, we've taken for granted that a computer connected to the Internet will have an IP address. Let's now take a look at how that number actually gets assigned. As you move among different networks and even as you connect to the same network, your computer's IP address will change. This is a bit different than the computers that power websites like cnn.com, which typically have some mechanism for maintaining the same IP address or set of IP addresses. More on that later, though!</p>
 
 <p><strong>DHCP</strong>, or dynamic host configuration protocol, is commonly used to obtain an IP address on a network. First, a computer that wishes to connect to the network, referred to here as the DHCP client, broadcasts a request to the network with a message that says "Here I am. I'd like to join." Then, a device called the DHCP server (which will eventually be responsible for assigning an IP address to the client) will respond to the client's request, informing the client what its IP is. Now, the client knows exactly where it should send future messages during the process of obtaining an IP address, so it won't needlessly send messages to machines that aren't involved in the process. Next, the client will send another message to the DHCP server, this time formally requesting an IP address on the network. Upon receiving this request, the DHCP server will respond and offer the client an IP address on the network. In the meantime, the server will hold that IP address inside, so no other devices can have it until the client responds. Finally, the client will send one last message to the DHCP server, acknowledging that it has received the IP address and has begun using at. At this point, the client is connected and ready to go!</p>
+
+<h2>IP Address Allocation</h2>
 
 <p>This process assumes, though, that the DHCP server somehow knows which IP addresses it can assign. For example, a DHCP server in North America needs to ensure that it doesn't assign an IP address that is already in use by a device in Europe. To mitigate this issue, different ranges of IP addresses are allocated to different physical regions of the globe. More specifically, different ISPs around the world have been allocated blocks of IP addresses by an organization called <strong>ICANN</strong>, the Internet Corporation for Assigned Names and Numbers. Here's a map created by the author of <a href="http://xkcd.com">XKCD</a>, one of my favorite webcomics.</p>
 
@@ -172,6 +193,8 @@
 </ol>
 
 
+                </div>
+            </div>
         </div>
 
         <script type="text/javascript">

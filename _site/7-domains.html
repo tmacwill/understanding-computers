@@ -8,9 +8,12 @@
     </head>
     <body>
         <div class="container">
-            <p><link rel="stylesheet" type="text/css" href="css/7-domains.css" /></p>
-
-<div class="page-header">
+            <div class="row-fluid">
+                <div id="sidebar" class="span2">
+                    <ul id="toc"><li><a href="1-powerup.html">Power Up</a></li><li><a href="2-binary.html">Binary, ASCII, and Everything in Bit-ween</a></li><li><a href="3-cpu.html">C-3PU, Human-Processing Relations</a></li><li><a href="4-memory.html">Thanks for the Memory</a></li><li><a href="6-internet.html">Project Interweb: Make it Network</a></li><li><a href="7-domains.html">Eminent Domain Names</a></li><li><a href="9-protocols.html">Protocol Me, Maybe</a></li><li><a href="10-email.html">Snail Mail</a></li><li><a href="11-tcpip.html">Manual Transmission</a></li><li><a href="12-graphics.html">Picture This</a></li></ul>
+                </div>
+                <div id="main" class="span10">
+                    <div class="page-header">
     <h1>Chapter 7 <small>Eminent Domain Names</small></h1>
 </div>
 
@@ -24,7 +27,7 @@
 <pre><code>74.125.226.199 bing.com
 </code></pre>
 
-<p>Now, open up a web browser and head to bing.com. Toto, we're not in Redmond anymore. When we added that line to our local hosts file, we effectively created a new entry in the DNS phonebook that says "bing.com corresponds to the IP address 66.228.37.113." If you type that IP into your web browser, you'll see that it's simply one of Google's (many) IP addresses. So, when your web browser saw "bing.com," it was told that that domain resolved to one of Google's IPs, which led you to Google's homepage.</p>
+<p>Now, open up a web browser and head to bing.com. Toto, we're not in Redmond anymore. When we added that line to our local hosts file, we effectively created a new entry in the DNS phonebook that says "bing.com corresponds to the IP address 74.125.226.199" If you type that IP into your web browser, you'll see that it's simply one of Google's (many) IP addresses. So, when your web browser saw "bing.com," it was told that that domain resolved to one of Google's IPs, which led you to Google's homepage.</p>
 
 <p>Given the massive size of the Internet, it's probably not the best idea to keep the list of all domain names in a single text file. Not only would that be impractical to keep everyone on the Internet up-to-date with the latest version, but if that file were ever compromised, someone could wreak havoc on the Internet. So, it makes more sense to distribute that information across multiple machines, called DNS servers. Rather than keep track of the entire domain name space, each DNS server typically maintains a smaller subset of all the domains that have been registered on the Internet and their corresponding IP addresses.</p>
 
@@ -140,6 +143,8 @@
 </ol>
 
 
+                </div>
+            </div>
         </div>
 
         <script type="text/javascript">

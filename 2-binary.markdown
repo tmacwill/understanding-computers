@@ -3,8 +3,6 @@ layout: default
 title: Binary, ASCII, and Everything in Bit-ween
 ---
 
-<link rel="stylesheet" type="text/css" href="css/2-binary.css" />
-
 <div class="page-header">
     <h1>Chapter 2 <small>Binary, ASCII, and Everything in Bit-ween</small></h1>
 </div>
@@ -14,6 +12,8 @@ You've probably heard that computers are all about zeroes and ones. But... what 
 Let's say I ask you a question like "Do you like cats?" There are two possible answers to this question: yes and no. We can represent your answer to this question using one **bit**, which is the most basic unit of information in computing. A bit can only have two possible values, which we can think of as "on" or "off," "true" or "false," or finally, if you're a computer, "0" or "1". We can also use a bit to represent, for example, whether a light is on or off, the result of a coin flip, or the sign of a magnet.
 
 Answering the question "How much do you like cats?" is a _bit_ different (pun fully intended). This question has more than one answer; you could say you kinda like cats, you really love cats, you couldn't live without cats, and so on. You could also think about answering this question on a scale from one to five, a scale from one to ten, etc. Either way, we'll need more than just one bit to represent your love of all things feline, since a 0 or a 1 doesn't cover all of the possible answers to this question.
+
+## The Decimal System
 
 However, before we talk any more about how computers represent numbers, let's quickly review how we as humans are probably used to representing numbers. According to my laptop's keyboard, we have ten digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. (We call this the **decimal** system.) That means that we can represent ten different numbers using only one digit. Of course, we're going to start running into issues when we want to represent the number that is one more than 9. Luckily, we've already solved this problem: one more than 9 is 10. To create the number 10, we created a new space for a second digit, which you may remember as the "tens place" from grade school (that is, if you weren't too busy playing with yo-yos like I was). Similarly, we have a hundreds place, thousands place, and so on for larger numbers. When you were first learning to count, you may have used blocks like the below to represent this. A single cube represents the ones place, a column represents the tens place, a rectangle represents the hundreds place, and so on.
 
@@ -65,6 +65,8 @@ Now, to figure out what number is represented by those digits, we multiply the d
 (1 &times; 10<sup>4</sup>) + (2 &times; 10<sup>3</sup>) + (3 &times; 10<sup>2</sup>) + (4 &times; 10<sup>1</sup>) + (5 &times; 10<sup>0</sup>) =
 10000 + 2000 + 300 + 40 + 5 = 12345
 
+## The Binary System
+
 Make sense? Alright, back to those zeros and ones. Remembering _ten_ different digits can be hard work. Heck, I can barely remember birthdays. Let's make one tiny change to the above table. Rather than having places for 10<sup>0</sup>, 10<sup>1</sup>, 10<sup>2</sup>, and so on, let's instead create places for 2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup>, and so on:
 
 <table style="text-align: center">
@@ -102,6 +104,8 @@ Sweet! If we now want to represent the number four now, it looks like we're goin
 Let's do one more for good measure. To represent five in binary, we'll want to add one to our representation of 4, which we can do by flipping the last bit. This gives us:
 
 (1 &times; 4) + (0 &times; 2) + (1 &times; 1) = 5
+
+## Converting from Decimal to Binary
 
 Alright, counting was fun, but let's now try converting a slightly larger binary number into decimal. Our goal now is to figure out what number is represented by 10110. To do so, let's start with a table that tells us what each of the places in a binary number is.
 
@@ -219,6 +223,8 @@ Now, let's add everything up:
 
 So, 01101 is the lucky number 13!
 
+## Converting from Binary to Decimal
+
 What if we want to go the other way? Let's say we have the decimal number 14, and we want figure out its binary representation. Using the same table, we can work backwards by filling in each space. The process of converting a decimal number to binary is just like making change at a cash register. So that you don't annoy your customers, you always want to make change using as few coins as possible.
 
 <table style="text-align: center">
@@ -320,6 +326,8 @@ Alrighty, 2 to go. That means the next space, the 2s place, must be a 1, since t
 <br />
 
 Phew! The binary representation of 14 is 01110.
+
+## Adding Binary Numbers
 
 Now that we can go back and forth between binary and decimal, let's try doing a bit of math. First, let's try adding together two binary numbers: 0011 and 0110. The naive way to go about this might be to convert 0011 to the decimal value 3, 0110 to the decimal value 6, add 6 and 3 to get 9, and finally convert 9 back to the binary value 1001. However, that felt like a lot of unnecessary steps (and kinda like cheating). Instead, we can add together binary values using the same process we've used since grade school for adding together decimal values.
 
@@ -470,11 +478,15 @@ And now, we can finish this off without a hitch:
 </table>
 <br />
 
+## Bitwise Operators
+
 Great! We got exactly the answer we were expecting to get: 1001, or 9. Adding sure was fun, so let's try doing something else. Let's say we take that sequence of bits, 01001, and shift every bit one place to the left. Now, we'll get a sequence that looks like 10010. Turns out this is the binary representation of 18, which just so happens to be 9 &times; 2. Coincidence? Let's do the same thing with another random sequence of bits.... 0101001 looks good to me. In decimal, this is the value 41. Let's shift every bit to the left again, which gives us 1010010. This is in fact the number 82, which is again twice our original value.
 
 It turns out that shifting bits to the left is equivalent to doubling the number! If we shift bits to the left _n_ times, then we'll double our number _n_ times. Put another way, shifting bits left _n_ times is the same as multiplying the number by 2<sup>_n_</sup>. What about shifting bits in the other direction, to the right? As you might have guessed, this the same as cutting the number in half _n_ times, or dividing by 2<sup>_n_</sup>.
 
 So, why is this useful? As you probably learned in grade school, multiplying two large numbers together is a difficult and time-consuming thing to do. It's similarly relatively time-consuming for your computer to do the same. However, it's pretty easy for computers (and us!) to shift the bits of a binary number to the left or to the right. So, this can make the process of multiplying large numbers much more efficient!
+
+## Negative Numbers in Binary
 
 All of the numbers we've looked at so far have been greater than zero. We can, though, use binary to represent negative numbers as well. One approach would be to use the first bit in a binary number to designate whether the number is positive, which is called the **sign-and-magnitude** method. In this representation, 0001 would be a positive 1, while 1001 would be a -1. This works, but there are a few problems with this approach. First, it seems kinda wasteful to dedicate an entire bit just to representing whether or not the number is positive or negative. Second, this representation has multiple ways of expressing zero! For example, both 0000 and 1000 are interpreted as zero, even though -0 doesn't make any sense. That's gonna get pretty confusing! Finally, this representation doesn't allow for addition, which seems like it might be... a good thing to support. For example, 1001 + 0001 = 1010, which is like saying 1 - 1 = -2. Oops.
 
@@ -484,6 +496,8 @@ Let's try a different way of representing negative numbers called **two's comple
 
 Woah! That worked out well. With this representation, which admittedly feels a lot less intuitive, we're able to solve the problems we ran into with sign and magnitude: we're not really wasting a bit anymore, we have only one representation of zero, and addition works again. Let's just make sure quickly: 5 + -5 should be zero, and 1011 + 0101 = 0000 (dropping the last one that we carried). Sweet deal! Don't worry if two's complement is still a bit confusing, as we'll really only be dealing with positive numbers throughout.
 
+## An Attempt at Comic Relief
+
 Alright, hopefully jokes like this one now make a bit more sense!
 
 ![10 types](img/2-types.jpg)
@@ -491,6 +505,8 @@ Alright, hopefully jokes like this one now make a bit more sense!
 See, didn't that make it all worth it? Aaaaaand for those of you groaning because you've heard that joke a million times already:
 
 ![10 types burn](img/2-types-burn.gif)
+
+## Character Encodings
 
 I dunno about you, but I'm getting tired of numbers. In fact, we probably use letters (and maybe other symbols) more than we use numbers while using a computer on a daily basis. But, computers are still all about zeroes and ones, so how can we represent non-numeric values?
 
@@ -502,9 +518,13 @@ You may also have heard of Morse Code, which is another character encoding. Here
 
 <img src="img/2-morse.jpg" style="width: 600px" alt="Morse Code" />
 
+## ASCII
+
 Since flags and sounds are a bit impractical for your computer, a character encoding called **US-ASCII** is more common. ASCII defines numerical representations for 128 different "characters," where a character can be a letter, number, symbol, or Mickey Mouse. For example, the character "A" is represented by the number 65 in ASCII, and the character "a" is represented by the number 97. So, whenever we need to represent the character "A" using ASCII, we can simply use the number 65 instead, just like a ship would fly a blue and white flag. From your computer's perspective, then, the sequence of characters "CS E-1" could be represented by the sequence of decimal numbers "67 83 32 69 45 49", which ultimately will be stored as the sequence of binary numbers "01000011 01010011 00100000 01000101 00101101 00110001". Since we've already seen that binary can be used to represent numbers using only zeroes and ones, we can use ASCII to represent letters using zeroes and ones as well. Here's the complete ASCII table:
 
 ![ASCII Table](img/1-ascii.gif)
+
+## Unicode
 
 The first 32 characters in the table are reserved for **control sequences**, which back in the day could be used to control physical devices like printers. Not only are those not so relevant any more, but what if we go to jolly old England and inquire as to the price of a spot of tea? The standard ASCII table doesn't have the character &pound;, but luckily, ASCII isn't the only character encoding around. While we also have an extended version of ASCII that is double in size, an encoding called **UTF-8** (a form of **unicode**) which contains definitions for 1,112,064 different characters, is commonly used today. In fact, there's a good chance that any website you're browsing is using UTF-8 (and there's a 100% chance this one is). Among the millions of UTF-8 characters are the "snowman" (&#9731;), "heavy black heart" (&#10084;), and even the "neither less than nor greater than" (&#8824;), not to be confused with the more common "equal to" (=). Still, at the end of the day, that snowman is really just represented as a series of bits that can be translated into a winter wonderland using an agreed-upon standard.
 

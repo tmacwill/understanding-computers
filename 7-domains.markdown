@@ -3,8 +3,6 @@ layout: default
 title: Eminent Domain Names
 ---
 
-<link rel="stylesheet" type="text/css" href="css/7-domains.css" />
-
 <div class="page-header">
     <h1>Chapter 7 <small>Eminent Domain Names</small></h1>
 </div>
@@ -17,7 +15,7 @@ In the early days of the Internet, the big phonebook of IP addresses was simply 
 
     74.125.226.199 bing.com
 
-Now, open up a web browser and head to bing.com. Toto, we're not in Redmond anymore. When we added that line to our local hosts file, we effectively created a new entry in the DNS phonebook that says "bing.com corresponds to the IP address 66.228.37.113." If you type that IP into your web browser, you'll see that it's simply one of Google's (many) IP addresses. So, when your web browser saw "bing.com," it was told that that domain resolved to one of Google's IPs, which led you to Google's homepage.
+Now, open up a web browser and head to bing.com. Toto, we're not in Redmond anymore. When we added that line to our local hosts file, we effectively created a new entry in the DNS phonebook that says "bing.com corresponds to the IP address 74.125.226.199" If you type that IP into your web browser, you'll see that it's simply one of Google's (many) IP addresses. So, when your web browser saw "bing.com," it was told that that domain resolved to one of Google's IPs, which led you to Google's homepage.
 
 Given the massive size of the Internet, it's probably not the best idea to keep the list of all domain names in a single text file. Not only would that be impractical to keep everyone on the Internet up-to-date with the latest version, but if that file were ever compromised, someone could wreak havoc on the Internet. So, it makes more sense to distribute that information across multiple machines, called DNS servers. Rather than keep track of the entire domain name space, each DNS server typically maintains a smaller subset of all the domains that have been registered on the Internet and their corresponding IP addresses.
 

@@ -54,3 +54,15 @@ p, li {
     page-break-before: always;
     margin-top: 40px;
 }
+
+.container {
+    width: 90% !important;
+}
+
+#toc {
+    margin-top: 100px;
+}
+
+#toc, #toc li {
+    list-style-type: none;
+}
