@@ -95,19 +95,17 @@ Because each raster graphic image has a grid of fixed-size squares, we can't sim
 
 Alrighty, that's it for the bitmap format. Bitmaps are certainly straightforward, but the way they represent images is pretty inefficient. For example, consider the bitmap below:
 
-    GERMAN IMAGE
+![Germany](img/12-germany.png)
 
 What do the bytes of this bitmap look like? Well, since the top of the flag is just a solid color, we're going to have a wholeeeeee lot of bytes that are exactly the same. Wouldn't it be nice if we could just say "here come 100 red pixels" rather than listing out each pixel individually? Turns out we're about 25 years too late, since a company called CompuServe beat us to it in 1987 with the development of **GIF**, or the Graphics Interchange Format. By the way, whether "GIF" is pronounced with a soft "g" or a hard "g" is a holy war older than time itself. Word on the street is the original developers of GIF wanted it to be pronounced like the Jif peanut butter brand, but dictionaries say both pronunciations are correct. Unlike bitmaps, GIFs are **compressed**, which means that GIFs can represent exactly the same information as some bitmaps using a smaller number of bits. Essentially, if two pixels that are horizontally adjacent are exactly the same, then GIF won't bother storing the information redundantly.
 
 Of course, this method of compressing images isn't perfect. For example, consider this bitmap instead:
 
-    FRANCE IMAGE
+![France](img/12-france.png)
 
 Now, we have lots of repetition in the vertical direction rather than the horizontal direction. Unfortunately, our trick isn't going to work as well this time, since it's designed to handle the Germans, not the French (though we are still going to get some compression, compared to a bitmap). Sure enough, if we compare the sizes of these two bitmaps, the German flag is indeed smaller than the French flag, even though the images have the same width and height, and it takes the same number of bytes to represent a red pixel and a blue pixel.
 
 This method of compression is called **lossless**, which means we're retaining all of the information about an image. After all, saying that 2 &times; 5 = 10 is exactly the same as saying 2 + 2 + 2 + 2 + 2 = 10, it just takes us a shorter amount of time to write it down. So, any lossless compression technique will represent _all_ of the original data in a file. Though we've seen compression in the context of images, we can actually compress any old file. For example, you have have emailed a ZIP of documents to a co-worker or downloaded a RAR from a website. Both ZIP and RAR, along with other formats like GZIP and LZW, are capable of compressing any old bytes you throw at them, which can be handy if you're looking to save space on your hard drive.
-
-    ANIMATED GIFS
 
 ## Lossy Compression
 
@@ -127,15 +125,23 @@ GIF is a lossless format, while **JPEG**, created by the Joint Photographic Expe
 
 So, lossy compression worked great on those large digital photos, but here's a situation where it won't work so hot:
 
-    GREEN IMAGE
+![Square](img/12-square.png)
 
 Here, every pixel in this very small image is absolutely essential to retaining the image's meaning. So, using lossy compression here probably isn't the best idea. By the way, the actual method through which JPEG images are compressed is pretty complicated and uses lots of math. I'm no good at math, but if you're interested in the particulars, check out the [Wikipedia article](http://en.wikipedia.org/wiki/JPEG).
+
+## Other Image Formats
+
+    ANIMATED GIFS
+
+    ALPHA
 
 ## Vector Graphics
 
 Wouldn't it be cool if we _could_ somehow enlarge an image while preserving all of its detail? While it looks like we can't do that with raster graphics, we _can_ do that with **vector graphics**. Unlike raster graphics, vector graphics doesn't involve turning an image into a grid and storing the values of individual pixels. Instead, vector graphics stores images using mathematical black magic. For example, let's say we want to represent a circle. In raster graphics, we'd create a grid of squares and then trace out a circle by filling in squares with some color. Using vector graphics, we'd instead say that the equation for a square looks something like _x_<sup>2</sup> + _y_<sup>2</sup> = _r_. Now, our representation doesn't depend on any pixels. If we want to create a larger circle, we can just pick a larger value for _r_, and our equation will create a larger circle without any loss in quality. So, we can create a raster graphic simply by picking a size for the image, then using the equation to figure out which pixels should be colored. Yay math!
 
 That worked out well for a circle, but how are we supposed to come with an equation for the shocked cat photo above? After all, the level of his shocked-ness can't be contained by a couple variables and some algebra. Rather than try to come up with a single equation, we'll instead divide up shocked cat into a number of smaller polygons, each of which _can_ be described with an equation. For example, the fonts on your computer have some kind of vector representation that was created by picking some **control points**, or important points on characters, and fitting some curves to pass through those points. While we just saw how easy it is to go from a vector graphic to a raster graphic, it's not so simple to go the other way around, since we need to pull some equations out of a hat that approximate the raster graphic.
+
+**SVG** is a common format for vector graphics. In fact, many of the diagrams on Wikipedia are saved as vector graphics images. For example, [here](http://en.wikipedia.org/wiki/File:Virtual_Private_Network_overview.svg) is a diagram of a VPN (remember what that is?). At the bottom of the page, there are a few different options for downloading this image as a raster graphics image. Essentially, all we're doing here is plugging in some values into the equations that describe this image, which can give us a rendering of any size we want. Because we're using SVG, there will be no loss in quality if we choose 2000px compared to choosing 200px!
 
 ## Seam Carving
 
@@ -161,17 +167,12 @@ Cool, huh? Simply by comparing each pixel to the ones around it, we've actually 
 
 Woah! That looks _significantly_ less distorted. By removing low energy pixels, we were able to reduce this image's size without making it look silly. This technique is called **seam carving**, also known as **content-aware scaling** in image editors like Photoshop. If you'd like to try this on some images of your own, you can download the free [Seam Carving GUI](https://code.google.com/p/seam-carving-gui/) for Windows, Mac, and Linux.
 
-## 3D Graphics
-
-    MESH
-    SUBDIVISION SURFACE
-
-## GPUs
-
-    GRAPHICS PIPELINE FROM 175
+We'll leave Link to save the Princess Zelda. Don't worry, he always does. Now, let's continue our foray into multimedia with a discussion of audio and video!
 
 <div class="page-header page-break">
     <h1>Practice Problems</h1>
 </div>
 
 1. What's the difference between additive and subtractive color mixing? Give an example of each.
+
+1. What's the difference between lossless compression and lossy compression? Give an example of a file format that uses each.

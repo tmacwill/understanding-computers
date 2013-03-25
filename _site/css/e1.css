@@ -66,3 +66,7 @@ p, li {
 #toc, #toc li {
     list-style-type: none;
 }
+
+#toc li {
+    margin-bottom: 10px;
+}
