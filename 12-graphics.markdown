@@ -11,19 +11,19 @@ We've talked a lot about pictures of cats, but it's time for us to put our money
 
 ## File Formats
 
-It turns out that while cat photos are by far the most adorable things your computer can store, they're _still_ just 0s and 1s. Getting tired of me saying that yet? Waaaay back in the day, we talked about how we can translate 0s and 1s into textual data and love hotels. Remember how? We used something called a character encoding, which, like Morse Code, simply defined a way to translate numbers into characters. We said that the number 65 represented a capital 'A' in ASCII, and some bigger number represented a love hotel in UTF-8. So, we know how we can store plain old text, but we often want to store more interesting information. For example, I send all of my emails in a pink [Comic Sans](http://bancomicsans.com/main/) on a glitter background. While ASCII or UTF-8 can represent the textual content of my email, ASCII doesn't define a way to specify a font or color for my text. As we'll see later, we can use HTML to describe these features of text, but when I send someone a Microsoft Word document, the name of the file ends in `.doc` (or `.docx`), which isn't quite HTML. That `.doc` is called the filename **extension**, which is often used to indicate a file's **format**. Just as protocols like HTTP defined a standardized set of rules, the purpose of a file format is to define a standardized way of representing information. For example, somewhere in the overwhelmingly long [specification](http://download.microsoft.com/download/0/B/E/0BE8BDD7-E5E8-422A-ABFD-4342ED7AD886/Word97-2007BinaryFileFormat%28doc%29Specification.pdf) for .doc files, Microsoft has specified how to store pink Comic Sans text. By the way, I wouldn't recommend actually sitting down and reading that novel, which actually contains sentences like "CHPX's are a grpprl, not a CHP" (page 35). Sounds like something out of Harry Potter's _Fantastic Beasts and Where to Find Them_ if you ask me. In any event, a file's format simply tells your computer how the bits of a files should be interpreted. As we'll see, those 0s and 1s could represent an image, a sound, or a video, but without any kind of rules for interpreting a file's bits, they're essentially meaningless!
+It turns out that while cat photos are by far the most adorable things your computer can store, they're _still_ just 0s and 1s. Getting tired of me saying that yet? Waaaay back in the day, we talked about how we can translate 0s and 1s into textual data and love hotels. Remember how? We used something called a character encoding, which, like Morse Code, simply defined a way to translate numbers into characters. We said that the number 65 represented a capital 'A' in ASCII, and some bigger number represented a love hotel in UTF-8. So, we know how we can store plain old text, but we often want to store more interesting information. For example, I send all of my emails in a pink [Comic Sans](http://bancomicsans.com/main/) on a glitter background. While ASCII or UTF-8 can represent the textual content of my email, ASCII doesn't define a way to specify a font or color for my text. As we'll see later, we can use HTML to describe these features of text, but when I send someone a Microsoft Word document, the name of the file ends in `.doc` (or `.docx`), which isn't quite HTML. That `.doc` is called the filename **extension**, which is often used to indicate a file's **format**. Just as protocols like HTTP defined a standardized set of rules, the purpose of a file format is to define a standardized way of representing information. For example, somewhere in the overwhelmingly long [specification](http://download.microsoft.com/download/0/B/E/0BE8BDD7-E5E8-422A-ABFD-4342ED7AD886/Word97-2007BinaryFileFormat%28doc%29Specification.pdf) for .doc files, Microsoft has specified how to store pink Comic Sans text. By the way, I wouldn't recommend actually sitting down and reading that novel, which actually contains sentences like "CHPX's are a grpprl, not a CHP" (page 35). Sounds like something out of Harry Potter's _Fantastic Beasts and Where to Find Them_ if you ask me. In any event, a file's format simply tells your computer how the bits of a files should be interpreted. As we'll see, those 0s and 1s could represent an image, a sound, or a video, but without any kind of rules for interpreting a file's bits, they're essentially meaningless! A file's extension usually indicates the format of the file, but isn't a definitive answer. If I change a file's name from `important.doc` to `important.whatever`, I'll still be able to open it in Microsoft Word!
 
 Let's take a look at an example. [Here](img/12-ppm.ppm) I have a big text file with a whole bunch of numbers. If you download this file and open it up using a program like TextEdit on a Mac or Notepad on Windows, you'll see a big list of random numbers. So, it looks like our text editing program is opening up this file and interpreting the bits as ASCII representations of characters. Now, try opening this same file in a different program, called [GIMP](http://gimp.org/). GIMP is an image editing program, just like Photoshop, available for Windows, Mac, and Linux free of charge. Once you've downloaded and installed GIMP, open up that same file. You should see something like the below.
 
 ![Shocked Cat](img/12-ppm.jpg)
 
-I know the first time I did this, I was as shocked as that cat is. That file you downloaded is in a format called **PPM**, or Portable PixMap. PPM is just one way of representing an image, but using only ASCII characters! So, that same sequence of bits has a completely different meaning when given to a different application. We never changed the bits of the PPM file, we just interpreted them in two different ways: as an image and as text.
+Shocked cat can't believe it either. That file you downloaded is in a format called **PPM**, or Portable PixMap. PPM is just one way of representing an image, but using only ASCII characters! So, that same sequence of bits has a completely different meaning when given to a different application. We never changed the bits of the PPM file, we just interpreted them in two different ways: as an image and as text.
 
-While browsing the Internet or the photos from your last vacation, you probably encountered a few different file formats specific to images. For example, a photo of your cat from your digital camera may be stored as a JPEG, an old piece of feline clip art may be stored as a BMP (or bitmap), and a [cat trying to jump](http://2.media.collegehumor.cvcdn.com/78/84/ce207c391303ce7b998b2c9d2bb300ce-cat-tries-to-jump-off-toilet.gif) may be stored as a GIF. All of these acronyms are just different ways of representing images using binary data. So, when an app like Preview or Photoshop opens up an image, it will first need to figure out what format the image is in, and then interpret the bits of the file accordingly!
+While browsing the Internet or the photos from your last vacation, you've probably encountered a few different file formats specific to images. For example, a photo of your cat from your digital camera may be stored as a JPEG, an old piece of feline clip art may be stored as a BMP (or bitmap), and a [cat trying to jump](http://2.media.collegehumor.cvcdn.com/78/84/ce207c391303ce7b998b2c9d2bb300ce-cat-tries-to-jump-off-toilet.gif) may be stored as a GIF. All of these acronyms are just different ways of representing images using binary data. So, when an app like Preview or Photoshop opens up an image, it will first need to figure out what format the image is in, and then interpret the bits of the file accordingly!
 
 ## Raster Graphics
 
-Let's first take a look at the bitmap format, one of the simplest ways to store an image. Think of an image as a grid of squares, where each square is filled with only one color; this is kind of structure is called a **raster graphics image**. Each of these small squares, called a **pixel**, can be filled with exactly one color. Check out the picture below. At the top-left, we have an image smiley face. (He's happy because he's about to learn about raster graphics, which sounds like an impressive thing to know about.) Over to the right, we have a mega enlarged version of the same image, where we can make out the individual squares of the grid that creates the image smiley face. In fact, you might describe this image as "pixelated," since we can see the individual pixels making up the image. We can see that each of these squares is just a single color, but once we shrink the image down a bit, it gets hard to tell where one square ends and another begins, which allows us to see a happy face rather than a bunch of squares.
+Let's first take a look at the bitmap format, one of the simplest ways to store an image. Think of an image as a grid of squares, where each square is filled with only one color; this is kind of structure is called a **raster graphics image**. Each of these small squares, called a **pixel**, can be filled with exactly one color. Check out the picture below. At the top-left, we have an image of a smiley face. (He's happy because he's about to learn about raster graphics, which sounds like an impressive thing to know about.) Over to the right, we have a mega enlarged version of the same image, where we can make out the individual squares of the grid that creates the image smiley face. In fact, you might describe this image as "pixelated," since we can see the individual pixels making up the image. We can see that each of these squares is just a single color, but once we shrink the image down a bit, it gets hard to tell where one square ends and another begins, which allows us to see a happy face rather than a bunch of squares.
 
 ![Raster Graphics](img/12-raster.png)
 
@@ -50,6 +50,8 @@ Now, let's try adding another color to the mix. The color yellow absorbs blue li
 ![Double Subtractive Color](img/12-subtractive-double.png)
 
 In this subtractive model, then, we can say that cyan and yellow make green. To round out our three primary colors, we'll add the color magenta, since that absorbs green light. So, our three primary colors in the subtractive color model are cyan, magenta, and yellow, or CMY (sometimes called RYB). When we look at ink on paper or paint on a canvas, surfaces will be illuminated by white light from a light source (whether that be the sun or a light bulb), so we'll want to use these as our three primary colors. However, the LED lights powering your computer's display use RGB, since they function by adding the colors produced by different lights together.
+
+By the way, you may have noticed that your printer at home uses CMYK, not just CMY. That "K" stands for "key," which corresponds to black ink. Even though we should theoretically be able to make black by mixing together cyan, magenta, and yellow, the resulting color doesn't look perfect in practice, so it's easier to simply apply black ink as well!
 
 ## Bitmaps
 
@@ -131,15 +133,67 @@ Here, every pixel in this very small image is absolutely essential to retaining 
 
 ## Other Image Formats
 
-    ANIMATED GIFS
+So far, we've seen Bitmaps, JPEGs, and GIFs. Another image format that's become popular on the Web is **PNG**, or Portable Network Graphics. Rumor has it that the original creators of PNG actually picked the acronym for "PNG is Not GIF" as a reaction to some of the dubious licensing issues with the GIF format. Like GIF, PNG uses lossless compression, and like JPEG, uses 24 bits for color. Another feature of the PNG format is support for **alpha**, or transparency. BMP and JPEG, on the other hand, don't have a channel devoted to transparency. However, GIF does have the distinct advantage of supporting animation achieved by repeatedly showing a series of frames. Check out sites like [this](http://whatshouldwecallme.tumblr.com) if you'd like to browse GIFs to your heart's content.
 
-    ALPHA
+Here's a summary of the formats for raster graphics we've seen so far.
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Extension</th>
+            <th>Compression</th>
+            <th>Color</th>
+            <th>Alpha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Bitmap</td>
+            <td>.bmp</td>
+            <td>No</td>
+            <td>24-bit</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>GIF</td>
+            <td>.gif</td>
+            <td>Lossless</td>
+            <td>8-bit</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>JPEG</td>
+            <td>.jpg, .jpeg</td>
+            <td>Lossy</td>
+            <td>24-bit</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>PNG</td>
+            <td>.png</td>
+            <td>Lossless</td>
+            <td>24-bit</td>
+            <td>Yes</td>
+        </tr>
+    </tbody>
+</table>
+
+And, here's an animated GIF.
+
+![GIF](img/12-gif-1.gif)
+
+And another one.
+
+![GIF](img/12-gif-2.gif)
+
+Sorry, I couldn't resist.
 
 ## Vector Graphics
 
 Wouldn't it be cool if we _could_ somehow enlarge an image while preserving all of its detail? While it looks like we can't do that with raster graphics, we _can_ do that with **vector graphics**. Unlike raster graphics, vector graphics doesn't involve turning an image into a grid and storing the values of individual pixels. Instead, vector graphics stores images using mathematical black magic. For example, let's say we want to represent a circle. In raster graphics, we'd create a grid of squares and then trace out a circle by filling in squares with some color. Using vector graphics, we'd instead say that the equation for a square looks something like _x_<sup>2</sup> + _y_<sup>2</sup> = _r_. Now, our representation doesn't depend on any pixels. If we want to create a larger circle, we can just pick a larger value for _r_, and our equation will create a larger circle without any loss in quality. So, we can create a raster graphic simply by picking a size for the image, then using the equation to figure out which pixels should be colored. Yay math!
 
-That worked out well for a circle, but how are we supposed to come with an equation for the shocked cat photo above? After all, the level of his shocked-ness can't be contained by a couple variables and some algebra. Rather than try to come up with a single equation, we'll instead divide up shocked cat into a number of smaller polygons, each of which _can_ be described with an equation. For example, the fonts on your computer have some kind of vector representation that was created by picking some **control points**, or important points on characters, and fitting some curves to pass through those points. While we just saw how easy it is to go from a vector graphic to a raster graphic, it's not so simple to go the other way around, since we need to pull some equations out of a hat that approximate the raster graphic.
+That worked out well for a circle, but how are we supposed to come with an equation for the shocked cat photo above? After all, the level of his shocked-ness can't be contained by a couple variables and some algebra. Rather than try to come up with a single equation, we'll instead divide up shocked cat into a number of smaller polygons, each of which _can_ be described with an equation. For example, the fonts on your computer have some kind of vector representation that was created by picking some **control points**, or important points on characters, and fitting some curves to pass through those points. This allows fonts to scale seamlessly to larger sizes, which has led to the recent popularization of **icon fonts**. For example, icon fonts like [this](http://fortawesome.github.com/Font-Awesome/) define images as actual characters, so these icons will look good at any size! While we just saw how easy it is to go from a vector graphic to a raster graphic, it's not so simple to go the other way around, since we need to pull some equations out of a hat that approximate the raster graphic.
 
 **SVG** is a common format for vector graphics. In fact, many of the diagrams on Wikipedia are saved as vector graphics images. For example, [here](http://en.wikipedia.org/wiki/File:Virtual_Private_Network_overview.svg) is a diagram of a VPN (remember what that is?). At the bottom of the page, there are a few different options for downloading this image as a raster graphics image. Essentially, all we're doing here is plugging in some values into the equations that describe this image, which can give us a rendering of any size we want. Because we're using SVG, there will be no loss in quality if we choose 2000px compared to choosing 200px!
 
@@ -173,6 +227,24 @@ We'll leave Link to save the Princess Zelda. Don't worry, he always does. Now, l
     <h1>Practice Problems</h1>
 </div>
 
-1. What's the difference between additive and subtractive color mixing? Give an example of each.
+1. Why do filenames have extensions? Does a file need to have an extension to be opened? Why or why not?
+
+1. What's the difference between additive and subtractive color mixing? Give an example of a set of primary colors that can be used for each.
+
+1. What is the color depth of a black-and-white, monochrome image?
+
+1. What colors do the following color codes represent?
+
+    i. #F08080
+
+    ii. #B0E0E6
+
+    iii. #C0FFEE
+
+1. Why might a website want to create both low-resolution and high-resolution versions of its logo? What are the advantages of a low resolution logo, and what are the advantages of a high resolution logo?
 
 1. What's the difference between lossless compression and lossy compression? Give an example of a file format that uses each.
+
+1. Why is it that vector graphics scale to larger sizes so nicely, but raster graphics do not?
+
+1. Try seam carving some of your own photos! It's really cool. Content-aware scaling is available in both Photoshop and as a plugin for the GIMP, but you can also just download the Seam Carving GUI. Images with lots of empty space in the horizontal or vertical directions will produce the best results!

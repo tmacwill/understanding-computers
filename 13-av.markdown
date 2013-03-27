@@ -91,6 +91,23 @@ Now that we've seen how graphics and audio work, let's take a look at the combin
 
 Now that we have a codec that can compress and decompress video, we want to package it up with some other data into a **container**. As its name suggests, a container is essentially a bundle of files that includes video and audio tracks, as well as captions or DVD menus in some cases. Popular video containers today include AVI, MKV, MP4, and MOV, and different container formats support different codecs for audio and video. Containers give us a bit of flexibility in creating videos, since we get to choose which codec we want to use for the video and which codec we want to use for the audio, though not all containers support all codecs. However, because codecs and containers are separate concepts, it could be the case that your media player supports a certain container format but not the codec used for the video in the container, which means you won't be able to play the video!
 
+## Video Compression
+
+Exactly how a video gets compressed depends on the particular codec being used, but let's take a look at some high-level ideas. When we looked at lossless compression for images, the basic idea was that compressed images avoided storing redundant data for similar pixels. Now, we can apply the same exact principle to videos! In a movie or television show, it's usually the case that the _entire_ scene isn't changing all at once. Instead, there's usually some subject in the video that's moving on a more static background. So, if nothing in the background is changing between frames, then we don't need to redundantly store that data! Let's consider the following three frames of a video:
+
+![Uncompressed Video](img/13-uncompressed-video.png)
+
+In this short clip, we have some movement towards the right of the scene, but the chair at the left or the ground it's sitting on never actually changes. So, there's no need to save the data for all of those unchanging pixels, just like we didn't need to save the data for every single black pixel in the German flag. That means we can actually save something that looks more like this:
+
+![Compressed Video](img/13-compressed-video.png)
+
+We can see this in action in the below video clip. Notice how the chairs in this scene are totally static throughout the video, and you can notice a very slight difference between the appearance of the chairs and the characters, since the same representation of the static object can be re-used from frame to frame.
+
+<br />
+<iframe width="480" height="360" src="http://www.youtube.com/embed/d1JA-nh0IfI" frameborder="0"></iframe>
+<br />
+<br />
+
 ## Streaming
 
 Services like YouTube and Hulu have popularized the idea of video **streaming**, which is commonly used to view videos online. If we head to YouTube and pull up a random [video](http://www.youtube.com/watch?v=Awf45u6zrP0), then it will start playing within a few seconds. Given how large those video files are, there's no way the whole thing could have downloaded that quickly! Streaming gives us the ability to watch a video (or listen to an audio track) as it's being downloaded, so I can start enjoying a cat video even before the whole file is downloaded to my computer.
@@ -100,3 +117,37 @@ When you load up a YouTube video in a browser, the video file will be downloaded
 Of course, YouTube wants to display that message to you as infrequently as it possibly can, since paused videos make everyone sad. So, it's probably not the best idea to try to send a huge video file to a client on a slow Internet connection. Instead, the client could download a video of a much lower **resolution**. Video resolution, just like the image resolution we looked at in the last section, describes how much information has been encoded into the frames of a video. Common video resolutions are 1920x1080, 1280x720, and 854x480. These are commonly abbreviated to shorter names like 1080p, 720p, and 480p, where those numbers refer to the height of the video. Notice that in all three cases, the ratio between width and height is 16:9, which is known as the image's **aspect ratio**. This widescreen aspect ratio is popular among high-definition videos today. On the other hand, some lower resolutions (like 640x480), may use an aspect ratio of 4:3.
 
 So, to ensure that people on slower Internet connections can view cat videos without delay, YouTube or other video services may actually produce a few different versions of the same video, each with a different resolution. That way, anyone with a fast connection can view the high-definition 1080p cat in all of its glory, while those on a slower Internet connection can instead choose a 480p video that won't have the same quality, but will download much faster. However, maybe casual YouTube users aren't as savvy as you and have no idea which resolution they should choose, or maybe your Internet connection slows down midway through a video. **Adaptive bitrate streaming**, in which a server chooses which resolution video is best for clients on the fly, is one solution to problems like these. While watching a movie on a service like Netflix, you may sometimes notice a sudden change in the picture's quality, whether it be a big increase or decrease. There's a good chance that's because the server decided it would be best to start sending you a different resolution video!
+
+## GPUs
+
+Back in our hardware section, we briefly mentioned the role of the graphics card in drawing things to the screen. One component of the video card is the **GPU**, or Graphics Processing Unit, which is essentially a CPU dedicated just to graphics-related computations. On modern computers, these things are seriously powerful. We saw earlier how parallelism can lead to more efficient solutions to computing problems. GPUs take parallelism to a whole new level by running _thousands_ of computations at the same time. Typically, each of these computations is relatively small, so each doesn't require a ton of processing power to complete. It also helps if these problems are independent of one another, so everything can be solved at the same time with minimal need to combine everything back together. Luckily, both of these conditions are really common in graphics! For example, we may need to draw many polygons in a scene at once, and drawing a cube on the left side of the screen is totally independent from drawing a cube on the right side of the screen. Similarly, figuring out the color of the pixel in the top-left of your screen doesn't depend on figuring out the color of the pixel in teh bottom-right of your screen! Mythbusters explains it best with the following clip:
+
+<br />
+<iframe width="640" height="360" src="http://www.youtube.com/embed/-P28LKWTzrI" frameborder="0"></iframe>
+<br />
+<br />
+
+The result of this massively parallel computing model is huge gains in efficiency. Below is a comparison of a CPU and a GPU rendering the exact same scene:
+
+<br />
+<iframe width="640" height="360" src="http://www.youtube.com/embed/mWUf-H1Qjd8" frameborder="0"></iframe>
+<br />
+<br />
+
+That's it for multimedia for now. I'm in the mood for some more Spongebob Squarepants, so I'm gonna take a cartoon break. I recommend you do the same. Next up: security!
+
+<div class="page-header page-break">
+    <h1>Practice Problems</h1>
+</div>
+
+1. How do amplitude and frequency affect sound?
+
+1. Describe the process of converting from analog sound to digital. How do both sampling rate and bitrate come into play in this process, and what's the difference between the two?
+
+1. I have an audiophile friend who just spent another $100 on a new hard drive because he refuses to listen to anything but PCM audio. He says he can always tell the difference between PCM and MP3. Even though MP3 files are a fraction of the size of their CD-quality equivalents, why might my friend be going a bit overboard?
+
+1. What's a wireframe? Describe how we use wireframes to represent objects in 3D space.
+
+1. Homer went to download a mesh of a doughnut, but the file he downloaded looks more like a box. D'oh! Lisa says that he shouldn't worry, though, because the mesh he downloaded will work just fine. Why?
+
+1. What's the difference between a container and a codec? Give an example of each.
