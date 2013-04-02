@@ -169,7 +169,7 @@ In the above example, we sent an HTTP request with the goal of getting some data
 This looks just like the GET request we made to Facebook, except we have different values for the path and host. When performing a search query, our goal is still to _get_ data from Google's servers, which have some information about cats that we'd like to retrieve. So, as we see above, a GET request is still the right way to ask Google for data. However, sometimes we want to send some new information to a server rather than requesting some existing information. For example, when you log into Gmail, you need to send your email and password to Gmail's server, which isn't so much _getting_ information as _posting_ some new information. So, an HTTP POST request would be more appropriate, which could look something like this:
 
     POST /login HTTP/1.1
-    Host: www.example.com
+    Host: www.gmail.com
     Content-Type: application/x-www-form-urlencoded
     Content-Length: 35
 

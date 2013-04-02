@@ -93,7 +93,7 @@ After the headers, we have the body of the request, where our message can be fou
 
 ## Interacting with SMTP
 
-In order to send a message using an SMTP server, the email client will issue a series of commands. The server will reply to each of these commands with a response code (just like those HTTP response codes) that lets the client know whether or not the command was successful. We can use a program called `openssl` to establish a connection to an SMTP server and then manually send it the commands necessary to send an email via SMTP! If on a Mac, this should already be installed for you, and if on Windows, you can download it [here](www.openssl.org/related/binaries.html). Now, if we open up a Terminal, we can run:
+In order to send a message using an SMTP server, the email client will issue a series of commands. The server will reply to each of these commands with a response code (just like those HTTP response codes) that lets the client know whether or not the command was successful. We can use a program called `openssl` to establish a connection to an SMTP server and then manually send it the commands necessary to send an email via SMTP! If on a Mac, this should already be installed for you, and if on Windows, you can download it [here](http://openssl.org/related/binaries.html). Now, if we open up a Terminal, we can run:
 
     openssl s_client -ssl3 -connect smtp.gmail.com:587 -starttls smtp -crlf
 

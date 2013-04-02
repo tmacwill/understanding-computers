@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row-fluid">
                 <div id="sidebar" class="span2">
-                    <ul id="toc"><li><a href="1-powerup.html">Power Up</a></li><li><a href="2-binary.html">Binary, ASCII, and Everything in Bit-ween</a></li><li><a href="3-cpu.html">C-3PU, Human-Processing Relations</a></li><li><a href="4-memory.html">Thanks for the Memory</a></li><li><a href="6-internet.html">Project Interweb: Make it Network</a></li><li><a href="7-domains.html">Eminent Domain Names</a></li><li><a href="9-protocols.html">Protocol Me, Maybe</a></li><li><a href="10-email.html">Snail Mail</a></li><li><a href="11-tcpip.html">Manual Transmission</a></li><li><a href="12-graphics.html">Picture This</a></li><li><a href="13-av.html">A/V Club</a></li></ul>
+                    <ul id="toc"><li><a href="1-powerup.html">Power Up</a></li><li><a href="2-binary.html">Binary, ASCII, and Everything in Bit-ween</a></li><li><a href="3-cpu.html">C-3PU, Human-Processing Relations</a></li><li><a href="4-memory.html">Thanks for the Memory</a></li><li><a href="6-internet.html">Project Interweb: Make it Network</a></li><li><a href="7-domains.html">Eminent Domain Names</a></li><li><a href="9-protocols.html">Protocol Me, Maybe</a></li><li><a href="10-email.html">Snail Mail</a></li><li><a href="11-tcpip.html">Manual Transmission</a></li><li><a href="12-graphics.html">Picture This</a></li><li><a href="13-av.html">A/V Club</a></li><li><a href="14-onlinesec.html">Safety .net</a></li><li><a href="15-datasec.html">Security Blanket</a></li></ul>
                 </div>
                 <div id="main" class="span10">
                     <div class="page-header">
@@ -105,7 +105,7 @@ w much I love cats! They're the best.&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;=
 
 <h2>Interacting with SMTP</h2>
 
-<p>In order to send a message using an SMTP server, the email client will issue a series of commands. The server will reply to each of these commands with a response code (just like those HTTP response codes) that lets the client know whether or not the command was successful. We can use a program called <code>openssl</code> to establish a connection to an SMTP server and then manually send it the commands necessary to send an email via SMTP! If on a Mac, this should already be installed for you, and if on Windows, you can download it <a href="www.openssl.org/related/binaries.html">here</a>. Now, if we open up a Terminal, we can run:</p>
+<p>In order to send a message using an SMTP server, the email client will issue a series of commands. The server will reply to each of these commands with a response code (just like those HTTP response codes) that lets the client know whether or not the command was successful. We can use a program called <code>openssl</code> to establish a connection to an SMTP server and then manually send it the commands necessary to send an email via SMTP! If on a Mac, this should already be installed for you, and if on Windows, you can download it <a href="http://openssl.org/related/binaries.html">here</a>. Now, if we open up a Terminal, we can run:</p>
 
 <pre><code>openssl s_client -ssl3 -connect smtp.gmail.com:587 -starttls smtp -crlf
 </code></pre>
