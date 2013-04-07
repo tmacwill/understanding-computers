@@ -117,7 +117,7 @@ So far, we've taken for granted that a computer connected to the Internet will h
 
 ## IP Address Allocation
 
-This process assumes, though, that the DHCP server somehow knows which IP addresses it can assign. For example, a DHCP server in North America needs to ensure that it doesn't assign an IP address that is already in use by a device in Europe. To mitigate this issue, different ranges of IP addresses are allocated to different physical regions of the globe. More specifically, different ISPs around the world have been allocated blocks of IP addresses by an organization called **ICANN**, the Internet Corporation for Assigned Names and Numbers. Here's a map created by the author of [XKCD](http://xkcd.com), one of my favorite webcomics.
+This process assumes, though, that the DHCP server somehow knows which IP addresses it can assign. For example, a DHCP server in North America needs to ensure that it doesn't assign an IP address that is already in use by a device in Europe. To mitigate this issue, different ranges of IP addresses are allocated to different physical regions of the globe. More specifically, different ISPs around the world have been allocated blocks of IP addresses by an organization called the **IANA**, or Internet Assigned Names and Numbers Authority, which is managed by a larger Internet governance body called **ICANN**, the Internet Corporation for Assigned Names and Numbers. Here's a map created by the author of [XKCD](http://xkcd.com), one of my favorite webcomics.
 
 ![Map of the Internet](img/6-map.png)
 
