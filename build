@@ -12,7 +12,7 @@ toc = '<ul id="toc">'
 chapters = Dir.glob('*.markdown').sort_by { |f| f.split('-')[0].to_i }
 chapters.each do |chapter|
     # skip chapters that aren't done yet
-    if ['5-shopping.markdown', '8-history.markdown', '16-privacy.markdown', '17-software.markdown'].include? chapter
+    if ['5-shopping.markdown', '8-history.markdown'].include? chapter
         next
     end
 
