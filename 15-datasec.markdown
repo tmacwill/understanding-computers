@@ -140,3 +140,9 @@ Your hard drive isn't the only piece of hardware that's vulnerable to forensic a
 1. What's the difference between symmetric key cryptography and asymmetric key cryptography? Why might we want to combine the two approaches in some cases?
 
 1. Explain the roles of the public key and the private key in the encryption process of asymmetric key cryptography.
+
+1. Compare and contrast viruses and worms.
+
+1. Why is it important to choose a strong password when signing up for a website?
+
+1. What happens when you delete a file from your hard drive?

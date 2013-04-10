@@ -1,20 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Binary, ASCII, and Everything in Bit-ween | Understanding Computers and the Internet</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-        <link rel="stylesheet" href="css/e1.css" />
-    </head>
-    <body>
+<head>
+<title>Binary, ASCII, and Everything in Bit-ween | Understanding Computers and the Internet</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="css/e1.css">
+<link rel="stylesheet" type="text/css" href="css/2-binary.css">
+</head>
+<body>
         <div class="container">
             <div class="row-fluid">
                 <div id="sidebar" class="span2">
-                    <ul id="toc"><li><a href="1-powerup.html">Power Up</a></li><li><a href="2-binary.html">Binary, ASCII, and Everything in Bit-ween</a></li><li><a href="3-cpu.html">C-3PU, Human-Processing Relations</a></li><li><a href="4-memory.html">Thanks for the Memory</a></li><li><a href="6-internet.html">Project Interweb: Make it Network</a></li><li><a href="7-domains.html">Eminent Domain Names</a></li><li><a href="9-protocols.html">Protocol Me, Maybe</a></li><li><a href="10-email.html">Snail Mail</a></li><li><a href="11-tcpip.html">Manual Transmission</a></li><li><a href="12-graphics.html">Picture This</a></li><li><a href="13-av.html">A/V Club</a></li><li><a href="14-onlinesec.html">Safety .net</a></li><li><a href="15-datasec.html">Security Blanket</a></li><li><a href="16-privacy.html">Private Eye</a></li><li><a href="17-design.html">School of Design</a></li></ul>
-                </div>
+                    <ul id="toc">
+<li><a href="1-powerup.html">Power Up</a></li>
+<li><a href="2-binary.html">Binary, ASCII, and Everything in Bit-ween</a></li>
+<li><a href="3-cpu.html">C-3PU, Human-Processing Relations</a></li>
+<li><a href="4-memory.html">Thanks for the Memory</a></li>
+<li><a href="6-internet.html">Project Interweb: Make it Network</a></li>
+<li><a href="7-domains.html">Eminent Domain Names</a></li>
+<li><a href="9-protocols.html">Protocol Me, Maybe</a></li>
+<li><a href="10-email.html">Snail Mail</a></li>
+<li><a href="11-tcpip.html">Manual Transmission</a></li>
+<li><a href="12-graphics.html">Picture This</a></li>
+<li><a href="13-av.html">A/V Club</a></li>
+<li><a href="14-onlinesec.html">Safety .net</a></li>
+<li><a href="15-datasec.html">Security Blanket</a></li>
+<li><a href="16-privacy.html">Private Eye</a></li>
+<li><a href="17-design.html">School of Design</a></li>
+</ul>
+</div>
                 <div id="main" class="span10">
                     <div class="page-header">
-    <h1>Chapter 2 <small>Binary, ASCII, and Everything in Bit-ween</small></h1>
+    <h1>Chapter 2 <small>Binary, ASCII, and Everything in Bit-ween</small>
+</h1>
 </div>
 
 
@@ -28,58 +46,55 @@
 
 <p>However, before we talk any more about how computers represent numbers, let's quickly review how we as humans are probably used to representing numbers. According to my laptop's keyboard, we have ten digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. (We call this the <strong>decimal</strong> system.) That means that we can represent ten different numbers using only one digit. Of course, we're going to start running into issues when we want to represent the number that is one more than 9. Luckily, we've already solved this problem: one more than 9 is 10. To create the number 10, we created a new space for a second digit, which you may remember as the "tens place" from grade school (that is, if you weren't too busy playing with yo-yos like I was). Similarly, we have a hundreds place, thousands place, and so on for larger numbers. When you were first learning to count, you may have used blocks like the below to represent this. A single cube represents the ones place, a column represents the tens place, a rectangle represents the hundreds place, and so on.</p>
 
-<p><img src="img/1-blocks.jpg" alt="Place value blocks" /></p>
+<p><img src="img/1-blocks.jpg" alt="Place value blocks"></p>
 
 <p>The fact that we use ones, tens, hundreds, and thousands is no accident. We have 10 different digits to choose from, and 10<sup>0</sup> = 1, 10<sup>1</sup> = 10, 10<sup>2</sup> = 100, and so on. (Remember, when we say something like 10<sup>3</sup>, that's just short for 10 &times; 10 &times; 10, or 1000.) So, these places can be represented with a table like this:</p>
 
 <table style="text-align: center">
-    <tr>
-        <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
+<tr>
+<td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
     </tr>
-    <tr>
-        <td>10<sup>4</sup></td>
-        <td>10<sup>3</sup></td>
-        <td>10<sup>2</sup></td>
-        <td>10<sup>1</sup></td>
-        <td>10<sup>0</sup></td>
+<tr>
+<td>10<sup>4</sup>
+</td>
+        <td>10<sup>3</sup>
+</td>
+        <td>10<sup>2</sup>
+</td>
+        <td>10<sup>1</sup>
+</td>
+        <td>10<sup>0</sup>
+</td>
     </tr>
 </table>
+<br><p>Let's fill in these blanks with some digits:</p>
 
-
-<br />
-
-
-<p>Let's fill in these blanks with some digits:</p>
-
-<br />
-
-
-<table style="text-align: center">
-    <tr>
-        <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
+<br><table style="text-align: center">
+<tr>
+<td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>2</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>3</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>4</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>5</strong>&nbsp;&nbsp;</u></td>
     </tr>
-    <tr>
-        <td>10<sup>4</sup></td>
-        <td>10<sup>3</sup></td>
-        <td>10<sup>2</sup></td>
-        <td>10<sup>1</sup></td>
-        <td>10<sup>0</sup></td>
+<tr>
+<td>10<sup>4</sup>
+</td>
+        <td>10<sup>3</sup>
+</td>
+        <td>10<sup>2</sup>
+</td>
+        <td>10<sup>1</sup>
+</td>
+        <td>10<sup>0</sup>
+</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>Now, to figure out what number is represented by those digits, we multiply the digit in the ones place by 1, the digit in the tens place by 10 (and so on), and then add them together. That means that the above number is:</p>
+<br><p>Now, to figure out what number is represented by those digits, we multiply the digit in the ones place by 1, the digit in the tens place by 10 (and so on), and then add them together. That means that the above number is:</p>
 
 <p>(1 &times; 10<sup>4</sup>) + (2 &times; 10<sup>3</sup>) + (3 &times; 10<sup>2</sup>) + (4 &times; 10<sup>1</sup>) + (5 &times; 10<sup>0</sup>) =
 10000 + 2000 + 300 + 40 + 5 = 12345</p>
@@ -89,27 +104,27 @@
 <p>Make sense? Alright, back to those zeros and ones. Remembering <em>ten</em> different digits can be hard work. Heck, I can barely remember birthdays. Let's make one tiny change to the above table. Rather than having places for 10<sup>0</sup>, 10<sup>1</sup>, 10<sup>2</sup>, and so on, let's instead create places for 2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup>, and so on:</p>
 
 <table style="text-align: center">
-    <tr>
-        <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
+<tr>
+<td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
     </tr>
-    <tr>
-        <td>2<sup>4</sup></td>
-        <td>2<sup>3</sup></td>
-        <td>2<sup>2</sup></td>
-        <td>2<sup>1</sup></td>
-        <td>2<sup>0</sup></td>
+<tr>
+<td>2<sup>4</sup>
+</td>
+        <td>2<sup>3</sup>
+</td>
+        <td>2<sup>2</sup>
+</td>
+        <td>2<sup>1</sup>
+</td>
+        <td>2<sup>0</sup>
+</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>This representation is called <strong>binary</strong> (as opposed to decimal). In this world, we'll represent numbers using a ones place, a twos place, a fours place, an eights place, a sixteens place, and so on. Now, rather than using ten digits to represent numbers, we'll only use two: 0 and 1. That means that we can represent each digit in a binary number with one bit. Any number then, can be represented as a collection of bits!</p>
+<br><p>This representation is called <strong>binary</strong> (as opposed to decimal). In this world, we'll represent numbers using a ones place, a twos place, a fours place, an eights place, a sixteens place, and so on. Now, rather than using ten digits to represent numbers, we'll only use two: 0 and 1. That means that we can represent each digit in a binary number with one bit. Any number then, can be represented as a collection of bits!</p>
 
 <p>Let's try counting in binary, starting with 0. The number zero in binary is still 0, phew. Same with the number one, which is just 1 in binary. The number two, on the other hand, is a whole new ball game. Our only choices for digits are 0 and 1, so we can't represent the number two with the digit 2. Using the decimal system, we ran into the same problem when we wanted to represent the number ten, because 9 was the last digit we had avilable. So, we'll do exactly what we did last time: we'll introduce a new slot for a digit. Now, we can represent the number two as "10" in binary. We now have a 1 in the twos place and a 0 in the ones place, which means the number we're representing is:</p>
 
@@ -132,27 +147,27 @@
 <p>Alright, counting was fun, but let's now try converting a slightly larger binary number into decimal. Our goal now is to figure out what number is represented by 10110. To do so, let's start with a table that tells us what each of the places in a binary number is.</p>
 
 <table style="text-align: center">
-    <tr>
-        <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
+<tr>
+<td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>.
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
     </tr>
-    <tr>
-        <td>2<sup>4</sup></td>
-        <td>2<sup>3</sup></td>
-        <td>2<sup>2</sup></td>
-        <td>2<sup>1</sup></td>
-        <td>2<sup>0</sup></td>
+<tr>
+<td>2<sup>4</sup>
+</td>
+        <td>2<sup>3</sup>
+</td>
+        <td>2<sup>2</sup>
+</td>
+        <td>2<sup>1</sup>
+</td>
+        <td>2<sup>0</sup>
+</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>To figure out what number these bits represent, let's do the same thing we did before, but rather than using powers of 10, we'll use powers of 2:</p>
+<br><p>To figure out what number these bits represent, let's do the same thing we did before, but rather than using powers of 10, we'll use powers of 2:</p>
 
 <p>(1 &times; 2<sup>4</sup>) + (0 &times; 2<sup>3</sup>) + (1 &times; 2<sup>2</sup>) + (1 &times; 2<sup>1</sup>) + (0 &times; 2<sup>0</sup>) =
 16 + 0 + 4 + 2 + 0 = 22</p>
@@ -161,95 +176,98 @@
 
 <p>For reference, here's a handy dandy chart listing the first few powers of 2, which will be helpful when working with binary numbers.</p>
 
-<br />
-
-
-<table>
-    <tr>
-        <td>2<sup>0</sup></td>
+<br><table>
+<tr>
+<td>2<sup>0</sup>
+</td>
         <td> = </td>
         <td>1</td>
     </tr>
-    <tr>
-        <td>2<sup>1</sup></td>
+<tr>
+<td>2<sup>1</sup>
+</td>
         <td> = </td>
         <td>2</td>
     </tr>
-    <tr>
-        <td>2<sup>2</sup></td>
+<tr>
+<td>2<sup>2</sup>
+</td>
         <td> = </td>
         <td>4</td>
     </tr>
-    <tr>
-        <td>2<sup>3</sup></td>
+<tr>
+<td>2<sup>3</sup>
+</td>
         <td> = </td>
         <td>8</td>
     </tr>
-    <tr>
-        <td>2<sup>4</sup></td>
+<tr>
+<td>2<sup>4</sup>
+</td>
         <td> = </td>
         <td>16</td>
     </tr>
-    <tr>
-        <td>2<sup>5</sup></td>
+<tr>
+<td>2<sup>5</sup>
+</td>
         <td> = </td>
         <td>32</td>
     </tr>
-    <tr>
-        <td>2<sup>6</sup></td>
+<tr>
+<td>2<sup>6</sup>
+</td>
         <td> = </td>
         <td>64</td>
     </tr>
-    <tr>
-        <td>2<sup>7</sup></td>
+<tr>
+<td>2<sup>7</sup>
+</td>
         <td> = </td>
         <td>128</td>
     </tr>
-    <tr>
-        <td>2<sup>8</sup></td>
+<tr>
+<td>2<sup>8</sup>
+</td>
         <td> = </td>
         <td>256</td>
     </tr>
-    <tr>
-        <td>2<sup>9</sup></td>
+<tr>
+<td>2<sup>9</sup>
+</td>
         <td> = </td>
         <td>512</td>
     </tr>
-    <tr>
-        <td>2<sup>10</sup></td>
+<tr>
+<td>2<sup>10</sup>
+</td>
         <td> = </td>
         <td>1024</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>Let's try another one. What's decimal representation of the binary number 01101? First, let's fill in the table:</p>
+<br><p>Let's try another one. What's decimal representation of the binary number 01101? First, let's fill in the table:</p>
 
 <table style="text-align: center">
-    <tr>
-        <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
+<tr>
+<td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>.
         <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
     </tr>
-    <tr>
-        <td>2<sup>4</sup></td>
-        <td>2<sup>3</sup></td>
-        <td>2<sup>2</sup></td>
-        <td>2<sup>1</sup></td>
-        <td>2<sup>0</sup></td>
+<tr>
+<td>2<sup>4</sup>
+</td>
+        <td>2<sup>3</sup>
+</td>
+        <td>2<sup>2</sup>
+</td>
+        <td>2<sup>1</sup>
+</td>
+        <td>2<sup>0</sup>
+</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>Now, let's add everything up:</p>
+<br><p>Now, let's add everything up:</p>
 
 <p>(0 &times; 2<sup>4</sup>) + (1 &times; 2<sup>3</sup>) + (1 &times; 2<sup>2</sup>) + (0 &times; 2<sup>1</sup>) + (1 &times; 2<sup>0</sup>) =
 0 + 8 + 4 + 0 + 1 = 13</p>
@@ -261,287 +279,262 @@
 <p>What if we want to go the other way? Let's say we have the decimal number 14, and we want figure out its binary representation. Using the same table, we can work backwards by filling in each space. The process of converting a decimal number to binary is just like making change at a cash register. So that you don't annoy your customers, you always want to make change using as few coins as possible.</p>
 
 <table style="text-align: center">
-    <tr>
-        <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
+<tr>
+<td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
     </tr>
-    <tr>
-        <td>2<sup>4</sup></td>
-        <td>2<sup>3</sup></td>
-        <td>2<sup>2</sup></td>
-        <td>2<sup>1</sup></td>
-        <td>2<sup>0</sup></td>
+<tr>
+<td>2<sup>4</sup>
+</td>
+        <td>2<sup>3</sup>
+</td>
+        <td>2<sup>2</sup>
+</td>
+        <td>2<sup>1</sup>
+</td>
+        <td>2<sup>0</sup>
+</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>Let's start all the way at the left. 2<sup>4</sup> = 16, which is bigger than 14. That means there can't possibly be a 1 there, so we can put a 0 in the first space. If we were making change at a cash register, putting a 1 in the first space case would be like giving someone who was owed 23 cents a quarter.</p>
+<br><p>Let's start all the way at the left. 2<sup>4</sup> = 16, which is bigger than 14. That means there can't possibly be a 1 there, so we can put a 0 in the first space. If we were making change at a cash register, putting a 1 in the first space case would be like giving someone who was owed 23 cents a quarter.</p>
 
 <table style="text-align: center">
-    <tr>
-        <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
+<tr>
+<td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
     </tr>
-    <tr>
-        <td>2<sup>4</sup></td>
-        <td>2<sup>3</sup></td>
-        <td>2<sup>2</sup></td>
-        <td>2<sup>1</sup></td>
-        <td>2<sup>0</sup></td>
+<tr>
+<td>2<sup>4</sup>
+</td>
+        <td>2<sup>3</sup>
+</td>
+        <td>2<sup>2</sup>
+</td>
+        <td>2<sup>1</sup>
+</td>
+        <td>2<sup>0</sup>
+</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>Now we'll move to the next space. 2<sup>3</sup> = 8, which is smaller than 14, so we want to put a 1 in the second space. Remember, we want to make change using as few coins as possible, so if at any point we can put a 1 in a space without creating too large a number, we should. If we don't, then we could end up giving our customer five pennies when we could have simply used one nickel. Now our table looks like this:</p>
+<br><p>Now we'll move to the next space. 2<sup>3</sup> = 8, which is smaller than 14, so we want to put a 1 in the second space. Remember, we want to make change using as few coins as possible, so if at any point we can put a 1 in a space without creating too large a number, we should. If we don't, then we could end up giving our customer five pennies when we could have simply used one nickel. Now our table looks like this:</p>
 
 <table style="text-align: center">
-    <tr>
-        <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
+<tr>
+<td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
     </tr>
-    <tr>
-        <td>2<sup>4</sup></td>
-        <td>2<sup>3</sup></td>
-        <td>2<sup>2</sup></td>
-        <td>2<sup>1</sup></td>
-        <td>2<sup>0</sup></td>
+<tr>
+<td>2<sup>4</sup>
+</td>
+        <td>2<sup>3</sup>
+</td>
+        <td>2<sup>2</sup>
+</td>
+        <td>2<sup>1</sup>
+</td>
+        <td>2<sup>0</sup>
+</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>Okay, now we've "made change" for 8 out of 14, so we have 6 to go. The next space is a 4, which is less than 6. So, we again want to put a 1 in that space to get:</p>
+<br><p>Okay, now we've "made change" for 8 out of 14, so we have 6 to go. The next space is a 4, which is less than 6. So, we again want to put a 1 in that space to get:</p>
 
 <table style="text-align: center">
-    <tr>
-        <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
+<tr>
+<td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
     </tr>
-    <tr>
-        <td>2<sup>4</sup></td>
-        <td>2<sup>3</sup></td>
-        <td>2<sup>2</sup></td>
-        <td>2<sup>1</sup></td>
-        <td>2<sup>0</sup></td>
+<tr>
+<td>2<sup>4</sup>
+</td>
+        <td>2<sup>3</sup>
+</td>
+        <td>2<sup>2</sup>
+</td>
+        <td>2<sup>1</sup>
+</td>
+        <td>2<sup>0</sup>
+</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>Alrighty, 2 to go. That means the next space, the 2s place, must be a 1, since that would give us the grand total of 14 that we were looking for! We can mark the last remaining space with a 0. Our final table looks like this:</p>
+<br><p>Alrighty, 2 to go. That means the next space, the 2s place, must be a 1, since that would give us the grand total of 14 that we were looking for! We can mark the last remaining space with a 0. Our final table looks like this:</p>
 
 <table style="text-align: center">
-    <tr>
-        <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
+<tr>
+<td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;</u></td>
         <td><u>&nbsp;&nbsp;<strong>0</strong>&nbsp;&nbsp;</u></td>
     </tr>
-    <tr>
-        <td>2<sup>4</sup></td>
-        <td>2<sup>3</sup></td>
-        <td>2<sup>2</sup></td>
-        <td>2<sup>1</sup></td>
-        <td>2<sup>0</sup></td>
+<tr>
+<td>2<sup>4</sup>
+</td>
+        <td>2<sup>3</sup>
+</td>
+        <td>2<sup>2</sup>
+</td>
+        <td>2<sup>1</sup>
+</td>
+        <td>2<sup>0</sup>
+</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>Phew! The binary representation of 14 is 01110.</p>
+<br><p>Phew! The binary representation of 14 is 01110.</p>
 
 <h2>Adding Binary Numbers</h2>
 
 <p>Now that we can go back and forth between binary and decimal, let's try doing a bit of math. First, let's try adding together two binary numbers: 0011 and 0110. The naive way to go about this might be to convert 0011 to the decimal value 3, 0110 to the decimal value 6, add 6 and 3 to get 9, and finally convert 9 back to the binary value 1001. However, that felt like a lot of unnecessary steps (and kinda like cheating). Instead, we can add together binary values using the same process we've used since grade school for adding together decimal values.</p>
 
 <table>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td>0</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
     </tr>
-    <tr style="border-bottom: 1px solid black">
-        <td>+</td>
+<tr style="border-bottom: 1px solid black">
+<td>+</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
         <td>0</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>We'll start at the rightmost column. We know that 1 + 0 must be 1, so we can fill in a 1 in our answer.</p>
+<br><p>We'll start at the rightmost column. We know that 1 + 0 must be 1, so we can fill in a 1 in our answer.</p>
 
 <table>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td>0</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
     </tr>
-    <tr style="border-bottom: 1px solid black">
-        <td>+</td>
+<tr style="border-bottom: 1px solid black">
+<td>+</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
         <td>0</td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td></td>
         <td></td>
         <td></td>
         <td>1</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>Okay, now we have 1 + 1. We know that's equal to the decimal value 2, which is 10 in binary. Just like we do in the normal addition process, we'll want to fill in a 0 here and then carry the 1. Now, we have something that looks like this:</p>
+<br><p>Okay, now we have 1 + 1. We know that's equal to the decimal value 2, which is 10 in binary. Just like we do in the normal addition process, we'll want to fill in a 0 here and then carry the 1. Now, we have something that looks like this:</p>
 
 <table>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td></td>
         <td>1</td>
         <td></td>
         <td></td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td>0</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
     </tr>
-    <tr style="border-bottom: 1px solid black">
-        <td>+</td>
+<tr style="border-bottom: 1px solid black">
+<td>+</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
         <td>0</td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td></td>
         <td></td>
         <td>0</td>
         <td>1</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>Alrighty, taking into account the 1 we just carried, we have:</p>
+<br><p>Alrighty, taking into account the 1 we just carried, we have:</p>
 
 <table>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td>1</td>
         <td>1</td>
         <td></td>
         <td></td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td>0</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
     </tr>
-    <tr style="border-bottom: 1px solid black">
-        <td>+</td>
+<tr style="border-bottom: 1px solid black">
+<td>+</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
         <td>0</td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td></td>
         <td>0</td>
         <td>0</td>
         <td>1</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<p>And now, we can finish this off without a hitch:</p>
+<br><p>And now, we can finish this off without a hitch:</p>
 
 <table>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td>1</td>
         <td>1</td>
         <td></td>
         <td></td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td>0</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
     </tr>
-    <tr style="border-bottom: 1px solid black">
-        <td>+</td>
+<tr style="border-bottom: 1px solid black">
+<td>+</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
         <td>0</td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td>1</td>
         <td>0</td>
         <td>0</td>
         <td>1</td>
     </tr>
 </table>
-
-
-<br />
-
-
-<h2>Bitwise Operators</h2>
+<br><h2>Bitwise Operators</h2>
 
 <p>Great! We got exactly the answer we were expecting to get: 1001, or 9. Adding sure was fun, so let's try doing something else. Let's say we take that sequence of bits, 01001, and shift every bit one place to the left. Now, we'll get a sequence that looks like 10010. Turns out this is the binary representation of 18, which just so happens to be 9 &times; 2. Coincidence? Let's do the same thing with another random sequence of bits.... 0101001 looks good to me. In decimal, this is the value 41. Let's shift every bit to the left again, which gives us 1010010. This is in fact the number 82, which is again twice our original value.</p>
 
@@ -563,11 +556,11 @@
 
 <p>Alright, hopefully jokes like this one now make a bit more sense!</p>
 
-<p><img src="img/2-types.jpg" alt="10 types" /></p>
+<p><img src="img/2-types.jpg" alt="10 types"></p>
 
 <p>See, didn't that make it all worth it? Aaaaaand for those of you groaning because you've heard that joke a million times already:</p>
 
-<p><img src="img/2-types-burn.gif" alt="10 types burn" /></p>
+<p><img src="img/2-types-burn.gif" alt="10 types burn"></p>
 
 <h2>Character Encodings</h2>
 
@@ -575,17 +568,17 @@
 
 <p>To solve this problem, we can create a "character encoding," which maps something to letters or symbols. For example, ships utilize a character encoding in which each letter is represented by a different flag. When a ship needs to broadcast a message consisting of English letters, the crew can instead fly a sequence of flags. Others can then understand this message because there exists a standardized, agreed-upon translation from flag to English letter. In case you're as curious as I was, here's the International Maritime Signal Flag character encoding:</p>
 
-<p><img src="img/2-maritime.gif" alt="International Maritime Signal Flags" /></p>
+<p><img src="img/2-maritime.gif" alt="International Maritime Signal Flags"></p>
 
 <p>You may also have heard of Morse Code, which is another character encoding. Here, each letter is represented by a series of sounds. Again, this standardized mapping allows us to transmit English messages without actually using any English letters.</p>
 
-<p><img src="img/2-morse.jpg" style="width: 600px" alt="Morse Code" /></p>
+<p><img src="img/2-morse.jpg" style="width: 600px" alt="Morse Code"></p>
 
 <h2>ASCII</h2>
 
 <p>Since flags and sounds are a bit impractical for your computer, a character encoding called <strong>US-ASCII</strong> is more common. ASCII defines numerical representations for 128 different "characters," where a character can be a letter, number, symbol, or Mickey Mouse. For example, the character "A" is represented by the number 65 in ASCII, and the character "a" is represented by the number 97. So, whenever we need to represent the character "A" using ASCII, we can simply use the number 65 instead, just like a ship would fly a blue and white flag. From your computer's perspective, then, the sequence of characters "CS E-1" could be represented by the sequence of decimal numbers "67 83 32 69 45 49", which ultimately will be stored as the sequence of binary numbers "01000011 01010011 00100000 01000101 00101101 00110001". Since we've already seen that binary can be used to represent numbers using only zeroes and ones, we can use ASCII to represent letters using zeroes and ones as well. Here's the complete ASCII table:</p>
 
-<p><img src="img/1-ascii.gif" alt="ASCII Table" /></p>
+<p><img src="img/1-ascii.gif" alt="ASCII Table"></p>
 
 <h2>Unicode</h2>
 
@@ -601,20 +594,24 @@
 
 
 <ol>
-<li><p>Convert the following numbers from decimal to binary, showing each step.</p>
+<li>
+<p>Convert the following numbers from decimal to binary, showing each step.</p>
 
 <p> a. 50</p>
 
 <p> b. 164</p>
 
-<p> c. 12345</p></li>
-<li><p>Convert the following numbers from binary to decimal, showing each step.</p>
+<p> c. 12345</p>
+</li>
+<li>
+<p>Convert the following numbers from binary to decimal, showing each step.</p>
 
 <p> a. 0101010</p>
 
 <p> b. 010101111</p>
 
-<p> c. 01111011010010</p></li>
+<p> c. 01111011010010</p>
+</li>
 <li><p>What do all binary numbers ending in 1 have in common?</p></li>
 <li><p>What's the largest number we can represent with 16 bits? How about 32 bits?</p></li>
 <li><p>We've seen that decimal uses ten different digits and binary uses two different digits. The octal system instead uses seven different digits, but works in exactly the same way. What is the decimal value of the octal number 0644? How about 0755?</p></li>
@@ -622,9 +619,7 @@
 <li><p>How many bits are used to represent a standard US-ASCII character?</p></li>
 <li><p>Why isn't 1 the ASCII code for the character "1"?</p></li>
 </ol>
-
-
-                </div>
+</div>
             </div>
         </div>
 
@@ -638,5 +633,5 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
         </script>
-    </body>
+</body>
 </html>

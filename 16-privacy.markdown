@@ -100,3 +100,17 @@ Of course, breaking into software systems isn't usually... legal. Let's take a b
 DMCA also deals with **anti-circumvention**, which prohibits people from breaking into protected software systems. The definition of circumvention might include decrypting information, removing an access control layer, or otherwise breaking some digital lock placed on a copyrighted work. An example of one of these digital locks is **DRM**, or Digital Rights Management. DRM is a layer that enforces some kind of access policy on software, whether that be preventing an e-book from being read on another device to ensuring music files can't be copied or distributed to other computers. Apple, for example, used to use a form of DRM called FairPlay that prevented music files from playing on "unauthorized" computers. However, software applications could be downloaded to remove DRM from music files, or you could simply burn the music to a CD and then rip it back off to break the digital lock. As you might expect, DMCA wouldn't be too happy with you if you did that. But alas, we have some exceptions here, too. For example, under fair use, people are allowed to break copy protection on DVDs as well as **jailbreak** mobile devices in order to use a phone on a different carrier or install different software. Ultimately, though, DMCA tries to place power in the hands of the copyright holders to prevent unwanted reproduction.
 
 That's it for privacy and security more broadly! Hopefully, we didn't scare you _too_ much. But, as you use your computer and browse the web, do keep in mind the various security and privacy threats that (unfortunately) abound on the Internet!
+
+<div class="page-header page-break">
+    <h1>Practice Problems</h1>
+</div>
+
+1. What's the difference between authentication and authorization? Give an example of how a website might use each.
+
+1. How is it that a site like example.com is able to display advertisements based on my browsing history on other websites? What are some pros and cons of this form of targeted advertising?
+
+1. What is a user agent string? Why might your web browser want to send one along in an HTTP request? How might the user agent be used by a server?
+
+1. Let's say you want to visit a web page, but you don't want your IP address recorded in any logs. What can you do?
+
+1. You just downloaded a song from your favorite music service, but when you tried to play it on another computer, you got an error saying something about "DRM." What is DRM? Can you remove DRM from the song?

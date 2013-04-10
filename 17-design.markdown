@@ -120,3 +120,11 @@ Now that we've talked a bit about how to make something look good, let's take a 
 \#10: _Help and documentation_. In a perfect world, we could create user interfaces that were self-explanatory to everyone that saw them, but sadly, this isn't the case in the real world. Many users, particularly those who may be unfamiliar with your site, might simply want easy-to-follow instructions that teach them how to use your product. So, having something that explains how to use your site, whether that simply be a picture, screencast, or textual instructions, can go a long way in making sure that your users are able to use your creation.
 
 All right, now that you have some design foundations, let's take a look at what actually goes into creating a website!
+
+<div class="page-header page-break">
+    <h1>Practice Problems</h1>
+</div>
+
+1. Think about some website or software application that you think isn't well-designed. This might be a website you use every day (despite its poor design!), or it might be an app that you promptly deleted. What are the interface's flaws? What design principles or usability heuristics does it violate? Suggest at least two improvements to improve its design, and justify your suggestions.
+
+1. Good news! The local pet store, "Pawsitive Thinking," just hired you to design their new website! Now, it's up to you to figure out not only what the site looks like, but also to decide what features you want to include and how. Create designs for at least three different pages of the website. You can draw these designs or use software like Photoshop to create them digitally. Identify places where your website takes into account design principles and usability heuristics.
