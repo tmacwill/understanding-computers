@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Web Development | Understanding Computers and the Internet</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="css/e1.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row-fluid">
+                <div id="sidebar" class="span2">
+                    <ul id="toc"><li><a href="1-powerup.html">Power Up</a></li><li><a href="2-binary.html">Binary, ASCII, and Everything in Bit-ween</a></li><li><a href="3-cpu.html">C-3PU, Human-Processing Relations</a></li><li><a href="4-memory.html">Thanks for the Memory</a></li><li><a href="6-internet.html">Project Interweb: Make it Network</a></li><li><a href="7-domains.html">Eminent Domain Names</a></li><li><a href="9-protocols.html">Protocol Me, Maybe</a></li><li><a href="10-email.html">Snail Mail</a></li><li><a href="11-tcpip.html">Manual Transmission</a></li><li><a href="12-graphics.html">Picture This</a></li><li><a href="13-av.html">A/V Club</a></li><li><a href="14-onlinesec.html">Safety .net</a></li><li><a href="15-datasec.html">Security Blanket</a></li><li><a href="16-privacy.html">Private Eye</a></li><li><a href="17-design.html">School of Design</a></li></ul>
+                </div>
+                <div id="main" class="span10">
+                    <div class="page-header">
+    <h1>Chapter 19 <small>Programming</small></h1>
+</div>
+
+
+<p>Last time, we saw how we could make static web pages using HTML and CSS. Now, let's see how we can actually make those pages <em>do</em> something!</p>
+
+<h2>Programming</h2>
+
+<p><strong>Programming</strong> is how we get computers to do our bidding. Just kidding, but not really. A computer <strong>program</strong> is simply a set of specific instructions that a computer will dutifully execute. We'll need to be very specific in our instructions, which can be a challenge! Our computer will always do exactly what we tell it to do, but it isn't always obvious what exactly we should tell our computer.</p>
+
+<p>We'll first take a look at a programming language called <a href="http://scratch.mit.edu">Scratch</a>. Using Scratch, we can drag and drop different constructs to create a program.</p>
+
+<p>Once we open up Scratch, we can see a single cat <strong>sprite</strong>, which is simply a character or object that we can manipulate. The sprite is placed on a <strong>scene</strong>, which represents our two-dimensional world. We can attach <strong>scripts</strong>, or sets of instructions, to both sprites and the scene. Let's take a look at the differnet components that we can use in a script.</p>
+
+<ul>
+<li><p><strong>Statements</strong> are things that we can <em>do</em>. For example, statements might include "Say hello," "turn to the right," and "pause for 3 seconds."</p></li>
+<li><p><strong>Boolean expressions</strong> are questions that are either true or false. In Scratch, some conditions include "Is this sprite touching the mouse?" and "Is the mouse clicked?"</p></li>
+<li><p>We can also combine Boolean expressions to form expressions like "Is the mouse clicked or is the space bar pressed?" and "Is the mouse down and is this sprite touching something?"</p></li>
+<li><p>We can use Boolean expressions in <strong>conditions</strong>, which allow us to do different things based on the current state of the world. Much like a choose-your-own-adventure novel (remember those?), our script can branch off depending on whether or not a Boolean expression is true or false. Typically, we'll say "if something is true, do this, else, do that".</p></li>
+<li><p><strong>Loops</strong> allow us to do something more than once. If we wanted our cat to meow three times, we could drag the same statement over three times in a row, but that would be kinda annoying. Instead, we can enclose some sequence of statements that will be run over and over again until some condition is met.</p></li>
+<li><p><strong>Variables</strong> allow us to store information that we can access later. For example, our cat might ask the user what his or her name is. Impressive that Scratch comes with talking cats, right? After the we answer, the cat can remember our answer in a variable that can be used later in the script.</p></li>
+<li><p><strong>Arrays</strong> are lists of variables. If we were making a program to keep track of our shopping list, we could store all the items that we want to buy in an array of <strong>strings</strong>, where a string is simply a sequence of characters (like a word).</p></li>
+</ul>
+
+
+<p>And that's it! Using this small set of constructs, we can create some amazingly complex programs. In Scratch, we can attach scripts to any number of sprites. When we start our program, multiple scripts can be executed at the same time, and we can call each individual script a <strong>thread</strong>. By the way, in Scratch, we'll need to use a special block that says "On green flag clicked" as the starting point for our scripts if we want it to start executing when the user starts our program.</p>
+
+<p>Of course, we might not want all of our scripts to start when the user starts the program. Instead, we might want our scripts to start when a certain <strong>event</strong> occurs. In Scratch, we can define our own events that other sprites can respond to. For example, when we click on a sprite, it might say "Marco" and <strong>broadcast</strong> an event to every other sprite. Sprites that are <strong>listening</strong> for this event can then respond by saying "Polo" (or anything else).</p>
+
+<h2>Javascript</h2>
+
+<p>We can apply the same concepts we just saw in Scratch to other programming languages. Let's take a look at Javascript, which just so happens to be my favorite programming language (surprise!). Since Javascript doesn't feature nice drag-and-drop blocks, we'll have to type out our computer programs. Let's translate a few of the concepts we saw in Scratch to Javascript.</p>
+
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36776830-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+    </body>
+</html>
