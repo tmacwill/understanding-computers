@@ -1,44 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>C-3PU, Human-Processing Relations | Understanding Computers and the Internet</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-        <link rel="stylesheet" href="css/e1.css" />
-    </head>
-    <body>
+<head>
+<title>C-3PU, Human-Processing Relations | Understanding Computers and the Internet</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="css/e1.css">
+<link rel="stylesheet" type="text/css" href="css/3-cpu.css">
+</head>
+<body>
         <div class="container">
             <div class="row-fluid">
                 <div id="sidebar" class="span2">
-                    <ul id="toc"><li><a href="1-powerup.html">Power Up</a></li><li><a href="2-binary.html">Binary, ASCII, and Everything in Bit-ween</a></li><li><a href="3-cpu.html">C-3PU, Human-Processing Relations</a></li><li><a href="4-memory.html">Thanks for the Memory</a></li><li><a href="6-internet.html">Project Interweb: Make it Network</a></li><li><a href="7-domains.html">Eminent Domain Names</a></li><li><a href="9-protocols.html">Protocol Me, Maybe</a></li><li><a href="10-email.html">Snail Mail</a></li><li><a href="11-tcpip.html">Manual Transmission</a></li><li><a href="12-graphics.html">Picture This</a></li><li><a href="13-av.html">A/V Club</a></li><li><a href="14-onlinesec.html">Safety .net</a></li><li><a href="15-datasec.html">Security Blanket</a></li><li><a href="16-privacy.html">Private Eye</a></li><li><a href="17-design.html">School of Design</a></li></ul>
-                </div>
+                    <ul id="toc">
+<li><a href="1-powerup.html">Power Up</a></li>
+<li><a href="2-binary.html">Binary, ASCII, and Everything in Bit-ween</a></li>
+<li><a href="3-cpu.html">C-3PU, Human-Processing Relations</a></li>
+<li><a href="4-memory.html">Thanks for the Memory</a></li>
+<li><a href="6-internet.html">Project Interweb: Make it Network</a></li>
+<li><a href="7-domains.html">Eminent Domain Names</a></li>
+<li><a href="9-protocols.html">Protocol Me, Maybe</a></li>
+<li><a href="10-email.html">Snail Mail</a></li>
+<li><a href="11-tcpip.html">Manual Transmission</a></li>
+<li><a href="12-graphics.html">Picture This</a></li>
+<li><a href="13-av.html">A/V Club</a></li>
+<li><a href="14-onlinesec.html">Safety .net</a></li>
+<li><a href="15-datasec.html">Security Blanket</a></li>
+<li><a href="16-privacy.html">Private Eye</a></li>
+<li><a href="17-design.html">School of Design</a></li>
+<li><a href="18-html.html">A Web of Development</a></li>
+<li><a href="19-programming.html">Tonight's Programming</a></li>
+</ul>
+</div>
                 <div id="main" class="span10">
-                    <p><link rel="stylesheet" type="text/css" href="css/3-cpu.css" /></p>
+                    <p><link rel="stylesheet" type="text/css" href="css/3-cpu.css"></p>
 
 <div class="page-header">
-    <h1>Chapter 3 <small>C-3PU, Human-Processing Relations</small></h1>
+    <h1>Chapter 3 <small>C-3PU, Human-Processing Relations</small>
+</h1>
 </div>
 
 
 <p>Now that you know all about 01100010 01101001 01110100 01110011, let's take a look at how your computer... computes! At the heart of your computer is the <strong>central processing unit</strong>, or <strong>CPU</strong>. The CPU is responsible for executing the instructions that make your computer <em>do</em> things (like compute!). For example, if you click the Google Chrome icon on your Mac or PC, your CPU will be sent instructions that say something like "Please open up Google Chrome!" Then, as Chrome is starting up, it will probably send instructions to the CPU that say something like "Please go to www.google.com!" (Or if you're me, a page like <a href="http://www.catgifpage.com/">this</a> is more likely to open up). Though the CPU is what puts the "compute" in "computer," it's actually pretty small, measuring a few inches in size. Here are a few modern CPUs that could be found in the computer you're using right now.</p>
 
-<p><img src="img/3-cpus.jpg" alt="CPUs" /></p>
+<p><img src="img/3-cpus.jpg" alt="CPUs"></p>
 
 <h2>A Quick History Lesson</h2>
 
 <p>Turns out that computing hardware wasn't always that small. One of the first computers capable of executing stored instructions was EDVAC (Electronic Discrete Variable Automatic Computer), developed in the mid-1940s for the United States Army by the University of Pennsylvania. Weighing almost 9 tons and covering about 500 square feet, EDVAC could add two numbers together in about 850 microseconds.</p>
 
-<p><img src="img/3-edvac.jpg" alt="EDVAC" /></p>
+<p><img src="img/3-edvac.jpg" alt="EDVAC"></p>
 
 <p>Another one of the first stored-instruction computers was developed a bit closer to home. The Harvard Mark I, which still lives partly in the Science Center down the road, was developed for the United States Navy also in the mid-1940s. The Mark I could execute instructions specified on paper punch cards, and mathematical operations like logarithms took over a minute.</p>
 
-<p><img src="img/3-harvard.jpg" alt="Harvard Mark I" /></p>
+<p><img src="img/3-harvard.jpg" alt="Harvard Mark I"></p>
 
 <h2>Processes</h2>
 
 <p>The CPU's main job is to handle the execution of <strong>processes</strong>, which is a single instance of a program being executed. An operating system will typically allow you to view the current processes that are executing on your machine. For example, when I opened up Apple Keynote to make a presentation, a new process for the CPU to run was kicked off. So, processes have a set of instructions that tell your CPU how the program actually works. On Windows, you can press the infamous Ctrl-Alt-Delete to open up the task manager, while on Mac OS X, you can open a program called the Activity Manager, shown below. Each of these rows represents a different process, and we can also see how CPU-intensive each process is as well as how much memory it's consuming. If your computer starts to slow down, applications like the Task Manager on Windows and Activity Manager on Mac can be useful for identifying which currently-running process is the culprit (as a result of greedy memory or CPU usage). These applications also allow you to kill processes that are hanging or no longer responding, which should shut down a stalled program.</p>
 
-<p><img src="img/3-processes.png" alt="Activity Manager" /></p>
+<p><img src="img/3-processes.png" alt="Activity Manager"></p>
 
 <h2>CPU Instructions</h2>
 
@@ -53,8 +73,6 @@
 <li><p><strong>Arithmetic</strong> instructions are just what they sound like: it's very common for the CPU to perform mathematical operations. The CPU can add, subtract, multiply, and divide, as well as compare numbers and perform operations on the individual bits of a number. Arithmetic CPU instructions aren't particularly fancy; if your CPU were in elementary school, he or she would probably be performing at a fourth grade math level. Unlike that of fourth graders, though, your CPU's arithmetic is screaming fast and very accurate. Let's just say that if your class had multiplication competitions, your CPU wouldn't have any friends afterward.</p></li>
 <li><p><strong>Control flow</strong> instructions help the CPU decide what to do next. A sequence of instructions may contain a built-in fork in the road; based on your computer's current conditions, the CPU might decide to skip over a few instructions or repeat some instructions. Much more on this topic a bit later, but for now, just remember that some instructions can affect the order in which other instructions are executed!</p></li>
 </ul>
-
-
 <p>Each of these instructions is represented with a unique number called an <strong>opcode</strong>, which is short for "operation code". Any additional data used by an opcode are called <strong>operands</strong>. For example, if an arithmetic instruction tells the CPU to add two numbers, the CPU is going to need to know what numbers to add. Since both opcodes and operands are represented with numbers, all of the instructions passed to a CPU can be expressed in binary. In that sense, then, everything your computer does really does boil down to the zeroes and ones we saw earlier.</p>
 
 <h2>The CPU Pipeline</h2>
@@ -69,18 +87,13 @@
 <li><p><strong>Execute</strong>. This is the meat and potatoes. The execute phase does just that: runs the requested computation. Here's where your CPU will obediently perform an arithmetic operation, grab something from memory, etc.</p></li>
 <li><p><strong>Writeback</strong>. Our fourth and final stage is where we store the result of the computation. The execute phase just went through all that trouble to perform a computation, so we don't want to just throw that away. Instead, the writeback phase will write the result to memory somewhere, often in a special location on the CPU itself, so the result of the instruction can be used later. More on memory in the next section!</p></li>
 </ul>
-
-
 <p>And that's it! Let's try running an instruction through this pipeline. First, the fetch phase will determine what instruction should be run by the CPU next. Since these instructions will be represented as binary in memory, this instruction could look something like 0000001001010011 (by the way, how many bytes is that?). This doesn't make too much sense yet, so next, the decode phase will be run in order to determine what this sequence of bits means. As an example, the CPU could determine that the first 8 bits of this instruction, 00000010, tell the CPU what it should be doing, and a decimal value of "2" corresponds to the operation "add." Then, the decode phase could determine that the remaining 8 bits describe two 4-bit numbers that can be added together, which in this case are 0101 and 0011, or 5 and 3. Now that the decode phase has uncovered the mystery behind that sequence of bits, the execute phase can begin, and the CPU will actually perform the addition and obtain an answer of 8. Finally, the writeback phase will remember that result, so perhaps another instruction can use it later.</p>
 
 <p>Each instruction that we want the CPU to run will have to go through all four of these phases. Because the CPU is constantly running instructions, putting new things through the CPU pipeline is a cyclic process. Visually, running four instructions through our pipeline looks something like the below, where each block in the diagram represents a single CPU <strong>cycle</strong>.</p>
 
-<br />
-
-
-<table class="pipeline" style="text-align: center">
-    <tr>
-        <td></td>
+<br><table class="pipeline" style="text-align: center">
+<tr>
+<td></td>
         <td>1</td>
         <td class="fetch">F</td>
         <td class="decode">D</td>
@@ -99,8 +112,8 @@
         <td></td>
         <td></td>
     </tr>
-    <tr>
-        <td style="position: absolute; margin-top: 40px; margin-left: -5px">Instruction</td>
+<tr>
+<td style="position: absolute; margin-top: 40px; margin-left: -5px">Instruction</td>
         <td>2</td>
         <td></td>
         <td></td>
@@ -119,8 +132,8 @@
         <td></td>
         <td></td>
     </tr>
-    <tr>
-        <td style="color: white">Instruction</td>
+<tr>
+<td style="color: white">Instruction</td>
         <td>3</td>
         <td></td>
         <td></td>
@@ -139,8 +152,8 @@
         <td></td>
         <td></td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td>4</td>
         <td></td>
         <td></td>
@@ -159,8 +172,8 @@
         <td class="execute">E</td>
         <td class="writeback">W</td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td></td>
         <td>1</td>
         <td>2</td>
@@ -179,22 +192,17 @@
         <td>15</td>
         <td>16</td>
     </tr>
-    <tr>
-        <td colspan="17">Clock Cycle</td>
+<tr>
+<td colspan="17">Clock Cycle</td>
     </tr>
 </table>
-
-
 <h2>Parallelism</h2>
 
 <p>Here, each color represents a different part of the CPU pipeline. However, this doesn't look very efficient! Once the fetch "machine" in the CPU pipeline finishes its job, it sits dormant until the next instruction comes along. If this were a real assembly line, then only one car would ever be present on the assembly line at one time! (If you were in charge, you'd probably be fired by now.) Because different parts of the CPU handle different parts of the pipeline, we can be more efficient through multi-tasking, or <strong>parallelism</strong>. Rather than waiting for the rest of the pipeline to finish an instruction, the CPU can start fetching the <em>next</em> instruction before the current one completes! That way, the CPU is wasting a lot less time. Our new, more efficient pipeline now looks something lke this:</p>
 
-<br />
-
-
-<table class="pipeline" style="text-align: center">
-    <tr>
-        <td></td>
+<br><table class="pipeline" style="text-align: center">
+<tr>
+<td></td>
         <td>1</td>
         <td class="fetch">F</td>
         <td class="decode">D</td>
@@ -204,8 +212,8 @@
         <td></td>
         <td></td>
     </tr>
-    <tr>
-        <td style="position: absolute; margin-top: 40px; margin-left: -5px">Instruction</td>
+<tr>
+<td style="position: absolute; margin-top: 40px; margin-left: -5px">Instruction</td>
         <td>2</td>
         <td></td>
         <td class="fetch">F</td>
@@ -215,8 +223,8 @@
         <td></td>
         <td></td>
     </tr>
-    <tr>
-        <td style="color: white">Instruction</td>
+<tr>
+<td style="color: white">Instruction</td>
         <td>3</td>
         <td></td>
         <td></td>
@@ -226,8 +234,8 @@
         <td class="writeback">W</td>
         <td></td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td>4</td>
         <td></td>
         <td></td>
@@ -237,8 +245,8 @@
         <td class="execute">E</td>
         <td class="writeback">W</td>
     </tr>
-    <tr>
-        <td></td>
+<tr>
+<td></td>
         <td></td>
         <td>1</td>
         <td>2</td>
@@ -248,12 +256,10 @@
         <td>6</td>
         <td>7</td>
     </tr>
-    <tr>
-        <td colspan="8">Clock Cycle</td>
+<tr>
+<td colspan="8">Clock Cycle</td>
     </tr>
 </table>
-
-
 <p>Sweet deal, we're much more efficient now! What once took us 16 cycles to complete now takes only 7 cycles! Not bad at all, if you ask me. So, we were able to make our CPU significantly faster by taking advantage of the fact that we can execute different stages of the pipeline in parallel, or at the same time.</p>
 
 <h2>Multi-Core Architectures</h2>
@@ -272,37 +278,19 @@
 
 <p>There isn't one silver bullet when it comes to comparing the performance of two CPUs. A CPU's <strong>clock speed</strong>, nowadays measured in gigahertz (GHz), describes the rate at which the CPU executes instructions. Specifically, the clock speed measures how many cycles the CPU can complete in one second. A higher clock speed means that the CPU can execute more instructions in a single second, so a CPU with a higher clock speed will perform faster than an identical CPU with a lower clock speed. The clock speed of CPUs has been rising over the past several decades largely due to a trend known as <strong>Moore's Law</strong>, which states that processing power will double every 18 months. Really, Moore's Law refers to the number of transistors (aka fundamental electronics components that operate on electrical signals) on integrated circuits (aka a CPU chip) doubling, but we won't worry too much about that.</p>
 
-<p><img src="img/3-moore.png" alt="Moore's Law" /></p>
+<p><img src="img/3-moore.png" alt="Moore's Law"></p>
 
 <p>However, other factors also influence the overall performance of a CPU, so simply comparing the clock speeds of two CPUs won't necessarily tell you which is faster. As we've seen, parallelism is an important contributor to the performance of modern processors. So, processors with two or four cores may have better performance than their single-core equivalents. The instruction set of a CPU can also affect its performance. For example, if one processor can complete a task using one instruction that takes another processor five instructions, then naturally, it may be able to complete certain tasks faster even if it has a slower clock speed. Finally, the size of a CPU's pipeline can affect its performance, as explained in the video below. In this 2001 MacWorld keynote, Apple coined the term "Megahertz Myth" to describe the issues surrounding the comparison of two CPUs using only clock speed. The pipeline animation is pretty fancy for the early 2000s.</p>
 
-<br />
+<br><iframe width="480" height="360" src="http://www.youtube.com/embed/PKF9GOE2q38" frameborder="0"></iframe>
 
 
-<iframe width="480" height="360" src="http://www.youtube.com/embed/PKF9GOE2q38" frameborder="0"></iframe>
+<br><br><p>Thanks, Steve! 2001 was definitely one of the most technical Apple Keynotes... ever. In honor of Apple's founder and CEO, here's one more thing: a detailed look into the process of fabricating a CPU, which might be a bit crazier than you expect!</p>
+
+<br><iframe width="640" height="360" src="http://www.youtube.com/embed/UvluuAIiA50" frameborder="0"></iframe>
 
 
-<br />
-
-
-<br />
-
-
-<p>Thanks, Steve! 2001 was definitely one of the most technical Apple Keynotes... ever. In honor of Apple's founder and CEO, here's one more thing: a detailed look into the process of fabricating a CPU, which might be a bit crazier than you expect!</p>
-
-<br />
-
-
-<iframe width="640" height="360" src="http://www.youtube.com/embed/UvluuAIiA50" frameborder="0"></iframe>
-
-
-<br />
-
-
-<br />
-
-
-<p>And this concludes our discussion of processors. Next, we'll see how your computer stores the results of all those computations!</p>
+<br><br><p>And this concludes our discussion of processors. Next, we'll see how your computer stores the results of all those computations!</p>
 
 <div class="page-header page-break">
     <h1>Practice Problems</h1>
@@ -317,9 +305,7 @@
 <li><p>Unsatisfied, your neighbor turns in his processor for a new CPU whose clock speed doubles that of your CPU. Now is it twice as fast?</p></li>
 <li><p>If Moore's Law says processing power will double every 18 months, but why can't our processors have <a href="http://www.youtube.com/watch?v=SfTfXLLJlzM">phenomenal cosmic power</a>? That is, why can't this trend continue forever?</p></li>
 </ol>
-
-
-                </div>
+</div>
             </div>
         </div>
 
@@ -333,5 +319,5 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
         </script>
-    </body>
+</body>
 </html>

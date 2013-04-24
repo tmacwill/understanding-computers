@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Web Development
+title: A Web of Development
 ---
 
 <div class="page-header">
-    <h1>Chapter 18 <small>Web Development</small></h1>
+    <h1>Chapter 18 <small>A Web of Development</small></h1>
 </div>
 
 It's finally the moment you've all been waiting for... let's make a website! In order to make snazzy-looking web pages, we'll need to learn about two new things: **HTML** and **CSS**.
