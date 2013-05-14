@@ -1,0 +1,24 @@
+<script src="/js/lib/jquery.sidr.min.js"></script>
+<script src="/js/lib/handlebars.js"></script>
+<script src="/js/chapter.js"></script>
+
+<% if ['binary', 'cpu', 'memory'].include? @chapter %>
+    <link rel="stylesheet" href="/css/<%= @chapter %>.css" />
+<% end %>
+
+<%= erb :section_selector %>
+
+<div id="sidr">
+    <%= $toc_list %>
+</div>
+
+<div class="page-header">
+    <a id="toggle-menu" href="#sidr"><i class="icon-list"></i></a>
+    <h1 class="chapter-heading">Chapter <%= @number %><small><%= @title %></small></h1>
+</div>
+
+<div id="chapter-content">
+    <%= @content %>
+</div>
+
+<div id="section-selectors"></div>
