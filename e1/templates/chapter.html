@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<script src="/static/js/lib/jquery.sidr.min.js"></script>
+<script src="/static/js/lib/handlebars.js"></script>
+<script src="/static/js/chapter.js"></script>
+
+{% if chapter_id in ['binary', 'cpu', 'memory'] %}
+    <link rel="stylesheet" href="/css/{{ chapter_id }}.css" />
+{% endif %}
+
+{% include 'partials/section_selector.html' %}
+
+<div id="sidr">
+    {{ toc_list|safe }}
+</div>
+
+<div class="page-header">
+    <a id="toggle-menu" href="#sidr"><i class="icon-list"></i></a>
+    <h1 class="chapter-heading">Chapter {{ chapter.sequence + 1 }} <small>{{ chapter.title }}</small></h1>
+</div>
+
+<div id="chapter-content">
+    {{ chapter.content|safe }}
+</div>
+
+<div id="section-selectors"></div>
+
+{% endblock %}

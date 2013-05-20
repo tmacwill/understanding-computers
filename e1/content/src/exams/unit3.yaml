@@ -1,0 +1,10 @@
+- type: mc
+  question: Which of the following graphics formats supports transparency?
+  choices:
+    a: PNG
+    b: JPG
+    c: BMP
+    d: PPM
+  answer: a
+  link: graphics/other-image-formats
+  explanation: Of these, only the PNG format supports an alpha channel, which is needed for transparency.

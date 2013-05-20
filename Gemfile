@@ -1,6 +1,0 @@
-gem 'data_mapper'
-gem 'dm-mysql-adapter'
-gem 'maruku'
-gem 'sinatra'
-gem 'shotgun'
-gem 'thin'
