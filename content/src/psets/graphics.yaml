@@ -57,8 +57,8 @@
 
 - type: fill
   question: What is the color depth of a monochrome, black-and-white image?
-  link: graphics/color
-  answer: ^1([| ]bit)?$
+  link: graphics/colors
+  answer: ^1([ -]bit)?$
   explanation: We can represent the color black with the number 0 and the color white with the number 1, so we need only one bit per pixel in order to fully represent a monochrome image.
 
 - type: sequence

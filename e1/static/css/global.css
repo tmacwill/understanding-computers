@@ -141,6 +141,6 @@ pre code {
     text-decoration: none;
 }
 
-#problem label {
+.problem label {
     display: inline;
 }

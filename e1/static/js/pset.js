@@ -1,18 +1,30 @@
 /**
+ * Model for a generic problem
+ */
+var Problem = Backbone.Model.extend({
+});
+
+/**
+ * Model for a collection of problems
+ */
+var ProblemCollection = Backbone.Collection.extend({
+    model: Problem
+});
+
+/**
  * View representing a single pset problem
  */
 var ProblemView = Backbone.View.extend({
-    el: '#problem',
+    className: 'problem',
 
     initialize: function() {
-        this.problem = this.options.problem;
         this.template = _.template($(this.elTemplate).html());
-
         this.render();
     },
 
     render: function() {
-        this.$el.html(this.template({ problem: this.problem }));
+        this.$el.html(this.template({ problem: this.model }));
+        return this;
     }
 });
 
@@ -45,95 +57,51 @@ var TryProblemView = ProblemView.extend({
 });
 
 /**
- * View representing controls to navigate among problems
+ * View for a collection of problems
  */
-var ProblemControls = Backbone.View.extend({
-    el: '#problem-controls',
-
-    events: {
-        'click #btn-next': 'next'
-    },
+var ProblemCollectionView = Backbone.View.extend({
+    problemViews: [],
 
     initialize: function() {
-        // hide next button if at the last question
-        var fragment = window.location.pathname.split('/');
-        if (parseInt(fragment[3]) == pset.length - 1)
-            this.$el.find('#btn-next').hide();
+        var self = this;
+        this.collection.each(function(problem) {
+            // determine the appropriate view for the problem type
+            var type = problem.get('type');
+            var viewType = false;
+            if (type == 'tf')
+                viewType = TFProblemView;
+            else if (type == 'mc')
+                viewType = MCProblemView;
+            else if (type == 'fill')
+                viewType = FillProblemView;
+            else if (type == 'try')
+                viewType = TryProblemView;
+
+            // make sure problem type is valid
+            if (!viewType)
+                return;
+
+            // save problem-specific view
+            self.problemViews.push(new viewType({
+                model: problem
+            }));
+        });
+
+        this.render();
     },
 
-    /**
-     * Display the next problem
-     */
-    next: function() {
-        // get the index of the next problem
-        var fragment = Backbone.history.fragment.split('/');
-        fragment[2] = parseInt(fragment[2]) + 1;
-
-        // navigate to next problem
-        psetRouter.navigate(fragment.join('/'), { trigger: true });
-
-        // hide next button if there are no more problems
-        if (fragment[2] == pset.length - 1)
-            this.$el.find('#btn-next').hide();
-        else
-            this.$el.find('#btn-next').show();
-    }
-});
-
-/**
- * Router for a problem set
- */
-var PsetRouter = Backbone.Router.extend({
-    initialize: function() {
-        this.problemIndex = 0;
-    },
-
-    routes: {
-        'pset/:chapter': function(chapter) {
-            this.navigate('/pset/' + chapter + '/' + this.problemIndex, { trigger: true });
-        },
-
-        'pset/:chapter/:problem': function(chapter, problem) {
-            this.renderProblem(problem);
-        }
-    },
-
-    /**
-     * Render a problem in the main content view
-     * @param {Number} problem Index of problem to render
-     */
-    renderProblem: function(problemIndex) {
-        // add new problem in its place
-        var problem = pset[problemIndex];
-        if (problem.type == 'tf')
-            this.problemView = new TFProblemView({
-                problem: problem,
-                index: problemIndex
-            });
-        else if (problem.type == 'mc')
-            this.problemView = new MCProblemView({
-                problem: problem,
-                index: problemIndex
-            });
-        else if (problem.type == 'fill')
-            this.problemView = new FillProblemView({
-                problem: problem,
-                index: problemIndex
-            });
-        else if (problem.type == 'try')
-            this.problemView = new TryProblemView({
-                problem: problem,
-                index: problemIndex
-            });
-
-        // remember the current problem value
-        this.problemIndex = problemIndex;
+    render: function() {
+        // add each problem view to the element
+        var self = this;
+        _.each(this.problemViews, function(view) {
+            self.$el.append(view.el);
+        });
     }
 });
 
 $(function() {
-    var problemControls = new ProblemControls;
-
-    psetRouter = new PsetRouter();
-    Backbone.history.start({ pushState: true });
+    var problemsView = new ProblemCollectionView({
+        el: '#problems',
+        collection: new ProblemCollection(pset)
+    });
 });

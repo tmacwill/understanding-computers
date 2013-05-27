@@ -2,11 +2,11 @@
 <script type="text/x-template" id="mc-problem-template">
 
 <h4>Select the choice that best answers the question.</h4>
-<h2><%- problem.question %></h2>
+<h2><%- problem.get('question') %></h2>
 <div class="choices">
-    <% for (var choice in problem.choices) { %>
+    <% for (var choice in problem.get('choices')) { %>
         <input type="radio" id="btn-<%- choice %>" name="response" />
-        <label for="btn-<%- choice %>"><%- problem.choices[choice] %></label>
+        <label for="btn-<%- choice %>"><%- problem.get('choices')[choice] %></label>
         <br />
     <% } %>
 </div>
