@@ -140,3 +140,7 @@ pre code {
 #toggle-menu:hover {
     text-decoration: none;
 }
+
+#problem label {
+    display: inline;
+}

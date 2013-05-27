@@ -31,34 +31,34 @@
   questions:
     - type: fill
       question: Which type of color mixing expresses colors in terms of RGB?
-      answer: /^additive( color mixing)?$/
+      answer: ^additive( color mixing)?$
       link: graphics/colors
       explanation: Using additive mixing, red, green, and blue light can be used to produce any color.
     - type: fill
       question: Which type of color mixing expresses colors in terms of CMYK?
-      answer: /^subtractive( color mixing)?$/
+      answer: ^subtractive( color mixing)?$
       link: graphics/colors
       explanation: Using subtractive mixing, cyan, magenta, yellow, and key ink can be used to produce any color.
     - type: fill
       question: Which type of color mixing is used when printing graphics on paper?
-      answer: /^subtractive( color mixing)?$/
+      answer: ^subtractive( color mixing)?$
       link: graphics/colors
       explanation: Because we view printed graphics under (white) light, CMYK can be used to absorb some of the light to produce different colors.
     - type: fill
       question: Which type of color mixing is used by the LCDs in your computer's display?
-      answer: /^additive( color mixing)?$/
+      answer: ^additive( color mixing)?$
       link: graphics/colors
       explanation: Because LCDs shine light into darkness, RGB can be used to add colors together to produce different colors.
     - type: fill
       question: When expressing colors using hexadecimal notation, the primary colors of which type of color mixing are used?
-      answer: /^additive( color mixing)?$/
+      answer: ^additive( color mixing)?$
       link: graphics/colors
       explanation: Typically, hexadecimal color notation uses two digits for red, two for green, and two for blue, in that order.
 
 - type: fill
   question: What is the color depth of a monochrome, black-and-white image?
   link: graphics/color
-  answer: /^1([| ]bit)?$/
+  answer: ^1([| ]bit)?$
   explanation: We can represent the color black with the number 0 and the color white with the number 1, so we need only one bit per pixel in order to fully represent a monochrome image.
 
 - type: sequence
@@ -85,16 +85,37 @@
       link: graphics/bitmap
       explanation: The bitmap's metadata includes the image's width, height, color depth, size (in bytes), and resolution, among other things. While other formats may store information about cameras, bitmap does not.
     - type: mc
-      question: 
+      question: Next up is the actual image data. Which of the following is <b>not</b> true of how images are represented in the bitmap format?
+      choices:
+        a: The pixels in the first column are stored first, followed by the second column, and so on.
+        b: Image data is represented using 0s and 1s.
+        c: Each pixel is represented using the same amount of data.
+        d: Bitmaps are a raster graphics format.
+      answer: a
       link: graphics/bitmap
+      answer: Bitmap is a raster graphics format, so images are represented using a grid of pixels, where each pixel has a color composed of values for red, green, and blue.
     - type: mc
-      question: For a 24-bit bitmap, which of the following values makes sense to store a single pixel?
+      question: For a 24-bit bitmap, which of the following values could represent a single pixel?
+      choices:
+        a: "#aaddgg"
+        b: "#abcd"
+        c: "#c0ffee"
+        d: "#123"
+      answer: c
+      explanation: Each pixel is represented using 24 bits, so 8 bits are dedicated to each of red, green, and blue.
       link: graphics/bitmap
 
+- type: tf
+  question: Because GIF is a lossless format, data may be lost in the compression process.
+  answer: f
+  explanation: Lossless compression algorithms preserve all of the file's original data.
+  link: graphics/lossless-compression
 
-COMPRESSION
-
-RESOLUTION
+- type: tf
+  question: Although lossy compression formats like JPEG throw away some of the file's original data, differences in the compressed file are difficult to detect, even for high compression ratios.
+  answer: t
+  explanation: Many digital photos are stored as compressed JPEGs.
+  link: graphics/lossy-compression
 
 - type: mc
   question: Which of the following best describes how vector graphics are represented?

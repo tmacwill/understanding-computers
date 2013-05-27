@@ -2,11 +2,10 @@
 {% block body %}
 
 <script src="/static/js/lib/jquery.sidr.min.js"></script>
-<script src="/static/js/lib/handlebars.js"></script>
 <script src="/static/js/chapter.js"></script>
 
 {% if chapter_id in ['binary', 'cpu', 'memory'] %}
-    <link rel="stylesheet" href="/css/{{ chapter_id }}.css" />
+    <link rel="stylesheet" href="/static/css/{{ chapter_id }}.css" />
 {% endif %}
 
 {% include 'partials/section_selector.html' %}

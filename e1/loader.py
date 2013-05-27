@@ -9,6 +9,7 @@ from collections import OrderedDict
 from e1.util import memoized
 
 _chapters = None
+_psets = None
 _toc = None
 
 def chapters():
@@ -22,15 +23,15 @@ def chapters():
     if _chapters:
         return _chapters
 
-    # make sure table of contents exists
-    if not _toc:
-        _toc = toc()
-
     # if build exists for chapters, then use that
     if os.path.exists(settings.CHAPTER_BUILD):
         with open(settings.CHAPTER_BUILD, 'r') as f:
             _chapters = OrderedDict(sorted(json.load(f).items(), key=lambda e: int(e[1]['sequence'])))
             return _chapters
+
+    # make sure table of contents exists
+    if not _toc:
+        _toc = toc()
 
     # load chapter metadata
     _chapters = OrderedDict()
@@ -62,14 +63,47 @@ def chapters():
 
             _chapters[i]['content'] = markdown.markdown("\n".join(content))
 
-    # write build file
+    # write build files
     with open(settings.CHAPTER_BUILD, 'w') as f:
         json.dump(_chapters, f)
-    # write build file
     with open(settings.TOC_BUILD, 'w') as f:
         json.dump(_toc, f)
 
     return _chapters
+
+def psets():
+    """
+    Load all psets
+    """
+
+    global _toc, _psets
+
+    # table of contents already generated, so use that
+    if _psets:
+        return _psets
+
+    # if build exists for psets, then use that
+    if os.path.exists(settings.PSET_BUILD):
+        with open(settings.PSET_BUILD, 'r') as f:
+            _psets = json.load(f)
+            return _psets
+
+    # make sure table of contents exists
+    if not _toc:
+        _toc = toc()
+
+    # load psets from yaml source
+    _psets = OrderedDict()
+    #for i in _toc.iterkeys():
+    for i in ['graphics']:
+        with open(settings.PSET_SRC + '/' + i + '.yaml') as f:
+            _psets[i] = yaml.load(f)
+
+    # write build file
+    with open(settings.PSET_BUILD, 'w') as f:
+        json.dump(_psets, f)
+
+    return _psets
 
 def subheading(s):
     """

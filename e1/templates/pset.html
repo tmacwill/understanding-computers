@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% include 'partials/problems/mc.html' %}
+{% include 'partials/problems/tf.html' %}
+
+<script>
+var pset = {{ pset|tojson|safe }};
+var chapter = '{{ chapter }}';
+</script>
+
+<script src="/static/js/pset.js"></script>
+
+<div id="problem"></div>
+
+{% endblock %}
