@@ -1,7 +1,16 @@
 {% raw %}
-<script type="text/x-handlebars-template" id="problem-template">
+<script type="text/x-template" id="mc-problem-template">
 
-<h2>{{ problem.question }}</h2>
+<h4>Select the choice that best answers the question.</h4>
+<h2><%- problem.question %></h2>
+<div class="choices">
+    <% for (var choice in problem.choices) { %>
+        <input type="radio" id="btn-<%- choice %>" name="response" />
+        <label for="btn-<%- choice %>"><%- problem.choices[choice] %></label>
+        <br />
+    <% } %>
+</div>
+<button class="btn btn-primary">Submit</button>
 
 </script>
 {% endraw %}

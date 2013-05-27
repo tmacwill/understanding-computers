@@ -6,7 +6,7 @@ var ProblemView = Backbone.View.extend({
 
     initialize: function() {
         this.problem = this.options.problem;
-        this.template = Handlebars.compile($('#tf-problem-template').html());
+        this.template = _.template($(this.elTemplate).html());
 
         this.render();
     },
@@ -20,7 +20,64 @@ var ProblemView = Backbone.View.extend({
  * View representing a true/false problem
  */
 var TFProblemView = ProblemView.extend({
-    template: '#tf-problem-template',
+    elTemplate: '#tf-problem-template',
+});
+
+/**
+ * View representing a multiple choice problem
+ */
+var MCProblemView = ProblemView.extend({
+    elTemplate: '#mc-problem-template',
+});
+
+/**
+ * View representing a fill-in-the-blank problem
+ */
+var FillProblemView = ProblemView.extend({
+    elTemplate: '#fill-problem-template',
+});
+
+/**
+ * View representing a fill-in-the-blank problem
+ */
+var TryProblemView = ProblemView.extend({
+    elTemplate: '#try-problem-template',
+});
+
+/**
+ * View representing controls to navigate among problems
+ */
+var ProblemControls = Backbone.View.extend({
+    el: '#problem-controls',
+
+    events: {
+        'click #btn-next': 'next'
+    },
+
+    initialize: function() {
+        // hide next button if at the last question
+        var fragment = window.location.pathname.split('/');
+        if (parseInt(fragment[3]) == pset.length - 1)
+            this.$el.find('#btn-next').hide();
+    },
+
+    /**
+     * Display the next problem
+     */
+    next: function() {
+        // get the index of the next problem
+        var fragment = Backbone.history.fragment.split('/');
+        fragment[2] = parseInt(fragment[2]) + 1;
+
+        // navigate to next problem
+        psetRouter.navigate(fragment.join('/'), { trigger: true });
+
+        // hide next button if there are no more problems
+        if (fragment[2] == pset.length - 1)
+            this.$el.find('#btn-next').hide();
+        else
+            this.$el.find('#btn-next').show();
+    }
 });
 
 /**
@@ -46,15 +103,27 @@ var PsetRouter = Backbone.Router.extend({
      * @param {Number} problem Index of problem to render
      */
     renderProblem: function(problemIndex) {
-        // remove view for previous problem
-        if (this.problemView)
-            this.problemView.remove();
-
         // add new problem in its place
         var problem = pset[problemIndex];
         if (problem.type == 'tf')
             this.problemView = new TFProblemView({
-                problem: problem
+                problem: problem,
+                index: problemIndex
+            });
+        else if (problem.type == 'mc')
+            this.problemView = new MCProblemView({
+                problem: problem,
+                index: problemIndex
+            });
+        else if (problem.type == 'fill')
+            this.problemView = new FillProblemView({
+                problem: problem,
+                index: problemIndex
+            });
+        else if (problem.type == 'try')
+            this.problemView = new TryProblemView({
+                problem: problem,
+                index: problemIndex
             });
 
         // remember the current problem value
@@ -63,6 +132,8 @@ var PsetRouter = Backbone.Router.extend({
 });
 
 $(function() {
+    var problemControls = new ProblemControls;
+
     psetRouter = new PsetRouter();
     Backbone.history.start({ pushState: true });
 });

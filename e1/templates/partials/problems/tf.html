@@ -1,7 +1,8 @@
 {% raw %}
-<script type="text/x-handlebars-template" id="tf-problem-template">
+<script type="text/x-template" id="tf-problem-template">
 
-<h2>True or False? {{ problem.question }}</h2>
+<h4>True or False?</h4>
+<h2><%- problem.question %></h2>
 <div class="choices">
     <input type="radio" id="response-true" name="response" value="true" />
     <label for="response-true">True</label>
@@ -9,6 +10,7 @@
     <input type="radio" id="response-false" name="response" value="false" />
     <label for="response-false">False</label>
 </div>
+<button class="btn btn-primary">Submit</button>
 
 </script>
 {% endraw %}
