@@ -6,11 +6,17 @@
 {% include 'partials/problems/tf.html' %}
 {% include 'partials/problems/try.html' %}
 
+<link rel="stylesheet" href="/static/css/lib/flat-ui.css" />
+<link rel="stylesheet" href="/static/css/pset.css" />
+
 <script>
 var pset = {{ pset|tojson|safe }};
 var chapter = '{{ chapter }}';
 </script>
 
+<script src="/static/js/lib/bootstrap.min.js"></script>
+<script src="/static/js/lib/flatui-checkbox.js"></script>
+<script src="/static/js/lib/flatui-radio.js"></script>
 <script src="/static/js/pset.js"></script>
 
 <div id="problems"></div>

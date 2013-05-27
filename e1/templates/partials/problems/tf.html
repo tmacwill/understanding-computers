@@ -4,13 +4,17 @@
 <h4>True or False?</h4>
 <h2><%- problem.get('question') %></h2>
 <div class="choices">
-    <input type="radio" id="response-true" name="response" value="true" />
-    <label for="response-true">True</label>
+    <label class="radio">
+        <input type="radio" name="response" value="true" data-toggle="radio" /> True
+    </label>
     <br />
-    <input type="radio" id="response-false" name="response" value="false" />
-    <label for="response-false">False</label>
+    <label class="radio">
+        <input type="radio" name="response" value="false" data-toggle="radio" /> False
+    </label>
+    <br />
 </div>
-<button class="btn btn-primary">Submit</button>
+
+<button class="btn btn-block btn-primary btn-submit">Submit</button>
 
 </script>
 {% endraw %}

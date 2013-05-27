@@ -1,0 +1,36 @@
+html, body {
+    font-family: 'LatoLight';
+}
+
+h2 {
+    font-family: 'LatoBlack';
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-family: 'LatoLight';
+    margin-bottom: 8px;
+}
+
+#problems {
+    margin-top: 35px;
+}
+
+.problem {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #BDC3C7;
+}
+
+.problem label {
+    cursor: pointer;
+    display: block;
+    font-family: 'RobotoLight';
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: -15px;
+}
+
+.problem .choices {
+    margin-bottom: 20px;
+}
