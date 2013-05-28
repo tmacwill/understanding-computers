@@ -1,3 +1,7 @@
+alembic
 flask
-pyyaml
+flask-sqlalchemy
 markdown
+mysql-python
+pyyaml
+sqlalchemy

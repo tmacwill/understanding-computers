@@ -1,5 +1,6 @@
 import e1.loader as loader
 import e1.settings as settings
+from e1.models.user import User
 
 from e1 import app
 from flask import abort, jsonify, render_template
