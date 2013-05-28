@@ -1,0 +1,27 @@
+.contents-entry {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.contents-entry:hover {
+    background: #7F8C8D;
+}
+
+.contents-entry:hover h2, .contents-entry:hover h4 {
+    color: white;
+}
+
+.number {
+    background: #C0392B;
+    color: white;
+    font-size: 28px;
+    text-align: center;
+    line-height: 72px;
+    border-radius: 2px;
+}
+
+.chapter-info h4 {
+    font-family: 'LatoLight';
+}

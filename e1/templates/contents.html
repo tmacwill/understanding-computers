@@ -1,24 +1,33 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<div class="page-header">
-    <h1>Table of Contents</h1>
-</div>
+<link rel="stylesheet" href="/static/css/contents.css" />
 
-{% for id, chapter in toc.iteritems() %}
-    <h2>
-        <a href="/chapter/{{ id }}">
-            {{ chapter.sequence + 1 }}. {{ chapter.heading }}
+<h1>Table of Contents</h1>
+
+<div id="table-contents">
+    {% for id, chapter in toc.iteritems() %}
+        <a href="/chapter/{{ id }}" class="contents-entry box">
+            <div class="row">
+                <div class="number span1">{{ chapter.sequence + 1 }}.</div>
+                <div class="chapter-info span11">
+                    <h2>
+                        {{ chapter.heading }}
+                    </h2>
+                    <h4>{{ ". ".join(chapter['tags']) }}.</h4>
+                    <!--
+                    <ul>
+                        {% for i in chapter.subheadings %}
+                            <li>
+                                <a href="/chapter/{{ id }}/{{ i.id }}">{{ i.subheading }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    -->
+                </div>
+            </div>
         </a>
-    </h2>
-    <h3>{{ ". ".join(chapter['tags']) }}.</h3>
-    <ul>
-        {% for i in chapter.subheadings %}
-            <li>
-                <a href="/chapter/{{ id }}/{{ i.id }}">{{ i.subheading }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% endfor %}
+    {% endfor %}
+</div>
 
 {% endblock %}
