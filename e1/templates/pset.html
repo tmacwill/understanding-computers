@@ -6,7 +6,6 @@
 {% include 'partials/problems/tf.html' %}
 {% include 'partials/problems/try.html' %}
 
-<link rel="stylesheet" href="/static/css/lib/flat-ui.css" />
 <link rel="stylesheet" href="/static/css/pset.css" />
 
 <script>
@@ -18,6 +17,8 @@ var chapter = '{{ chapter }}';
 <script src="/static/js/lib/flatui-checkbox.js"></script>
 <script src="/static/js/lib/flatui-radio.js"></script>
 <script src="/static/js/pset.js"></script>
+
+<h1 class="chapter-heading">Problem Set {{ metadata.sequence + 1 }}<small>{{ metadata.heading }}</small></h1>
 
 <div id="problems"></div>
 

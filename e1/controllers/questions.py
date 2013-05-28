@@ -12,10 +12,14 @@ def pset(chapter, question=0):
     if not chapter in psets:
         abort(404)
 
+    # temporary metadata
+    toc = loader.toc()
+    metadata = toc[chapter]
+
     # remove answers from each question
     pset = psets[chapter]
     for i in pset[:]:
         if 'answer' in i:
             del i['answer']
 
-    return render_template('pset.html', pset=pset, chapter=chapter)
+    return render_template('pset.html', pset=pset, chapter=chapter, metadata=metadata)

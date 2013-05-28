@@ -11,7 +11,7 @@
             {{ chapter.sequence + 1 }}. {{ chapter.heading }}
         </a>
     </h2>
-    <h3>{{ ". ".join(chapter['tags']) }}</h3>
+    <h3>{{ ". ".join(chapter['tags']) }}.</h3>
     <ul>
         {% for i in chapter.subheadings %}
             <li>

@@ -1,26 +1,11 @@
-h1 {
-    font-family: 'LatoBold';
-    font-weight: normal;
-}
-
-h1 {
-    font-size: 4.0em;
-    width: 90%;
-}
-
-h1 small {
-    font-family: 'LatoHairline';
-    font-size: 0.6em;
-    font-weight: normal;
-    margin-left: 0.3em;
-    color: #7F8C8D;
+html, body {
+    background: #ECF0F1;
 }
 
 h2 {
     font-size: 2.5em;
     font-family: 'LatoLight';
     font-weight: normal;
-    margin-top: 1.0em;
     margin-bottom: 0.7em;
 }
 
@@ -47,6 +32,20 @@ pre code {
     border: none;
 }
 
+#chapter-content {
+    background: white;
+    padding: 40px;
+    border-radius: 2px;
+
+    border: 1px solid;
+    border-color: #e5e5e5 #dbdbdb #d2d2d2;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+    -moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+}
 
 .page-header {
     padding-bottom: 12px;
@@ -86,6 +85,29 @@ pre code {
 
 .pagination ul li.active > a {
     color: #BDC3C7;
+}
+
+.pagination ul li.active.previous > a,
+.pagination ul li.active.next > a,
+.pagination ul li.active.previous > span,
+.pagination ul li.active.next > span,
+.pagination ul li.active.previous > a:hover,
+.pagination ul li.active.next > a:hover,
+.pagination ul li.active.previous > span:hover,
+.pagination ul li.active.next > span:hover,
+.pagination ul li.active.previous > a:focus,
+.pagination ul li.active.next > a:focus,
+.pagination ul li.active.previous > span:focus,
+.pagination ul li.active.next > span:focus {
+    background-color: #C0392B;
+}
+
+.pagination ul li > a:hover,
+.pagination ul li > span:hover,
+.pagination ul li > a:focus,
+.pagination ul li > span:focus {
+    background-color: #C0392B;
+    border-color: #C0392B;
 }
 
 #section-selectors a {

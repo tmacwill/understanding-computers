@@ -295,3 +295,18 @@
     font-weight: normal;
     font-style: normal;
 }
+
+h1 {
+    font-family: 'LatoBold';
+    font-weight: normal;
+    font-size: 56px;
+    width: 90%;
+    margin: 40px 0;
+}
+
+h1 small {
+    font-family: 'LatoBlack';
+    font-size: 34px;
+    margin-left: 20px;
+    color: #C0392B;
+}
