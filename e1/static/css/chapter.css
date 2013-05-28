@@ -1,5 +1,5 @@
-h1, h2 {
-    font-family: 'LeagueGothicRegular';
+h1 {
+    font-family: 'LatoBold';
     font-weight: normal;
 }
 
@@ -9,14 +9,16 @@ h1 {
 }
 
 h1 small {
-    font-size: 0.7em;
+    font-family: 'LatoHairline';
+    font-size: 0.6em;
     font-weight: normal;
     margin-left: 0.3em;
+    color: #7F8C8D;
 }
 
 h2 {
     font-size: 2.5em;
-    font-family: 'LeagueGothicRegular';
+    font-family: 'LatoLight';
     font-weight: normal;
     margin-top: 1.0em;
     margin-bottom: 0.7em;
@@ -31,8 +33,9 @@ h3 {
 }
 
 p, li {
-    font-size: 14px;
-    line-height: 21px;
+    font-size: 16px;
+    line-height: 28px;
+    margin-bottom: 15px;
 }
 
 pre {
@@ -67,8 +70,26 @@ pre code {
 }
 
 #section-selectors {
-    margin: 10px auto;
+    margin: 0 auto;
     text-align: center;
+    margin-bottom: 20px;
+}
+
+#section-selectors ul {
+    background: #BDC3C7;
+    height: 42px;
+}
+
+.pagination ul li > a {
+    border: 5px solid #BDC3C7;
+}
+
+.pagination ul li.active > a {
+    color: #BDC3C7;
+}
+
+#section-selectors a {
+    cursor: pointer;
 }
 
 .section-selector {
@@ -101,4 +122,3 @@ pre code {
 #toggle-menu:hover {
     text-decoration: none;
 }
-

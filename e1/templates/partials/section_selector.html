@@ -1,7 +1,20 @@
 {% raw %}
-<script type="text/x-handlebars-template" id="section-selector-template">
+<script type="text/x-template" id="section-selector-template">
 
-<div class="section-selector" data-toggle="tooltip" data-original-title="{{ title }}"></div>
+<div class="pagination">
+    <ul>
+        <li class="previous"><a class="fui-arrow-left"></a></li>
+        <% for (var i in sections) { %>
+            <li>
+                <a class="btn-section" data-section="<%- i %>" data-toggle="tooltip"
+                    data-original-title="<%- sections[i].title %>" data-id="<%- subheading(sections[i].title) %>">
+                    <%- parseInt(i) + 1 %>
+                </a>
+            </li>
+        <% } %>
+        <li class="next"><a class="fui-arrow-right"></a></li>
+    </ul>
+</div>
 
 </script>
 {% endraw %}

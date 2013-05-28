@@ -1,16 +1,18 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<script src="/static/js/lib/jquery.sidr.min.js"></script>
-<script src="/static/js/chapter.js"></script>
+{% include 'partials/section_selector.html' %}
 
+<link rel="stylesheet" href="/static/css/lib/flat-ui.css" />
 <link rel="stylesheet" href="/static/css/chapter.css" />
 
 {% if chapter_id in ['binary', 'cpu', 'memory'] %}
     <link rel="stylesheet" href="/static/css/{{ chapter_id }}.css" />
 {% endif %}
 
-{% include 'partials/section_selector.html' %}
+<script src="/static/js/lib/bootstrap.min.js"></script>
+<script src="/static/js/lib/jquery.sidr.min.js"></script>
+<script src="/static/js/chapter.js"></script>
 
 <div id="sidr">
     {{ toc_list|safe }}

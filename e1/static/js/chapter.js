@@ -48,15 +48,27 @@ var ChapterView = Backbone.View.extend({
         });
 
         // display the first section by default
-        this.$el.html(this.sections[0].html);
+        this.currentIndex = 0;
+        this.$el.html(this.sections[this.currentIndex].html);
     },
 
     /**
      * Render a section in the body content area
-     * @param {String} index ID of section to render
+     * @param {String} title Title of section to render
      */
-    renderSection: function(index) {
-        this.$el.html(this.sections[index].html);
+    renderSection: function(title) {
+        // search for section matching the given title
+        var self = this;
+        $.each(this.sections, function(i, e) {
+            if (subheading(this.title) == title) {
+                // scroll to the top of the page
+                window.scrollTo(0, 0);
+
+                // render section at new index
+                self.currentIndex = i;
+                self.$el.html(self.sections[i].html);
+            }
+        });
     }
 });
 
@@ -67,30 +79,72 @@ var SectionSelectorView = Backbone.View.extend({
     el: '#section-selectors',
 
     events: {
-        'click .section-selector': 'renderSection'
+        'click li a.btn-section': 'renderSection',
+        'click li.previous a': 'previous',
+        'click li.next a': 'next'
     },
 
     initialize: function() {
         // compile template for view
         this.chapterView = this.options.chapterView;
-        this.template = Handlebars.compile($('#section-selector-template').html());
+        this.template = _.template($('#section-selector-template').html());
 
-        // construct a selector for each page
-        var self = this;
-        $.each(this.chapterView.sections, function(i, e) {
-            self.$el.append(self.template({
-                title: this.title
-            }));
-        });
+        this.render();
 
         // enable tooltips on all selectors
-        this.$el.children().tooltip();
+        this.$el.find('[data-toggle=tooltip]').tooltip();
     },
 
-    renderSection: function(e) {
-        // scroll to the top of the page
-        window.scrollTo(0, 0);
+    render: function() {
+        this.$el.html(this.template({
+            sections: this.chapterView.sections
+        }));
 
+        return this;
+    },
+
+    /**
+     * Set the currently active section in the selector
+     */
+    highlightSection: function(title) {
+        this.$el.find('.active').removeClass('active');
+        this.$el.find('[data-id="' + title + '"]').parent().addClass('active');
+    },
+
+    /**
+     * Render the next section
+     */
+    next: function() {
+        // don't navigate past the end of the sections list
+        if (this.chapterView.currentIndex < this.chapterView.sections.length - 1) {
+            // determine which section to navigate to
+            var fragment = Backbone.history.fragment.split('/');
+            fragment[2] = subheading(this.chapterView.sections[this.chapterView.currentIndex + 1].title);
+
+            // navigate to section
+            chapterRouter.navigate(fragment.join('/'), { trigger: true });
+        }
+    },
+
+    /**
+     * Render the previous section
+     */
+    previous: function() {
+        // don't navigate past the end of the sections list
+        if (this.chapterView.currentIndex > 0) {
+            // determine which section to navigate to
+            var fragment = Backbone.history.fragment.split('/');
+            fragment[2] = subheading(this.chapterView.sections[this.chapterView.currentIndex - 1].title);
+
+            // navigate to section
+            chapterRouter.navigate(fragment.join('/'), { trigger: true });
+        }
+    },
+
+    /**
+     * Render the selected section
+     */
+    renderSection: function(e) {
         // determine which section to navigate to
         var fragment = Backbone.history.fragment.split('/');
         fragment[2] = subheading($(e.target).attr('data-original-title'));
@@ -106,15 +160,13 @@ var SectionSelectorView = Backbone.View.extend({
 var ChapterRouter = Backbone.Router.extend({
     initialize: function(options) {
         this.chapterView = options.chapterView;
+        this.sectionSelectorView = options.sectionSelectorView;
     },
 
     routes: {
         'chapter/:chapter/:section': function(chapter, section) {
-            var self = this;
-            $.each(this.chapterView.sections, function(i, e) {
-                if (subheading(this.title) == section)
-                    self.chapterView.renderSection(i);
-            });
+            this.chapterView.renderSection(section);
+            this.sectionSelectorView.highlightSection(section);
         }
     }
 });
@@ -131,7 +183,8 @@ $(function() {
 
     // create router
     chapterRouter = new ChapterRouter({
-        chapterView: chapterView
+        chapterView: chapterView,
+        sectionSelectorView: sectionSelectorView
     });
 
     Backbone.history.start({ pushState: true });
