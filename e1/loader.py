@@ -6,7 +6,6 @@ import settings
 import yaml
 
 from collections import OrderedDict
-from e1.util import memoized
 
 _chapters = None
 _psets = None

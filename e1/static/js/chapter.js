@@ -49,7 +49,7 @@ var ChapterView = Backbone.View.extend({
 
         // display the first section by default
         this.currentIndex = 0;
-        this.$el.html(this.sections[this.currentIndex].html);
+        this.renderSection(this.sections[this.currentIndex].title);
     },
 
     /**
@@ -57,18 +57,26 @@ var ChapterView = Backbone.View.extend({
      * @param {String} title Title of section to render
      */
     renderSection: function(title) {
+        // mark section as read
+        var fragment = window.location.pathname.split('/');
+        var n = fragment.length;
+        if (n < 4)
+            fragment[3] = subheading(title);
+        $.get('/read/' + fragment[2] + '/' + fragment[3]);
+
         // search for section matching the given title
-        var self = this;
-        $.each(this.sections, function(i, e) {
-            if (subheading(this.title) == title) {
+        for (var i in this.sections) {
+            // if no subsection given, then use first subsection, else look for matching title
+            if (subheading(this.sections[i].title) == title || n < 4) {
                 // scroll to the top of the page
                 window.scrollTo(0, 0);
 
                 // render section at new index
-                self.currentIndex = i;
-                self.$el.html(self.sections[i].html);
+                this.currentIndex = i;
+                this.$el.html(this.sections[i].html);
+                return;
             }
-        });
+        }
     }
 });
 
@@ -119,7 +127,7 @@ var SectionSelectorView = Backbone.View.extend({
         if (this.chapterView.currentIndex < this.chapterView.sections.length - 1) {
             // determine which section to navigate to
             var fragment = Backbone.history.fragment.split('/');
-            fragment[2] = subheading(this.chapterView.sections[this.chapterView.currentIndex + 1].title);
+            fragment[2] = subheading(this.chapterView.sections[parseInt(this.chapterView.currentIndex) + 1].title);
 
             // navigate to section
             chapterRouter.navigate(fragment.join('/'), { trigger: true });
@@ -134,7 +142,7 @@ var SectionSelectorView = Backbone.View.extend({
         if (this.chapterView.currentIndex > 0) {
             // determine which section to navigate to
             var fragment = Backbone.history.fragment.split('/');
-            fragment[2] = subheading(this.chapterView.sections[this.chapterView.currentIndex - 1].title);
+            fragment[2] = subheading(this.chapterView.sections[parseInt(this.chapterView.currentIndex) - 1].title);
 
             // navigate to section
             chapterRouter.navigate(fragment.join('/'), { trigger: true });

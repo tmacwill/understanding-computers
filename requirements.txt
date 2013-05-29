@@ -1,4 +1,3 @@
-alembic
 flask
 flask-sqlalchemy
 markdown
