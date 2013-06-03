@@ -1,8 +1,24 @@
+#table-contents {
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+    position: relative;
+}
+
+#table-contents li {
+    list-style: none;
+}
+
 .contents-entry {
     display: block;
-    width: 100%;
     margin-bottom: 20px;
     padding: 20px;
+    width: 960px;
+}
+
+#table-contents li:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .contents-entry:hover {
