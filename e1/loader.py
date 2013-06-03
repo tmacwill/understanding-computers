@@ -81,6 +81,9 @@ def solr_load():
     # initialize solr connection
     conn = solr.Solr(settings.SOLR_URL)
 
+    # wipe solr
+    conn.delete_query('*:*')
+
     # ensure that chapters are loaded
     chapters()
 

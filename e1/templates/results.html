@@ -3,10 +3,12 @@
 
 <h1>Results</h1>
 
-
 <ul>
 {% for result in results: %}
-    <li><a href="/chapter/{{ result.id }}" class="contents-entry box">{{result.id}}</a></li>
+    <li>
+        <a href="/chapter/{{ result.id }}" class="contents-entry box">{{result.id}}</a>
+        <p> {{results.highlighting[result.id]['text']}}</p>
+    </li>
 {% endfor %}
 </ul>
 
