@@ -123,7 +123,7 @@ var SectionSelectorView = Backbone.View.extend({
      * Render the next section
      */
     next: function() {
-        // don't navigate past the end of the sections list
+        // check if we should go to a section
         if (this.chapterView.currentIndex < this.chapterView.sections.length - 1) {
             // determine which section to navigate to
             var fragment = Backbone.history.fragment.split('/');
@@ -132,13 +132,17 @@ var SectionSelectorView = Backbone.View.extend({
             // navigate to section
             chapterRouter.navigate(fragment.join('/'), { trigger: true });
         }
+
+        // on last section, go to pset
+        else
+            window.location.href = $('#btn-pset').attr('href');
     },
 
     /**
      * Render the previous section
      */
     previous: function() {
-        // don't navigate past the end of the sections list
+        // check if we should go to a section
         if (this.chapterView.currentIndex > 0) {
             // determine which section to navigate to
             var fragment = Backbone.history.fragment.split('/');
@@ -147,6 +151,10 @@ var SectionSelectorView = Backbone.View.extend({
             // navigate to section
             chapterRouter.navigate(fragment.join('/'), { trigger: true });
         }
+
+        // on first section, go to table of contents
+        else
+            window.location.href = $('#btn-contents').attr('href');
     },
 
     /**
@@ -180,9 +188,6 @@ var ChapterRouter = Backbone.Router.extend({
 });
 
 $(function() {
-    // enable table of contents on sidebar
-    $('#toggle-menu').sidr();
-
     // create views for main body content and section selection
     var chapterView = new ChapterView();
     var sectionSelectorView = new SectionSelectorView({
@@ -194,6 +199,9 @@ $(function() {
         chapterView: chapterView,
         sectionSelectorView: sectionSelectorView
     });
+
+    // menu on left side
+    $('#chapters-menu').width(($(window).width() - $('.container').width() - 20) / 2);
 
     Backbone.history.start({ pushState: true });
 });

@@ -9,14 +9,27 @@
     <link rel="stylesheet" href="/static/css/{{ chapter_id }}.css" />
 {% endif %}
 
+<script>
+var chapter_id = '{{ chapter_id }}';
+</script>
+
 <script src="/static/js/lib/jquery.sidr.min.js"></script>
 <script src="/static/js/chapter.js"></script>
 
-<div id="sidr">
-    {{ toc_list|safe }}
+<div id="chapters-menu-wrapper">
+    <div id="chapters-menu">
+        <ul>
+            {% for i, chapter in toc.iteritems() %}
+                <li>
+                    <a href="/chapter/{{ i }}" data-chapter="{{ i }}" {% if i == chapter_id %} class="active" {% endif %}>
+                        {{ chapter.heading }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 
-<!--a id="toggle-menu" href="#sidr"><i class="icon-list"></i></a-->
 <h1 class="chapter-heading">Chapter {{ chapter.sequence + 1 }} <small>{{ chapter.title }}</small></h1>
 
 <div id="chapter-content">

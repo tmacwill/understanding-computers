@@ -319,11 +319,8 @@ h1 small {
     background: white;
     margin-bottom: 40px;
     padding: 40px;
-    border-radius: 2px;
     border: 1px solid;
     border-color: #e5e5e5 #dbdbdb #d2d2d2;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
     border-radius: 4px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
     -moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;

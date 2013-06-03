@@ -1,5 +1,9 @@
-{% raw %}
 <script type="text/x-template" id="section-selector-template">
+
+<a id="btn-contents" class="btn btn-default" href="/contents"
+        data-toggle="tooltip" data-original-title="Table of Contents">
+    <i class="icon-list"></i>
+</a>
 
 <div class="pagination">
     <ul>
@@ -16,5 +20,9 @@
     </ul>
 </div>
 
+<a id="btn-pset" class="btn btn-default" href="/pset/{{ chapter_id }}"
+        data-toggle="tooltip" data-original-title="Problem Set {{ chapter.sequence + 1 }}">
+    <i class="icon-ok"></i>
+</a>
+
 </script>
-{% endraw %}
