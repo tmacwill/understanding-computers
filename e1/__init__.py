@@ -16,3 +16,4 @@ e1.loader.psets()
 # load routes
 import e1.controllers.chapters
 import e1.controllers.questions
+import e1.controllers.search

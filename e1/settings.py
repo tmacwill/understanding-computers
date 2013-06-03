@@ -26,3 +26,7 @@ TOC_BUILD = CONTENT_BUILD + '/toc.json'
 
 # file for psets build
 PSET_BUILD = CONTENT_BUILD + '/psets.json'
+
+# url for solr
+SOLR_URL = 'http://localhost:8983/solr'
+

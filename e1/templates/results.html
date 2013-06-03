@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h1>Results</h1>
+
+
+<ul>
+{% for result in results: %}
+    <li><a href="/chapter/{{ result.id }}" class="contents-entry box">{{result.id}}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

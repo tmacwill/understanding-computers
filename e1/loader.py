@@ -13,8 +13,6 @@ _chapters = None
 _psets = None
 _toc = None
 
-SOLR_URL = 'http://localhost:8983/solr'
-
 def chapters():
     """
     Load chapter data from markdown source
@@ -81,7 +79,7 @@ def solr_load():
     global _chapters
 
     # initialize solr connection
-    conn = solr.Solr(SOLR_URL)
+    conn = solr.Solr(settings.SOLR_URL)
 
     # ensure that chapters are loaded
     chapters()
@@ -97,14 +95,10 @@ def solr_load_chapter(conn, title, chapter):
         title - title of chapter
         chapter - chapter object to load
     """
-    print 'hi'
-    print title
-    print 'bye'
     doc = {'id': title,
             'title': title,
             'text': chapter['content']
             }
-    print doc
 
     conn.add(doc, commit=True)
 
