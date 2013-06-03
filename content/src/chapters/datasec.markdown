@@ -112,25 +112,3 @@ Another solution is to encrypt your entire hard drive. We've seen how we can use
 Your hard drive isn't the only piece of hardware that's vulnerable to forensic analysis. When we talked about RAM, we mentioned that once you turned your computer off, the contents of RAM was lost. However, some fairly recent research has revealed that's _not_ quite the whole truth. While the data on RAM will eventually fade away, it will actually do so predictably and gradually. So, even after a computer has been turned off, it's totally possible to dump the entire contents of its RAM! If passwords or bank account numbers are stored in RAM, then even if you're using an encrypted hard drive, an attacker could be able to access them. If you're using an encrypted hard drive, then there's a good chance the encryption key is also stored in RAM, which means that an attacker could be able to decrypt your encrypted hard drive with access to the physical hardware. In fact, if the physical sticks of RAM are kept very cold, then the contents of RAM can actually be kept around for even longer. Check out the below video for a demo, where we can see that almost all of the bits stored in RAM have been preserved ten minutes after the computer was powered off!
 
 <iframe width="480" height="360" src="http://www.youtube.com/embed/JDaicPIgn9U" frameborder="0"> </iframe>
-
-<div class="page-header page-break">
-    <h1>Practice Problems</h1>
-</div>
-
-1. Give the ROT13 encryption of this message: "That's one small step for man; one giant leap for mankind." Assume that you can leave any punctuation as is, so you don't need to worry about encrypting those characters.
-
-1. The following message has been encrypted with ROT5 encryption. What does it say? "Mtzxyts, Ywfsvznqnyd Gfxj mjwj. Ymj Jflqj mfx qfsiji."
-
-1. How are the Caesar cipher and Vigen&egrave;re cipher similar and different? Why is the Vigen&egrave;re cipher more secure than the Caesar cipher?
-
-1. Using the Vigen&egrave;re cipher and the key "ALICE", encrypt this message: "Sentence first&mdash;verdict afterwards." Just like last time, you can leave any punctuation as is.
-
-1. What's the difference between symmetric key cryptography and asymmetric key cryptography? Why might we want to combine the two approaches in some cases?
-
-1. Explain the roles of the public key and the private key in the encryption process of asymmetric key cryptography.
-
-1. Compare and contrast viruses and worms.
-
-1. Why is it important to choose a strong password when signing up for a website?
-
-1. What happens when you delete a file from your hard drive?

@@ -254,19 +254,3 @@ Thanks, Steve! 2001 was definitely one of the most technical Apple Keynotes... e
 <iframe width="640" height="360" src="http://www.youtube.com/embed/UvluuAIiA50" frameborder="0"> </iframe>
 
 And this concludes our discussion of processors. Next, we'll see how your computer stores the results of all those computations!
-
-<div class="page-header page-break">
-    <h1>Practice Problems</h1>
-</div>
-
-1. What's the difference between an instruction set and a pipeline?
-
-1. What effects can the size of the CPU pipeline have on performance? How about the CPU's instruction set?
-
-1. Why are parallelized pipelines more efficient?
-
-1. You know that neighbor who always one-ups you? Apparently he just bought a processor that has twice as many cores as yours. Does that make it twice as fast?
-
-1. Unsatisfied, your neighbor turns in his processor for a new CPU whose clock speed doubles that of your CPU. Now is it twice as fast?
-
-1. If Moore's Law says processing power will double every 18 months, but why can't our processors have [phenomenal cosmic power](http://www.youtube.com/watch?v=SfTfXLLJlzM)? That is, why can't this trend continue forever?

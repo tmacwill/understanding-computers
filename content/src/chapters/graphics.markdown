@@ -210,29 +210,3 @@ Cool, huh? Simply by comparing each pixel to the ones around it, we've actually 
 Woah! That looks _significantly_ less distorted. By removing low energy pixels, we were able to reduce this image's size without making it look silly. This technique is called **seam carving**, also known as **content-aware scaling** in image editors like Photoshop. If you'd like to try this on some images of your own, you can download the free [Seam Carving GUI](https://code.google.com/p/seam-carving-gui/) for Windows, Mac, and Linux.
 
 We'll leave Link to save the Princess Zelda. Don't worry, he always does. Now, let's continue our foray into multimedia with a discussion of audio and video!
-
-<div class="page-header page-break">
-    <h1>Practice Problems</h1>
-</div>
-
-1. Why do filenames have extensions? Does a file need to have an extension to be opened? Why or why not?
-
-1. What's the difference between additive and subtractive color mixing? Give an example of a set of primary colors that can be used for each.
-
-1. What is the color depth of a black-and-white, monochrome image?
-
-1. What colors do the following color codes represent?
-
-    i. #F08080
-
-    ii. #B0E0E6
-
-    iii. #C0FFEE
-
-1. Why might a website want to create both low-resolution and high-resolution versions of its logo? What are the advantages of a low resolution logo, and what are the advantages of a high resolution logo?
-
-1. What's the difference between lossless compression and lossy compression? Give an example of a file format that uses each.
-
-1. Why is it that vector graphics scale to larger sizes so nicely, but raster graphics do not?
-
-1. Try seam carving some of your own photos! It's really cool. Content-aware scaling is available in both Photoshop and as a plugin for the GIMP, but you can also just download the Seam Carving GUI. Images with lots of empty space in the horizontal or vertical directions will produce the best results!

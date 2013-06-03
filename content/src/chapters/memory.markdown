@@ -200,21 +200,3 @@ To put some of these numbers in perspective, here's Admiral Grace Hopper, one of
 <iframe width="480" height="360" src="http://www.youtube.com/embed/JEpsKnWZrJ8" frameborder="0"> </iframe>
 
 Phew! That was a lot of information, but try to commit as much of it as possible to _memory_! Ha ha ha, I've been waiting all this time to drop that pun on you. Now that we know all about computer hardware, let's go shopping!!!
-
-<div class="page-header page-break">
-    <h1>Practice Problems</h1>
-</div>
-
-1. I just purchased a shiny new 32 GB iPod Touch. About how many songs can I put on it? If I want to use about half that space for eBooks, how many books can my virtual library hold?
-
-1. My good friend is a budding photographer wondering what size memory card (e.g., an SD card or a CompactFlash card) he should buy. Give him a sense of what his options are, how many photos they can hold, and what they would cost.
-
-1. My father has a huge music collection, so he's probably going to want to buy a computer with a lot of RAM, right? Why or why not?
-
-1. Let's say you purchased a computer that (for some reason or another) didn't have an L1 cache, L2 cache, or L3 cache. Is it possible that such a computer could even function? Why or why not?
-
-1. If registers and the processor cache are faster than RAM, why don't we just use those all the time (instead of RAM)?
-
-1. My computer has an HDD, and I just opened a Word document. In a succint but technically detailed paragraph, how is that data read from the HDD?
-
-1. Why would you ever want to purchase an HDD over an SSD? How about an SSD over an HDD?

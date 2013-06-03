@@ -1,4 +1,5 @@
 import json
+import hashlib
 import os
 import markdown
 import re
@@ -29,8 +30,7 @@ def chapters():
             return _chapters
 
     # make sure table of contents exists
-    if not _toc:
-        _toc = toc()
+    toc()
 
     # load chapter metadata
     _chapters = OrderedDict()
@@ -88,15 +88,35 @@ def psets():
             return _psets
 
     # make sure table of contents exists
-    if not _toc:
-        _toc = toc()
+    toc()
 
     # load psets from yaml source
-    _psets = OrderedDict()
+    _psets = {}
+    _psets['questions'] = OrderedDict()
+    _psets['answers'] = {}
+
     #for i in _toc.iterkeys():
     for i in ['graphics']:
         with open(settings.PSET_SRC + '/' + i + '.yaml') as f:
-            _psets[i] = yaml.load(f)
+            _psets['questions'][i] = yaml.load(f)
+
+        # generate ID for each question
+        for question in _psets['questions'][i]:
+            # top-level question, so hash on text
+            if 'question' in question:
+                question_id = hashlib.sha1(i + question['question']).hexdigest()
+                question['id'] = question_id
+
+                # some question types don't have answers
+                if 'answer' in question:
+                    _psets['answers'][question_id] = question['answer']
+
+            # sequence, so hash on each question
+            elif question['type'] == 'sequence':
+                for q in question['questions']:
+                    question_id = hashlib.sha1(i + q['question']).hexdigest()
+                    q['id'] = question_id
+                    _psets['answers'][question_id] = q['answer']
 
     # write build file
     with open(settings.PSET_BUILD, 'w') as f:
@@ -157,8 +177,7 @@ def toc_list():
     global _toc
 
     # make sure table of contents exists
-    if not _toc:
-        _toc = toc()
+    toc()
 
     # build list of subheadings
     toc_list = '<ul>'

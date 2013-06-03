@@ -118,21 +118,3 @@ Let's take a look at an example of an API. The MBTA (the organization that runs 
 Alright, let's take a step back and tie together what we've seen in the past couple sections. When we make a request to a web page like CNN, we probably do so using its domain name, cnn.com. So, the first thing your web browser needs to do is figure out the IP address that corresponds to cnn.com. This is where DNS comes in. Your web browser will make a request to the IP address of a DNS server, which may or may not know the IP of cnn.com. If it doesn't, then it will ask a root DNS server, which will then query a TLD DNS server, which will forward the request along to an authoritative name server that knows the IP address for cnn.com. This response will eventually make its way back to your web browser. Now that your web browser has an IP address, it's ready to request some data. However, your computer isn't directly connected to the computer behind that IP address. Instead, the request will be forwarded along to a router on the same network as your computer. This router probably doesn't know where cnn.com is, but it has an entry in its routing table that tells it where the next nearest router is. So, the router will forward the request along to a router that is closer to the final destination, and eventually, your request will reach its final destination!
 
 We still haven't seen, though, _how_ exactly your request is sent, and how sites like cnn.com know what you're looking for. Before we discuss that, let's take a brief detour through Internet history!
-
-<div class="page-header page-break">
-    <h1>Practice Problems</h1>
-</div>
-
-1. Why is it important that root DNS servers are kept secure? What could happen if one were ever compromised?
-
-1. What's the difference between an A record and a CNAME? When might you want to use one over the other?
-
-1. When you register a new DNS record, there's a good chance you won't be able to access your new domain or subdomain immediately. Why not?
-
-1. I'm lucky enough to say that my initials are a recognized TLD! (I'll have to fly to Turkmenistan to thank them someday.) Can you say the same for your initials?
-
-1. Let's talk about net neutrality. If you're unfamiliar with the topic, you might want to curl up with some readings like [http://theopeninter.net/](http://theopeninter.net/), [http://www.scientificamerican.com/article.cfm?id=long-live-the-web](http://www.scientificamerican.com/article.cfm?id=long-live-the-web), and [http://arstechnica.com/tech-policy/news/2011/01/huge-isps-want-per-gb-payments-from-netflix-youtube.ars](http://arstechnica.com/tech-policy/news/2011/01/huge-isps-want-per-gb-payments-from-netflix-youtube.ars). In a short paragraph, tell us where you stand on the issue and why! To get you thinking, consider how net neutrality affects economics, freedom, and fairness from an Internet user's perspective!
-
-1. Why might a company like Google or Facebook want to expose their data via an API?
-
-1. You just typed [http://www.youtube.com/watch?v=C_S5cXbXe-4](http://www.youtube.com/watch?v=C_S5cXbXe-4) into your web browser's address bar and hit Enter. In a technically detailed paragraph, what happened? You can assume that you are indeed connected to the Internet and that URL points to a valid page on YouTube (which it does, so you should click it). Your response should reference terms like routing and DNS!

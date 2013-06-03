@@ -5,7 +5,7 @@
   explanation: A file's extension is simply a hint to help the operating system determine which program should be used to open the file by default. A file's extension doesn't affect its contents in any way, so a file without an extension can still be opened by a program.
 
 - type: mc
-  question: A co-worker sent me a Word document, but I don’t have Word on my computer, so I changed the file extension to ".pdf", since I know my computer can read those. Which of the following best describes what will happen when I double-click the file to open it?
+  question: A co-worker sent me a Word document, but I don't have Word on my computer, so I changed the file extension to ".pdf", since I know my computer can read those. Which of the following best describes what will happen when I double-click the file to open it?
   choices:
     a: My computer will not allow me to change a file's extension.
     b: The contents of the file will correctly be displayed by my PDF viewer.
@@ -124,6 +124,9 @@
     b: With a list of colors and the number of consecutive pixels with that color
     c: With a set of polygons and positions of those polygons
     d: With equations describing shapes and lines, like x^2 + y^2 = r^2
+  answer: d
+  explanation: SVG, or scalable vector graphics, uses mathematical equations to describe the shapes composing the image.
+  link: graphics/vector-graphics
 
 - type: try
   question: Try seam carving some of your own photos! It's really cool. Content-aware scaling is available in both Photoshop and as a plugin for the GIMP, but you can also just download the Seam Carving GUI. Images with lots of empty space in the horizontal or vertical directions will produce the best results!

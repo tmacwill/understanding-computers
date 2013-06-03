@@ -136,27 +136,3 @@ Finally, let's round out our networking discussion with two terms you may have e
 In order to allow employees to work from home, corporations may set up a **VPN**, or virtual private network. Using VPN, you can access resources on a LAN that you're not connected to. By establishing a connection to a VPN server on the desired LAN, VPN allows you to securely communicate with the LAN on a public, potentially insecure network. So, VPN allows organizations to keep their secret information on a private network while still allowing others to access the information when they're not physically connected to the LAN.
 
 Alrighty, now that we have some networking basics down, let's move a step up from IP addresses!
-
-<div class="page-header page-break">
-    <h1>Practice Problems</h1>
-</div>
-
-1. Recall that sites like [http://en.dnstools.ch/visual-traceroute.html](http://en.dnstools.ch/visual-traceroute.html) and [http://traceroute.monitis.com/](http://traceroute.monitis.com/) let you run traceroute from within your browser! Where are each of the following sites hosted?
-
-    a. cse1.net
-
-    b. mcdonalds.com
-
-    c. mlb.com
-
-1. What's an IP address? What's the difference between IPv4 and IPv6? Why is IPv6 necessary?
-
-1. Based on the maps above, it looks like many requests take a very roundabout path to their destination. Why might this be the case? Do all routers know how to get to every IP address on the Internet?
-
-1. What's the difference between a public IP and a private IP? What form do private IPs typically take?
-
-1. My computer is on a network using NAT. What can you say about my computer's IP address? How does a server's response make its way back to my computer?
-
-1. In a succinct but technically detailed paragraph, how does your computer acquire an IP address on a network using DHCP?
-
-1. Let's test the Internet connection you have at home or at work. First, what are the download and upload speeds of your connection, according to your ISP? Now, using [http://www.speedtest.net](http://www.speedtest.net) or [http://www.whatismyip.com/speed-test](http://www.whatismyip.com/speed-test), what are the actual download and upload speeds of your Internet connection? Is there a difference between what your ISP reports and what the tests report?

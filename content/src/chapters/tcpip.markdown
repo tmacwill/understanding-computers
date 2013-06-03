@@ -103,25 +103,3 @@ Alrighty, before we finish up, let's take a moment to step back and review some 
 ![OSI Model](/static/img/11-osi-model.png)
 
 At the top of this networking pyramid, we have protocols that are used by applications like web browsers and email clients, so these include HTTP, SMTP, POP3, and IMAP. Let's skip over presentation and session and head to the transport layer. Here, we saw how TCP and UDP can transfer data between two computers by establishing a connection. Next, we saw how IP on the network layer handled routing packets through various devices on the network so they can (hopefully!) reach their destination. Even lower than that, we saw that Ethernet is used to actually send data down a wire. Finally, at the end of the day, we're still representing information using good ole' bits, so anything we ever send over a network can be encoded as trusty 0s and 1s.
-
-<div class="page-header page-break">
-    <h1>Practice Problems</h1>
-</div>
-
-1. When we say that TCP ensures reliable data transfer, what two guarantees are we making about the delivery of segments?
-
-1. What's an ACK? How do ACKs relate to reliable data transfer?
-
-1. The below depicts two TCP segments being transmitted from one host to another. Both segments are 32 bytes in size. Fill in the blanks for both ACKs below!
-
-1. This time, one of the TCP segments got dropped on its way from one host to another. Again, both segments are 32 bytes in size. Fill in the blanks below, where we have one blank for a sequence number, and one blank for an ACK!
-
-1. What's the difference between reliable data transfer and best-effort delivery?
-
-1. I have an IP address of 172.16.42.108 on a network with a mask of 255.255.255.192. What is the network prefix of my IP address? How about the host number?
-
-1. Now, I have an IP address of 12.16.78.94/25. What is the network prefix of my IP address? How about the host number?
-
-1. With a netmask of 255.255.255.240, how many /24 subnets can I create? How many hosts can be on each subnet?
-
-1. What's the difference between TCP and UDP? Why might an application want to use TCP instead of UDP? How about UDP instead of TCP?

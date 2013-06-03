@@ -44,3 +44,11 @@ h4 {
 .problem .choices {
     margin-bottom: 20px;
 }
+
+.problem-feedback {
+    margin-top: 20px;
+}
+
+.problem-feedback strong {
+    font-family: 'Lato';
+}

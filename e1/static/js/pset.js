@@ -17,14 +17,49 @@ var ProblemCollection = Backbone.Collection.extend({
 var ProblemView = Backbone.View.extend({
     className: 'problem',
 
+    correctTemplateId: '#correct-template',
+    incorrectTemplateId: '#incorrect-template',
+
+    events: {
+        'click .btn-submit': 'checkAnswer'
+    },
+
     initialize: function() {
         this.template = _.template($(this.elTemplate).html());
+        this.correctTemplate = _.template($(this.correctTemplateId).html());
+        this.incorrectTemplate = _.template($(this.incorrectTemplateId).html());
+
         this.render();
     },
 
     render: function() {
         this.$el.html(this.template({ problem: this.model }));
         return this;
+    },
+
+    /**
+     * Get the currently selected answer, overriden by subclasses
+     */
+    answer: function() {
+        return false;
+    },
+
+    /**
+     * Check if the currently selected answer is correct
+     */
+    checkAnswer: function() {
+        // send answer to server
+        var answer = this.answer();
+        var self = this;
+        $.post('/answer/' + this.model.get('id'), { answer: answer }, function(response) {
+            if (response.correct)
+                self.$el.find('.btn-submit').after(self.correctTemplate({ problem: self.model }));
+            else
+                self.$el.find('.btn-submit').after(self.incorrectTemplate({ problem: self.model }));
+        });
+
+        // disable submit button
+        this.$el.find('.btn-submit').attr('disabled', true);
     }
 });
 
@@ -33,6 +68,10 @@ var ProblemView = Backbone.View.extend({
  */
 var TFProblemView = ProblemView.extend({
     elTemplate: '#tf-problem-template',
+
+    answer: function() {
+        return this.$el.find('.checked input').val();
+    }
 });
 
 /**
@@ -40,6 +79,10 @@ var TFProblemView = ProblemView.extend({
  */
 var MCProblemView = ProblemView.extend({
     elTemplate: '#mc-problem-template',
+
+    answer: function() {
+        return this.$el.find('.checked input').val();
+    }
 });
 
 /**
@@ -47,6 +90,10 @@ var MCProblemView = ProblemView.extend({
  */
 var FillProblemView = ProblemView.extend({
     elTemplate: '#fill-problem-template',
+
+    answer: function() {
+        return this.$el.find('.txt-response').val()
+    }
 });
 
 /**
@@ -63,6 +110,7 @@ var ProblemCollectionView = Backbone.View.extend({
     problemViews: [],
 
     initialize: function() {
+        // instantiate a problem model for each problem in the collection
         var self = this;
         this.collection.each(function(problem) {
             // determine the appropriate view for the problem type

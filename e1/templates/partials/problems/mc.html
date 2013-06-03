@@ -6,7 +6,7 @@
 <div class="choices">
     <% for (var choice in problem.get('choices')) { %>
         <label class="radio">
-            <input type="radio" name="response" data-toggle="radio" />
+            <input type="radio" name="response" data-toggle="radio" value="<%- choice %>" />
             <%- problem.get('choices')[choice] %>
         </label>
         <br />

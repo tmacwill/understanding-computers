@@ -6,6 +6,7 @@ class ChapterRead(db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     chapter = db.Column(db.String(255))
     section = db.Column(db.String(255))
+    timestamp = db.Column(db.DateTime)
 
     user_id = db.Column(db.BigInteger, db.ForeignKey('users.id'))
     user = db.relationship('User', backref=db.backref('chapter_reads', lazy='dynamic'))

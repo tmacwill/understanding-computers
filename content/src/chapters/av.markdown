@@ -117,19 +117,3 @@ The result of this massively parallel computing model is huge gains in efficienc
 <iframe width="640" height="360" src="http://www.youtube.com/embed/mWUf-H1Qjd8" frameborder="0"> </iframe>
 
 That's it for multimedia for now. I'm in the mood for some more Spongebob Squarepants, so I'm gonna take a cartoon break. I recommend you do the same. Next up: security!
-
-<div class="page-header page-break">
-    <h1>Practice Problems</h1>
-</div>
-
-1. How do amplitude and frequency affect sound?
-
-1. Describe the process of converting from analog sound to digital. How do both sampling rate and bitrate come into play in this process, and what's the difference between the two?
-
-1. I have an audiophile friend who just spent another $100 on a new hard drive because he refuses to listen to anything but PCM audio. He says he can always tell the difference between PCM and MP3. Even though MP3 files are a fraction of the size of their CD-quality equivalents, why might my friend be going a bit overboard?
-
-1. What's a wireframe? Describe how we use wireframes to represent objects in 3D space.
-
-1. Homer went to download a mesh of a doughnut, but the file he downloaded looks more like a box. D'oh! Lisa says that he shouldn't worry, though, because the mesh he downloaded will work just fine. Why?
-
-1. What's the difference between a container and a codec? Give an example of each.

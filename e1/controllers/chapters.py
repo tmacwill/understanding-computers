@@ -1,10 +1,10 @@
+from flask import render_template
+
 import e1.loader as loader
 import e1.settings as settings
 import e1.util as util
-
 from e1 import app, db
 from e1.models.chapter_read import ChapterRead
-from flask import render_template
 
 @app.route('/contents')
 def contents():

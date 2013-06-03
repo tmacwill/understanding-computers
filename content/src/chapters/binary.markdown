@@ -522,35 +522,3 @@ The first 32 characters in the table are reserved for **control sequences**, whi
 As we start using these character encodings to create long messages, we're going to create larger and larger sequences of bits. It makes sense, then, to create units of information larger than a single bit. A sequence of 8 bits is commonly referred to as a **byte**. As an aside, the official technical term for a sequence of 4 bits is a **nibble**, ha, ha, ha. Since a byte is still a pretty small piece of information, describing data in terms of **kilobytes** (where 1 kilobyte is about 1000 bytes), **megabytes** (where 1 megabyte is about 1000 kilobytes), and **gigabytes** (where, you guessed it, 1 gigabyte is about 1000 megabytes) has become commonplace. More on that later, though!
 
 That's it for binary and ASCII! In the next few sections, we'll start to see how your computer uses and stores data.
-
-<div class="page-header page-break">
-    <h1>Practice Problems</h1>
-</div>
-
-1. Convert the following numbers from decimal to binary, showing each step.
-
-    a. 50
-
-    b. 164
-
-    c. 12345
-
-1. Convert the following numbers from binary to decimal, showing each step.
-
-    a. 0101010
-
-    b. 010101111
-
-    c. 01111011010010
-
-1. What do all binary numbers ending in 1 have in common?
-
-1. What's the largest number we can represent with 16 bits? How about 32 bits?
-
-1. We've seen that decimal uses ten different digits and binary uses two different digits. The octal system instead uses seven different digits, but works in exactly the same way. What is the decimal value of the octal number 0644? How about 0755?
-
-1. What's the binary representation of the ASCII character "T"?
-
-1. How many bits are used to represent a standard US-ASCII character?
-
-1. Why isn't 1 the ASCII code for the character "1"?
