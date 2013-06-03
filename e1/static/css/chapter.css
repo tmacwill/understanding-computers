@@ -32,6 +32,10 @@ pre code {
     border: none;
 }
 
+table {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 #chapter-content {
     background: white;
     padding: 40px;
