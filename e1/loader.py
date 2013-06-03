@@ -4,6 +4,7 @@ import os
 import markdown
 import re
 import settings
+import solr
 import yaml
 
 from collections import OrderedDict
@@ -11,6 +12,8 @@ from collections import OrderedDict
 _chapters = None
 _psets = None
 _toc = None
+
+SOLR_URL = 'http://localhost:8983/solr'
 
 def chapters():
     """
@@ -69,6 +72,42 @@ def chapters():
         json.dump(_toc, f)
 
     return _chapters
+
+def solr_load():
+    """
+    Load content into solr
+    """
+
+    global _chapters
+
+    # initialize solr connection
+    conn = solr.Solr(SOLR_URL)
+
+    # ensure that chapters are loaded
+    chapters()
+
+    for i in _chapters.iterkeys():
+        solr_load_chapter(conn, i, _chapters[i])
+
+def solr_load_chapter(conn, title, chapter):
+    """
+    Load chapter into solr
+    Args:
+        conn - solr connection object
+        title - title of chapter
+        chapter - chapter object to load
+    """
+    print 'hi'
+    print title
+    print 'bye'
+    doc = {'id': title,
+            'title': title,
+            'text': chapter['content']
+            }
+    print doc
+
+    conn.add(doc, commit=True)
+
 
 def psets():
     """
