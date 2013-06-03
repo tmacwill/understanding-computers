@@ -7,6 +7,7 @@ class Answer(db.Model):
     question = db.Column(db.String(40))
     answer = db.Column(db.String(255))
     correct = db.Column(db.Boolean)
+    timestamp = db.Column(db.DateTime)
 
     user_id = db.Column(db.BigInteger, db.ForeignKey('users.id'))
     user = db.relationship('User', backref=db.backref('answers', lazy='dynamic'))
