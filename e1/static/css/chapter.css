@@ -154,6 +154,7 @@ pre code {
     position: relative;
     float: left;
     border-radius: 4px;
+    max-width: 310px;
 }
 
 #chapters-menu-wrapper, #chapters-menu {
@@ -179,7 +180,7 @@ pre code {
     */
 }
 
-#chapters-menu li a {
+#chapters-menu a {
     color: white;
     display: block;
     text-decoration: none;
@@ -192,4 +193,14 @@ pre code {
 
 #chapters-menu .active {
     background: #7F8C8D;
+}
+
+#chapters-menu-list {
+    display: none;
+}
+
+#chapters-menu-text {
+    font-size: 18px;
+    font-family: 'LatoLight';
+    text-align: center;
 }

@@ -18,7 +18,10 @@ var chapter_id = '{{ chapter_id }}';
 
 <div id="chapters-menu-wrapper">
     <div id="chapters-menu">
-        <ul>
+        <div id="chapters-menu-text">
+            <a href="#">Table of Contents &nbsp;<i class="icon-angle-down"></i></a>
+        </div>
+        <ul id="chapters-menu-list">
             {% for i, chapter in toc.iteritems() %}
                 <li>
                     <a href="/chapter/{{ i }}" data-chapter="{{ i }}" {% if i == chapter_id %} class="active" {% endif %}>

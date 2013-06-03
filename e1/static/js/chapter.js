@@ -202,6 +202,11 @@ $(function() {
 
     // menu on left side
     $('#chapters-menu').width(($(window).width() - $('.container').width() - 20) / 2);
+    $('#chapters-menu').hover(function() {
+        $('#chapters-menu-list').slideDown('fast');
+    }, function() {
+        $('#chapters-menu-list').slideUp('fast');
+    });
 
     Backbone.history.start({ pushState: true });
 });
