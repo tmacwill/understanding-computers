@@ -1,43 +1,108 @@
-#table-contents {
+#progress {
+    margin-top: 20px;
+}
+
+#user-info {
+    border-bottom: 1px solid #bdc3c7;
+}
+
+#user-info h1 {
     margin: 0;
-    padding: 0;
-    overflow: scroll;
+    padding-bottom: 15px;
     position: relative;
 }
 
+#user-info h1 img {
+    margin-right: 15px;
+    vertical-align: text-top;
+}
+
+#points {
+    display: inline-block;
+    background: #27ae60;
+    color: white;
+    border-radius: 4px;
+    position: absolute;
+    right: 0;
+    padding: 15px 20px 10px 20px;
+}
+
+#table-contents {
+    margin-top: 15px;
+    margin-left: 0;
+}
+
 #table-contents li {
-    list-style: none;
+    list-style-type: none;
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
 }
 
-.contents-entry {
-    display: block;
-    margin-bottom: 20px;
-    padding: 20px;
-    width: 960px;
-}
-
-#table-contents li:last-child {
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-
-.contents-entry:hover {
-    background: #7F8C8D;
-}
-
-.contents-entry:hover h2, .contents-entry:hover h4 {
+#table-contents .number {
+    display: inline-block;
+    background: #27ae60;
+    padding: 8px 10px;
     color: white;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    font-size: 22px;
+    margin-right: 10px;
 }
 
-.number {
-    background: #C0392B;
-    color: white;
-    font-size: 28px;
-    text-align: center;
-    line-height: 72px;
-    border-radius: 2px;
+#table-contents .chapter-info {
+    display: inline-block;
+    font-size: 24px;
 }
 
-.chapter-info h4 {
+#table-contents .chapter-buttons {
+    vertical-align: top;
+    position: absolute;
+    right: 10px;
+    display: none;
+}
+
+#table-contents li:hover {
+    background: #ecf0f1;
+}
+
+#table-contents li:hover .chapter-buttons {
+    display: inline-block;
+}
+
+#table-contents .chapter-more {
+    margin-top: 15px;
     font-family: 'LatoLight';
+    display: none;
+}
+
+#table-contents .chapter-more ul {
+    margin: 0;
+    margin-top: 15px;
+}
+
+#table-contents .chapter-more li {
+    padding: 0;
+    margin: 0;
+}
+
+#table-contents .chapter-more li a {
+    margin: 0;
+    padding: 7px;
+    font-size: 18px;
+    font-family: 'Lato';
+    font-weight: normal;
+    display: block;
+}
+
+#table-contents .chapter-more li:hover {
+    background: #C0392B;
+}
+
+#table-contents .chapter-more li:hover a {
+    color: white;
+}
+
+#table-contents .chapter-more li a {
+    text-decoration: none;
 }

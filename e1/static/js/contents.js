@@ -1,7 +1,19 @@
 $(function() {
-    var height = window.innerHeight - $('h1').outerHeight(true);
-    $('#table-contents').height(height);
-    $('#table-contents').width(window.innerWidth - $('#table-contents').position().left);
+    $('.btn-more').on('click', function() {
+        var $more = $(this).parent().siblings('.chapter-more');
+        if ($more.is(':visible')) {
+            $more.fadeOut('fast');
+            $(this).html('<i class="icon-angle-down"></i>');
+        }
+        else {
+            $more.fadeIn('fast');
+            $(this).html('<i class="icon-angle-up"></i>');
+        }
 
-    stroll.bind('#table-contents');
+        return false;
+    });
+
+    $('li').on('click', function() {
+        $(this).find('.btn-more').click();
+    });
 });

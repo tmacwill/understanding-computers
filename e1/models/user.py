@@ -6,8 +6,10 @@ class User(db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     name = db.Column(db.String(255))
     email = db.Column(db.String(255))
+    photo = db.Column(db.String(255))
     points = db.Column(db.Integer)
 
-    def __init__(self, name, email):
+    def __init__(self, name, email, photo):
         self.name = name
         self.email = email
+        self.photo = photo

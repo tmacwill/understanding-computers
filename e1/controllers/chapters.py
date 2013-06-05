@@ -13,8 +13,15 @@ def contents():
     Display the table of contents
     """
 
+    # TODO temporary until logins work
+    user = db.session.query(User).filter_by(id=1).one()
+    session['user'] = user
+
+    # get currently logged-in user
+    user = session['user']
+
     toc = loader.toc()
-    return render_template('contents.html', toc=toc)
+    return render_template('contents.html', user=user, toc=toc)
 
 @app.route('/chapter/<chapter>')
 @app.route('/chapter/<chapter>/<section>')
