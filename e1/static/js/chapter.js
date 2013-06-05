@@ -49,7 +49,6 @@ var ChapterView = Backbone.View.extend({
 
         // display the first section by default
         this.currentIndex = 0;
-        this.renderSection(this.sections[this.currentIndex].title);
     },
 
     /**
@@ -57,12 +56,21 @@ var ChapterView = Backbone.View.extend({
      * @param {String} title Title of section to render
      */
     renderSection: function(title) {
-        // mark section as read
+        // if current url has no section component, then convert title to section and use that
         var fragment = window.location.pathname.split('/');
         var n = fragment.length;
         if (n < 4)
             fragment[3] = subheading(title);
-        $.get('/read/' + fragment[2] + '/' + fragment[3]);
+
+        // mark section as read
+        $.get('/read/' + fragment[2] + '/' + fragment[3], function(response) {
+            // if we haven't read this section yet, then display notification
+            if (response.points)
+                new NotificationView({
+                    title: 'You earned ' + response.points + ' points!',
+                    message: 'Nice job! You\'ll earn points for each section you read. Keep going!'
+                });
+        });
 
         // search for section matching the given title
         for (var i in this.sections) {
@@ -116,7 +124,7 @@ var SectionSelectorView = Backbone.View.extend({
      */
     highlightSection: function(title) {
         this.$el.find('.active').removeClass('active');
-        this.$el.find('[data-id="' + title + '"]').parent().addClass('active');
+        this.$el.find('[data-id="' + subheading(title) + '"]').parent().addClass('active');
     },
 
     /**
@@ -180,6 +188,14 @@ var ChapterRouter = Backbone.Router.extend({
     },
 
     routes: {
+        // if no section given, then display the first section in the chapter
+        'chapter/:chapter': function(chapter) {
+            var first = this.chapterView.sections[0];
+            this.chapterView.renderSection(first.title);
+            this.sectionSelectorView.highlightSection(first.title);
+        },
+
+        // display the given section in the chapter
         'chapter/:chapter/:section': function(chapter, section) {
             this.chapterView.renderSection(section);
             this.sectionSelectorView.highlightSection(section);

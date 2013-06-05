@@ -326,3 +326,27 @@ h1 small {
     -moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
     box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
 }
+
+.notification {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #2ecc71;
+    width: 300px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid #27ae60;
+}
+
+.notification h2 {
+    font-family: 'LatoBold';
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.notification p {
+    font-family: 'Lato';
+    margin: 0;
+    color: black;
+    line-height: 21px;
+}

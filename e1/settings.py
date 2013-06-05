@@ -30,3 +30,8 @@ PSET_BUILD = CONTENT_BUILD + '/psets.json'
 # url for solr
 SOLR_URL = 'http://localhost:8983/solr'
 
+# points for accomplishing milestones
+POINTS = {
+    'section': 2,
+    'chapter': 10
+}
