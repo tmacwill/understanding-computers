@@ -23,12 +23,13 @@ var NotificationView = Backbone.View.extend({
         this.$el.hide();
         $('body').append(this.$el);
 
+        // fade in
         var self = this;
         setTimeout(function() {
             self.$el.fadeIn('fast');
-        }, 300);
+        }, 200);
 
-        // hide after 4 sections
+        // hide after four seconds
         setTimeout(function() {
             self.hide();
         }, 4000);

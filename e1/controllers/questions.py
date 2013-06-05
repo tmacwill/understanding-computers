@@ -1,5 +1,5 @@
 import re
-from flask import abort, jsonify, render_template, request
+from flask import abort, jsonify, render_template, request, session
 
 import e1.loader as loader
 import e1.settings as settings
@@ -43,12 +43,28 @@ def answer(question_id):
     if not question_id in answers:
         abort(404)
 
-    # check if answer is correct
-    correct = re.match(answers[question_id], request.form['answer']) != None
+    # TODO temporary until logins work
+    user = db.session.query(User).filter_by(id=1).one()
+    session['user'] = user
 
-    # log answer
-    answer = Answer(question_id, 1, request.form['answer'], correct)
-    db.session.add(answer)
+    user = session['user']
+
+    # check if answer is correct
+    answer = answers[question_id]
+    correct = re.match(answer['answer'], request.form['answer']) != None
+
+    # if question is correct and unanswered, user gets points
+    count = db.session.query(Answer).filter_by(user_id=user.id).filter_by(question=question_id).\
+            filter_by(correct=True).count()
+    if count == 0 and correct:
+        user.points += answer['points']
+
+    # log answer (for analytics)
+    new_answer = Answer(question_id, user.id, request.form['answer'], correct)
+    db.session.add(new_answer)
     db.session.commit()
 
-    return util.json_success({ 'correct': correct })
+    return util.json_success({
+        'correct': correct,
+        'points': answer['points'] if correct and count == 0 else 0
+    })

@@ -65,11 +65,12 @@ var ChapterView = Backbone.View.extend({
         // mark section as read
         $.get('/read/' + fragment[2] + '/' + fragment[3], function(response) {
             // if we haven't read this section yet, then display notification
-            if (response.points)
+            if (response.points) {
                 new NotificationView({
                     title: 'You earned ' + response.points + ' points!',
                     message: 'Nice job! You\'ll earn points for each section you read. Keep going!'
                 });
+            }
         });
 
         // search for section matching the given title

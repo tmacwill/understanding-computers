@@ -52,10 +52,18 @@ var ProblemView = Backbone.View.extend({
         var answer = this.answer();
         var self = this;
         $.post('/answer/' + this.model.get('id'), { answer: answer }, function(response) {
+            // display feedback on correctness
             if (response.correct)
                 self.$el.find('.btn-submit').after(self.correctTemplate({ problem: self.model }));
             else
                 self.$el.find('.btn-submit').after(self.incorrectTemplate({ problem: self.model }));
+
+            // display points if any have been earned
+            if (response.points)
+                new NotificationView({
+                    title: 'You earned ' + response.points + ' points!',
+                    message: 'Awesome! More correct answers will earn you more points!'
+                });
         });
 
         // disable submit button

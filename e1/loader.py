@@ -140,19 +140,29 @@ def psets():
         for question in _psets['questions'][i]:
             # top-level question, so hash on text
             if 'question' in question:
+                # determine question id
                 question_id = hashlib.sha1(i + question['question']).hexdigest()
                 question['id'] = question_id
 
-                # some question types don't have answers
+                # store answer to question
                 if 'answer' in question:
-                    _psets['answers'][question_id] = question['answer']
+                    _psets['answers'][question_id] = {
+                        'answer': question['answer'],
+                        'points': question['points']
+                    }
 
             # sequence, so hash on each question
             elif question['type'] == 'sequence':
                 for q in question['questions']:
+                    # determine question id
                     question_id = hashlib.sha1(i + q['question']).hexdigest()
                     q['id'] = question_id
-                    _psets['answers'][question_id] = q['answer']
+
+                    # store answer to question
+                    _psets['answers'][question_id] = {
+                        'answer': q['answer'],
+                        'points': q['points']
+                    }
 
     # write build file
     with open(settings.PSET_BUILD, 'w') as f:

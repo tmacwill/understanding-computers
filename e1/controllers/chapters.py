@@ -48,8 +48,8 @@ def read(chapter, section):
     user = session['user']
 
     # if user hasn't read this section, then update points
-    count = db.session.query(ChapterRead).filter_by(user_id = user.id).filter_by(chapter = chapter).\
-            filter_by(section = section).count()
+    count = db.session.query(ChapterRead).filter_by(user_id=user.id).filter_by(chapter=chapter).\
+            filter_by(section=section).count()
     if count == 0:
         user.points += settings.POINTS['section']
 

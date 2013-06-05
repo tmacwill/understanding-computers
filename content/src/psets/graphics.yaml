@@ -1,6 +1,7 @@
 - type: tf
   question: A file needs to have an extension to be opened.
   answer: f
+  points: 2
   link: graphics/file-formats
   explanation: A file's extension is simply a hint to help the operating system determine which program should be used to open the file by default. A file's extension doesn't affect its contents in any way, so a file without an extension can still be opened by a program.
 
@@ -12,6 +13,7 @@
     c: My PDF viewer will open, but it will not be able to display the contents of the file.
     d: My PDF view will not open, and I'll see some kind of error message from the operating system.
   answer: c
+  points: 3
   link: graphics/file-formats
   explanation: Changing a file's extension does not change a file's format. The ".pdf" extension simply informs the operating system that a PDF viewer should be used to open the file, but because the file is still in Microsoft Word's format, the PDF viewer won't understand how to display its contents.
 
@@ -23,6 +25,7 @@
     c: Yellow
     d: Cyan
   answer: a
+  points: 2
   link: graphics/colors
   explanation: The "M" in CMYK stands for "magenta". The "K" in CMYK stands for "key", which refers to black.
 
@@ -32,26 +35,31 @@
     - type: fill
       question: Which type of color mixing expresses colors in terms of RGB?
       answer: ^additive( color mixing)?$
+      points: 1
       link: graphics/colors
       explanation: Using additive mixing, red, green, and blue light can be used to produce any color.
     - type: fill
       question: Which type of color mixing expresses colors in terms of CMYK?
       answer: ^subtractive( color mixing)?$
+      points: 1
       link: graphics/colors
       explanation: Using subtractive mixing, cyan, magenta, yellow, and key ink can be used to produce any color.
     - type: fill
       question: Which type of color mixing is used when printing graphics on paper?
       answer: ^subtractive( color mixing)?$
+      points: 1
       link: graphics/colors
       explanation: Because we view printed graphics under (white) light, CMYK can be used to absorb some of the light to produce different colors.
     - type: fill
       question: Which type of color mixing is used by the LCDs in your computer's display?
       answer: ^additive( color mixing)?$
+      points: 1
       link: graphics/colors
       explanation: Because LCDs shine light into darkness, RGB can be used to add colors together to produce different colors.
     - type: fill
       question: When expressing colors using hexadecimal notation, the primary colors of which type of color mixing are used?
       answer: ^additive( color mixing)?$
+      points: 1
       link: graphics/colors
       explanation: Typically, hexadecimal color notation uses two digits for red, two for green, and two for blue, in that order.
 
@@ -59,6 +67,7 @@
   question: What is the color depth of a monochrome, black-and-white image?
   link: graphics/colors
   answer: ^1([ -]bit)?$
+  points: 3
   explanation: We can represent the color black with the number 0 and the color white with the number 1, so we need only one bit per pixel in order to fully represent a monochrome image.
 
 - type: sequence
@@ -72,6 +81,7 @@
         c: Metadata about the image
         d: How many pixels the bitmap will contain
       answer: b
+      points: 1
       link: graphics/bitmap
       explanation: The beginning of every bitmap file is 0x42 0x4D, or "BM" in ASCII. We call these "magic numbers" because they signify the start of a bitmap file.
     - type: mc
@@ -82,6 +92,7 @@
         c: The size of the image, in bytes
         d: The type of camera used to capture the image
       answer: d
+      points: 1
       link: graphics/bitmap
       explanation: The bitmap's metadata includes the image's width, height, color depth, size (in bytes), and resolution, among other things. While other formats may store information about cameras, bitmap does not.
     - type: mc
@@ -92,6 +103,7 @@
         c: Each pixel is represented using the same amount of data.
         d: Bitmaps are a raster graphics format.
       answer: a
+      points: 1
       link: graphics/bitmap
       answer: Bitmap is a raster graphics format, so images are represented using a grid of pixels, where each pixel has a color composed of values for red, green, and blue.
     - type: mc
@@ -102,18 +114,21 @@
         c: "#c0ffee"
         d: "#123"
       answer: c
+      points: 1
       explanation: Each pixel is represented using 24 bits, so 8 bits are dedicated to each of red, green, and blue.
       link: graphics/bitmap
 
 - type: tf
   question: Because GIF is a lossless format, data may be lost in the compression process.
   answer: f
+  points: 2
   explanation: Lossless compression algorithms preserve all of the file's original data.
   link: graphics/lossless-compression
 
 - type: tf
   question: Although lossy compression formats like JPEG throw away some of the file's original data, differences in the compressed file are difficult to detect, even for high compression ratios.
   answer: t
+  points: 2
   explanation: Many digital photos are stored as compressed JPEGs.
   link: graphics/lossy-compression
 
@@ -125,6 +140,7 @@
     c: With a set of polygons and positions of those polygons
     d: With equations describing shapes and lines, like x^2 + y^2 = r^2
   answer: d
+  points: 2
   explanation: SVG, or scalable vector graphics, uses mathematical equations to describe the shapes composing the image.
   link: graphics/vector-graphics
 
