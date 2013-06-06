@@ -50,6 +50,18 @@
     margin-right: 10px;
 }
 
+#table-contents .number.red {
+    background: #C0392B;
+}
+
+#table-contents .number.yellow {
+    background: #F1C40F;
+}
+
+#table-contents .number.green {
+    background: #27AE60;
+}
+
 #table-contents .chapter-info {
     display: inline-block;
     font-size: 24px;

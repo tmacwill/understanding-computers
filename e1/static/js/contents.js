@@ -1,4 +1,8 @@
 $(function() {
+    // enable tooltips
+    $('[rel=tooltip]').tooltip();
+
+    // toggle info
     $('.btn-more').on('click', function() {
         var $more = $(this).parent().siblings('.chapter-more');
         if ($more.is(':visible')) {
@@ -13,6 +17,7 @@ $(function() {
         return false;
     });
 
+    // on row click, toggle info
     $('li').on('click', function() {
         $(this).find('.btn-more').click();
     });

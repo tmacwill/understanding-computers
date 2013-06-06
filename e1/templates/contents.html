@@ -18,7 +18,17 @@
     <ul id="table-contents">
         {% for id, chapter in toc.iteritems() %}
             <li>
-                <div class="number">{{ chapter.sequence + 1 }}</div>
+                <div rel="tooltip" data-placement="right" class="number
+                    {% if reads[id].keys()|length == 0 %}
+                        red" data-original-title="You haven't started this chapter yet"
+                    {% elif reads[id].keys()|length == chapter.subheadings|length %}
+                        green" data-original-title="You've completed this chapter"
+                    {% else %}
+                        yellow" data-original-title="You've read some of this chapter"
+                    {% endif %}
+                >
+                    {{ chapter.sequence + 1 }}
+                </div>
                 <div class="chapter-info">
                     {{ chapter.heading }}
                 </div>
