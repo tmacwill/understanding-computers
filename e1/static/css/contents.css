@@ -95,6 +95,10 @@
     display: block;
 }
 
+#table-contents .chapter-more li i {
+    margin-right: 5px;
+}
+
 #table-contents .chapter-more li:hover {
     background: #C0392B;
 }

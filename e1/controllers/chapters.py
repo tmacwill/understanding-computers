@@ -1,4 +1,5 @@
 from flask import session, render_template
+from collections import defaultdict
 
 import e1.loader as loader
 import e1.settings as settings
@@ -20,8 +21,16 @@ def contents():
     # get currently logged-in user
     user = session['user']
 
+    # get all reads for user
+    all_reads = db.session.query(ChapterRead).filter_by(user_id=user.id).group_by(ChapterRead.chapter, ChapterRead.section)
+
+    # convert reads to hash for faster access
+    reads = defaultdict(dict)
+    for read in all_reads:
+        reads[read.chapter][read.section] = True
+
     toc = loader.toc()
-    return render_template('contents.html', user=user, toc=toc)
+    return render_template('contents.html', user=user, toc=toc, reads=reads)
 
 @app.route('/chapter/<chapter>')
 @app.route('/chapter/<chapter>/<section>')

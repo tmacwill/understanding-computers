@@ -31,11 +31,21 @@
                     <h4>{{ ". ".join(chapter['tags']) }}.</h4>
                     <ul>
                         <li>
-                            <a href="/chapter/{{ id }}">Introduction</a>
+                            <a href="/chapter/{{ id }}">
+                                {% if id in reads and chapter.heading.replace(' ', '-').lower() in reads[id] %}
+                                    <i class="icon-ok"></i>
+                                {% endif %}
+                                Introduction
+                            </a>
                         </li>
                         {% for i in chapter.subheadings %}
                             <li>
-                                <a href="/chapter/{{ id }}/{{ i.id }}">{{ i.subheading }}</a>
+                                <a href="/chapter/{{ id }}/{{ i.id }}">
+                                    {% if id in reads and i.id in reads[id] %}
+                                        <i class="icon-ok"></i>
+                                    {% endif %}
+                                    {{ i.subheading }}
+                                </a>
                             </li>
                         {% endfor %}
                     </ul>
