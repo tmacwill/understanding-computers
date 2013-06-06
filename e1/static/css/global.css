@@ -332,15 +332,24 @@ h1 small {
     top: 30px;
     right: 30px;
     width: 300px;
+    background: #27AE60;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 4px;
+    border: 1px solid #95A5A6;
 }
 
 .notification h2 {
     font-family: 'Lato';
     margin: 0;
     margin-bottom: 5px;
+    color: white;
+    font-size: 24px;
 }
 
 .notification p {
     font-family: 'LatoLight';
     font-size: 16px;
+    margin-bottom: 0;
+    line-height: 21px;
 }

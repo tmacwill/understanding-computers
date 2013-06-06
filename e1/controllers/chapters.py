@@ -21,8 +21,9 @@ def contents():
     # get currently logged-in user
     user = session['user']
 
-    # get all reads for user
-    all_reads = db.session.query(ChapterRead).filter_by(user_id=user.id).group_by(ChapterRead.chapter, ChapterRead.section)
+    # get reads for user, one per chapter/section pair
+    all_reads = db.session.query(ChapterRead).filter_by(user_id=user.id).\
+        group_by(ChapterRead.chapter, ChapterRead.section)
 
     # convert reads to hash for faster access
     reads = defaultdict(dict)
