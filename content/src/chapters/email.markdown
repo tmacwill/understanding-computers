@@ -1,3 +1,5 @@
+## Introduction
+
 We're probably all familiar with email. Whether we're logged into Gmail.com or Verizon.net in a web browser or using Microsoft Outlook or Apple Mail on the desktop, the cat videos we send to our friends and co-workers are all delivered using the same email **protocols**. We're still using the same basic idea behind protocols like DHCP and HTTP: even if we have different devices on our network running different software, they call all communicate if everyone follows the same set or rules. While making a request to a web page used only one protocol, since HTTP defines rules for both requests and responses, we'll look at three different protocols that may or may not be used in the process of sending an email. First, we'll take a look at how your email containing a link to a cat video is sent to your co-worker, and then we'll see what happens when you log into your inbox and read email messages.
 
 ## Sending Emails with SMTP

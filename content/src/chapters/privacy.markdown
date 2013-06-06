@@ -1,3 +1,5 @@
+## Introduction
+
 We've talked a bit about security, but let's now shine a spotlight on something that's closely related: **privacy**. In general, privacy refers to keeping your personal information, whether that be your Social Security number or your web browsing history, hidden from the prying eyes of others. On the Internet today, it's perhaps surprisingly easy for others to glean your personal information, though some intents are more malicious than others!
 
 ## Authentication

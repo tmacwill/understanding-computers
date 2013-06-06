@@ -17,19 +17,6 @@ var ChapterView = Backbone.View.extend({
         // array of html strings for each section in the chapter
         this.sections = [];
 
-        // get all of the html from the start of the document until the first subheading
-        var html = this.$el.children()[0].outerHTML;
-        var elements = this.$el.children().eq(0).nextUntil('h2');
-        $.each(elements, function() {
-            html += this.outerHTML;
-        });
-
-        // use that html to create the first section
-        this.sections.push({
-            title: $('h1 small').html(),
-            html: html
-        });
-
         // iterate over each subheading to extract section text
         var self = this;
         $('h2').each(function() {
@@ -56,14 +43,9 @@ var ChapterView = Backbone.View.extend({
      * @param {String} title Title of section to render
      */
     renderSection: function(title) {
-        // if current url has no section component, then convert title to section and use that
-        var fragment = window.location.pathname.split('/');
-        var n = fragment.length;
-        if (n < 4)
-            fragment[3] = subheading(title);
-
         // mark section as read
-        $.get('/read/' + fragment[2] + '/' + fragment[3], function(response) {
+        var fragment = Backbone.history.fragment.split('/');
+        $.get('/read/' + fragment[1] + '/' + fragment[2], function(response) {
             // if we haven't read this section yet, then display notification
             if (response.points) {
                 new NotificationView({
@@ -75,15 +57,14 @@ var ChapterView = Backbone.View.extend({
 
         // search for section matching the given title
         for (var i in this.sections) {
-            // if no subsection given, then use first subsection, else look for matching title
-            if (subheading(this.sections[i].title) == title || n < 4) {
+            if (subheading(this.sections[i].title) == title) {
                 // scroll to the top of the page
                 window.scrollTo(0, 0);
 
                 // render section at new index
                 this.currentIndex = i;
                 this.$el.html(this.sections[i].html);
-                return;
+                break;
             }
         }
     }
@@ -189,11 +170,10 @@ var ChapterRouter = Backbone.Router.extend({
     },
 
     routes: {
-        // if no section given, then display the first section in the chapter
+        // if no section given, then redirect to first section in the chapter
         'chapter/:chapter': function(chapter) {
             var first = this.chapterView.sections[0];
-            this.chapterView.renderSection(first.title);
-            this.sectionSelectorView.highlightSection(first.title);
+            this.navigate('chapter/' + chapter + '/' + subheading(first.title), { trigger: true });
         },
 
         // display the given section in the chapter

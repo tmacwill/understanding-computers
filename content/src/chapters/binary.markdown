@@ -1,3 +1,5 @@
+## Introduction
+
 You've probably heard that computers are all about zeroes and ones. But... what does that mean? And... why? After all, two and three are pretty great numbers, too! (But don't get me started on seven.)
 
 Let's say I ask you a question like "Do you like cats?" There are two possible answers to this question: yes and no. (Though if you want to be friends, then really "yes" is the only possible answer.) We can represent your answer to this question using one **bit**, which is the most basic unit of information in computing. A bit can only have two possible values, which we can think of as "yes" or "no," "on" or "off," "true" or "false," or finally, if you're a computer, "0" or "1". We can also use a bit to represent, for example, whether a light is on or off, the result of a coin flip, or the sign of a magnet.

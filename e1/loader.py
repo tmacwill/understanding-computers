@@ -98,10 +98,11 @@ def solr_load_chapter(conn, title, chapter):
         title - title of chapter
         chapter - chapter object to load
     """
-    doc = {'id': title,
-            'title': title,
-            'text': chapter['content']
-            }
+    doc = {
+        'id': title,
+        'title': title,
+        'text': chapter['content']
+    }
 
     conn.add(doc, commit=True)
 
@@ -214,29 +215,3 @@ def toc():
         json.dump(_toc, f)
 
     return _toc
-
-def toc_list():
-    """
-    Build an HTML representation of the table of contents
-    """
-
-    global _toc
-
-    # make sure table of contents exists
-    toc()
-
-    # build list of subheadings
-    toc_list = '<ul>'
-    for chapter_id, chapter in _toc.iteritems():
-        # create list item for chapter
-        toc_list += '<li><a href="/chapter/' + chapter_id + '">' + chapter['heading'] + '</a><ul>'
-
-        # create entry for each subheading
-        for subheading in chapter['subheadings']:
-            toc_list += '<li><a href="/chapter/' + chapter_id + '/' + subheading['id'] + '">' + \
-                subheading['subheading'] + '</a></li>'
-
-        toc_list += '</ul></li>'
-    toc_list += '</ul>'
-
-    return toc_list

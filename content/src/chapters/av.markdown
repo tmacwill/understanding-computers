@@ -1,3 +1,5 @@
+## Introduction
+
 Graphics sure are nice, but my computer spends a whole lot of time playing Ke$ha songs. First, we'll take a look at what makes sounds on your computer TiK ToK (I could make Ke$ha puns all day, but I'll spare you from more). Then, we'll build on what we saw last time when we looked at 2D graphics and discuss how 3D worlds are created on your computer. Finally, we'll take a look at how graphics and audio combine to bring us the magic of the cinema!
 
 ## Sound Fundamentals

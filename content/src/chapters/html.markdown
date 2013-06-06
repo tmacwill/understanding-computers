@@ -1,3 +1,5 @@
+## Introduction
+
 It's finally the moment you've all been waiting for... let's make a website! In order to make snazzy-looking web pages, we'll need to learn about two new things: **HTML** and **CSS**.
 
 ## HTML

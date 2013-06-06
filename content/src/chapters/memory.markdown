@@ -1,3 +1,5 @@
+## Introduction
+
 As promised, we'll now take a look at what your CPU does with those millions of computations per second. Just like you have the ability to recall memories, your computer has the ability to store information for both the short and long term. As you might expect, the space reserved for short-term memory is generally smaller and easier to access, while the hardware dedicated to long-term memory is usually larger and more time-consuming to use. We'll begin our exploration of the various types of memory with the smallest and fastest available to the computer and work our way up to the biggest and baddest!
 
 ## Data Size

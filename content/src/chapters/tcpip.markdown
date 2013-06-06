@@ -1,3 +1,5 @@
+## Introduction
+
 In our discussions of networking, DNS, HTTP, and email so far, we've used words like "request" and "response" to describe _something_ that travels through the Internet. That _something_ could be the CNN home page, a query for the IP address of reddit.com, or the third email in my inbox. However, we've kinda taken for granted that a request knows where it came from and knows where it's going, as well as exactly what information goes into a request. In our final foray into the study of the Internet, let's peel back this last final layer and take a look at exactly what's being sent from router to router on the information superhighway.
 
 ## TCP Fundamentals

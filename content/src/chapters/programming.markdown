@@ -1,6 +1,4 @@
-<div class="page-header">
-    <h1>Chapter 19 <small>Tonight's Programming</small></h1>
-</div>
+## Introduction
 
 Last time, we saw how we could make static web pages using HTML and CSS. Now, let's see how we can actually make those pages _do_ something!
 

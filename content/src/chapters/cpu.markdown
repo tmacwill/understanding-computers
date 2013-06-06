@@ -1,3 +1,5 @@
+## Introduction
+
 Now that you know all about 01100010 01101001 01110100 01110011, let's take a look at how your computer... computes! At the heart of your computer is the **central processing unit**, or **CPU**. The CPU is responsible for executing the instructions that make your computer _do_ things, whether that be printing an important-looking spreadsheet or downloading a cat video. For example, if you click the Google Chrome icon on your desktop, your CPU will be sent instructions that say something like "Please open up Google Chrome!" Then, as Chrome is starting up, it will probably load instructions that say something like "Please go to www.google.com!" (Or if you're me, a page like [this](http://www.catgifpage.com/) is more likely to open up). Though the CPU is what puts the "compute" in "computer," it's actually pretty small, measuring a few inches in size. Here are a few modern CPUs that could be found in the computer you're using right now.
 
 ![CPUs](/static/img/3-cpus.jpg)

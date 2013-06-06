@@ -1,3 +1,5 @@
+## Introduction
+
 We've talked a lot about pictures of cats, but it's time for us to put our money where our mouth is. In this section, we'll discuss how your computer actually represents and displays cat pictures, as well as some other less interesting stuff, I guess.
 
 ## File Formats

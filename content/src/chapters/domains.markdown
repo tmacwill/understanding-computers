@@ -1,3 +1,5 @@
+## Introduction
+
 All of our discussion thus far has revolved around the idea of using IP address to contact other machines. However, cnn.com isn't exactly an IPv4 or IPv6 address, but it certainly looks like I can somehow use that sequence of characters to contact another Internet-connected device. Remember, if you know the IP address of CNN.com, you can open it up using a web browser: if you click [here](http://157.166.226.26/), you should be whisked away to CNN's homepage, despite the fact that your web browser's address bar has no references to cnn.com. Of course, remembering the words "cnn dot com" is much easier than remembering (and typing) "one five seven dot one six six dot two two six dot two six," so it'd be ideal to not have to waste brain cells on many sequences of 12 digits.
 
 ## DNS

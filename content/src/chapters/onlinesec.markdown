@@ -1,3 +1,5 @@
+## Introduction
+
 The Internet sure is a fun place, but unfortunately, there are still some grumpy cats out there looking to take advantage of poor, unsuspecting souls. You've probably heard horror stories of identities being stolen, passwords being compromised, and viruses ravaging innocent computers. In the next few sections, we'll focus on **security**, which will involve looking not only at threats to your digital world, but also at how you can protect yourself from real-world harm. In general, security refers to protecting your data from prying eyes, which has become a (sadly) essential part of using computers and the Internet.
 
 ## Sessions

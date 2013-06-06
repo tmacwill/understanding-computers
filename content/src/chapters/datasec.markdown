@@ -1,3 +1,5 @@
+## Introduction
+
 Now that we've seen some Internet-related security threats and solutions, let's talk a bit about securing your own computer. First, we'll dive into cryptography to get a sense of how we can actually prevent some of the attacks we saw last time by ensuring that prying eyes can't see the information exchanged between two parties. After that, we'll see some threats to the data on the computer that I'm sure is near and dear to your heart, as well as some concrete ways you can protect your digital information!
 
 ## Encryption

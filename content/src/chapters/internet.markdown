@@ -1,3 +1,5 @@
+## Introduction
+
 Now that we've seen how the hardware innards of your computer work, let's shift gears a bit and discuss everyone's favorite way to procrastinate: the Internet. So... what _is_ the Internet? It's been described as [a series of tubes](http://www.gametrailers.com/videos/8nj7ho/internet-is-a-series-of-tubes), but the Internet is really a huge network of connected computers. Using the Internet, your machine can contact another machine, like the one powering cnn.com, in order to share information. Computers that power websites have a special name: **servers**. A server's job is to respond to requests from a **client**; the web servers behind CNN.com, for example, respond to requests for news from clients who navigate to the site's various articles! However, there's a pretty good chance that your computer doesn't have a wire running to the computer CNN.com runs on. Or, if it does... then I'm really not sure what to say. Instead, your request to CNN.com will likely be routed through several other machines in order to reach its destination.
 
 ## A Route Through the Internet

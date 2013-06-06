@@ -30,14 +30,6 @@
                 <div class="chapter-more">
                     <h4>{{ ". ".join(chapter['tags']) }}.</h4>
                     <ul>
-                        <li>
-                            <a href="/chapter/{{ id }}">
-                                {% if id in reads and chapter.heading.replace(' ', '-').lower() in reads[id] %}
-                                    <i class="icon-ok"></i>
-                                {% endif %}
-                                Introduction
-                            </a>
-                        </li>
                         {% for i in chapter.subheadings %}
                             <li>
                                 <a href="/chapter/{{ id }}/{{ i.id }}">

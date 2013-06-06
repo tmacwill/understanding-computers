@@ -41,14 +41,9 @@ def chapter(chapter, section=None):
 
     # load chapters and table of contents
     chapters = loader.chapters()
-    toc_list = loader.toc_list()
     toc = loader.toc()
 
-    # if section not given, then use chapter as subheading
-    if not section:
-        section = chapters[chapter]['title'].replace(' ', '-').lower()
-
-    return render_template('chapter.html', chapter_id=chapter, chapter=chapters[chapter], toc_list=toc_list, toc=toc)
+    return render_template('chapter.html', chapter_id=chapter, chapter=chapters[chapter], toc=toc)
 
 @app.route('/read/<chapter>/<section>')
 def read(chapter, section):

@@ -1,3 +1,5 @@
+## Introduction
+
 The Internet is an extremely heterogenous environment. Not only do a huge variety of devices using different hardware components need to be able to communicate with each other over the Internet, but there's also a good chance that those devices are powered by different operating systems and software. In order for different devices to talk to each other, they need to agree upon some standardized way of communicating. That way, even if networked computers are running different hardware and software, they'll be able to communicate because they're all following the same rules and method of communicating that were established by a formal, explicit **protocol**.
 
 ## Protocols
