@@ -4,7 +4,8 @@ from collections import defaultdict
 import e1.loader as loader
 import e1.settings as settings
 import e1.util as util
-from e1 import app, db
+from e1 import app, cache, db
+from e1.models.answer import Answer
 from e1.models.chapter_read import ChapterRead
 from e1.models.user import User
 
@@ -30,8 +31,29 @@ def contents():
     for read in all_reads:
         reads[read.chapter][read.section] = True
 
+    # get total points for all problem sets
+    psets = loader.psets()
+    total_points = psets['points']
+    pset_answers = psets['answers']
+
+    # check cache for points
+    points = cache.get('psets:points:' + str(user.id))
+    if not points:
+        # get all of our correct answers
+        answers = db.session.query(Answer).filter_by(user_id=user.id).\
+            filter_by(correct=True).group_by(Answer.question)
+
+        # tally scores for all psets
+        points = defaultdict(int)
+        for answer in answers:
+            p = pset_answers[answer.question]['pset']
+            points[p] += pset_answers[answer.question]['points']
+
+        # cache points for three hours
+        cache.set('psets:points:' + str(user.id), points, timeout=3*60)
+
     toc = loader.toc()
-    return render_template('contents.html', user=user, toc=toc, reads=reads)
+    return render_template('contents.html', user=user, toc=toc, reads=reads, points=points, total_points=total_points)
 
 @app.route('/chapter/<chapter>')
 @app.route('/chapter/<chapter>/<section>')

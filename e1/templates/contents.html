@@ -33,12 +33,15 @@
                     {{ chapter.heading }}
                 </div>
                 <div class="chapter-buttons">
-                    <a class="btn btn-primary" href="/chapter/{{ id }}">Read</a>
-                    <a class="btn btn-info" href="/pset/{{ id }}">Practice</a>
+                    <a class="btn btn-primary" href="/chapter/{{ id }}"><i class="icon-book"></i> Read</a>
+                    <a class="btn btn-info" href="/pset/{{ id }}"><i class="icon-pencil"></i> Practice</a>
                     <a class="btn btn-danger btn-more"><i class="icon-angle-down"></i></a>
                 </div>
                 <div class="chapter-more">
                     <h4>{{ ". ".join(chapter['tags']) }}.</h4>
+                    {% if id in total_points %}
+                        <h3><a href="/pset/{{ id }}">Problem Set:</a> {{ points[id] }} out of {{ total_points[id] }} points</h4>
+                    {% endif %}
                     <ul>
                         {% for i in chapter.subheadings %}
                             <li>

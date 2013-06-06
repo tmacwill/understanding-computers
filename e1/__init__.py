@@ -1,5 +1,6 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
+from werkzeug.contrib.cache import MemcachedCache
 
 # create app
 app = Flask(__name__)
@@ -8,6 +9,9 @@ app.secret_key = '8d752fc4bebb3d4559a7b6cc13944ba2beaf8666'
 
 # connect to database
 db = SQLAlchemy(app)
+
+# connect to memcached
+cache = MemcachedCache(['127.0.0.1:11211'])
 
 import e1.loader
 

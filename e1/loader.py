@@ -131,13 +131,15 @@ def psets():
     _psets = {}
     _psets['questions'] = OrderedDict()
     _psets['answers'] = {}
+    _psets['points'] = {}
 
     #for i in _toc.iterkeys():
     for i in ['graphics']:
         with open(settings.PSET_SRC + '/' + i + '.yaml') as f:
             _psets['questions'][i] = yaml.load(f)
 
-        # generate ID for each question
+        # store answers for each question
+        total_points = 0
         for question in _psets['questions'][i]:
             # top-level question, so hash on text
             if 'question' in question:
@@ -149,8 +151,12 @@ def psets():
                 if 'answer' in question:
                     _psets['answers'][question_id] = {
                         'answer': question['answer'],
-                        'points': question['points']
+                        'points': question['points'],
+                        'pset': i
                     }
+
+                    # keep track of total points
+                    total_points += question['points']
 
             # sequence, so hash on each question
             elif question['type'] == 'sequence':
@@ -162,8 +168,15 @@ def psets():
                     # store answer to question
                     _psets['answers'][question_id] = {
                         'answer': q['answer'],
-                        'points': q['points']
+                        'points': q['points'],
+                        'pset': i
                     }
+
+                    # keep track of total points
+                    total_points += q['points']
+
+        # store total points for pset
+        _psets['points'][i] = total_points
 
     # write build file
     with open(settings.PSET_BUILD, 'w') as f:

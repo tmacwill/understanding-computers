@@ -1,3 +1,10 @@
+h3 {
+    font-weight: normal;
+    font-family: 'Lato';
+    font-size: 18px;
+    margin-top: 5px;
+}
+
 #progress {
     margin-top: 20px;
 }
@@ -83,14 +90,18 @@
 }
 
 #table-contents .chapter-more {
-    margin-top: 15px;
+    margin-top: 20px;
     font-family: 'LatoLight';
     display: none;
 }
 
 #table-contents .chapter-more ul {
     margin: 0;
-    margin-top: 15px;
+    margin-top: 8px;
+}
+
+#table-contents .chapter-more a {
+    text-decoration: none;
 }
 
 #table-contents .chapter-more li {

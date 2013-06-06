@@ -2,6 +2,7 @@ flask
 flask-sqlalchemy
 markdown
 mysql-python
+python-memcached
 pyyaml
 solrpy
 sqlalchemy
