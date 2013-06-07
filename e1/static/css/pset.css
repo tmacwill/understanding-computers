@@ -52,3 +52,11 @@ h4 {
 .problem-feedback strong {
     font-family: 'Lato';
 }
+
+#btn-done {
+    margin-bottom: 40px;
+    font-size: 42px;
+    padding: 30px;
+    width: 883px;
+    display: block;
+}

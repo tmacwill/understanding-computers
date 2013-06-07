@@ -57,7 +57,7 @@ def answer(question_id):
     count = db.session.query(Answer).filter_by(user_id=user.id).filter_by(question=question_id).\
             filter_by(correct=True).count()
     if count == 0 and correct:
-        user.points += answer['points']
+        user.add_points(answer['points'])
 
     # log answer (for analytics)
     new_answer = Answer(question_id, user.id, request.form['answer'], correct)
