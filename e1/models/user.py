@@ -25,7 +25,7 @@ class User(db.Model):
         """
 
         self.points += points
-        cache.set('psets:points:' + str(self.id), self.points, timeout=3*60)
+        cache.delete('psets:points:' + str(self.id))
 
     def badges(self, reads=None, points=None):
         """
