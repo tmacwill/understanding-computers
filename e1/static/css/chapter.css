@@ -26,10 +26,16 @@ p, li {
 pre {
     margin-top: 15px;
     margin-bottom: 15px;
+    background: white;
+    border: none;
+    line-height: 12px;
+    margin-left: 15px;
 }
 
 pre code {
     border: none;
+    font-size: 16px;
+    color: black;
 }
 
 table {
