@@ -35,8 +35,8 @@ h4 {
 .problem label {
     cursor: pointer;
     display: block;
-    font-family: 'RobotoLight';
-    font-size: 16px;
+    font-family: 'LatoLight';
+    font-size: 18px;
     line-height: 24px;
     margin-bottom: -15px;
 }
