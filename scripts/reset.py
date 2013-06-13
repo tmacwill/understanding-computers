@@ -6,6 +6,7 @@ import memcache
 connection = sql.connect('localhost', '', '', 'e1')
 with connection:
     db = connection.cursor()
+    db.execute('set FOREIGN_KEY_CHECKS = 0')
     db.execute('truncate answers')
     db.execute('truncate chapter_reads')
     db.execute('truncate users')
