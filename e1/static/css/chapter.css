@@ -28,8 +28,10 @@ pre {
     margin-bottom: 15px;
     background: white;
     border: none;
-    line-height: 12px;
     margin-left: 15px;
+    line-height: 20px;
+    /* white-space: pre; */
+    /* overflow: auto; */
 }
 
 pre code {

@@ -61,7 +61,7 @@ def chapters():
                         'subheading': line[3:-1]
                     })
 
-            _chapters[i]['content'] = markdown.markdown("\n".join(content))
+            _chapters[i]['content'] = markdown.markdown("".join(content))
 
     # write build files
     with open(settings.CHAPTER_BUILD, 'w') as f:
