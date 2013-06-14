@@ -6,23 +6,23 @@ Graphics sure are nice, but my computer spends a whole lot of time playing Ke$ha
 
 Before we start talking about how sound in your computer works, let's quickly review how sound in the real world works! Haven't you started to miss your physics classes in high school by now? Recall that sound is just a wave of oscillating pressure that travels through some medium like air or water. So, we can model sound with a wave that looks something like this:
 
-![Sound Wave](/static/img/13-sound.jpg)
+![Sound Wave](/static/img/content/chapters/av/sound.jpg)
 
 Here, we have time along the x-axis and pressure along the y-axis. Now, there are two different knobs we can turn to change what this wave looks like. First, we have **amplitude**, or the distance along the y-axis between 0 pressure and some point on the wave. This determines the volume, or loudness, of the sound, which we typically measure in decibels. As you can see above, sound waves can have _peaks_ of high pressure as well as _valleys_ of low pressure. The other knob we can turn to change what this wave looks like is its **wavelength**, or the distance along the x-axis between adjacent peaks or adjacent valleys, which determines the pitch of the sound. Usually, we talk about **frequency** instead, which is simply the inverse of wavelength. A higher frequency means that we can fit more peaks into some time interval, which produces a higher-pitched sound. A lower frequency, on the other hand, means that we can't fit as many peaks into the same time interval, which produces a sound with a lower pitch. We measure frequency in **Hertz** (Hz), more frequently seen as kHz or MHz. We've actually already seen this unit before! Remember where? I'll give you some time to _process_ that one...
 
 Though you may have earbuds in your ears as you're walking down the street, you probably still hear lots of sounds at once. When two sound waves collide, we get something called **wave interference**, which is simply the process of adding two waves together. In this process, adding two peaks will create a larger peak, adding two valleys will produce a larger valley, and adding a peak and a valley (of the same size) will produce a flat line, since they'll cancel out. So, adding a big peak with a small valley will result in a smaller peak, and so on. If the peaks and valleys of two waves line up, then we can say those two waves are **in phase**, and if not, then we'd say they're **out of phase**. The below summarizes the interactions of waves with different phase relationships:
 
-![Wave Interaction](/static/img/13-wave-interaction.gif)
+![Wave Interaction](/static/img/content/chapters/av/wave-interaction.gif)
 
 ## Digital Sound
 
 We can model sound as a continuous, **analog** wave, but we're going to need something that looks a lot more **digital** (aka 0s and 1s) if our computers are going to be able to play Ke$ha tracks. Curves like the above have a value defined at every single point on the x-axis, which means they define values for an infinite number of points! Think back to high school algebra: if you have an equation like _y_ = _x_ + 1, you can plug in _x_ = 0.1, _x_ = 0.01, _x_ = 0.0001, and so on, and you'll always get a value for y. Sadly, I don't have any hard drives with infinite capacities, so it looks like we can't save the value of every single point on that curve. What we _can_ do, though, is take discrete **samples** from a continuous sound wave, which means we'll only save some of the values on the curve. Turning a continuous curve into discrete values looks something like this:
 
-![Sampling](/static/img/13-sampling.png)
+![Sampling](/static/img/content/chapters/av/sampling.png)
 
 Here, each gray bar represents a sample from the curve, which is simply a number that we can save. As you can see, the shape of the gray bars roughly traces out the shape of the red curve, so sampling can give us a pretty good approximation of that curve. Now that we've taken samples, we simply have a bunch of numbers associated with particular times, which is something we can represent with 0s and 1s! In the above picture, we've taken 30 samples or so. However, if we doubled the number of samples, we'd end up getting a much better approximation of the continuous curve. Think back to image resolution: if we had more boxes in the grid to work with, we could capture more of an image's detail. The number of samples we take from the curve is called the **sampling rate**, where a higher sampling rate indicates a higher sound quality. CD-quality audio has a sampling rate of 44,100 samples per second, or 44.1 kHz. Rates as high as 96 kHz can be found in professional recording applications. Check out the below for a comparison of two different sampling rates, where we can see that taking more samples produces a shape that more closely resembles the original analog curve.
 
-![Sampling Rates](/static/img/13-sampling-rates.gif)
+![Sampling Rates](/static/img/content/chapters/av/sampling-rates.gif)
 
 But, where does the value from each sample come from? Is a value of 10 loud, or is a value of 1,000,000 loud? This question is essentially the same question we asked ourselves when we looked at the value of an individual pixel in an image. The answer, we found out, depended on the image's **color depth**, which essentially defined a range of numbers that an individual pixel could take on. In audio land, the range of values for a sample, or equivalently, the number of bits used to represent each sample, is called the **bitrate**. CDs have 16-bit audio, which means that CD quality samples take on values between 0 and 65,536 (which is 2<sup>16</sup>). 24-bit audio isn't uncommon in professional recording software.
 
@@ -34,7 +34,7 @@ So, how does the magic happen? MP3 compression uses something called **psychoaco
 
 In order to determine which data from the PCM encoding can be thrown away, your computer uses two different tools. This process is pretty complicated, so we'll just give a simplified, high-level overview here, but if you're interested in reading more about the specifics, then check out [this article](http://arstechnica.com/features/2007/10/the-audiofile-understanding-mp3-compression/). The first of these tools is called the Fast Fourier Transform, or FFT for short, which is a mathematical black box that determines where masking and dramatic changes in the audio occur. The other is called the Modified Discrete Cosine Transform, or MDCT for short, which analyzes the entire spectrum of frequencies of the audio. The result of this process is a cool-looking visualization called a **spectrogram**, which is essentially a fingerprint of the sound's frequencies. In the spectrogram below, we have time along the x-axis, frequency along the y-axis, and the energy (or intensity) of the frequency is represented with color.
 
-![Spectrogram](/static/img/13-spectrogram.jpg)
+![Spectrogram](/static/img/content/chapters/av/spectrogram.jpg)
 
 Cool, huh? An MP3 file itself is divided into many **frames**, each of which spans fractions of a second of audio. Each frame contains a header for metadata followed by the actual audio data. MP3 files also have space for **ID3 tags**, which are special pieces of metadata used to describe the artist, album, and other fun facts about the song to the MP3 file.
 
@@ -46,35 +46,35 @@ Just like we could choose to represent an image as a BMP, JPEG, GIF, etc., we al
 
 Before we move on to video, let's take a brief detour to discuss 3D graphics, since everything we looked at last time was in boring old 2D. Now, we'd like to be able to represent scenes where objects are placed in a three-dimensional world. We can represent 3D objects using **wireframes**, which are models that define the edges of 3D objects. First, we can specify the locations of important points on the object in 3D space, and then we can specify which of those points are connected by lines or curves. For example, we might model a 3D book as a cube; each of the book's corners is a point on the wireframe, and lines connecting the corners can define the surface of the book. Remember, the goal of the wireframe is simply to describe the shape of the 3D object by defining its edges, so we're not concerned about things like book's color yet. So, a wireframe looks something like this:
 
-![Wireframe](/static/img/13-wireframe.jpg)
+![Wireframe](/static/img/content/chapters/av/wireframe.jpg)
 
 For more complex 3D objects, we probably need a more complicated collection of polygons to accurately describe the shape of an object. This collection of polygons, which typically consists of triangles or quadrilaterals (often called simply "quads"), is called a **mesh**. So, a mesh is simply a type of wireframe where each component is a polygon, which means we can only connect points with straight lines (while the above uses curves for some connections). A triangle mesh that describes the shape of a dolphin might look something like this:
 
-![Triangle Mesh](/static/img/13-triangle-mesh.png)
+![Triangle Mesh](/static/img/content/chapters/av/triangle-mesh.png)
 
 As we saw earlier with bitmaps, it's tough to represent curves when we only have polygons to work with. In order to create smoother-looking curves, we essentially needed a higher resolution, which in the case of our 3D model, means more polygons. However, that means we have to store all of those polygons, which means our mesh files are going to start to blow up in size. Using a technique called **subdivision surfaces**, though, we can actually define smooth, curved surfaces using a small number of polygons. If you head [here](http://www.subdivision.org/demos/demos.html), you can see an example of subdivision surfaces in action. Below, we have a mesh that looks something like a diamond ring, but it isn't going to win an Academy Award for visual effects.
 
-![No Subdivision](/static/img/13-subdivide-1.png)
+![No Subdivision](/static/img/content/chapters/av/subdivide-1.png)
 
 Now, let's subdivide the polygons of this mesh, which will give us a larger number of smaller polygons. For example, we can add a new point to the center of each polygon and then connect those points to the midpoints of existing edges. Each time we do this, our mesh will get progressively smoother:
 
-![Subdivision Steps](/static/img/13-subdivision-steps.png)
+![Subdivision Steps](/static/img/content/chapters/av/subdivision-steps.png)
 
 After applying this process just three times to the diamond mesh above, we get something that looks like this:
 
-![3 Subdivisions](/static/img/13-subdivide-2.png)
+![3 Subdivisions](/static/img/content/chapters/av/subdivide-2.png)
 
 Now _that_ looks much more like a diamond ring. So, we were able to create a nice, smooth surface from a pretty limited mesh that at first didn't look smooth at all! There are actually a few different methods for subdividing surfaces, and the one we just looked at is named after [Catmull-Clark](http://en.wikipedia.org/wiki/Catmull%E2%80%93Clark_subdivision_surface).
 
 Now, we can create three-dimensional scenes by placing these objects out in 3D space. Here's what a 3D scene might look like:
 
-![3D 1](/static/img/13-3d-1.png)
+![3D 1](/static/img/content/chapters/av/3d-1.png)
 
 This particular scene was created using a 3D programming framework called [OpenGL](http://www.opengl.org/). We can see two 3D cubes, as well as a green ground and a blue sky. To create a cube, we defined the positions of its vertices in the scene using _x_, _y_, and _z_ coordinates. Then, we specified which vertices were connected by breaking each face of the cube into two triangles that meet to form the diagonal of the cube. For performance reasons, triangles are often used as the polygons that form a polygon mesh, and because the two triangles on each face are touching, we don't see any kind of "seam" in our cube. Finally, we specified a color for the surface of the cube, which was effectively painted over our triangle mesh in order to create a solid-looking object.
 
 When we look at a 3D scene, though, we're really only seeing a single, two-dimensional snapshot that represents our view of the scene. So, depending on our perspective, we may not need to draw all of the data for all of the objects in the world. Let's say I move around in the above scene, so my perspective now looks something like this:
 
-![3D 2](/static/img/13-3d-2.png)
+![3D 2](/static/img/content/chapters/av/3d-2.png)
 
 Now, the camera is on the red cube, and I'm looking at the blue cube. From my previous viewpoint, I could see both cubes, but now, I'm only able to see one cube. So, it would be a waste of time for the computer to try to draw the red cube, since there's no way I can see it anyway. Using some fancy linear algebra, your computer can determine which objects will not be visible in the scene and then skip over them in the drawing process, which is called **clipping**. Similarly, I can really only see the front of the blue cube from this angle. So, even though we've defined triangles that make up the faces of the other sides of the cube, it's also useless to draw those, since I can't see them. This process is called **culling**, and it simply involves figuring out which objects are obstructed from view in the scene. Both clipping and culling can dramatically improve the performance of a graphics application. It's expensive to have to draw all of those polygons at once, so your computer wants to draw as few as it possibly can so it can handle complex scenes!
 
@@ -88,11 +88,11 @@ Now that we have a codec that can compress and decompress video, we want to pack
 
 Exactly how a video gets compressed depends on the particular codec being used, but let's take a look at some high-level ideas. When we looked at lossless compression for images, the basic idea was that compressed images avoided storing redundant data for similar pixels. Now, we can apply the same exact principle to videos! In a movie or television show, it's usually the case that the _entire_ scene isn't changing all at once. Instead, there's usually some subject in the video that's moving on a more static background. So, if nothing in the background is changing between frames, then we don't need to redundantly store that data! Let's consider the following three frames of a video:
 
-![Uncompressed Video](/static/img/13-uncompressed-video.png)
+![Uncompressed Video](/static/img/content/chapters/av/uncompressed-video.png)
 
 In this short clip, we have some movement towards the right of the scene, but the chair at the left or the ground it's sitting on never actually changes. So, there's no need to save the data for all of those unchanging pixels, just like we didn't need to save the data for every single black pixel in the German flag. That means we can actually save something that looks more like this:
 
-![Compressed Video](/static/img/13-compressed-video.png)
+![Compressed Video](/static/img/content/chapters/av/compressed-video.png)
 
 We can see this in action in the below video clip. Notice how the chairs in this scene are totally static throughout the video, and you can notice a very slight difference between the appearance of the chairs and the characters, since the same representation of the static object can be re-used from frame to frame.
 

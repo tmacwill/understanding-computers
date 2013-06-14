@@ -63,7 +63,7 @@ Just when you thought we were done talking about the CPU, we're going to start t
 
 Okay, but a few registers that can't hold much more than a 32-bit number don't seem sufficient for playing a several megabyte song or watching a several gigabyte movie. In order to efficiently handle tasks like these, we'll need some short-term memory with a larger capacity. That's where **RAM**, or Random-Access Memory, comes in. RAM is a block of memory that can be used by currently-running process to store larger pieces of data for a longer amount of time. For example, a web browser might need to store what website you're currently browsing, and your email client might need to store all of the emails in your inbox. So, the more RAM you have, the more space you have available for processes to store information. Because all of the currently-running processes on your computer will probably need to utilize RAM for short-term storage, having more RAM in your computer will allow you to run more programs at the same time efficiently. A laptop on today's market will likely have between four and eight gigabytes of RAM, so we're talking _much_ more space than something like a CPU register. In fact, when you see any language that refers to the amount of "memory" in a computer, there's a very good chance it's referring to RAM, since RAM is the main source of short-term memory in your computer. Here's what a modern stick of RAM (in this case, with the ability to hold 512 MB) looks like.
 
-![RAM](/static/img/4-dram.jpg)
+![RAM](/static/img/content/chapters/memory/dram.jpg)
 
 Your laptop probably contains at least a couple sticks of RAM. The CPU has the ability to _read_ values from RAM (i.e., access already-stored data) and _write_ values to RAM (i.e., store new data). We can think about RAM as a really long street with lots of houses. Each house has an **address**, which is simply a unique whole number starting from zero, that is used to identify it. Each one of these houses can store exactly one byte (remember, 8 bits!) of data. So, the total number of houses available to your computer depends on the total size of the available RAM. With 2 GB of RAM, for example, your computer will have about two billion houses, and with 4 GB of RAM, your computer will have about four billion houses. That's one heck of a block party if you ask me. When the CPU needs to read or write information from RAM, it will do so using a memory address. For example, let's say the following represents a portion of RAM; the bits inside each block represent the data stored at each address.
 
@@ -117,7 +117,7 @@ The "Random-Access" part of RAM refers to the fact that accessing any address in
 
 Accessing data stored in RAM is significantly slower than accessing data stored in a CPU register. In fact, the CPU can typically complete a cycle much faster than it can read a value from RAM, so the CPU could waste cycles waiting for a value to be read from RAM. In order to increase efficiency and waste less time, the CPU also utilizes a layer of storage called the **processor cache**. Not only is the cache physically located closer to the CPU, but data stored on the cache can be accessed more quickly than data stored in RAM because of its hardware. In many cases, the CPU will need to use some value from RAM more than once, just like you might listen to a song on repeat. In my case, such a song would likely be something by [Alexandra Stan](http://www.youtube.com/watch?v=lAhHNCfA7NI). Rather than going all the way to RAM multiple times to grab a frequently-accessed value, the CPU might instead place it on the cache after getting the value once from RAM, where it can be fetched much more quickly in the future. Now, the next time the CPU needs that value, your computer can take a much shorter trip to the cache to get it, rather than going all the way to RAM. Caching is actually a pretty common technique in computing in general; when we know that a task is going to take a significant amount of time, we can instead remember already-computed results for some amount of time so we don't need to waste time getting them again. Here's how your computer's memory might be laid out, taking the cache into account.
 
-![Cache structure](/static/img/3-cache.gif)
+![Cache structure](/static/img/content/chapters/memory/cache.gif)
 
 Processor caches are able to hold significantly less data than RAM. As shown in the above diagram, computers typically have several **levels** of caches, each having different sizes and speeds. The **L1 cache** is the smallest, fastest, and closest to the CPU, and the L1 cache typically comprises several (e.g., 32 or 64) kilobytes in size. Next up is the **L2 cache**, which is typically a bit farther away from the CPU and slower to access, but usually holds up to several megabytes (e.g., 4 or 8) of data. Finally, the **L3 cache** is even slower, but can hold even more data. Not all CPUs have all three levels of caches&mdash;some CPUs don't utilize an L1 cache, while others don't have an L3 cache. All that being said, accessing data in the CPU cache is still _much_ faster than accessing data from RAM.
 
@@ -129,13 +129,13 @@ So far, we've only talked about computers' short-term memory. RAM, though the la
 
 Your computer's **hard drive** is its primary form of long-term storage. Unlike RAM, which holds only a few gigabytes, you'll find that modern hard drives often hold 500, 750, or 1000+ GB. Hard disks, or **HDD**s, are typically 3.5" in size in desktop computers and 2.5" in size on laptops. As shown below, a typical hard disk consists of several circular **platters** that don't look all that dissimilar from CDs. Each platter is coated in a thin layer of magnetic material that is used to encode information. A few sections ago, we said that a binary encoding could be used to represent the sign of a magnet, which can be positive (+) or negative (-). It just so happens that this is exactly how a hard disk represents information: a positive magnetic charge could represent a 1, and a negative magnetic charge could represent a 0. I know, it feels like an episode of [LOST](http://www.youtube.com/watch?v=uOY3yYkAJzs) with all these subtle references.
 
-![Hard Disk](/static/img/4-hdd.png)
+![Hard Disk](/static/img/content/chapters/memory/hdd.png)
 
 The drive's **read-write heads** are responsible for encoding and decoding information on the HDD using magnetism. Separate heads extend above and below each platter, and the space between a platter and its corresponding head is less than the width of a human hair (totaling only several nanometers). So that the platters aren't scratched or damaged, the read-write heads don't actually touch the surface of the platters, but are instead perched precariously above them. The heads are attached to an actuator arm, which allows the heads to move closer to the platters' centers or edges. Meanwhile, a separate motor on the **spindle** rotates the platters at speeds between 4,000 and 15,000 rotations per minute (RPM), with consumer disks typically rotating at 7,200 RPM. Sound ridiculously fast? It is.
 
 Luckily, the space required to store a positive or negative magnetic charge, or one bit, is extremely small. This means that hard drives are able to cram a huge amount of data into a very small space. However, we weren't always able to pack data so efficiently. Shown below is a hard disk from 1956. (Yes, that entire box.) Its capacity? 5 MB.
 
-![Hard Disk](/static/img/4-plane-hdd.jpg)
+![Hard Disk](/static/img/content/chapters/memory/plane-hdd.jpg)
 
 ## Hard Drive Addressing
 
@@ -153,7 +153,7 @@ This video nicely (albeit over-excitedly) ties together the various parts of the
 
 A few factors influence the performance of a hard disk. One, as you may have guessed, is the speed at which the hard disk rotates. As we've seen, a read-write head must by physically over a sector in order to read data from it. So, if it takes less time for the disk to rotate underneath the read-write head to the correct position, then we won't have to wait as long to read data. We call the amount of time it takes for a head to reach its destination the **seek time**. Also important is the hard disk's **data rate**, which describes how quickly data decoded from platters can be sent to the CPU. Older hard drives transferred data using **PATA** cables, which are 18" in length, have 40-pin connectors, and have maximum data transfer rates of 133 megabytes per second. Nowadays, **SATA** cables, which represent an improvement over the PATA standard, are much more common. SATA cables are several feet in length, have only 7-pin connectors, and have maximum data transfer rates exceeding 600 MB/s. Here, we have a PATA cable on the left and a SATA cable on the right.
 
-![PATA and SATA cables](/static/img/4-pata-sata.jpg)
+![PATA and SATA cables](/static/img/content/chapters/memory/pata-sata.jpg)
 
 ## Solid-State Drives
 
@@ -171,13 +171,13 @@ Whether your computer has an HDD or an SSD, the hard drive typically has a much 
 
 The below diagram illustrates how virtual memory works. Physical RAM contains data stored by multiple running programs, but since some data may be stored on swap files, RAM might not contain _all_ of the memory in use by running processes. So, each process has access to a big chunk of memory, some of which might be stored in RAM and some of which might be stored on disk in swap files.
 
-![Virtual Memory](/static/img/4-virtual-memory.png)
+![Virtual Memory](/static/img/content/chapters/memory/virtual-memory.png)
 
 ## The Memory Hierarchy
 
 Alrighty, we've now seen several different types of memory and storage. Let's recap how these various types of storage relate to each other. The registers on the CPU are the smallest and fastest, followed by the processor caches like the L1 cache and L2 cache. RAM is both the largest-capacity and slowest-to-access form of short-term memory. HDDs, which consist of platters read using fast-moving heads, and SSDs, which have no moving parts at all, are used for long-term storage, and thus have much higher capacity, but are also much slower to access. Here's a visual representation of a computer's memory hierarchy.
 
-![Memory Hierarchy](/static/img/4-hierarchy.jpg)
+![Memory Hierarchy](/static/img/content/chapters/memory/hierarchy.jpg)
 
 Finally, let's compare how long it takes for your computer to read and write data from the different storage mechanisms we've seen.
 

@@ -6,7 +6,7 @@ Now that we've seen how the hardware innards of your computer work, let's shift 
 
 Every morning, I fire up my favorite web browser (whether that be Chrome, Safari, Firefox, Internet Explorer, or something else) and navigate to CNN.com to get my fix of the day's news. Let's take a look at how my request actually goes from my computer to its destination&mdash;some machine powering CNN.com. To do that, we can open up a terminal and use a program called `traceroute`, which makes a request to a destination on the Internet and displays some information about how it got there. Here's what happened when I ran it from a computer living in Newark, New Jersey (where Snooki is my dedicated system administrator). Before you ask, yes, I do indeed name my computers after characters from <a href="http://en.wikipedia.org/wiki/Star_Fox_(series)">Star Fox</a>.
 
-![Traceroute to CNN.com](/static/img/6-trace-cnn.png)
+![Traceroute to CNN.com](/static/img/content/chapters/internet/trace-cnn.png)
 
 Alright, looks like my request to CNN.com made a few stops along the way! Since my computer isn't directly connected to a computer owned by CNN, my request naturally has to pass through a few other devices in order to reach its destination. This process isn't unlike taking a long flight to a remote destination; while there might not be a direct connection from your hometown to your destination, there's a good chance you can get there via a few connected intermediate stops. Here, each of those stops, represented by a row in our `traceroute` output above, is a device called a **router**. In fact, the Internet's core is a huge web of interconnected routers whose purpose in life is to route traffic to the correct destination. In order for my request to travel from my laptop to CNN.com, it will travel through a series of connected routers until eventually it reaches the geographic location of the destination web server. While all of the routers along the way may not know how to get to CNN.com, each does seem to have _some_ idea of how to get there. More specifically, each router has its own **routing table**, which maps ranges of destination addresses to other routers it's connected to. So, when my request for CNN.com reaches a router, that router will use its routing table to determine where my request should be sent next, so it can reach its destination as quickly as possible. Eventually then, my request will be sent to a router that _does_ know how to get to CNN.com, thus completing its flight!
 
@@ -16,27 +16,27 @@ With this in mind, let's come back to our `traceroute` output. In the first colu
 
 We said earlier that the Internet is a big network of connected computers, so let's explore that for a bit. If we wanted to connect two computers together, we might hypothetically connect them with some kind of cable. Back in the day, this wasn't so hypothetical, so a network of just two computers might look something like this:
 
-![Small Network](/static/img/6-small-network.png)
+![Small Network](/static/img/content/chapters/internet/small-network.png)
 
 That's cute, now my computer has a friend. What happens, though, when my computer becomes popular and gains a few more friends? Pretty quickly we're going to end up with a situation like this:
 
-![Large Network](/static/img/6-large-network.png)
+![Large Network](/static/img/content/chapters/internet/large-network.png)
 
 Ouch, that already looks like a pretty big mess for a pretty small network. The problem here is that we want any computer in the network to be able to talk to any other computer in the network, creating a setup that is completely connected. If we wanted to add just one computer to this network, we'd need to add _four_ new connections: one to each of the existing computers in the network. It only gets worse as we add even more computers. In fact, if we have _n_ computers in the network, we'll need something like _n<sup>2</sup>_ cables to connect them all (to be specific, we'll need _(n(n - 1)) / 2_ connections). Yikes.
 
 Much to the chagrin of cable manufacturers, let's try something else. Rather than running a wire from every computer to every single other computer, let's connect everything to a router. After all, we saw earlier that our request to CNN.com passed through a few routers on its trip. Now, our network looks something like this:
 
-![LAN](/static/img/6-lan.png)
+![LAN](/static/img/content/chapters/internet/lan.png)
 
 Okay, this looks much more organized! Now, the router acts as a communication hub for our network, and it allows all of the computers on the network to talk to one another. Let's say the computer on the left wants to send a message to the computer on the right. The message will first be sent to the router, and the router will then pass the message along to the computer on the right. By introducing the router as a middleman in the network, we can reduce the number of connections from _n<sup>2</sup>_ to _n_. It just so happens that many modern-day routers also allow devices to connect to the network wirelessly, but they work in exactly the same way.
 
 This setup, with a number of computers connected to a router (or routers), is called a **LAN**, or local-area network. When we connect multiple LANs together, we get a **WAN**, or wide-area network, which connects computers over a larger geographical area. Where your office building's network would be considered a LAN, the network in your hometown would be a WAN.
 
-![WAN](/static/img/6-wan.png)
+![WAN](/static/img/content/chapters/internet/wan.png)
 
 The entire Internet, then, is just a collection of interconnected WANs! So, if a network is a collection of connected computers, the Internet is a collection of connected networks. It's precisely because the various networks around the globe are interconnected that my request is able to hop along a series of routers in order to reach any destination on the Internet! In fact, the term "Internet," coined in the early 1970s, is a shortening of the term "Internetwork." Companies called **Internet Service Providers**, or ISPs, are responsible for connecting your home network to the rest of the Internet. Large ISPs in the United States include Comcast, Verizon, and Time Warner, whose service (or the service of one of their subsidiary companies) you may use in your own home or workplace! A typical setup might look something like this:
 
-![Internet](/static/img/6-internet.png)
+![Internet](/static/img/content/chapters/internet/internet.png)
 
 Let's walk through this diagram. On the left, we have two different computers connected to a router, creating a LAN. Without anything else in the picture, the router allows these two computers to talk only to each other, so neither is connected to the Internet. Next, the router is connected to a **modem**, which also could be built into the router itself. A modem, short for _mod_ulator-_dem_odulator, is responsible for converting analog and digital signals, allowing data from your computer to be transferring along telephone lines set up by your ISP. So, by connecting a router to an ISP-provided modem, the devices on your home network are able to access the larger network known as the Internet!
 
@@ -44,7 +44,7 @@ Let's walk through this diagram. On the left, we have two different computers co
 
 Let's try tracing another request through the depths of the Internet. Here's the output of `traceroute` on a different destination, reddit.com. If unfamiliar with reddit, click [here](http://reddit.com) to waste the next ten hours of your day. By the way, sites like [http://en.dnstools.ch/visual-traceroute.html](http://en.dnstools.ch/visual-traceroute.html) and [http://traceroute.monitis.com/](http://traceroute.monitis.com) let you run traceroute right from your browser!
 
-![Traceroute to reddit.com](/static/img/6-trace-reddit.png)
+![Traceroute to reddit.com](/static/img/content/chapters/internet/trace-reddit.png)
 
 This one looks a bit different. Compared to the last time we ran this program, it's perhaps not as obvious where my request went. But, let's take a closer look at the second column again. Turns out that routers are commonly identified using nearby airport abbreviations. A quick Google search shows that "mmu" is New Jersey's Morristown Municipal Airport (remember, our request is starting from the Garden State!), "ewr" is the Newark Liberty International Airport, and "nyc" of course is New York City. Great, we're back in action. Now, take a look at the times between hops 7 and 8. Looks like our time jumped from 1 millisecond to 68 milliseconds! What happened there, are all those Yankees fans slowing down the Internet in New York? While that _could_ be the case, it looks like the next router is located in the United Kingdom, near the London Heathrow Airport (LHR) to be precise! Unsurprisingly, it takes a while for my request to make like Columbus and cross the Atlantic Ocean.
 
@@ -70,7 +70,7 @@ Eventually, Wolf Blitzer is going to receive my request and will want to send a 
 
 Let's make this process a bit more concrete with an example. I'm running a wireless network at home, and my router has an IP address of 74.125.226.228. Currently, there are three devices connected to the network, and each has its own private IP address. I'm relaxing after a long day, so I make a request from my laptop to 64.208.126.154, which will lead me to reddit.com. My network is using NAT, so here's the state of the world from my router's perspective.
 
-![NAT](/static/img/6-nat.png)
+![NAT](/static/img/content/chapters/interent/nat.png)
 
 <table class="table table-bordered">
     <thead>
@@ -139,7 +139,7 @@ To recap:
 
 This process assumes, though, that the DHCP server somehow knows which IP addresses it can assign. For example, a DHCP server in North America needs to make sure that it doesn't assign an IP address that is already in use by a device in Europe. To mitigate this issue, different ranges of IP addresses are allocated to different physical regions of the globe. More specifically, different ISPs around the world have been allocated blocks of IP addresses by an organization called the **IANA**, or Internet Assigned Names and Numbers Authority, which is managed by a larger Internet governance body called **ICANN**, or the Internet Corporation for Assigned Names and Numbers. Here's a map created by the author of [XKCD](http://xkcd.com), one of my favorite webcomics.
 
-![Map of the Internet](/static/img/6-map.png)
+![Map of the Internet](/static/img/content/chapters/internet/map.png)
 
 Let's take a closer look. Towards the top of the map, we can see that some organizations have been allocated huge IP ranges. Apple, for example, has all IP addresses in the form `17.x.y.z`, and MIT has all IP addresses in the form `18.x.y.z`. The number of IP addresses in those ranges in comparable to the number of IP addresses allocated to entire countries, like Japan's `126.x.y.z`! One of the perks of being involved early in the Internet's development, I guess. From our earlier `traceroute` output, we can see that my trusty machine in New Jersey has an IP in one of the many ranges allocated to North America. Finally, if you take a look at the right of the map at the `192.x.y.z` range, you'll see a small dot that says "private." Sure enough, that's referring to the `192.168.y.z` range that we saw earlier was reserved for private IP addresses!
 
@@ -151,11 +151,11 @@ The speed of your Internet connection is typically broken down into two parts: d
 
 Let's take a look at some plans offered by two ISPs: Comcast (shown first) and Verizon (shown second).
 
-![Comcast](/static/img/6-comcast.png)
+![Comcast](/static/img/content/chapters/internet/comcast.png)
 
 <br />
 
-![Verizon](/static/img/6-verizon.png)
+![Verizon](/static/img/content/chapters/internet/verizon.png)
 
 Here, it looks like Comcast speeds in this area are a bit faster, but Verizon is a bit cheaper. Now that we know all about memory, we can put some context to these numbers! Let's say we want to download a 1 GB movie. 1 GB is 1000 MB, which is 8000 Mb. So, on a 3 Mbps Internet connection, downloading that movie will take 8000 / 3 = 2667 seconds, or about 45 minutes. Using the same logic, this movie will take about 22 minutes to download on a 6 Mbps connection, and only about 7 minutes to download on a 20 Mbps connection. Websites like [Speed Test](http://www.speedtest.net/) and [What is My IP](http://www.whatismyip.com/speed-test/) allow you to actually measure the upload and download speeds of your Internet connection, so you can see what kind of speeds you're actually getting for your monthly payment. However, these sites can sometimes be a bit misleading. For example, your ISP might sometimes **burst** your connection, or temporarily provide much faster speeds; if an ISP like Comcast bursts the first 10 MB of a download, then small downloads (which may be more common) will complete much faster, which could result in your connection "feeling" faster.
 
@@ -163,7 +163,7 @@ There's a good chance that you connect to the Internet using a wireless network 
 
 On your phone or tablet, you might instead use a **3G** or **4G** connection, which are simply other standards that devices can use to connect to the Internet wirelessly. While the 802.11n network in your home is set up via a router with an Ethernet cable, your phone's 3G or 4G connection utilizes a data network set up by a cell phone provider. 3G is a bit of an older standard, while 4G is a new standard being deployed by an increasing number of service providers. As you may have noticed, 3G and 4G speeds are probably a bit slower than your home connection, but the newer 4G standard offers much better speeds compared to 3G. The below is a comparison of 3G and 4G speeds for a few popular service providers, this time using speeds actually measured in the real world.
 
-![3G and 4G speeds](/static/img/6-3g-speeds.jpg)
+![3G and 4G speeds](/static/img/content/chapters/internet/3g-speeds.jpg)
 
 ## Firewalls and VPN
 

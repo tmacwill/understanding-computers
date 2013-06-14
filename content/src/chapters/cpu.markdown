@@ -2,23 +2,23 @@
 
 Now that you know all about 01100010 01101001 01110100 01110011, let's take a look at how your computer... computes! At the heart of your computer is the **central processing unit**, or **CPU**. The CPU is responsible for executing the instructions that make your computer _do_ things, whether that be printing an important-looking spreadsheet or downloading a cat video. For example, if you click the Google Chrome icon on your desktop, your CPU will be sent instructions that say something like "Please open up Google Chrome!" Then, as Chrome is starting up, it will probably load instructions that say something like "Please go to www.google.com!" (Or if you're me, a page like [this](http://www.catgifpage.com/) is more likely to open up). Though the CPU is what puts the "compute" in "computer," it's actually pretty small, measuring a few inches in size. Here are a few modern CPUs that could be found in the computer you're using right now.
 
-![CPUs](/static/img/3-cpus.jpg)
+![CPUs](/static/img/content/chapters/cpu/cpus.jpg)
 
 ## A Quick History Lesson
 
 Turns out that computing hardware wasn't always that small. One of the first computers capable of executing stored instructions was EDVAC (Electronic Discrete Variable Automatic Computer), developed in the mid-1940s for the United States Army by the University of Pennsylvania. Weighing almost 9 tons and covering about 500 square feet, EDVAC could add two numbers together in about 850 microseconds.
 
-![EDVAC](/static/img/3-edvac.jpg)
+![EDVAC](/static/img/content/chapters/cpu/edvac.jpg)
 
 Another one of the first stored-instruction computers was also developed on the East Coast. The Harvard Mark I, which still lives partly in the campus's Science Center down, was developed for the United States Navy also in the mid-1940s. The Mark I could execute instructions specified on paper punch cards, and mathematical operations like logarithms took over a minute.
 
-![Harvard Mark I](/static/img/3-harvard.jpg)
+![Harvard Mark I](/static/img/content/chapters/cpu/harvard.jpg)
 
 ## Processes
 
 The CPU's main job is to handle the execution of **processes**, or instances of programs being executed. For example, when I opened up Apple Keynote to make a presentation, my operating system kicked off a new process for the CPU to run containing some instructions for Keynote. Most operating systems will let you view the processes that are currently executing on your machine; on Windows, you can (infamously) press Ctrl-Alt-Delete to open up the task manager, while on Mac OS X, you can open a program called the Activity Manager, shown below.
 
-![Activity Manager](/static/img/3-processes.png)
+![Activity Manager](/static/img/content/chapters/cpu/processes.png)
 
 Each of these rows represents a different process, and we can see how CPU-intensive each process is, how much memory it's consuming, and so on. If your computer starts to slow down, applications like the Task Manager on Windows and Activity Manager on Mac can be useful for identifying which currently-running process is the culprit (as a result of memory or CPU greed). These applications also allow you to **kill**, or shut down, processes that are hanging or no longer responding, to help you regain control of your runaway CPU. Of course, your programs don't particularly like being killed, so only use this feature if you absolutely have to!
 
@@ -251,7 +251,7 @@ Hmmm, looks like we need to come up with a better way of counting everyone's tot
 
 There isn't one silver bullet when it comes to comparing the performance of two CPUs. A CPU's **clock speed**, nowadays measured in gigahertz (GHz), describes the rate at which the CPU executes instructions. Specifically, the clock speed measures how many cycles the CPU can complete in one second. A higher clock speed means that the CPU can execute more instructions in a single second, so a CPU with a higher clock speed will perform faster than an otherwise identical CPU with a lower clock speed. The clock speed of CPUs has been rising over the past several decades largely due to a trend known as **Moore's Law**, which essentially states that processing power will double every 18 months. Really, Moore's Law refers to the number of transistors (the fundamental electronic components that operate on electrical signals) on integrated circuits (like CPU chips) doubling, but we won't worry too much about the specifics of that.
 
-![Moore's Law](/static/img/3-moore.png)
+![Moore's Law](/static/img/content/chapters/cpu/moore.png)
 
 However, other factors also influence the overall performance of a CPU, so simply comparing the clock speeds of two CPUs won't necessarily tell you which is faster. As we've seen, parallelism is an important contributor to the performance of modern processors. So, processors with two or four cores may have better performance than their single-core equivalents. The instruction set of a CPU can also affect its performance. For example, if one processor can complete a task using one instruction that takes another processor five instructions, then naturally, it may be able to complete certain tasks faster even at a lower clock speed. Finally, the size of a CPU's pipeline can affect its performance, as explained in the video below. In this 2001 MacWorld keynote, Apple coined the term "Megahertz Myth" to describe the issues surrounding the comparison of two CPUs using only clock speed. The pipeline animation is pretty fancy for the early 2000s.
 

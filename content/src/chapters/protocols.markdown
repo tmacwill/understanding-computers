@@ -41,7 +41,7 @@ We can use a program called `telnet` to write our own HTTP requests. Telnet shou
 
 Here's another example of an HTTP request, this time with its various components labeled. Notice that this one is a request for [http://en.wikipedia.org/wiki/Phobophobia](http://en.wikipedia.org/wiki/Phobophobia), a web page about phobophobia, the fear of fear.
 
-![HTTP Request](/static/img/9-request.png)
+![HTTP Request](/static/img/content/chapters/protocols/request.png)
 
 ## HTTP Responses
 
@@ -188,7 +188,7 @@ The first line of this request looks just like our request from before, but our 
 
 Most web browsers allow you to view the HTTP requests and responses that result from loading a web page. In Google Chrome, clicking the menu at the top-right and selecting Tools > Developer Tools should bring up something like this:
 
-![Network Tab](/static/img/9-network.png)
+![Network Tab](/static/img/content/chapters/protocols/network.png)
 
 Looks like simply going to Google's home page generated a lot of network traffic! Some of this should look familiar to you, though. In the leftmost column, we have the name of the resource that was requested by the browser. Looks like our first request downloaded the HTML for Google's homepage, which tells the browser what should be displayed. In the next column, we can see that an HTTP GET request was used to get Google's homepage, which makes sense because we're simply requesting existing data on the server rather than sending it some new data. Next, we can see the status code and corresponding text, and since the homepage was downloaded without any issues, we got back a 200 OK status code. The next column is the content type of the response, which we've already said is HTML. Finally, we can see how large the response was in kilobytes, as well as how long it took the browser to download the content.
 
@@ -198,17 +198,17 @@ However, based on the above, it looks like our browser used more than just one H
 
 Though HTTP communication occurs between just two parties, a client and a server, large sites like CNN and Google actually have a huge number of powerful servers behind their websites, in order to deal with the high demand imposed by many clients making requests at once. As you've probably noticed, running a large number of programs at the same time on your home computer tends to slow it down, perhaps to the point where you'd rather watch paint dry than wait for an email to send. If thousands of people are hitting a website at the same time, then the same thing is going to happen, so we don't want every single request going to a single machine that can't handle them all. In the event a website's servers become overwhelmed with the number of requests coming in, then the loading times for people browsing the site will start to increase. Even large websites suffer from this problem! Twitter, for example, has an amazing infrastructure capable of handling millions of Bieber fans tweeting at once, but during events like the Presidential Inauguration, their servers might reach capacity due to the gigantic number of requests coming in at once. Here are a few recently-released photos from Google's data centers, showing just a small part of their incredible infrastructure:
 
-![Google 1](/static/img/9-google1.jpg)
+![Google 1](/static/img/content/chapters/internet/google1.jpg)
 
-![Google 2](/static/img/9-google2.jpg)
+![Google 2](/static/img/content/chapters/internet/google2.jpg)
 
-![Google 3](/static/img/9-google3.jpg)
+![Google 3](/static/img/content/chapters/internet/google3.jpg)
 
 Each of the lit-up rows in those columns is a server powering one of Google's many websites! Crazy, right? Google's data centers are located all over the world, so their servers can give you the fastest experience they possibly can. After all, you don't want to have to wait for your request to travel all the way across the ocean every time you search for cat videos! The term **latency** is used to describe the delay that can occur as your request is traveling from point A to point B. Related to latency is **bandwidth**, which describes the maximum amount of data that can travel over a network at once. If your request is a car on a traffic-filled highway at rush hour, then latency describes the speed at which cars are moving, while bandwidth describes how many lanes the highway has.
 
 Naturally, companies like Google want to mimize both latency and bandwidth. While locating servers as close to you as possible will reduce latency, decreasing the amount of data transferred to your computer will minimize bandwidth. If we head to [http://google.com](http://google.com) and then select "View Source" from our web browser, we can see the actual data that was transferred from Google's servers. Looks like a big jumbled mess to me! However, this is actually intentional on Google's part: they're removed unnecessary things like whitespace and shorted words to minimize the amount of data that they have to send to your computer. Because these responses are small, each will take less time to reach your computer and reduce the traffic on the highway! (If only that were the case on Fridays at 5pm.) In addition to compressing the textual data that makes up a web page, many sites also combine all of the images on a page into one single image. For example, the home page of [reddit](http://reddit.com) contains several different cute alien pictures. However, using Chrome's Developer Tools again, we can see that only a single image is downloaded, and it looks a little something like this:
 
-![Sprite](/static/img/9-sprite.png)
+![Sprite](/static/img/content/chapters/internet/sprite.png)
 
 Here, we have a bunch of icons combined into a single image, since it would be pretty wasteful for your browser to have to go and download each one of these small things one-by-one. These may seem like super minor changes, but keep in mind that they really add up! Even if Google saves just 100 bytes by compressing their home page, because that page receives upwards of a billion hits per day, Google ends up with hundreds of gigabytes of savings! So, for huge sites like Google and Facebook, every little bit (pun intended) matters, since any wasted data can end up costing a _lot_ of money.
 

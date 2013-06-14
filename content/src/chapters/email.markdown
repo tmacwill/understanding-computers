@@ -4,7 +4,7 @@ We're probably all familiar with email. Whether we're logged into Gmail.com or V
 
 ## Sending Emails with SMTP
 
-Just as a web server was responsible for responding to clients' HTTP requests, a server will also be responsible for sending and receiving emails. **SMTP**, or simple mail transfer protocol, will be our weapon of choice for email delivery. When Alice sends an email to her good friend Bob, two SMTP servers will be involved: Alice will need an SMTP server to send an email, and Bob will need an SMTP server so the mail can be delivered.
+Just as a web server was responsible for responding to clients' HTTP requests, a server will also be responsible for sending and receiving emails. **SMTP**, or Simple Mail Transfer Protocol, will be our weapon of choice for email delivery. When Alice sends an email to her good friend Bob, two SMTP servers will be involved: Alice will need an SMTP server to send an email, and Bob will need an SMTP server so the mail can be delivered.
 
 As the "simple" in SMTP suggests, sending and receiving emails actually isn't too complicated a process! First, you'll sit down at an email client (also called a mail user agent, or MUA), whether that be an app on your phone or an interface on the web. On your client of choice, you can compose a message, as well as choose a subject, recipients, CC'd (or carbon copied) recipients, and BCC'd (or blind carbon copied) recipients. For the sake of this example, let's say you're using Gmail, though this same process will apply if you're on another client like Mailbox on your iPhone or Outlook on your desktop. Once you hit send, your message will be sent to an SMTP server (also called an MDA, or mail delivery agent) owned and managed by Gmail. Since services like Gmail are pretty popular, there's a good chance that you're not the only one trying to send an email at any given point in time. So, your message will probably join a queue of other email messages on an SMTP server; to be fair to its customers, Gmail will handle the messages in the order they come in.
 
@@ -14,7 +14,7 @@ DNS to the rescue! Remember, DNS is just a process for translating a human-reada
 
 To recap, the process of sending an email involves one SMTP server communicating with another SMTP server, which looks something like this:
 
-![SMTP Diagram](/static/img/10-smtp.png)
+![SMTP Diagram](/static/img/content/chapters/email/smtp.png)
 
 ## Data Structures: Queues and Stacks
 
@@ -37,13 +37,13 @@ Let's now take a look at exactly what the contents of one of these requests look
             Sat, 02 Mar 2013 09:45:58 -0800 (PST)
     Received-SPF: pass (google.com: domain of unicodelovehotel@live.com designates 65.55.34.19 as permitted sender) client-ip=65.55.34.19;
     Authentication-Results: mx.google.com;
-           spf=pass (google.com: domain of unicodelovehote@live.com designates 65.55.34.19 as permitted sender) smtp.mail=unicodelovehotel@live.com
+           spf=pass (google.com: domain of unicodelovehotel@live.com designates 65.55.34.19 as permitted sender) smtp.mail=unicodelovehotel@live.com
     Received: from COL002-W67 ([65.55.34.7]) by col0-omc1-s9.col0.hotmail.com with Microsoft SMTPSVC(6.0.3790.4675);
          Sat, 2 Mar 2013 09:45:41 -0800
     X-EIP: [P1MGsuJd3RDrA2h/Chca1T2JhXgCEJS1]
     X-Originating-Email: [unicodelovehotel@live.com]
     Message-ID: <COL002-W672344BAD5002880FBD489C3F80@phx.gbl>
-    Return-Path: unicodelovehote@live.com
+    Return-Path: unicodelovehotel@live.com
     Content-Type: multipart/alternative;
         boundary="_a3224380-c68b-4f38-84d4-fd4a8233b8b2_"
     From: Unicode Love Hotel <unicodelovehotel@live.com>
@@ -94,7 +94,7 @@ In order to send an email, an email client will issue a series of commands to an
 
     openssl s_client -ssl3 -connect smtp.gmail.com:587 -starttls smtp -crlf
 
-This will open up a session with the server at `smtp.gmail.com` on port 587. In response, we'll see something like this:
+This command will open up a session with the server at `smtp.gmail.com` on port 587. Here, the **port** refers to the destination port we'll be using to send messages to the server. Remember, different services may send and receive messages over different ports, which allows a single computer to run a variety of services at once! In response to this command, we'll see something like this:
 
     SSL-Session:
         Protocol  : SSLv3
@@ -173,7 +173,7 @@ And we're done! We just sent an email using Gmail's SMTP server. So, behind the 
     data
     354  Go ahead o5sm28186399qao.12 - gsmtp
     From: <unicodelovehotel@gmail.com>
-    To: <unicodelovehote@live.com>
+    To: <unicodelovehotel@live.com>
     Subject: I love cats
     Figured I would send you another reminder that I like cats.
     .
@@ -187,7 +187,7 @@ This time, let's make a connection to Gmail's POP3 server with:
 
     openssl s_client -connect pop.gmail.com:995
 
-We should see something like:
+Notice that now we're using port 995, since that's what the POP3 standard told us to do. We should see something like:
 
     SSL-Session:
         Protocol  : TLSv1
@@ -252,7 +252,7 @@ We should see something like:
 
 And we're connected! New protocol, new set of commands. Each IMAP command needs to be prefixed with a different tag; by convention, we'll just use the letter "A" followed by a different number each time. To login, we can send a single command `login`, followed by a username and password.
 
-    a1 login unicodelovehote@gmail.com password
+    a1 login unicodelovehotel@gmail.com password
     * CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE
     a1 OK unicodelovehotel@gmail.com Unicode Love Hotel authenticated (Success)
 
@@ -292,7 +292,7 @@ Phew, that's enough IMAP for me. As you can see, IMAP gives us a bit more flexib
 
 If you've ever set up your email on a desktop client like Outlook or your mobile phone, you probably found some instructions online from your email provider and followed them step-by-step without thinking too much about them. However, now that we know all about SMTP, POP, and IMAP, hopefully this process makes a bit more sense. If you open up a mail client on your desktop or mobile device and go into your account settings, you'll probably see a section devoted to incoming mail and one for outgoing mail. Under incoming mail, there's a good chance you'll see some mention of the address of a POP3 or IMAP server, since that's how your mail client can download the emails that were sent to you. Remember, this process is very similar to a web browser retrieving data from a web server; instead of retrieving web page data, IMAP and POP3 will be used to transfer the contents of emails. Associated with the POP3 or IMAP server listed in your email app is probably a port, username, and password, which will be used to log into the server, as we saw before. Similarly, under the settings for outgoing mail, you should see some mention of an SMTP server that your app will connect to and issue a series of commands just like the ones we sent earlier. For example, the settings page for my iPod's outgoing mail looks something like this:
 
-![iPod Email](/static/img/10-ipod-email.png)
+![iPod Email](/static/img/content/chapters/email/ipod-email.png)
 
 Similarly, the instructions for setting up an email client to work with Gmail can be found [here](http://support.google.com/mail/bin/static.py?hl=en&page=ts.cs&ts=1668960&from=75726&rd=1). Do those IMAP and SMTP settings make sense?
 

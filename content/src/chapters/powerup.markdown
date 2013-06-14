@@ -4,7 +4,7 @@ Welcome to Understanding Computers and the Internet! So glad you could make it. 
 
 First, all of your computer's **hardware**, the physical components that make up your machine, has to kick into gear. Many of your computer's hardware components are connected to the **motherboard**, also known as a logic board, which is an expandable circuit board that manages communication among your system's various parts. Here's a photo of a motherboard from a 2007 Acer desktop computer.
 
-<img src="/static/img/1-motherboard-desktop.png" style="width: 800px" alt="Desktop motherboard" />
+<img src="/static/img/content/chapters/powerup/motherboard-desktop.png" style="width: 800px" alt="Desktop motherboard" />
 
 ## First Steps
 
@@ -22,11 +22,11 @@ Once video is good to go, the BIOS performs a series of power on self tests, or 
 
 Next, the POST checks for any **peripherals** attached to the computer, which could include the keyboard, mouse, flash drives, or printers. The ports that allow additional hardware to be plugged into your computer can be found in the three columns at the bottom of this motherboard. The rightmost column of ports on this picture are used for both audio out (e.g, speakers) and audio in (e.g., a microphone). Here, the additional audio jacks allow the computer to handle both a microphone and an additional digital line in/out. Next to the audio jacks appears to be an **Ethernet** port, which is used to connect your computer to the Internet via a modem or router. In that same column and the one next to it, we have a good amount of **USB**, or universal serial bus, ports. Today, USB is among the more popular ways of connecting consumer electronics to your computer. For example, digital cameras, smartphones, and printers are all usually connected to your computer using a USB cable. However, USB cables come in a few different shapes, shown below. Many modern printers use a USB A to B cable, which has a type A connector on one end and a type B connector on the other. Micro USB to A cables, on the other hand, are commonly used in smartphone chargers. Because cables can have two different types of connectors, many computers simply have slots for USB A, and device-makers supply cables with at least one type A connector.
 
-<img src="/static/img/1-usb.jpg" style="width: 400px" alt="USB cables" />
+<img src="/static/img/content/chapters/powerup/usb.jpg" style="width: 400px" alt="USB cables" />
 
 Farther to the left, it looks like we have a few more slots other hardware can plug into. On the left is a parallel port, serial port, and VGA port. While the larger parallel port and smaller serial port have largely fallen out of use in consumer electronics, **VGA** ports are commonly used to connect an external display to your computer. You may also have heard of **DVI** and **HDMI** as means of connecting monitors to your computer. While VGA utilizes an analog signal, both DVI and HDMI are digital, which can result in faster data transfer and a higher-quality picture. HDMI has become the default connector for most televisions, Blu-Ray players, and video game consoles, as it is designed specifically with high-definition video in mind and has the ability to transfer both audio and video using a single cable. VGA and DVI, on the other hand, require a separate cable in order to transfer audio between devices. Because VGA uses an analog signal while DVI and HDMI use digital signals, it's generally expensive to convert a VGA to DVI or HDMI. Though you'll find plenty of cheap adapters online, they won't necessarily work unless your computer supports both analog and digital output! Unlike PCs, which typically have ports for DVI or HDMI cables, Mac computers tend to use a DisplayPort or Mini-DisplayPort connector to attach external displays. While (expensive!) Apple displays have cables that will plug directly into a Mac computer, you'll probably have to buy a Mini-DisplayPort to VGA or DVI adapter if you want to use a non-Apple display. I guess there's a reason they're the most valuable company in the world right now...
 
-![Video cables](/static/img/1-video-cables.jpg)
+![Video cables](/static/img/content/chapters/powerup/video-cables.jpg)
 
 All the way to the left are two **PS/2 ports**, which used to be used to attach your keyboard and mouse to the computer. Though they look identical, the ports used for keyboards and mice are not interchangeable, so you can't plug your keyboard into a mouse port. That being said, USB ports have largely superseded PS/2 ports, and almost any keyboard or mouse you buy today will have a USB connector.
 
@@ -42,29 +42,29 @@ Okay, rant over. Back to powering on your computer again. Once the POST process 
 
 The first part of the operating system to be loaded is the **kernel**. The kernel is among the lowest-level pieces of software in the operating system, as its job is to serve as a bridge between your computer's hardware and the other software that might be running on the computer. By the way, when we refer to **software**, we are now referring to intangible computer programs that are capable of running on your computer's hardware. The execution of software is handled by the **CPU**, also known as a processor. The CPU is the brains of your machine, as it's responsible for putting the "compute" in "computer" by performing the logic of software programs. Your CPU performs thousands of computations every second, which we measure in **gigahertz**. Today, popular CPU brands include Intel and AMD. In the above motherboard, the CPU is located in the big empty space towards the left side of the board. From the picture, we can see that the CPU attaches to the motherboard using hundreds of tiny pins underneath the chip. After using your laptop for a while or perhaps while watching an HD movie, you may have heard the sound of a fan spinning. The CPU tends to generate large amounts of heat, so it is typically mounted in the motherboard using a **heat sink**, which can cool the CPU using a thermal adhesive, fan, or even a water-based cooling mechanism. Below is a heat sink for an AMD CPU that uses a fan for additional cooling.
 
-<img src="/static/img/1-heatsink.jpg" alt="Heat sink" style="width: 500px" />
+<img src="/static/img/content/chapters/powerup/heatsink.jpg" alt="Heat sink" style="width: 500px" />
 
 While the kernel takes care of interfacing with hardware, the operating system is also tasked with managing the software running on your computer. When you run a piece of software like Microsoft Word or Google Chrome, the operating system takes care of executing those processes, ensuring that they can access your computer's memory when they need to, and allowing them to read and write files to the hard drive. Because you'll often have multiple programs running at once, the operating system is also responsible for multitasking and doing its best to keep your computer safe from malicious attackers. Really then, the operating system is a piece of software that allows you to run other software. Meta, right?
 
 While your computer is booting up, you may see some text displayed by your BIOS that describes how to change BIOS settings. Depending on your BIOS, pressing keys like F2, F9, or F10 will pause the normal boot process and instead bring you to a text-based interface where you can view the hardware that the BIOS determined was present in your computer during POST. Through this interface, you may also be able to view and change CMOS settings, update your BIOS's software, and, as shown below, change the order of the boot sequence. As we saw, while the BIOS normally looks on the hard drive for the operating system, you can configure your BIOS (as shown below) to instead look first at the DVD drive or flash drive, which can be helpful in diagnosing problems with your hard drive.
 
-![BIOS screen](/static/img/1-bios.gif)
+![BIOS screen](/static/img/content/chapters/powerup/bios.gif)
 
 ## Motherboard Organization
 
 Because laptops are much thinner and lighter than desktop computers, laptop motherboards are typically much more compact. Below is a photo of the motherboard inside of a Macbook Air, which is marketed as one of the thinnest laptops on the market. Believe it or not, all of the parts crucial to the computer's operation are contained in this much smaller piece of hardware! A lot of the Macbook Air's size and weight actually comes from its comparatively massive batteries. However, while components like RAM and the hard drive can easily be added and removed from the above desktop motherboard, many components below are soldered to the motherboard, which makes them pretty difficult to replace.
 
-<img alt="Laptop motherboard" src="/static/img/1-motherboard-laptop.jpg" style="width: 700px" />
+<img alt="Laptop motherboard" src="/static/img/content/chapters/powerup/motherboard-laptop.jpg" style="width: 700px" />
 
 Let's take a step back now and look at the motherboard at a higher level. We can essentially divide the functions of the motherboard in half (not literally, though... that'd be an expensive mistake). First, we have the components that frequently interface with the CPU, which include the CPU itself, RAM, and graphics card. This part of the motherboard is called the **northbridge**, and it's job is to coordinate the transfer of data between these hardware components. While in older motherboards the northbridge was a physical, separate chip on the board, many modern processors have this functionality already built in. Then, we have the **southbridge** that handles interfacing with the other components we've described, like USB and PCI peripherals as well as the PATA or SATA hard drive. The southbridge connects to the northbridge in order to serve (appropriately) as a bridge between the CPU and less-frequently-accessed hardware connected to your computer. On systems in which the northbridge is simply built into the CPU itself, the southbridge connects directly to the processor. Visually, your motherboard is laid out like this:
 
-![Motherboard schema](/static/img/1-schema.png)
+![Motherboard schema](/static/img/content/chapters/powerup/schema.png)
 
 ## The Keyboard
 
 Before we finish up, let's briefly take a closer look at two of your computer's most important peripherals: the keyboard and the mouse/trackpad. Both of these devices could be consider little computers in and of themselves. Underneath your keyboard is a **key matrix**, which is a large grid of circuits, one underneath each key. When a key is pressed, it completes a circuit and allows a tiny amount of current to flow through the the keyboard's processor, which tells it that a key has been pressed. The keyboard's tiny processor then looks up which key was pressed in its **read-only memory**, or ROM, which contains a mapping from these circuit locations to actual characters. Then, using the USB (or PS/2) cable connecting the keyboard to the motherboard, the character that was pressed is sent to the CPU, which is ready to receive signals from the keyboard at any time. Below is a picture of the inside of a keyboard. Believe it or not, this isn't a subway map; each of those sun-looking things is directly underneath a key on the keyboard.
 
-<img alt="Keyboard key matrix" src="/static/img/1-keymatrix.jpg" style="width: 800px" />
+<img alt="Keyboard key matrix" src="/static/img/content/chapters/powerup/keymatrix.jpg" style="width: 800px" />
 
 ## The Mouse
 
@@ -74,6 +74,6 @@ As you might expect, the technology that makes the cursor move around on your sc
 
 The mouse on the right, called an **optical mouse**, works a bit differently. In order to both improve the accuracy of mice and prevent meddling kids (confession: I was among them) from taking the balls out of mice, modern devices use an LED rather than a physical object to track motion. If you've ever picked up an optical mouse (and hopefully didn't point it at your eye), you've seen a red light emitted from its bottom, right next to a small sensor. The red light produced by the LED will reflect off the mouse's surface, producing a pattern that can be detected by the mouse's sensor. The mouse's on-board chip can determine how quickly the mouse is moving based on how fast this pattern changes, which actually produces much more accurate results than traditional ball mice. Optical mice also have the added benefit of having no moving mechanical parts, which improves the reliabilty of the hardware, as well as the ability to be used on a wider variety of surfaces.
 
-![Ball mouse](/static/img/1-ball.jpg) &nbsp; ![Optical mouse](/static/img/1-optical.jpg)
+![Ball mouse](/static/img/content/chapters/powerup/ball.jpg) &nbsp; ![Optical mouse](/static/img/content/chapters/powerup/optical.jpg)
 
 Alright! Now that we have a pretty good understanding of how all of the different hardware components of your computer work together to bring you [cat videos](http://www.youtube.com/watch?v=C_S5cXbXe-4), let's zoom in on two different aspects of computing: representing data and doing stuff with that data!
