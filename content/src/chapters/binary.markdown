@@ -10,7 +10,7 @@ But, answering the question "How much do you like cats?" is a _bit_ different (p
 
 However, before we talk any more about how computers represent numbers, let's quickly review how we as humans are probably used to representing numbers. According to my laptop's keyboard, there are ten different digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. (We call this the **decimal** system, since there are ten possible digits.) That means that we can represent ten different numbers using only one digit. Of course, we're going to start running into issues when we want to represent the number that is one more than 9. Luckily, we've already solved this problem: one more than 9 is 10. To make the number 10, we created a new space for a second digit, which you may remember as the "tens place" from grade school (that is, if you weren't too busy playing with yo-yos like I was). Similarly, we have a hundreds place, thousands place, and so on for larger numbers. When you were first learning to count, you may have used blocks like the below to represent this. A single cube represents the ones place, a column represents the tens place, a rectangle represents the hundreds place, and so on.
 
-![Place value blocks](/static/img/1-blocks.jpg)
+![Place value blocks](/static/img/content/chapters/binary/blocks.jpg)
 
 The fact that we use ones, tens, hundreds, and thousands is no accident. We have 10 different digits to choose from, and 10<sup>0</sup> = 1, 10<sup>1</sup> = 10, 10<sup>2</sup> = 100, and so on. (Remember, when we say something like 10<sup>3</sup>, that's just short for 10 &times; 10 &times; 10, or 1000.) So, these places can be represented with a table like this:
 
@@ -477,11 +477,11 @@ Woah! That worked out well. With this representation, which admittedly feels a l
 
 Hopefully jokes like this one now make a bit more sense!
 
-![10 types](/static/img/2-types.jpg)
+![10 types](/static/img/content/chapters/binary/types.jpg)
 
 See, didn't that make it all worth it? Aaaaaand for those of you groaning because you've heard that joke a million times already:
 
-![10 types burn](/static/img/2-types-burn.gif)
+![10 types burn](/static/img/content/chapters/binary/types-burn.gif)
 
 ## Character Encodings
 
@@ -489,17 +489,17 @@ I dunno about you, but I'm getting tired of numbers. In fact, we probably use le
 
 To solve this problem, we can create a **character encoding**, which maps _something_ to letters or symbols. For example, ships utilize a character encoding in which each letter is represented by a different flag. When a ship needs to broadcast a message consisting of English letters, the crew can fly a sequence of flags. Others can then understand this message because there exists a standardized, agreed-upon translation from flag to English letter. In case you're as curious as I was, here's the International Maritime Signal Flag character encoding:
 
-![International Maritime Signal Flags](/static/img/2-maritime.gif)
+![International Maritime Signal Flags](/static/img/content/chapters/binary/maritime.gif)
 
 You may also have heard of Morse Code, which is another character encoding. Here, each letter is represented by a series of sounds. Again, this standardized mapping allows us to transmit English messages without actually using any English letters.
 
-<img src="/static/img/2-morse.jpg" style="width: 600px" alt="Morse Code" />
+<img src="/static/img/content/chapters/binary/morse.jpg" style="width: 600px" alt="Morse Code" />
 
 ## ASCII
 
 Since flags are a bit impractical for your computer, a character encoding called **US-ASCII** is instead more commonly used by computers. ASCII assigns different numbers to 128 different **characters**, where a character might be a letter, number, or symbol (or in some cases, Mickey Mouse). For example, the character "A" is represented by the number 65 in ASCII, and the character "a" is represented by the number 97. So, whenever we need to represent the character "A" using ASCII, we can simply use the number 65 instead, just like a ship would fly a blue and white flag. From your computer's perspective, then, the sequence of characters "CS E-1" could be represented by the sequence of decimal numbers "67 83 32 69 45 49", which ultimately will be stored as the sequence of binary numbers "1000011 1010011 0100000 1000101 0101101 0110001". Since we've already seen that binary can be used to represent numbers using only zeroes and ones, we can use ASCII to represent letters using zeroes and ones as well. Here's the complete ASCII table:
 
-![ASCII Table](/static/img/1-ascii.gif)
+![ASCII Table](/static/img/content/chapters/binary/ascii.gif)
 
 By the way, how many bits do we need to represent an ASCII character? Well, we can see that the smallest ASCII value is 0, and the largest ASCII value is 127. In binary, we can represent 127 as 1111111, so we can represent any binary character using only 7 bits. Notice that if we instead wanted to represent just one more character using the number 128, we'd need an additional bit to obtain 10000000. Coincidence? I think not.
 

@@ -1,4 +1,6 @@
-from flask import Flask
+import glob
+import os
+from flask import Flask, g
 from flask.ext.sqlalchemy import SQLAlchemy
 from werkzeug.contrib.cache import MemcachedCache
 
@@ -21,6 +23,7 @@ e1.loader.chapters()
 e1.loader.psets()
 
 # load routes
+import e1.controllers.base
 import e1.controllers.chapters
 import e1.controllers.questions
 import e1.controllers.search

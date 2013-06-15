@@ -19,7 +19,7 @@ var ChapterView = Backbone.View.extend({
 
         // iterate over each subheading to extract section text
         var self = this;
-        $('h2').each(function() {
+        $('#chapter-content h2').each(function() {
             // construct html string from all elements until next subheading
             var elements = $(this).nextUntil('h2');
             var html = this.outerHTML;
@@ -173,6 +173,7 @@ var ChapterRouter = Backbone.Router.extend({
         // if no section given, then redirect to first section in the chapter
         'chapter/:chapter': function(chapter) {
             var first = this.chapterView.sections[0];
+            console.log(first);
             this.navigate('chapter/' + chapter + '/' + subheading(first.title), { trigger: true });
         },
 

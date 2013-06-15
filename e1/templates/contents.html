@@ -8,13 +8,7 @@
 <script type="text/javascript" src="/static/js/contents.js"></script>
 
 <div id="progress" class="box">
-    <div id="user-info">
-        <h1>
-            <img src="{{ user.photo }}" />
-            {{ user.name }}
-            <div id="points">{{ user.points }}</div>
-        </h1>
-    </div>
+    <h2 id="contents-label">Table of Contents</h2>
     <div id="badges">
         {% if badges['hardware'] %}
             <div class="badge hardware-badge"><i class="icon-desktop"></i> Hardware</div>
@@ -42,7 +36,6 @@
         {% endif %}
     </div>
     <ul id="table-contents">
-        <h2>Table of Contents</h2>
         {% for id, chapter in toc.iteritems() %}
             <li>
                 <div rel="tooltip" data-placement="right" class="number

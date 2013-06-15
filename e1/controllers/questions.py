@@ -1,11 +1,10 @@
 import re
-from flask import abort, jsonify, render_template, request, session
+from flask import abort, jsonify, g, render_template, request, session
 
 import e1.loader as loader
 import e1.settings as settings
 import e1.util as util
 from e1 import app, db
-from e1.models.user import User
 from e1.models.answer import Answer
 
 @app.route('/pset/<chapter>')
@@ -23,6 +22,7 @@ def pset(chapter, question=0):
     # temporary metadata
     toc = loader.toc()
     metadata = toc[chapter]
+    title = 'Problem Set ' + str(metadata['sequence'] + 1)
 
     # remove answers from each question
     pset = questions[chapter]
@@ -30,7 +30,8 @@ def pset(chapter, question=0):
         if 'answer' in i:
             del i['answer']
 
-    return render_template('pset.html', pset=pset, chapter=chapter, metadata=metadata)
+    return render_template('pset.html', pset=pset, chapter=chapter, metadata=metadata, title=title,
+        subtitle=metadata['heading'])
 
 @app.route('/answer/<question_id>', methods=['POST'])
 def answer(question_id):
@@ -43,24 +44,18 @@ def answer(question_id):
     if not question_id in answers:
         abort(404)
 
-    # TODO temporary until logins work
-    user = db.session.query(User).filter_by(id=1).one()
-    session['user'] = user
-
-    user = session['user']
-
     # check if answer is correct
     answer = answers[question_id]
     correct = re.match(answer['answer'], request.form['answer']) != None
 
     # if question is correct and unanswered, user gets points
-    count = db.session.query(Answer).filter_by(user_id=user.id).filter_by(question=question_id).\
+    count = db.session.query(Answer).filter_by(user_id=g.user.id).filter_by(question=question_id).\
             filter_by(correct=True).count()
     if count == 0 and correct:
-        user.add_points(answer['points'])
+        g.user.add_points(answer['points'])
 
     # log answer (for analytics)
-    new_answer = Answer(question_id, user.id, request.form['answer'], correct)
+    new_answer = Answer(question_id, g.user.id, request.form['answer'], correct)
     db.session.add(new_answer)
     db.session.commit()
 

@@ -82,7 +82,7 @@ Let's take a break from TCP and take a look at the other half of the TCP/IP prot
 
 While TCP is concerned with segments, IP is instead concerned with **datagrams**, or **packets**. An IP packet, which is indeed similar to a TCP segment, looks like this:
 
-![IP Packet](/static/img/content/chapters/tcpip/ip-packet.jpg)
+![IP Packet](/static/img/content/chapters/tcpip/ip-packet.png)
 
 Here are the key components of an IP packet:
 
@@ -155,12 +155,22 @@ When choosing a subnet mask for a network, we're also making a decision about th
 
 Many protocols on the Internet, most notably HTTP, use TCP/IP to send messages to other devices, but TCP isn't the only way to send data across the net. **UDP**, or User Datagram Protocol, is commonly used by video chat applications like [Skype](http://www.skype.com/en/) or [FaceTime](http://www.apple.com/ios/facetime/). Unlike TCP, UDP does not guarantee that datagrams will actually be received by the client (which makes it a bit more similar to IP in that sense). However, in the case of video chat, for example, there are so many packets being sent in order to transfer your beautiful face to your friend's computer that losing one of them doesn't really make a difference at all. So, applications that are sending a whole lot of data over a network, such that nobody will really notice (or care) if tiny portions of it get lost, might want to use UDP instead of TCP, since there's no need for a reliable connection. We've seen that TCP introduces a good amount of overhead to the data transfer process, which just might not be necessary for some applications. DNS queries, for example, use UDP for this reason, since it ends up being more efficient if we don't have to take the time to make sure every single transmission was received successfully.
 
-## The OSI Model
+## Five-Layer Internet Model
 
-REDO THIS, REPLACING OSI MODEL WITH FIVE-TIER MODEL
+Before we finish up, let's take a moment to step back and review some of the networking terms we've seen so far. As you've seen, we can organize the various networking protocols we've seen so far hierarchically. Here's one way of doing so, called the **Five-Layer Internet Model**.
 
-Alrighty, before we finish up, let's take a moment to step back and review some of the networking terms we've seen so far. The various protocols we've seen can be categorized according to something called the **OSI Model**:
+![Five-Layer Model](/static/img/content/chapters/tcpip/five-layers.png)
 
-![OSI Model](/static/img/content/chapters/tcpip/osi-model.png)
+We'll read this diagram from top to bottom; protocols at the top of the stack use protocols lower down the stack, so the layers get more and more fundamental.
 
-At the top of this networking pyramid, we have protocols that are used by applications like web browsers and email clients, so these include HTTP, SMTP, POP3, and IMAP. Let's skip over presentation and session and head to the transport layer. Here, we saw how TCP and UDP can transfer data between two computers by establishing a connection. Next, we saw how IP on the network layer handled routing packets through various devices on the network so they can (hopefully!) reach their destination. Even lower than that, we saw that Ethernet is used to actually send data down a wire. Finally, at the end of the day, we're still representing information using good ole' bits, so anything we ever send over a network can be encoded as trusty 0s and 1s.
+* **Application Layer**. The application layer, the highest level in our model, defines a set of standards that software applications can use to communicate. For example, a web browser and web server might communicate over HTTP, and an MUA and MDA might communicate using SMTP.
+
+* **Transport Layer**. The transport layer is concerned with delivering segments of information between two computers. Both TCP and UDP define standards for communicating between two hosts that are independent of the actual data being transferred.
+
+* **Network Layer**. The network layer defines a set of protocols to send packets through different networks. This layer handles giving computers on a network addresses as well as routing information to the right place.
+
+* **Data Link Layer**.
+
+* **Physical Layer**. Finally, there have to be some actual physical connections between devices. The physical layer refers both to the connections among the routers at the Internet's core and the cable connecting to your modem at home!
+
+And there you have it, the Internet! Phew, a whole lot goes into making those cat videos possible. In the next few sections, we'll switch gears and talk all about multimedia: images, sound, and video!

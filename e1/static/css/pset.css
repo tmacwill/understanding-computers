@@ -1,14 +1,9 @@
-html, body {
-    font-family: 'LatoLight';
-    background: #ECF0F1;
-}
-
-h2 {
+#problems h2 {
     font-family: 'Lato';
     margin-bottom: 20px;
 }
 
-h4 {
+#problems h4 {
     font-family: 'LatoLight';
     margin-bottom: 8px;
 }

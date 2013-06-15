@@ -13,8 +13,23 @@
         <script src="/static/js/lib/bootstrap.min.js"></script>
         <script src="/static/js/lib/backbone.js"></script>
         <script src="/static/js/lib/handlebars.js"></script>
+        <script src="/static/js/global.js"></script>
     </head>
     <body>
+        <div id="navbar">
+            <h2>
+                <img src="{{ g.user.photo }}" />
+                {{ g.user.name }}
+            </h2>
+            <div id="points">{{ g.user.points }} points</div>
+            {% if title %}
+                <h1 id="title">{{ title }}
+                {% if subtitle %}
+                    <span id="subtitle">{{ subtitle }}</span>
+                {% endif %}
+                </h1>
+            {% endif %}
+        </div>
         <div class="container">
             {% block body %}{% endblock %}
         </div>

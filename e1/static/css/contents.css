@@ -9,29 +9,10 @@ h3 {
     margin-top: 20px;
 }
 
-#user-info {
+#contents-label {
+    font-size: 36px;
     border-bottom: 1px solid #bdc3c7;
-}
-
-#user-info h1 {
-    margin: 0;
-    padding-bottom: 15px;
-    position: relative;
-}
-
-#user-info h1 img {
-    margin-right: 15px;
-    vertical-align: text-top;
-}
-
-#points {
-    display: inline-block;
-    background: #27ae60;
-    color: white;
-    border-radius: 4px;
-    position: absolute;
-    right: 0;
-    padding: 15px 20px 10px 20px;
+    padding-bottom: 10px;
 }
 
 #table-contents {
@@ -185,4 +166,3 @@ h3 {
 .complete-badge {
     background: #2C3E50;
 }
-

@@ -141,7 +141,7 @@ h1 small {
 
 .notification {
     position: fixed;
-    top: 30px;
+    top: 90px;
     right: 30px;
     width: 300px;
     background: #27AE60;
@@ -149,6 +149,7 @@ h1 small {
     color: white;
     border-radius: 4px;
     border: 1px solid #95A5A6;
+    z-index: 3;
 }
 
 .notification h2 {
@@ -164,4 +165,63 @@ h1 small {
     font-size: 16px;
     margin-bottom: 0;
     line-height: 21px;
+}
+
+#navbar {
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #bdc3c7;
+    height: 60px;
+    position: fixed;
+    z-index: 2;
+}
+
+#navbar h1 {
+    font-size: 36px;
+    display: inline-block;
+    text-align: right;
+    margin: 0;
+    position: absolute;
+    right: 20px;
+    top: 13px;
+}
+
+#navbar h2 {
+    font-family: 'LatoLight';
+    font-weight: normal;
+    margin: 0;
+    padding-bottom: 15px;
+    position: relative;
+    padding: 13px;
+    font-size: 28px;
+    display: inline-block;
+}
+
+#navbar h2 img {
+    margin-right: 10px;
+    vertical-align: sub;
+    width: 32px;
+}
+
+#navbar #points {
+    display: inline-block;
+    background: #27ae60;
+    color: white;
+    border-radius: 4px;
+    padding: 5px 8px 3px 8px;
+    font-size: 24px;
+    font-family: 'Lato';
+}
+
+#navbar #subtitle {
+    font-family: 'LatoLight';
+    font-size: 30px;
+    padding-left: 10px;
+    margin-left: 3px;
+    color: #C0392B;
+    border-left: 1px solid #bdc3c7;
+}
+
+.container {
+    padding-top: 80px;
 }
