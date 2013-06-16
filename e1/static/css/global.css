@@ -150,6 +150,7 @@ h1 small {
     border-radius: 4px;
     border: 1px solid #95A5A6;
     z-index: 3;
+    cursor: pointer;
 }
 
 .notification h2 {
@@ -176,14 +177,17 @@ h1 small {
     z-index: 2;
 }
 
+#navbar #title-container {
+}
+
 #navbar h1 {
     font-size: 36px;
     display: inline-block;
-    text-align: right;
     margin: 0;
     position: absolute;
     right: 20px;
     top: 13px;
+    padding-bottom: 10px;
 }
 
 #navbar h2 {
@@ -201,6 +205,10 @@ h1 small {
     margin-right: 10px;
     vertical-align: sub;
     width: 32px;
+}
+
+#navbar #title-container {
+    cursor: pointer;
 }
 
 #navbar #points {

@@ -71,6 +71,27 @@ var ChapterView = Backbone.View.extend({
 });
 
 /**
+ * View representing the drop-down table of contents
+ */
+var ChapterMenuView = Backbone.View.extend({
+    initialize: function() {
+        this.template = _.template($('#chapter-menu-template').html());
+        $('#navbar #title').html('<i class="icon-angle-down"></i> ' + $('#navbar #title').html());
+
+        this.render();
+    },
+
+    render: function() {
+        this.$el.html(this.template());
+        this.$el.find('div').offset({
+            left: Math.floor($('#navbar #title').offset().left)
+        });
+
+        $('#navbar').append(this.$el);
+    }
+});
+
+/**
  * View representing a marker that can be used to change sections
  */
 var SectionSelectorView = Backbone.View.extend({
@@ -187,7 +208,8 @@ var ChapterRouter = Backbone.Router.extend({
 
 $(function() {
     // create views for main body content and section selection
-    var chapterView = new ChapterView();
+    var chapterMenuView = new ChapterMenuView;
+    var chapterView = new ChapterView;
     var sectionSelectorView = new SectionSelectorView({
         chapterView: chapterView
     });
@@ -196,14 +218,6 @@ $(function() {
     chapterRouter = new ChapterRouter({
         chapterView: chapterView,
         sectionSelectorView: sectionSelectorView
-    });
-
-    // menu on left side
-    $('#chapters-menu').width(($(window).width() - $('.container').width() - 20) / 2);
-    $('#chapters-menu').hover(function() {
-        $('#chapters-menu-list').slideDown('fast');
-    }, function() {
-        $('#chapters-menu-list').slideUp('fast');
     });
 
     Backbone.history.start({ pushState: true });

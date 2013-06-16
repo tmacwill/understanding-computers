@@ -156,63 +156,50 @@ table {
     display: inline-block;
 }
 
-#chapters-menu-wrapper {
-    position: fixed;
+#navbar h1:hover + div #chapter-menu, #chapter-menu:hover {
     display: block;
 }
 
-#chapters-menu {
-    background: #BDC3C7;
-    position: relative;
-    float: left;
-    border-radius: 4px;
-    max-width: 310px;
+#navbar h1 {
+    cursor: pointer;
 }
 
-#chapters-menu-wrapper, #chapters-menu {
-    top: 62px;
-    left: 3px;
+#navbar #title i {
+    vertical-align: 6%;
+    margin-right: 5px;
+    font-size: 28px;
 }
 
-#chapters-menu ul {
-    margin: 0;
-}
-
-#chapters-menu li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: 15px;
-    line-height: 20px;
-
-    /*
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    */
-}
-
-#chapters-menu a {
-    color: white;
-    display: block;
-    text-decoration: none;
-    padding: 4px 10px;
-}
-
-#chapters-menu li a:hover {
-    background-color: #C0392B;
-}
-
-#chapters-menu .active {
-    background: #7F8C8D;
-}
-
-#chapters-menu-list {
+#chapter-menu {
+    position: absolute;
+    top: 60px;
+    background: white;
+    border: 1px solid #BDC3C7;
+    border-top: 1px solid white;
+    font-family: 'LatoLight';
+    z-index: 2;
     display: none;
 }
 
-#chapters-menu-text {
+#chapter-menu ul {
+    margin: 0;
+    padding; 0;
+}
+
+#chapter-menu li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#chapter-menu li a {
+    text-decoration: none;
+    color: rgb(52, 152, 219);
     font-size: 18px;
-    font-family: 'LatoLight';
-    text-align: center;
+    display: block;
+    padding: 3px 8px;
+}
+
+#chapter-menu li a:hover {
+    background: #efefef;
 }

@@ -1,0 +1,13 @@
+<script type="text/x-template" id="chapter-menu-template">
+
+<div id="chapter-menu">
+    <ul id="chapter-menu-list">
+        {% for i, chapter in toc.iteritems() %}
+            <li>
+                <a href="/chapter/{{ i }}">{{ chapter.heading }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</script>

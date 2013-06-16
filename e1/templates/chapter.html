@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 
+{% include 'partials/chapter_menu.html' %}
 {% include 'partials/section_selector.html' %}
 {% include 'partials/notification.html' %}
 
@@ -17,23 +18,6 @@ var chapter_id = '{{ chapter_id }}';
 <script src="/static/js/lib/jquery.sidr.min.js"></script>
 <script src="/static/js/chapter.js"></script>
 <script src="/static/js/notification.js"></script>
-
-<div id="chapters-menu-wrapper">
-    <div id="chapters-menu">
-        <div id="chapters-menu-text">
-            <a href="#">Table of Contents &nbsp;<i class="icon-angle-down"></i></a>
-        </div>
-        <ul id="chapters-menu-list">
-            {% for i, chapter in toc.iteritems() %}
-                <li>
-                    <a href="/chapter/{{ i }}" data-chapter="{{ i }}" {% if i == chapter_id %} class="active" {% endif %}>
-                        {{ chapter.heading }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
 
 <div id="chapter-content">
     {{ chapter.content|safe }}
