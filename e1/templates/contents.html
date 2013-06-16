@@ -10,30 +10,6 @@
 <div id="progress" class="box">
     <h2 id="contents-label">Table of Contents</h2>
     <div id="badges">
-        {% if badges['hardware'] %}
-            <div class="badge hardware-badge"><i class="icon-desktop"></i> Hardware</div>
-        {% endif %}
-        {% if badges['internet'] %}
-            <div class="badge internet-badge"><i class="icon-cloud"></i> Internet</div>
-        {% endif %}
-        {% if badges['multimedia'] %}
-            <div class="badge multimedia-badge"><i class="icon-picture"></i> Multimedia</div>
-        {% endif %}
-        {% if badges['security'] %}
-            <div class="badge security-badge"><i class="icon-shield"></i> Security</div>
-        {% endif %}
-        {% if badges['development'] %}
-            <div class="badge development-badge"><i class="icon-code"></i> Development</div><br />
-        {% endif %}
-        {% if badges['chapters'] %}
-            <div class="badge chapters-badge"><i class="icon-book"></i> Chapters</div>
-        {% endif %}
-        {% if badges['pset'] %}
-            <div class="badge pset-badge"><i class="icon-ok"></i> Problem Sets</div>
-        {% endif %}
-        {% if badges['complete'] %}
-            <div class="badge complete-badge"><i class="icon-star"></i> All Complete</div>
-        {% endif %}
     </div>
     <ul id="table-contents">
         {% for id, chapter in toc.iteritems() %}

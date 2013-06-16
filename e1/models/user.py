@@ -77,6 +77,17 @@ class User(db.Model):
         # complete badge if everything is done
         earned_badges['complete'] = earned_badges['chapters'] and earned_badges['psets']
 
+        # temporary
+        earned_badges['initial'] = True
+        earned_badges['hardware'] = True
+        earned_badges['internet'] = True
+        earned_badges['multimedia'] = True
+        earned_badges['security'] = True
+        earned_badges['development'] = True
+        earned_badges['chapters'] = True
+        earned_badges['psets'] = True
+        earned_badges['complete'] = True
+
         return earned_badges
 
     def reads(self):

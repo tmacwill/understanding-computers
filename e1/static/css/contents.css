@@ -110,7 +110,7 @@ h3 {
 }
 
 #table-contents .chapter-more li:hover {
-    background: #C0392B;
+    background: #95a5a6;
 }
 
 #table-contents .chapter-more li:hover a {
@@ -119,50 +119,5 @@ h3 {
 
 #table-contents .chapter-more li a {
     text-decoration: none;
-}
-
-.badge {
-    width: 141px;
-    border-radius: 4px;
-    display: inline-block;
-    color: white;
-    padding: 10px 14px;
-    font-size: 18px;
-    margin-top: 5px;
-}
-
-.badge i {
-    margin-right: 5px;
-}
-
-.hardware-badge {
-    background: #9B59B6;
-}
-
-.internet-badge {
-    background: #E67E22;
-}
-
-.multimedia-badge {
-    background: #3498DB;
-}
-
-.security-badge {
-    background: #F1C40F;
-}
-
-.development-badge {
-    background: #E74C3C;
-}
-
-.chapters-badge {
-    background: #7F8C8D;
-}
-
-.pset-badge {
-    background: #16A085;
-}
-
-.complete-badge {
-    background: #2C3E50;
+    color: #3498db;
 }

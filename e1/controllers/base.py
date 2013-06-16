@@ -12,3 +12,4 @@ def before_request():
     g.user = None
     if 'user' in session:
         g.user = session['user']
+        g.user.earned_badges = g.user.badges()

@@ -197,6 +197,7 @@ h1 small {
     padding-bottom: 15px;
     position: relative;
     padding: 13px;
+    padding-right: 9px;
     font-size: 28px;
     display: inline-block;
 }
@@ -228,6 +229,149 @@ h1 small {
     margin-left: 3px;
     color: #C0392B;
     border-left: 1px solid #bdc3c7;
+}
+
+#badges {
+    margin-left: 5px;
+}
+
+.badge-container {
+    display: inline-block;
+    position: relative;
+    width: 170px;
+    padding: 13px 0px;
+    top: -18px;
+    cursor: pointer;
+}
+
+.badge-line {
+    width: 167px;
+    border-radius: 4px;
+    height: 3px;
+    position: absolute;
+    top: 13px;
+}
+
+.badge {
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    width: 140px;
+    border-radius: 4px;
+    color: white;
+    padding: 10px 14px;
+    top: -38px;
+    display: none;
+}
+
+.badge-container:hover .badge, .badge:hover {
+    display: block;
+}
+
+/*
+#badges {
+    position: relative;
+    margin-left: 5px;
+}
+
+.badge-container {
+    position: relative;
+}
+
+.badge-line {
+    position: absolute;
+    top: -14px;
+    display: inline-block;
+    width: 141px;
+    padding: 0 14px;
+    border-radius: 4px;
+    height: 3px;
+    top: -14px;
+}
+
+.badge {
+    width: 141px;
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    width: 141px;
+    border-radius: 4px;
+    color: white;
+    padding: 10px 14px;
+    top: -50px;
+}
+*/
+
+/*
+.badge {
+    position: relative;
+    top: -5px;
+    display: inline-block;
+    color: white;
+    font-size: 18px;
+    width: 141px;
+    padding: 0 14px;
+    border-radius: 4px;
+    height: 3px;
+    color: rgba(0, 0, 0, 0);
+    vertical-align: top;
+}
+
+.badge:hover {
+    padding: 10px 14px;
+    height: 100%;
+    color: white;
+    top: -42px;
+}
+*/
+
+/*
+.badge {
+    width: 141px;
+    border-radius: 4px;
+    display: inline-block;
+    color: white;
+    padding: 10px 14px;
+    font-size: 18px;
+    margin-top: 5px;
+}
+*/
+
+
+.badge i {
+    margin-right: 5px;
+}
+
+.hardware-badge {
+    background: #9B59B6;
+}
+
+.internet-badge {
+    background: #E67E22;
+}
+
+.multimedia-badge {
+    background: #3498DB;
+}
+
+.security-badge {
+    background: #F1C40F;
+}
+
+.development-badge {
+    background: #E74C3C;
+}
+
+.chapters-badge {
+    background: #7F8C8D;
+}
+
+.pset-badge {
+    background: #16A085;
+}
+
+.complete-badge {
+    background: #2C3E50;
 }
 
 .container {

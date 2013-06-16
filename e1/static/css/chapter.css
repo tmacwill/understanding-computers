@@ -30,8 +30,6 @@ pre {
     border: none;
     margin-left: 15px;
     line-height: 20px;
-    /* white-space: pre; */
-    /* overflow: auto; */
 }
 
 pre code {
@@ -194,7 +192,7 @@ table {
 
 #chapter-menu li a {
     text-decoration: none;
-    color: rgb(52, 152, 219);
+    color: #3498db;
     font-size: 18px;
     display: block;
     padding: 3px 8px;

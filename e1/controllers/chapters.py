@@ -23,12 +23,9 @@ def contents():
     # get the user's total points
     points = g.user.total_points()
 
-    # determine what badges the user has earned
-    earned_badges = g.user.badges(reads=reads, points=points)
-
     toc = loader.toc()
     return render_template('contents.html', toc=toc, reads=reads, points=points, total_points=total_points,
-        badges=earned_badges, title='My Progress')
+        title='My Progress')
 
 @app.route('/chapter/<chapter>')
 @app.route('/chapter/<chapter>/<section>')
