@@ -76,18 +76,14 @@ var ChapterView = Backbone.View.extend({
 var ChapterMenuView = Backbone.View.extend({
     initialize: function() {
         this.template = _.template($('#chapter-menu-template').html());
-        $('#navbar #title').html('<i class="icon-angle-down"></i> ' + $('#navbar #title').html());
+        $('#navbar #subtitle').html($('#navbar #subtitle').html() + '<i class="icon-angle-down"></i>');
 
         this.render();
     },
 
     render: function() {
         this.$el.html(this.template());
-        this.$el.find('div').offset({
-            left: Math.floor($('#navbar #title').offset().left)
-        });
-
-        $('#navbar').append(this.$el);
+        $('#navbar #title').after(this.$el);
     }
 });
 

@@ -163,14 +163,14 @@ table {
 }
 
 #navbar #title i {
-    vertical-align: 6%;
-    margin-right: 5px;
+    margin-left: 10px;
     font-size: 28px;
 }
 
 #chapter-menu {
     position: absolute;
     top: 60px;
+    right: 20px;
     background: white;
     border: 1px solid #BDC3C7;
     border-top: 1px solid white;
