@@ -86,7 +86,7 @@ class User(db.Model):
         earned_badges['security'] = True
         earned_badges['development'] = True
         earned_badges['chapters'] = True
-        earned_badges['psets'] = True
+        earned_badges['pset'] = True
         earned_badges['complete'] = True
         """
 
