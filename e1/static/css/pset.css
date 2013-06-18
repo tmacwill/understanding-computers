@@ -55,3 +55,20 @@
     width: 883px;
     display: block;
 }
+
+.sequence-problems .problem {
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sequence-problems .problem h4 {
+    display: none;
+}
+
+.btn-next {
+    display: none;
+}

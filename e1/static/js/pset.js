@@ -54,9 +54,9 @@ var ProblemView = Backbone.View.extend({
         $.post('/answer/' + this.model.get('id'), { answer: answer }, function(response) {
             // display feedback on correctness
             if (response.correct)
-                self.$el.find('.btn-submit').after(self.correctTemplate({ problem: self.model }));
+                self.$el.find('.btn-next').after(self.correctTemplate({ problem: self.model }));
             else
-                self.$el.find('.btn-submit').after(self.incorrectTemplate({ problem: self.model }));
+                self.$el.find('.btn-next').after(self.incorrectTemplate({ problem: self.model }));
 
             // display points if any have been earned
             if (response.points)
@@ -68,6 +68,24 @@ var ProblemView = Backbone.View.extend({
 
         // disable submit button
         this.$el.find('.btn-submit').attr('disabled', true);
+    }
+}, {
+    /**
+     * Get the constructor for a problem view based on its string representation
+     */
+    problemViewType: function(type) {
+        if (type == 'tf')
+            return TFProblemView;
+        else if (type == 'mc')
+            return MCProblemView;
+        else if (type == 'fill')
+            return FillProblemView;
+        else if (type == 'try')
+            return TryProblemView;
+        else if (type == 'sequence')
+            return SequenceProblemView;
+
+        return false;
     }
 });
 
@@ -112,6 +130,71 @@ var TryProblemView = ProblemView.extend({
 });
 
 /**
+ * View representing a sequence problem
+ */
+var SequenceProblemView = ProblemView.extend({
+    problemViews: [],
+    index: -1,
+    elTemplate: '#sequence-problem-template',
+
+    events: {
+        'click .btn-submit': 'checkAnswer',
+        'click .btn-next': 'next'
+    },
+
+    /**
+     * Check the answer to one of the problems in the sequence
+     */
+    checkAnswer: function() {
+        // show next button
+        if (this.index < this.problemViews.length - 1)
+            this.$el.find('.btn-next').show();
+
+        // check answer for problem
+        this.problemViews[this.index].checkAnswer();
+    },
+
+    /**
+     * Go to the next question in the sequence
+     */
+    next: function() {
+        // hide all problems
+        this.$el.find('.sequence-problems .problem, .sequence-problems .btn-next').hide();
+
+        // show the given problem
+        this.index++;
+        this.$el.find('.sequence-problems .problem:nth-child(' + parseInt(this.index + 1) + ')').show();
+    },
+
+    render: function() {
+        this.$el.html(this.template({ problem: this.model }));
+
+        var self = this;
+        _.each(this.model.get('questions'), function(question) {
+            // determine the appropriate view for the problem type
+            var viewType = ProblemView.problemViewType(question.type);
+
+            // make sure problem type is valid
+            if (!viewType)
+                return;
+
+            // add view for problem
+            var view = new viewType({
+                model: new Problem(question)
+            });
+            view.undelegateEvents();
+            self.$el.find('.sequence-problems').append(view.el);
+
+            // keep track of views
+            self.problemViews.push(view);
+        });
+
+        // show the first problem in the sequence
+        this.next();
+    }
+});
+
+/**
  * View for a collection of problems
  */
 var ProblemCollectionView = Backbone.View.extend({
@@ -123,15 +206,7 @@ var ProblemCollectionView = Backbone.View.extend({
         this.collection.each(function(problem) {
             // determine the appropriate view for the problem type
             var type = problem.get('type');
-            var viewType = false;
-            if (type == 'tf')
-                viewType = TFProblemView;
-            else if (type == 'mc')
-                viewType = MCProblemView;
-            else if (type == 'fill')
-                viewType = FillProblemView;
-            else if (type == 'try')
-                viewType = TryProblemView;
+            var viewType = ProblemView.problemViewType(type);
 
             // make sure problem type is valid
             if (!viewType)
