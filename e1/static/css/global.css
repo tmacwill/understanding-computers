@@ -177,9 +177,6 @@ h1 small {
     z-index: 2;
 }
 
-#navbar #title-container {
-}
-
 #navbar h1 {
     font-size: 36px;
     display: inline-block;
@@ -260,7 +257,7 @@ h1 small {
     border-radius: 4px;
     color: white;
     padding: 10px 14px;
-    top: -20px;
+    top: 15px;
     left: -33px;
     opacity: 0;
     -moz-opacity: 0;
@@ -272,7 +269,7 @@ h1 small {
 
 .badge-container:hover .badge, .badge:hover {
     display: block;
-    top: -38px;
+    top: 25px;
     opacity: 1;
     -moz-opacity: 1;
 }
