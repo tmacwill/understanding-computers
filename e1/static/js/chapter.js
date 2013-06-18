@@ -12,6 +12,7 @@ var subheading = function(s) {
  */
 var ChapterView = Backbone.View.extend({
     el: '#chapter-content',
+    notified: false,
 
     initialize: function() {
         // array of html strings for each section in the chapter
@@ -45,13 +46,23 @@ var ChapterView = Backbone.View.extend({
     renderSection: function(title) {
         // mark section as read
         var fragment = Backbone.history.fragment.split('/');
+        var self = this;
         $.get('/read/' + fragment[1] + '/' + fragment[2], function(response) {
             // if we haven't read this section yet, then display notification
             if (response.points) {
-                new NotificationView({
-                    title: 'You earned ' + response.points + ' points!',
-                    message: 'Nice job! You\'ll earn points for each section you read. Keep going!'
-                });
+                if (!self.notified)
+                    new NotificationView({
+                        title: 'You earned ' + response.points + ' points!',
+                        message: 'Nice job! You\'ll earn points for each section you read. Keep going!'
+                    });
+                else
+                    new NotificationView({
+                        title: '+' + response.points + ' points!',
+                        message: 'Nice!',
+                        timeout: 1500
+                    });
+
+                self.notified = true;
             }
         });
 
@@ -190,7 +201,6 @@ var ChapterRouter = Backbone.Router.extend({
         // if no section given, then redirect to first section in the chapter
         'chapter/:chapter': function(chapter) {
             var first = this.chapterView.sections[0];
-            console.log(first);
             this.navigate('chapter/' + chapter + '/' + subheading(first.title), { trigger: true });
         },
 

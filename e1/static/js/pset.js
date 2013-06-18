@@ -59,17 +59,29 @@ var ProblemView = Backbone.View.extend({
                 self.$el.find('.btn-next').after(self.incorrectTemplate({ problem: self.model }));
 
             // display points if any have been earned
-            if (response.points)
-                new NotificationView({
-                    title: 'You earned ' + response.points + ' points!',
-                    message: 'Awesome! More correct answers will earn you more points!'
-                });
+            if (response.points) {
+                if (!ProblemView.notified)
+                    new NotificationView({
+                        title: 'You earned ' + response.points + ' points!',
+                        message: 'Awesome! More correct answers will earn you more points!'
+                    });
+                else
+                    new NotificationView({
+                        title: '+' + response.points + ' points!',
+                        message: 'Awesome!',
+                        timeout: 1500
+                    });
+
+                ProblemView.notified = true;
+            }
         });
 
         // disable submit button
         this.$el.find('.btn-submit').attr('disabled', true);
     }
 }, {
+    notified: false,
+
     /**
      * Get the constructor for a problem view based on its string representation
      */

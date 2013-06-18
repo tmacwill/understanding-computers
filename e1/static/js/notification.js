@@ -10,6 +10,7 @@ var NotificationView = Backbone.View.extend({
         this.title = this.options.title;
         this.message = this.options.message;
         this.template = _.template($('#notification-template').html());
+        this.timeout = this.options.timeout || 4000;
 
         this.render();
     },
@@ -32,7 +33,7 @@ var NotificationView = Backbone.View.extend({
         // hide after four seconds
         setTimeout(function() {
             self.hide();
-        }, 4000);
+        }, this.timeout);
     },
 
     hide: function() {
