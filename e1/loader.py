@@ -6,6 +6,7 @@ import re
 import settings
 import solr
 import yaml
+from bs4 import BeautifulSoup
 
 from collections import OrderedDict
 
@@ -98,13 +99,39 @@ def solr_load_chapter(conn, title, chapter):
         title - title of chapter
         chapter - chapter object to load
     """
-    doc = {
-        'id': title,
-        'title': title,
-        'text': chapter['content']
-    }
 
-    conn.add(doc, commit=True)
+    # split chapter into subchapters
+    soup = BeautifulSoup(chapter['content'])
+
+    for header in soup.find_all('h2'):
+        # get header and format subheading
+        subtitle = title + '/' + header.text.replace(' ', '-').lower()
+        text = ''
+
+        nextSib = header.nextSibling
+
+        while True:
+            # if done, break
+            if nextSib is None:
+                break
+            try:
+                nextName = nextSib.name
+                if nextName == 'h2':
+                    break
+                text = text + nextSib.text
+                nextSib = nextSib.nextSibling
+            # handle navigable strings
+            except:
+                text = text + str(nextSib)
+                nextSib = nextSib.nextSibling
+
+        doc = {
+            'id': subtitle,
+            'title': title,
+            'text': text
+        }
+
+        conn.add(doc, commit=True)
 
 
 def psets():
