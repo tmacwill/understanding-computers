@@ -1,0 +1,37 @@
+#results h2 {
+    font-family: 'Lato';
+    margin-bottom: 20px;
+}
+
+#results h4 {
+    font-family: 'LatoLight';
+    margin-bottom: 8px;
+}
+
+.result {
+    background: white;
+    margin-bottom: 40px;
+    padding: 40px;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #e5e5e5 #dbdbdb #d2d2d2;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+    -moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+}
+
+.result label {
+    cursor: pointer;
+    display: block;
+    font-family: 'LatoLight';
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: -15px;
+}
+
+.result .preview {
+    margin-bottom: 20px;
+}

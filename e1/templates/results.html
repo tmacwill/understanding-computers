@@ -1,13 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
-
-<h1>Results</h1>
-
-<ul>
+<ul id="results">
 {% for result in results: %}
-    <li>
-        <a href="/chapter/{{ result.id }}" class="contents-entry box">{{result.id}}</a>
-        <p> {{results.highlighting[result.id]['text']}}</p>
+    <li class="result box">
+        <h2><a href="/chapter/{{ result['id'] }}">{{result['id']}}</a></h2>
+        <h4 class="preview">...{{result['text']}}...</h4>
     </li>
 {% endfor %}
 </ul>

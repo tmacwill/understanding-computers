@@ -13,4 +13,15 @@ def query(query):
     """
 
     results = searchModel.query(query)
-    return render_template('results.html', results=results)
+
+    preparedResults = []
+
+    # prepare results for viewing
+    for result in results:
+        preparedResult = {}
+        preparedResult['id'] = result['id']
+        preparedResult['text'] = util.stripHTML(results.highlighting[result['id']]['text'][0])
+        preparedResults.append(preparedResult)
+
+    # pass processed results to view
+    return render_template('results.html', results=preparedResults, title='Search Results', subtitle=query)
