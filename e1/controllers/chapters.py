@@ -24,8 +24,7 @@ def contents():
     points = g.user.total_points()
 
     toc = loader.toc()
-    return render_template('contents.html', toc=toc, reads=reads, points=points, total_points=total_points,
-        title='My Progress')
+    return render_template('contents.html', toc=toc, reads=reads, points=points, total_points=total_points)
 
 @app.route('/chapter/<chapter>')
 @app.route('/chapter/<chapter>/<section>')
@@ -42,6 +41,10 @@ def chapter(chapter, section=None):
     subtitle = info['title']
 
     return render_template('chapter.html', chapter_id=chapter, chapter=info, subtitle=subtitle, title=title, toc=toc)
+
+@app.route('/progress')
+def progress():
+    return render_template('progress.html', title='My Progress')
 
 @app.route('/read/<chapter>/<section>')
 def read(chapter, section):

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<link rel="stylesheet" href="/static/css/progress.css" />
+
+<div id="progress" class="box">
+    <div class="progress-section progress-hardware">
+        <h2>Hardware</h2>
+        <div class="progress">
+            <div class="bar" style="width: 45%"></div>
+        </div>
+    </div>
+    <div class="progress-section progress-internet">
+        <h2>Internet</h2>
+        <div class="progress">
+            <div class="bar" style="width: 45%"></div>
+        </div>
+    </div>
+    <div class="progress-section progress-multimedia">
+        <h2>Multimedia</h2>
+        <div class="progress">
+            <div class="bar" style="width: 45%"></div>
+        </div>
+    </div>
+    <div class="progress-section progress-security">
+        <h2>Security</h2>
+        <div class="progress">
+            <div class="bar" style="width: 45%"></div>
+        </div>
+    </div>
+    <div class="progress-section progress-development">
+        <h2>Development</h2>
+        <div class="progress">
+            <div class="bar" style="width: 45%"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

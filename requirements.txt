@@ -4,5 +4,6 @@ markdown
 mysql-python
 python-memcached
 pyyaml
+redis
 solrpy
 sqlalchemy

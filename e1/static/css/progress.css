@@ -1,0 +1,19 @@
+.progress-hardware .bar {
+    background: #9B59B6;
+}
+
+.progress-internet .bar {
+    background: #E67E22;
+}
+
+.progress-multimedia .bar {
+    background: #3498DB;
+}
+
+.progress-security .bar {
+    background: #F1C40F;
+}
+
+.progress-development .bar {
+    background: #E74C3C;
+}

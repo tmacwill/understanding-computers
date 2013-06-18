@@ -15,6 +15,9 @@ db = SQLAlchemy(app)
 # connect to memcached
 cache = MemcachedCache(['127.0.0.1:11211'])
 
+# use redis for sessions
+import e1.session
+
 import e1.loader
 
 # load table of contents and chapters
