@@ -10,9 +10,30 @@ from bs4 import BeautifulSoup
 
 from collections import OrderedDict
 
+_badges = None
 _chapters = None
 _psets = None
 _toc = None
+
+def badges():
+    """
+    Load all badges
+    """
+
+    global _badges
+
+    # if already loaded, use that
+    if _badges:
+        return _badges
+
+    # load badge data
+    _badges = OrderedDict()
+    with open(settings.BADGE_METADATA) as f:
+        info = yaml.load(f)
+        for badge in info:
+            _badges[badge['id']] = badge
+
+    return _badges
 
 def chapters():
     """
@@ -84,6 +105,7 @@ def solr_load():
 
     # wipe solr
     conn.delete_query('*:*')
+    conn.commit()
 
     # ensure that chapters are loaded
     chapters()
@@ -131,8 +153,9 @@ def solr_load_chapter(conn, title, chapter):
             'text': text
         }
 
-        conn.add(doc, commit=True)
+        conn.add(doc)
 
+    conn.commit()
 
 def psets():
     """

@@ -1,0 +1,61 @@
+- id: hardware
+  name: Hardware
+  icon: icon-desktop
+  type: chapter
+  chapters:
+      - powerup
+      - binary
+      - cpu
+      - memory
+
+- id: internet
+  name: Internet
+  icon: icon-cloud
+  type: chapter
+  chapters:
+      - internet
+      - domains
+      - protocols
+      - email
+      - tcpip
+
+- id: multimedia
+  name: Multimedia
+  icon: icon-picture
+  type: chapter
+  chapters:
+      - graphics
+      - av
+
+- id: security
+  name: Security
+  icon: icon-shield
+  type: chapter
+  chapters:
+      - onlinesec
+      - datasec
+      - privacy
+
+- id: development
+  name: Development
+  icon: icon-code
+  type: chapter
+  chapters:
+      - design
+      - html
+      - programming
+
+- id: chapters
+  name: Chapters
+  icon: icon-book
+  type: achievement
+
+- id: psets
+  name: Problem Sets
+  icon: icon-ok
+  type: achievement
+
+- id: complete
+  name: All Complete
+  icon: icon-star
+  type: achievement

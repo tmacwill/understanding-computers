@@ -126,6 +126,15 @@ h1 small {
     color: #C0392B;
 }
 
+.container h2 {
+    font-family: 'LatoLight';
+    font-weight: normal;
+    border-bottom: 1px solid #bdc3c7;
+    font-size: 32px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
 .box {
     display: block;
     background: white;
@@ -228,11 +237,11 @@ h1 small {
     border-left: 1px solid #bdc3c7;
 }
 
-#badges {
+#navbar #badges {
     margin-left: 45px;
 }
 
-.badge-container {
+#navbar .badge-container {
     display: inline-block;
     position: relative;
     width: 100px;
@@ -241,7 +250,7 @@ h1 small {
     cursor: pointer;
 }
 
-.badge-line {
+#navbar .badge-line {
     width: 100px;
     border-radius: 4px;
     height: 3px;
@@ -250,28 +259,30 @@ h1 small {
 }
 
 .badge {
-    position: absolute;
-    color: white;
-    font-size: 18px;
-    width: 140px;
     border-radius: 4px;
     color: white;
     padding: 10px 14px;
-    top: 15px;
-    left: -33px;
-    opacity: 0;
-    -moz-opacity: 0;
-    transition: top 0.5s, opacity 0.5s;
-    -webkit-transition: top 0.5s, opacity 0.5s;
-    -moz-transition: top 0.5s, opacity 0.5s;
+    font-size: 18px;
+    width: 140px;
     text-align: center;
 }
 
-.badge-container:hover .badge, .badge:hover {
+#navbar .badge {
+    position: absolute;
+    top: -20px;
+    left: -33px;
+    opacity: 0.0;
+    -moz-opacity: 0.0;
+    transition: top 0.5s, opacity 0.5s;
+    -webkit-transition: top 0.5s, opacity 0.5s;
+    -moz-transition: top 0.5s, opacity 0.5s;
+}
+
+#navbar .badge-container:hover .badge, #navbar .badge:hover {
     display: block;
-    top: 25px;
-    opacity: 1;
-    -moz-opacity: 1;
+    top: -38px;
+    opacity: 1.0;
+    -moz-opacity: 1.0;
 }
 
 .badge i {

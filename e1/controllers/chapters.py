@@ -18,10 +18,10 @@ def contents():
     total_points = psets['points']
 
     # get all sections the user has read
-    reads = g.user.reads()
+    reads = g.user.get_reads()
 
-    # get the user's total points
-    points = g.user.total_points()
+    # get the user's points
+    points = g.user.get_points()
 
     toc = loader.toc()
     return render_template('contents.html', toc=toc, reads=reads, points=points, total_points=total_points)
@@ -44,7 +44,7 @@ def chapter(chapter, section=None):
 
 @app.route('/progress')
 def progress():
-    return render_template('progress.html', title='My Progress')
+    return render_template('progress.html', badges=settings.CHAPTER_BADGES, title='My Progress')
 
 @app.route('/read/<chapter>/<section>')
 def read(chapter, section):

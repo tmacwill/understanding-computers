@@ -2,13 +2,6 @@ html, body {
     background: #ECF0F1;
 }
 
-#chapter-content h2 {
-    font-size: 2.5em;
-    font-family: 'LatoLight';
-    font-weight: normal;
-    margin-bottom: 0.7em;
-}
-
 #chapter-content h3 {
     font-size: 1.1em;
     margin-top: -1.3em;

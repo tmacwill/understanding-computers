@@ -1,4 +1,5 @@
 import os
+from collections import OrderedDict
 
 # app's base directory
 BASE = os.path.dirname(os.path.realpath(__file__))
@@ -17,6 +18,9 @@ PSET_SRC = CONTENT_SRC + '/psets'
 
 # file for chapter metadata
 CHAPTER_METADATA = CONTENT_SRC +'/chapters.yaml'
+
+# file for badge metadata
+BADGE_METADATA = CONTENT_SRC + '/badges.yaml'
 
 # file for chapter build
 CHAPTER_BUILD = CONTENT_BUILD + '/chapters.json'

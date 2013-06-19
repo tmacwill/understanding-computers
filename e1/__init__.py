@@ -24,6 +24,7 @@ import e1.loader
 e1.loader.toc()
 e1.loader.chapters()
 e1.loader.psets()
+e1.loader.badges()
 
 # load routes
 import e1.controllers.base

@@ -1,3 +1,24 @@
+.progress-section {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #bdc3c7;
+    padding-bottom: 25px;
+    padding-top: 15px;
+}
+
+.progress-section .badge {
+    display: inline-block;
+}
+
+.progress-section .badge-progress {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.progress-section .progress {
+    width: 675px;
+}
+
 .progress-hardware .bar {
     background: #9B59B6;
 }
