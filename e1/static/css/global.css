@@ -186,14 +186,59 @@ h1 small {
     z-index: 2;
 }
 
-#navbar h1 {
-    font-size: 36px;
-    display: inline-block;
-    margin: 0;
+#navbar #search {
     position: absolute;
     right: 20px;
+    top: 10px;
+}
+
+#navbar #search i {
+    position: absolute;
+    left: 13px;
     top: 13px;
-    padding-bottom: 10px;
+    z-index: 2;
+}
+
+#navbar #search input {
+    width: 300px;
+    padding-left: 28px;
+}
+
+#navbar #search-results {
+    position: absolute;
+    right: 0px;
+    top: 48px;
+    height: 400px;
+    width: 400px;
+    background-color: white;
+    -webkit-box-shadow: 0px 1px 3px #BBB;
+    border-radius: 2px;
+}
+
+#navbar #search-results:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 50px;
+    border: 5px solid transparent;
+    border-bottom: 5px solid #3498db;
+}
+
+#navbar #search-header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 40px;
+    border-radius: 2px 2px 0px 0px;
+    background: -webkit-linear-gradient(top, #3498db, rgb(49, 126, 177));
+    background-color: #3498db;
+    color: white;
+    font-size: 18px;
+    line-height: 40px;
+    padding-left: 15px;
+    text-shadow: 0px -1px #333;
+    border-bottom: 1px solid #08c;
 }
 
 #navbar h2 {
@@ -228,13 +273,18 @@ h1 small {
     font-family: 'Lato';
 }
 
-#navbar #subtitle {
+#title {
+    font-size: 44px;
+    margin: 20px 0 25px 0;
+}
+
+#subtitle {
     font-family: 'LatoLight';
-    font-size: 30px;
+    font-size: 40px;
     padding-left: 10px;
     margin-left: 3px;
     color: #C0392B;
-    border-left: 1px solid #bdc3c7;
+    margin: 0;
 }
 
 #navbar #badges {
