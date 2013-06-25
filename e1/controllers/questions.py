@@ -31,7 +31,7 @@ def pset(chapter, question=0):
             del i['answer']
 
     return render_template('pset.html', pset=pset, chapter=chapter, metadata=metadata, title=title,
-        subtitle=metadata['heading'])
+        subtitle=metadata['title'])
 
 @app.route('/answer/<question_id>', methods=['POST'])
 def answer(question_id):

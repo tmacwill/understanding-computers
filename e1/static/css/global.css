@@ -253,6 +253,15 @@ h1 small {
     display: inline-block;
 }
 
+#navbar h2 a {
+    text-decoration: none;
+    color: black;
+}
+
+#navbar h2 a:hover {
+    color: #c0392b;
+}
+
 #navbar h2 img {
     margin-right: 10px;
     vertical-align: sub;
@@ -271,6 +280,16 @@ h1 small {
     padding: 5px 8px 3px 8px;
     font-size: 24px;
     font-family: 'Lato';
+}
+
+#navbar #points a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+#navbar #points:hover {
+    background: #2ecc71;
 }
 
 #title {
@@ -359,7 +378,7 @@ h1 small {
     background: #E74C3C;
 }
 
-.chapters-badge {
+.chapter-badge {
     background: #7F8C8D;
 }
 

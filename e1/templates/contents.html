@@ -16,17 +16,17 @@
             <li>
                 <div rel="tooltip" data-placement="right" class="number
                     {% if reads[id].keys()|length == 0 %}
-                        red" data-original-title="You haven't started this chapter yet"
-                    {% elif reads[id].keys()|length == chapter.subheadings|length %}
-                        green" data-original-title="You've completed this chapter"
+                        red" data-original-title="You haven't started this chapter yet."
+                    {% elif reads[id].keys()|length == chapter.sections|length %}
+                        green" data-original-title="You've completed this chapter!"
                     {% else %}
-                        yellow" data-original-title="You've read some of this chapter"
+                        yellow" data-original-title="You've read some of this chapter."
                     {% endif %}
                 >
                     {{ chapter.sequence + 1 }}
                 </div>
                 <div class="chapter-info">
-                    {{ chapter.heading }}
+                    {{ chapter.title }}
                 </div>
                 <div class="chapter-buttons">
                     <a class="btn btn-primary" href="/chapter/{{ id }}"><i class="icon-book"></i> Read</a>
@@ -39,13 +39,13 @@
                         <h3><a href="/pset/{{ id }}">Problem Set:</a> {{ points[id] }} out of {{ total_points[id] }} points</h4>
                     {% endif %}
                     <ul>
-                        {% for i in chapter.subheadings %}
+                        {% for section in chapter.sections %}
                             <li>
-                                <a href="/chapter/{{ id }}/{{ i.id }}">
-                                    {% if id in reads and i.id in reads[id] %}
+                                <a href="/chapter/{{ id }}/{{ section.id }}">
+                                    {% if id in reads and section.id in reads[id] %}
                                         <i class="icon-ok"></i>
                                     {% endif %}
-                                    {{ i.subheading }}
+                                    {{ section.title }}
                                 </a>
                             </li>
                         {% endfor %}

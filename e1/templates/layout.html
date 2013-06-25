@@ -16,10 +16,12 @@
     <body>
         <div id="navbar">
             <h2>
-                <img src="{{ g.user.photo }}" />
-                {{ g.user.name }}
+                <a href="/contents">
+                    <img src="{{ g.user.photo }}" />
+                    {{ g.user.name }}
+                </a>
             </h2>
-            <div id="points">{{ g.user.points }} points</div>
+            <div id="points"><a href="/progress">{{ g.user.points }} points</a></div>
             <div id="badges">
                 {% for k, v in g.all_badges.iteritems(): %}
                     {% if g.user.badges[k] %}
@@ -33,16 +35,6 @@
             <div id="search">
                 <i class="icon-search"></i>
                 <input type="text" />
-                <div id="search-results">
-                    <div id="search-header">Search Results</div>
-                        <ul>
-                            <li class="result box">
-                                <h2><a href="/chapter/">memory/virtual_memory</a></h2>
-                                <h4 class="preview">...Whether your computer has an HDD or an SSD, the hard drive typically has a much larger capacity than RAM. In fact, if you're in a super productive multi-tasking kind of mood. However, it wouldn't be so good if your computer simply told you...</h4>
-                            </li>
-                        </ul>
-                    <div id="search-body"></div>
-                </div>
             </div>
         </div>
         <div class="container">

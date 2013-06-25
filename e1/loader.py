@@ -76,11 +76,11 @@ def chapters():
             # compile markdown to html
             content = f.readlines()
             for line in content[:]:
-                # extract subheadings
+                # extract sections
                 if re.match(r'^## ', line):
-                    _toc[i]['subheadings'].append({
+                    _toc[i]['sections'].append({
                         'id': subheading(line),
-                        'subheading': line[3:-1]
+                        'title': line[3:-1]
                     })
 
             _chapters[i]['content'] = markdown.markdown("".join(content))
@@ -126,7 +126,7 @@ def solr_load_chapter(conn, title, chapter):
     soup = BeautifulSoup(chapter['content'])
 
     for header in soup.find_all('h2'):
-        # get header and format subheading
+        # get header and format section title
         subtitle = title + '/' + header.text.replace(' ', '-').lower()
         text = ''
 
@@ -183,10 +183,15 @@ def psets():
     _psets['answers'] = {}
     _psets['points'] = {}
 
-    #for i in _toc.iterkeys():
-    for i in ['graphics']:
+    # iterate over all chapters in table of contents
+    for i in _toc.iterkeys():
         with open(settings.PSET_SRC + '/' + i + '.yaml') as f:
             _psets['questions'][i] = yaml.load(f)
+
+        # make sure questions exist
+        if not _psets['questions'][i]:
+            _psets['points'][i] = 0
+            continue
 
         # store answers for each question
         total_points = 0
@@ -267,9 +272,9 @@ def toc():
             # create entry in table of contents
             chapter_id = chapter['id']
             _toc[chapter_id] = {
-                'heading': chapter['title'],
+                'title': chapter['title'],
                 'sequence': i,
-                'subheadings': [],
+                'sections': [],
                 'tags': chapter['tags']
             }
 

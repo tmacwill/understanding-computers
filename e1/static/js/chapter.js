@@ -18,10 +18,10 @@ var ChapterView = Backbone.View.extend({
         // array of html strings for each section in the chapter
         this.sections = [];
 
-        // iterate over each subheading to extract section text
+        // iterate over each section to extract section text
         var self = this;
         $('#chapter-content h2').each(function() {
-            // construct html string from all elements until next subheading
+            // construct html string from all elements until next section
             var elements = $(this).nextUntil('h2');
             var html = this.outerHTML;
             $.each(elements, function() {

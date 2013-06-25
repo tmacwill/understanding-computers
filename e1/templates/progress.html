@@ -4,47 +4,42 @@
 <link rel="stylesheet" href="/static/css/progress.css" />
 
 <div id="progress" class="box">
-    <h2>Badges</h2>
-    <div class="progress-section progress-hardware">
-        <div class="badge hardware-badge"><i class="icon-desktop"></i> Hardware</div>
-        <div class="badge-progress">
-            <div class="progress">
-                <div class="bar" style="width: 45%"></div>
+    <h2>Badge Progress</h2>
+    {% for k, v in g.all_badges.iteritems(): %}
+    {% if v.type == 'chapter' %}
+        <div class="progress-section progress-{{ k }}">
+            {% if badge_progress[k]['earned'] %}
+                <div class="badge {{ k }}-badge"><i class="{{ v.icon }}"></i> {{ v.name }}</div>
+            {% else %}
+                <div class="badge {{ k }}-badge unearned">{{ v.name }}</div>
+            {% endif %}
+            <div class="badge-progress">
+                <div class="progress">
+                    <div class="bar" style="width: {{ badge_progress[k]['percentage'] }}%"></div>
+                </div>
+                {% if v.type == 'chapter' %}
+                    <div class="chapter-progress">
+                        {% for chapter in v.chapters %}
+                            <h3>
+                                {% if badge_progress[k]['milestones'][chapter]['chapter'] %}
+                                    <i class="icon-book earned"></i>
+                                {% else %}
+                                    <i class="icon-book unearned"></i>
+                                {% endif %}
+                                {% if badge_progress[k]['milestones'][chapter]['pset'] %}
+                                    <i class="icon-ok earned"></i>
+                                {% else %}
+                                    <i class="icon-ok unearned"></i>
+                                {% endif %}
+                                {{ toc[chapter].title }}
+                            </h3>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
-    </div>
-    <div class="progress-section progress-internet">
-        <div class="badge internet-badge"><i class="icon-cloud"></i> Internet</div>
-        <div class="badge-progress">
-            <div class="progress">
-                <div class="bar" style="width: 45%"></div>
-            </div>
-        </div>
-    </div>
-    <div class="progress-section progress-multimedia">
-        <div class="badge multimedia-badge"><i class="icon-picture"></i> Multimedia</div>
-        <div class="badge-progress">
-            <div class="progress">
-                <div class="bar" style="width: 45%"></div>
-            </div>
-        </div>
-    </div>
-    <div class="progress-section progress-security">
-        <div class="badge security-badge"><i class="icon-shield"></i> Security</div>
-        <div class="badge-progress">
-            <div class="progress">
-                <div class="bar" style="width: 45%"></div>
-            </div>
-        </div>
-    </div>
-    <div class="progress-section progress-development">
-        <div class="badge development-badge"><i class="icon-code"></i> Development</div>
-        <div class="badge-progress">
-            <div class="progress">
-                <div class="bar" style="width: 45%"></div>
-            </div>
-        </div>
-    </div>
+    {% endif %}
+    {% endfor %}
 </div>
 
 {% endblock %}

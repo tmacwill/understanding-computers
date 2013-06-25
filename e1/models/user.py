@@ -8,8 +8,10 @@ from e1.models.badges import *
 from e1.models.chapter_read import ChapterRead
 
 class User(db.Model):
+    # table name
     __tablename__ = 'users'
 
+    # table columns
     id = db.Column(db.BigInteger, primary_key=True)
     name = db.Column(db.String(255))
     email = db.Column(db.String(255))

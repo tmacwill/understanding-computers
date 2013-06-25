@@ -45,12 +45,12 @@
       - html
       - programming
 
-- id: chapters
+- id: chapter
   name: Chapters
   icon: icon-book
   type: achievement
 
-- id: psets
+- id: pset
   name: Problem Sets
   icon: icon-ok
   type: achievement
