@@ -18,6 +18,13 @@ _toc = None
 def badges():
     """
     Load all badges
+
+    Returns:
+        A list of dictionaries with at least:
+            id: unique ID
+            name: readable badge name
+            icon: icon to be displayed with badge
+            type: badge type
     """
 
     global _badges
@@ -38,6 +45,11 @@ def badges():
 def chapters():
     """
     Load chapter data from markdown source
+
+    Returns:
+        An ordered dictionary indexed on chapter ID, where each entry has:
+            content: HTML content of chapter
+            sequence: The numerical index of the chapter
     """
 
     global _chapters, _toc
@@ -116,10 +128,11 @@ def solr_load():
 def solr_load_chapter(conn, title, chapter):
     """
     Load chapter into solr
+
     Args:
-        conn - solr connection object
-        title - title of chapter
-        chapter - chapter object to load
+        conn: solr connection object
+        title: title of chapter
+        chapter: chapter object to load
     """
 
     # split chapter into subchapters
@@ -160,6 +173,13 @@ def solr_load_chapter(conn, title, chapter):
 def psets():
     """
     Load all psets
+
+    Returns:
+        A dictionary with the following:
+            answers: Dictionary from question IDs to a dictionary with an answer, points, and pset
+            points: Dictionary from pset IDs to a total points scalar
+            questions: Dictionary from pset IDs to a list of questions, where each question has at least a
+                type, question, answer, link, and explanation
     """
 
     global _toc, _psets
@@ -249,6 +269,13 @@ def subheading(s):
 def toc():
     """
     Load table of contents from metadata
+
+    Returns:
+        An ordered dictionary indexed on chapter ID, where each entry has:
+            title: Readable title of chapter
+            sequence: Numerical index of chapter
+            sections: List of sections, where each entry has a unique ID and readable title
+            tags: List of tags associated with the chapter
     """
 
     global _toc
